@@ -13,69 +13,69 @@
     </Window.Resources>
 
     <DockPanel>
-        <Border  BorderBrush="Gray" BorderThickness="0"  Margin="-1,0" DockPanel.Dock="Left">
+        <Border  BorderBrush="Black" BorderThickness="1"  Margin="0" DockPanel.Dock="Left">
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Background="#aed4eb">
-                <StackPanel DockPanel.Dock="Left" Width="300" >
-                <StackPanel.Resources>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="TextAlignment" Value="Center"/>
-                        <Setter Property="FontFamily" Value="{DynamicResource MaterialDesignFont}"/>
-                        <Setter Property="FontSize" Value="20"/>
-                        <Setter Property="Margin" Value="0,50,0,10"/>
-                    </Style>
-                </StackPanel.Resources>
-               
-                    <materialDesign:ColorZone
-                        Mode="Standard"
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Background="#171717">
+				<StackPanel Width="300">
+
+					<StackPanel.Resources>
+						<Style TargetType="TextBlock">
+							<Setter Property="TextAlignment" Value="Center"/>
+							<Setter Property="FontFamily" Value="{DynamicResource MaterialDesignFont}"/>
+							<Setter Property="FontSize" Value="20"/>
+							<Setter Property="Margin" Value="0,50,0,10"/>
+						</Style>
+					</StackPanel.Resources>
+
+					<materialDesign:ColorZone
+                        Mode="Dark"
                         Padding="0,0,10,10"
                         CornerRadius="2"
                         Panel.ZIndex="1"
                         Margin="20"
                         Height="50"
-                        BorderBrush="#00b0ff"
+                        BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                         BorderThickness="1"
                        
                         materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button
-                            Style="{DynamicResource MaterialDesignToolButton}"
-                            Margin="5,14,5,0"
-                            Height="auto">
-                            
-                            <materialDesign:PackIcon
-                                Kind="Search"
-                                Opacity=".56" />
-                        </Button>
-                        <TextBox
-                            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
-                            VerticalAlignment="Top"
-                            AcceptsReturn="True"
-                            TextWrapping="Wrap"
-                            VerticalScrollBarVisibility="Auto"
-                            materialDesign:HintAssist.Hint="Rechercher"
-                            Cursor="IBeam"
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="auto"/>
+								<ColumnDefinition Width="*"/>
+							</Grid.ColumnDefinitions>
+							<Button
+								Style="{DynamicResource MaterialDesignToolButton}"
+								Margin="5,14,5,0"
+								Height="auto">
+
+								<materialDesign:PackIcon
+									Kind="Search"
+									Opacity=".56" />
+							</Button>
+							<TextBox
+								Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+								VerticalAlignment="Top"
+								AcceptsReturn="True"
+								TextWrapping="Wrap"
+								VerticalScrollBarVisibility="Auto"
+								materialDesign:HintAssist.Hint="Rechercher"
+								Cursor="IBeam"
                            
-                            Grid.Column="1"
+								Grid.Column="1"
                             />
 
-                    </Grid>
-                    </materialDesign:ColorZone>
-                    <GroupBox
+						</Grid>
+					</materialDesign:ColorZone>
+					<GroupBox
                         Header="Tags"
                         Margin="16"
-                        Height="auto"
-                        Background="white"
+                        Height="215"
+                        
+                        
                         Style="{DynamicResource MaterialDesignCardGroupBox}"
-                        materialDesign:ColorZoneAssist.Mode="Custom"
-                        materialDesign:ColorZoneAssist.Background="#00b0ff"
-                        materialDesign:ColorZoneAssist.Foreground="Black">
-                   
-                        <!--
+                        materialDesign:ColorZoneAssist.Mode="PrimaryMid">
+
+						<!--
                     <StackPanel Height="auto" Width="200">
                     <StackPanel.Resources>
                         <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatLightBgButton}">
@@ -104,24 +104,24 @@
                     <Button/>
                 </StackPanel>
                         -->
-                     
-                            <StackPanel>
-                            <CheckBox Content="Ajoutés récemment (20)" Style="{StaticResource MaterialDesignCheckBox}" />
-                            <CheckBox Content="Favoris (0)" Style="{StaticResource MaterialDesignCheckBox}" />
-                            <CheckBox Content="Blues (18)" Style="{StaticResource MaterialDesignCheckBox}" />
-                            <CheckBox Content="Classique (43)" Style="{StaticResource MaterialDesignCheckBox}" />
-                            <CheckBox Content="Bande Originale (180)" Style="{StaticResource MaterialDesignCheckBox}" />
-                            <CheckBox Content="Hip-Hop (20)" Style="{StaticResource MaterialDesignCheckBox}" />
-                            <CheckBox Content="Jazz (34)" Style="{StaticResource MaterialDesignCheckBox}" />
-                            <CheckBox Content="Pop (3)" Style="{StaticResource MaterialDesignCheckBox}" />
-                            <CheckBox Content="Rock (45)" Style="{StaticResource MaterialDesignCheckBox}" />
-                            </StackPanel>
-                    
+
+						<StackPanel>
+							<CheckBox Content="Ajoutés récemment (20)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
+                            <CheckBox Content="Favoris (0)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
+                            <CheckBox Content="Blues (18)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
+                            <CheckBox Content="Classique (43)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
+                            <CheckBox Content="Bande Originale (180)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
+                            <CheckBox Content="Hip-Hop (20)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
+                            <CheckBox Content="Jazz (34)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
+                            <CheckBox Content="Pop (3)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
+                            <CheckBox Content="Rock (45)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
+						</StackPanel>
 
 
-                    </GroupBox>
-                    
-                    <!--
+
+					</GroupBox>
+
+					<!--
                     <TextBlock Text="Favoris"/>
                 <Border BorderBrush="Black" BorderThickness="2" Height="300" Margin="30,0">
                     <ScrollViewer  Background="Beige" >
@@ -158,34 +158,32 @@
                     </ScrollViewer>
                 </Border>
                 -->
-                    <GroupBox
+					<GroupBox
                         Header="Favoris"
                         Margin="16"
-                        Background="white"
+                        BorderThickness="20"
                         Style="{DynamicResource MaterialDesignCardGroupBox}"
-                        materialDesign:ColorZoneAssist.Mode="Custom"
-                        materialDesign:ColorZoneAssist.Background="#00b0ff"
-                        materialDesign:ColorZoneAssist.Foreground="Black">
-                        <StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Height="auto" Width="auto" Margin="0,0,20,0"
+                        materialDesign:ColorZoneAssist.Mode="PrimaryMid">
+						<StackPanel>
+							<StackPanel Orientation="Horizontal">
+								<Button Height="auto" Width="auto" Margin="0,0,20,0"
                                     Style="{StaticResource MaterialDesignIconButton}"
                                     ToolTip="MaterialDesignIconButton">
-                                    <materialDesign:PackIcon
+									<materialDesign:PackIcon
                                     Kind="Play" />
-                                </Button>
-                                <TextBlock Style="{DynamicResource MaterialDesignCaptionTextBlock}">L'Hymne de l'URSS</TextBlock>
-                            </StackPanel>
-                            
-                            
-                        </StackPanel>
-                    </GroupBox>
-                </StackPanel>
+								</Button>
+								<TextBlock Foreground="White" Style="{DynamicResource MaterialDesignCaptionTextBlock}">L'Hymne de l'URSS</TextBlock>
+							</StackPanel>
+
+
+						</StackPanel>
+					</GroupBox>
+				</StackPanel>
             </ScrollViewer>
         </Border>
 
-        <Border BorderBrush="Gray" BorderThickness="0" DockPanel.Dock="Top" Margin="-1,0">
-            <Grid  Background="#c3e5fa" Height="100"
+        <Border BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Top" Margin="-1,0">
+            <Grid  Background="#262626" Height="100"
                >
                 <Grid.Resources>
                     <Style TargetType="Ellipse">
@@ -247,8 +245,8 @@
         
         
         
-        <Border BorderBrush="Gray" BorderThickness="0"  Margin="-1,0" DockPanel.Dock="Bottom">
-            <Grid Background="#c3e5fa"  Height="150">
+        <Border BorderBrush="Black" BorderThickness="1"  Margin="-1,0" DockPanel.Dock="Bottom">
+            <Grid Background="#262626"  Height="150">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"/>
                     <ColumnDefinition Width="2*"/>
@@ -299,8 +297,8 @@
         </Border>
 
 
-        <Border BorderThickness="0" BorderBrush="Gray">
-        <ScrollViewer Background="#fafafa" Style="{DynamicResource MaterialDesignScrollViewer}">
+      
+            <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}">
             <WrapPanel  HorizontalAlignment="Center">
                 <WrapPanel.Resources>
                     <Style TargetType="materialDesign:Card">
@@ -343,6 +341,6 @@
                     </materialDesign:Card>
                 </WrapPanel>
         </ScrollViewer>
-        </Border>
+      
     </DockPanel>
 </Window>
