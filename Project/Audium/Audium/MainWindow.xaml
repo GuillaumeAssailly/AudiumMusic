@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Audium"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920" MinWidth="1220" MinHeight="550">
+        Title="Audium" Height="900" Width="1600" MinWidth="1220" MinHeight="550" WindowState="Maximized">
     <Window.Resources>
         <SolidColorBrush Color="Black" x:Key="DisqueBgColor"/>
         <Size Height="300" Width="300" x:Key="Taillepardefaut"/>
