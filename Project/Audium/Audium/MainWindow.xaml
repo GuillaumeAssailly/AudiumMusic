@@ -13,8 +13,9 @@
     </Window.Resources>
 
     <DockPanel>
-        <Border BorderBrush="Black" BorderThickness="2">
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Background="#6FA8DC">
+        <Border  BorderBrush="Gray" BorderThickness="0"  Margin="-1,0" DockPanel.Dock="Left">
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Background="#aed4eb">
                 <StackPanel DockPanel.Dock="Left" Width="300" >
                 <StackPanel.Resources>
                     <Style TargetType="TextBlock">
@@ -24,9 +25,58 @@
                         <Setter Property="Margin" Value="0,50,0,10"/>
                     </Style>
                 </StackPanel.Resources>
-                <TextBox Margin="30,50,30,0" Style="{DynamicResource MaterialDesignOutlinedTextBox}" Background="White" BorderBrush="Black"   />
-                <TextBlock Text="Genres" />
-                <StackPanel Height="auto" Width="200">
+               
+                    <materialDesign:ColorZone
+                        Mode="Standard"
+                        Padding="0,0,10,10"
+                        CornerRadius="2"
+                        Panel.ZIndex="1"
+                        Margin="20"
+                        Height="50"
+                        BorderBrush="#00b0ff"
+                        BorderThickness="1"
+                       
+                        materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            Style="{DynamicResource MaterialDesignToolButton}"
+                            Margin="5,14,5,0"
+                            Height="auto">
+                            
+                            <materialDesign:PackIcon
+                                Kind="Search"
+                                Opacity=".56" />
+                        </Button>
+                        <TextBox
+                            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Top"
+                            AcceptsReturn="True"
+                            TextWrapping="Wrap"
+                            VerticalScrollBarVisibility="Auto"
+                            materialDesign:HintAssist.Hint="Rechercher"
+                            Cursor="IBeam"
+                           
+                            Grid.Column="1"
+                            />
+
+                    </Grid>
+                    </materialDesign:ColorZone>
+                    <GroupBox
+                        Header="Tags"
+                        Margin="16"
+                        Height="auto"
+                        Background="white"
+                        Style="{DynamicResource MaterialDesignCardGroupBox}"
+                        materialDesign:ColorZoneAssist.Mode="Custom"
+                        materialDesign:ColorZoneAssist.Background="#00b0ff"
+                        materialDesign:ColorZoneAssist.Foreground="Black">
+                   
+                        <!--
+                    <StackPanel Height="auto" Width="200">
                     <StackPanel.Resources>
                         <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatLightBgButton}">
                             <Setter Property="Margin" Value="2,2"/>
@@ -53,8 +103,26 @@
                     <Button/>
                     <Button/>
                 </StackPanel>
-    
-                <TextBlock Text="Favoris"/>
+                        -->
+                     
+                            <StackPanel>
+                            <CheckBox Content="Ajoutés récemment (20)" Style="{StaticResource MaterialDesignCheckBox}" />
+                            <CheckBox Content="Favoris (0)" Style="{StaticResource MaterialDesignCheckBox}" />
+                            <CheckBox Content="Blues (18)" Style="{StaticResource MaterialDesignCheckBox}" />
+                            <CheckBox Content="Classique (43)" Style="{StaticResource MaterialDesignCheckBox}" />
+                            <CheckBox Content="Bande Originale (180)" Style="{StaticResource MaterialDesignCheckBox}" />
+                            <CheckBox Content="Hip-Hop (20)" Style="{StaticResource MaterialDesignCheckBox}" />
+                            <CheckBox Content="Jazz (34)" Style="{StaticResource MaterialDesignCheckBox}" />
+                            <CheckBox Content="Pop (3)" Style="{StaticResource MaterialDesignCheckBox}" />
+                            <CheckBox Content="Rock (45)" Style="{StaticResource MaterialDesignCheckBox}" />
+                            </StackPanel>
+                    
+
+
+                    </GroupBox>
+                    
+                    <!--
+                    <TextBlock Text="Favoris"/>
                 <Border BorderBrush="Black" BorderThickness="2" Height="300" Margin="30,0">
                     <ScrollViewer  Background="Beige" >
                         <StackPanel >
@@ -89,14 +157,36 @@
                   
                     </ScrollViewer>
                 </Border>
-
-
-            </StackPanel>
+                -->
+                    <GroupBox
+                        Header="Favoris"
+                        Margin="16"
+                        Background="white"
+                        Style="{DynamicResource MaterialDesignCardGroupBox}"
+                        materialDesign:ColorZoneAssist.Mode="Custom"
+                        materialDesign:ColorZoneAssist.Background="#00b0ff"
+                        materialDesign:ColorZoneAssist.Foreground="Black">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Height="auto" Width="auto" Margin="0,0,20,0"
+                                    Style="{StaticResource MaterialDesignIconButton}"
+                                    ToolTip="MaterialDesignIconButton">
+                                    <materialDesign:PackIcon
+                                    Kind="Play" />
+                                </Button>
+                                <TextBlock Style="{DynamicResource MaterialDesignCaptionTextBlock}">L'Hymne de l'URSS</TextBlock>
+                            </StackPanel>
+                            
+                            
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
             </ScrollViewer>
         </Border>
-        
-        <Border BorderBrush="Black" BorderThickness="2" DockPanel.Dock="Top" Margin="-2,0">
-            <Grid  Background="#9FC5F8" >
+
+        <Border BorderBrush="Gray" BorderThickness="0" DockPanel.Dock="Top" Margin="-1,0">
+            <Grid  Background="#c3e5fa" Height="100"
+               >
                 <Grid.Resources>
                     <Style TargetType="Ellipse">
                         <Setter Property="Height" Value="60"/>
@@ -117,49 +207,48 @@
                     <ColumnDefinition  Width="1*"/>
                     <ColumnDefinition  Width="1*"/>
                     <ColumnDefinition  Width="1*"/>
-                    <ColumnDefinition  Width="3*"/>
+                    <ColumnDefinition  Width="8*"/>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
 
-                <Button Style="{DynamicResource MaterialDesignFloatingActionLightButton}" Height="60" Width="60" Margin="5,5"  Background="#6FA8DC" BorderBrush="Black" Cursor="Hand" >
-                    <Viewbox Width="48" Height="48">
-                        <Canvas Width="24" Height="24">
-                            <Path Fill="Black" Data="M20 6H12L10 4H4A2 2 0 0 0 2 6V18A2 2 0 0 0 4 20H20A2 2 0 0 0 22 18V8A2 2 0 0 0 20 6M17 13V17H15V14H13V17H11V13H9L14 9L19 13Z" />
-                        </Canvas>
-                    </Viewbox>
+                <Button Height="70" Width="70"
+                      Style="{StaticResource MaterialDesignIconButton}"
+                      ToolTip="MaterialDesignIconButton" Cursor="Hand">
+                                        <materialDesign:PackIcon Height="50" Width="50"
+                        Kind="FolderMusic" />
                 </Button>
 
-                <Button Style="{DynamicResource MaterialDesignFloatingActionLightButton}" Height="60" Width="60" Margin="5,5"  Background="#6FA8DC" BorderBrush="Black" Cursor="Hand" Grid.Column="1">
-                    <Viewbox Width="48" Height="48">
-                        <Canvas Width="24" Height="24">
-                            <Path Fill="Black" Data="M2,16H10V14H2M18,14V10H16V14H12V16H16V20H18V16H22V14M14,6H2V8H14M14,10H2V12H14V10Z" />
-                        </Canvas>
-                    </Viewbox>
+                <Button Height="70" Width="70"
+                      Grid.Column="1"
+                      Style="{StaticResource MaterialDesignIconButton}"
+                      ToolTip="MaterialDesignIconButton" Cursor="Hand">
+                    <materialDesign:PackIcon Height="50" Width="50"
+                        Kind="PlaylistAdd" />
                 </Button>
 
-                <Button Style="{DynamicResource MaterialDesignFloatingActionLightButton}" Height="60" Width="60" Margin="5,5"  Background="#6FA8DC" BorderBrush="Black" Cursor="Hand" Grid.Column="2">
-                    <Viewbox Width="48" Height="48">
-                        <Canvas Width="24" Height="24">
-                            <Path Fill="Black" Data="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" />
-                        </Canvas>
-                    </Viewbox>
+                <Button Height="70" Width="70"
+                      Grid.Column="2"
+                      Style="{StaticResource MaterialDesignIconButton}"
+                      ToolTip="MaterialDesignIconButton" Cursor="Hand">
+                    <materialDesign:PackIcon Height="50" Width="50"
+                        Kind="Cog" />
                 </Button>
 
-                <Button Style="{DynamicResource MaterialDesignFloatingActionLightButton}" Height="60" Width="60" Margin="15,15"  Background="#6FA8DC" BorderBrush="Black" Cursor="Hand" Grid.Column="4">
-                    <Viewbox Width="48" Height="48">
-                        <Canvas Width="24" Height="24">
-                            <Path Fill="Black" Data="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
-                        </Canvas>
-                    </Viewbox>
+                <Button Height="70" Width="70"
+                      Grid.Column="4"
+                      Style="{StaticResource MaterialDesignIconButton}"
+                      ToolTip="MaterialDesignIconButton" Cursor="Hand">
+                    <materialDesign:PackIcon Height="50" Width="50"
+                        Kind="Person" />
                 </Button>
             </Grid>
         </Border>
         
         
         
-        <Border BorderBrush="Black" BorderThickness="2"  Margin="-2,0" DockPanel.Dock="Bottom">
-            <Grid Background="#9FC5F8"  Height="150">
+        <Border BorderBrush="Gray" BorderThickness="0"  Margin="-1,0" DockPanel.Dock="Bottom">
+            <Grid Background="#c3e5fa"  Height="150">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"/>
                     <ColumnDefinition Width="2*"/>
@@ -173,75 +262,87 @@
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <Button Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
-                        Height="60" Width="60"   Background="#6FA8DC" 
-                        BorderBrush="Black" Cursor="Hand" Grid.Column="3" >
-                    <Viewbox Width="48" Height="48">
-                        <Canvas Width="24" Height="24">
-                            <Path Fill="Black" Data="M8,5.14V19.14L19,12.14L8,5.14Z" />
-                        </Canvas>
-                    </Viewbox>
+                <Button
+                    Style="{StaticResource MaterialDesignIconButton}"
+                    ToolTip="MaterialDesignIconButton"
+                    Grid.Column="3"
+                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                    <materialDesign:PackIcon Kind="Play" />
                 </Button>
-                <Button Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
-                        Height="60" Width="60"   Background="#6FA8DC" 
-                        BorderBrush="Black" Cursor="Hand" Grid.Column="2">
-                    <Viewbox Width="48" Height="48">
-                        <Canvas Width="24" Height="24">
-                            <Path Fill="Black" Data="M11.5,12L20,18V6M11,18V6L2.5,12L11,18Z" />
-                        </Canvas>
-                    </Viewbox>
+                <Button
+                    Style="{StaticResource MaterialDesignIconButton}"
+                    ToolTip="MaterialDesignIconButton"
+                    Grid.Column="2"
+                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                    <materialDesign:PackIcon Kind="Rewind" />
                 </Button>
-                <Button Style="{DynamicResource MaterialDesignFloatingActionLightButton}" 
-                        Height="60" Width="60"   Background="#6FA8DC" 
-                        BorderBrush="Black" Cursor="Hand" Grid.Column="4">
-                    <Viewbox Width="48" Height="48">
-                        <Canvas Width="24" Height="24">
-                            <Path Fill="Black" Data="M13,6V18L21.5,12M4,18L12.5,12L4,6V18Z" />
-                        </Canvas>
-                    </Viewbox>
+                <Button
+                    Style="{StaticResource MaterialDesignIconButton}"
+                    ToolTip="MaterialDesignIconButton"
+                    Grid.Column="4"
+                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                    <materialDesign:PackIcon Kind="FastForward" />
                 </Button>
+                
+                <!--
                 <ProgressBar Grid.Row="1" Grid.ColumnSpan="7" Height="6" Margin="40,10,40,34"
                              Style="{DynamicResource MaterialDesignLinearProgressBar}"  
                              Value="68"  Foreground="Black" Background="Gray" BorderBrush="#6FA8DC"></ProgressBar>
+                -->
+                <Slider
+                    TickFrequency="50" Grid.Row="1" Grid.ColumnSpan="7" Margin="40,0,40,0" Height="40"
+                    Orientation="Horizontal"
+                    Minimum="1"
+                    Maximum="50"
+                    Value="25" />     
             </Grid>
         </Border>
-        
-        
-        
-        <ScrollViewer Background="Beige" Style="{DynamicResource MaterialDesignScrollViewer}">
+
+
+        <Border BorderThickness="0" BorderBrush="Gray">
+        <ScrollViewer Background="#fafafa" Style="{DynamicResource MaterialDesignScrollViewer}">
             <WrapPanel  HorizontalAlignment="Center">
                 <WrapPanel.Resources>
-                    <Style TargetType="Rectangle">
+                    <Style TargetType="materialDesign:Card">
                         <Setter Property="Height" Value="220"/>
                         <Setter Property="Width" Value="220"/>
                         <Setter Property="Margin" Value="20,20"/>
-                        <Setter Property="Fill" Value="Black"/>
+                        <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth3"/>
+                        
                     </Style>
                 </WrapPanel.Resources>
-                <Rectangle/>
-                <Rectangle/>
-                <Rectangle/>
-                <Rectangle/>
-                <Rectangle/>
-                <Rectangle/>
-                <Rectangle/>
-
-                <Rectangle/>
-                <Rectangle/>
-                <Rectangle/>
-                <Rectangle/>
-                <Rectangle/>
-                <Rectangle/>
-                <Rectangle/>
-
-                <Rectangle/>
-                <Rectangle/>
-                <Rectangle/>
-                <Rectangle/>
-                <Rectangle/>
-                <Rectangle/>
-                <Rectangle/>
-            </WrapPanel>
+                    <materialDesign:Card>
+                        <Image Source="/img/hypnoflip.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/ram.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/beattles.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/allman.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/red.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/proleter.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/wagner.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/shosta.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/beethov.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/iam.jpg"  />
+                    </materialDesign:Card>
+                </WrapPanel>
         </ScrollViewer>
+        </Border>
     </DockPanel>
 </Window>
