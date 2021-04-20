@@ -13,7 +13,7 @@
     </Window.Resources>
 
     <DockPanel>
-        <Border  BorderBrush="Black" BorderThickness="1"  Margin="0" DockPanel.Dock="Left">
+        <Border  BorderBrush="Black" BorderThickness="0"  Margin="0" DockPanel.Dock="Left">
 
             <ScrollViewer VerticalScrollBarVisibility="Auto" Background="#171717">
 				<StackPanel Width="300">
@@ -66,7 +66,7 @@
 
 						</Grid>
 					</materialDesign:ColorZone>
-					<GroupBox
+                    <GroupBox
                         Header="Tags"
                         Margin="16"
                         Height="215"
@@ -75,38 +75,8 @@
                         Style="{DynamicResource MaterialDesignCardGroupBox}"
                         materialDesign:ColorZoneAssist.Mode="PrimaryMid">
 
-						<!--
-                    <StackPanel Height="auto" Width="200">
-                    <StackPanel.Resources>
-                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatLightBgButton}">
-                            <Setter Property="Margin" Value="2,2"/>
-                            <Setter Property="Background" Value="#9FC5F8" />
-                            <Setter Property="BorderBrush" Value="Black"/>
-                            <Setter Property="BorderThickness" Value="2"/>
-                            <Setter Property="ContentTemplate">
-                                <Setter.Value>
-                                    <DataTemplate>
-                                        <Viewbox Width="15" Height="15">
-                                            <Canvas Width="24" Height="24">
-                                                <Path Fill="Black" Data="M12 3V13.55C11.41 13.21 10.73 13 10 13C7.79 13 6 14.79 6 17S7.79 21 10 21 14 19.21 14 17V7H18V3H12Z" />
-                                            </Canvas>
-                                        </Viewbox>
-                                    </DataTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </StackPanel.Resources>
-                    <Button/>
-                    <Button/>
-                    <Button/>
-                    <Button/>
-                    <Button/>
-                    <Button/>
-                </StackPanel>
-                        -->
-
-						<StackPanel>
-							<CheckBox Content="Ajoutés récemment (20)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
+                        <StackPanel>
+                            <CheckBox Content="Ajoutés récemment (20)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
                             <CheckBox Content="Favoris (0)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
                             <CheckBox Content="Blues (18)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
                             <CheckBox Content="Classique (43)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
@@ -115,50 +85,12 @@
                             <CheckBox Content="Jazz (34)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
                             <CheckBox Content="Pop (3)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
                             <CheckBox Content="Rock (45)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
-						</StackPanel>
-
-
-
-					</GroupBox>
-
-					<!--
-                    <TextBlock Text="Favoris"/>
-                <Border BorderBrush="Black" BorderThickness="2" Height="300" Margin="30,0">
-                    <ScrollViewer  Background="Beige" >
-                        <StackPanel >
-                            <StackPanel.Resources>
-                                <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatLightBgButton}">
-                                    <Setter Property="Margin" Value="2,2"/>
-                                    <Setter Property="Background" Value="#9FC5F8" />
-                                    <Setter Property="BorderBrush" Value="Black"/>
-                                    <Setter Property="BorderThickness" Value="2"/>
-                                    <Setter Property="Margin" Value="20,4"/>
-                                   
-                                </Style>
-                            </StackPanel.Resources>
-                            
-                            <Button Content="..."/>
-                            <Button Content="..."/>
-                            <Button Content="..."/>
-                            <Button Content="..."/>
-                            <Button Content="..."/>
-                            <Button Content="..."/>
-                            <Button Content="..."/>
-                            <Button Content="..."/>
-                            <Button Content="..."/>
-                            <Button Content="..."/>
-                            <Button Content="..."/>
-                            <Button Content="..."/>
-                            <Button Content="..."/>
-                            <Button Content="..."/>
-
-
                         </StackPanel>
-                  
-                    </ScrollViewer>
-                </Border>
-                -->
-					<GroupBox
+
+
+
+                    </GroupBox>
+                    <GroupBox
                         Header="Favoris"
                         Margin="16"
                         BorderThickness="20"
@@ -182,15 +114,11 @@
             </ScrollViewer>
         </Border>
 
-        <Border BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Top" Margin="-1,0">
+        <Border BorderBrush="Black" BorderThickness="0" DockPanel.Dock="Top" Margin="0">
             <Grid  Background="#262626" Height="100"
                >
                 <Grid.Resources>
-                    <Style TargetType="Ellipse">
-                        <Setter Property="Height" Value="60"/>
-                        <Setter Property="Width" Value="60"/>
-                        <Setter Property="Margin" Value="8"/>
-                    </Style>
+                    
                     <Style TargetType="Button">
                         <Setter Property="Height" Value="20"/>
                         <Setter Property="Width" Value="20"/>
@@ -208,15 +136,12 @@
                     <ColumnDefinition  Width="8*"/>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-
-
                 <Button Height="70" Width="70"
                       Style="{StaticResource MaterialDesignIconButton}"
                       ToolTip="MaterialDesignIconButton" Cursor="Hand">
-                                        <materialDesign:PackIcon Height="50" Width="50"
+                    <materialDesign:PackIcon Height="50" Width="50"
                         Kind="FolderMusic" />
                 </Button>
-
                 <Button Height="70" Width="70"
                       Grid.Column="1"
                       Style="{StaticResource MaterialDesignIconButton}"
@@ -240,13 +165,14 @@
                     <materialDesign:PackIcon Height="50" Width="50"
                         Kind="Person" />
                 </Button>
+                
             </Grid>
         </Border>
-        
-        
-        
-        <Border BorderBrush="Black" BorderThickness="1"  Margin="-1,0" DockPanel.Dock="Bottom">
-            <Grid Background="#262626"  Height="150">
+
+
+      
+            <Border BorderBrush="Black" BorderThickness="0"  DockPanel.Dock="Bottom" Margin="0"  >
+            <Grid Background="#262626"  Height="100">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"/>
                     <ColumnDefinition Width="2*"/>
@@ -264,13 +190,14 @@
                     Style="{StaticResource MaterialDesignIconButton}"
                     ToolTip="MaterialDesignIconButton"
                     Grid.Column="3"
-                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="0,2,0,17">
                     <materialDesign:PackIcon Kind="Play" />
                 </Button>
                 <Button
                     Style="{StaticResource MaterialDesignIconButton}"
                     ToolTip="MaterialDesignIconButton"
                     Grid.Column="2"
+                     Margin="0,2,0,17"
                     Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
                     <materialDesign:PackIcon Kind="Rewind" />
                 </Button>
@@ -278,10 +205,10 @@
                     Style="{StaticResource MaterialDesignIconButton}"
                     ToolTip="MaterialDesignIconButton"
                     Grid.Column="4"
-                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"  Margin="0,2,0,17">
                     <materialDesign:PackIcon Kind="FastForward" />
                 </Button>
-                
+               
                 <!--
                 <ProgressBar Grid.Row="1" Grid.ColumnSpan="7" Height="6" Margin="40,10,40,34"
                              Style="{DynamicResource MaterialDesignLinearProgressBar}"  
@@ -292,55 +219,113 @@
                     Orientation="Horizontal"
                     Minimum="1"
                     Maximum="50"
-                    Value="25" />     
-            </Grid>
-        </Border>
+                    Value="25" />
+               
+                   
+               
+                </Grid>
+            </Border>
 
 
-      
-            <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}">
-            <WrapPanel  HorizontalAlignment="Center">
-                <WrapPanel.Resources>
-                    <Style TargetType="materialDesign:Card">
-                        <Setter Property="Height" Value="220"/>
-                        <Setter Property="Width" Value="220"/>
-                        <Setter Property="Margin" Value="20,20"/>
-                        <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth3"/>
-                        
-                    </Style>
-                </WrapPanel.Resources>
-                    <materialDesign:Card>
-                        <Image Source="/img/hypnoflip.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/ram.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/beattles.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/allman.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/red.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/proleter.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/wagner.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/shosta.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/beethov.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/iam.jpg"  />
-                    </materialDesign:Card>
+
+
+
+           <DockPanel>
+            <DockPanel.Resources>
+            <Style TargetType="RibbonToggleButton">
+                <Setter Property="Foreground" Value="Blue"/>
+            </Style>
+            </DockPanel.Resources>
+            <Expander
+
+                    HorizontalAlignment="Stretch"
+                    Background="#262626"
+                    ExpandDirection="Up"
+                    DockPanel.Dock="Bottom"
+                   materialDesign:ButtonAssist.CornerRadius="3"
+                    Margin="0,-1,0,-1"
+                    
+                >
+                
+               
+                <WrapPanel>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue" Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue" Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue" Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue" Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue" Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue" Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue" Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue" Margin="20"/>
+                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
                 </WrapPanel>
-        </ScrollViewer>
-      
+            </Expander>
+            
+            <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}"
+                                 >
+                        <WrapPanel  HorizontalAlignment="Center">
+                            <WrapPanel.Resources>
+                                <Style TargetType="materialDesign:Card">
+                                    <Setter Property="Height" Value="220"/>
+                                    <Setter Property="Width" Value="220"/>
+                                    <Setter Property="Margin" Value="20,20"/>
+                                    <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth3"/>
+
+                                </Style>
+                            </WrapPanel.Resources>
+                            <materialDesign:Card>
+                                <Image Source="/img/hypnoflip.jpg"  />
+                            </materialDesign:Card>
+                            <materialDesign:Card>
+                                <Image Source="/img/ram.jpg"  />
+                            </materialDesign:Card>
+                            <materialDesign:Card>
+                                <Image Source="/img/beattles.jpg"  />
+                            </materialDesign:Card>
+                            <materialDesign:Card>
+                                <Image Source="/img/allman.jpg"  />
+                            </materialDesign:Card>
+                            <materialDesign:Card>
+                                <Image Source="/img/red.jpg"  />
+                            </materialDesign:Card>
+                            <materialDesign:Card>
+                                <Image Source="/img/proleter.jpg"  />
+                            </materialDesign:Card>
+                            <materialDesign:Card>
+                                <Image Source="/img/wagner.jpg"  />
+                            </materialDesign:Card>
+                            <materialDesign:Card>
+                                <Image Source="/img/shosta.jpg"  />
+                            </materialDesign:Card>
+                            <materialDesign:Card>
+                                <Image Source="/img/beethov.jpg"  />
+                            </materialDesign:Card>
+                            <materialDesign:Card>
+                                <Image Source="/img/iam.jpg"  />
+                            </materialDesign:Card>
+                            
+                        </WrapPanel>
+                    </ScrollViewer>
+            
+
+        </DockPanel>
+
+
+
     </DockPanel>
 </Window>
