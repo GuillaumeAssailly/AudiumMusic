@@ -231,49 +231,96 @@
 
 
            <DockPanel>
-            <DockPanel.Resources>
-            <Style TargetType="RibbonToggleButton">
-                <Setter Property="Foreground" Value="Blue"/>
-            </Style>
-            </DockPanel.Resources>
-            <Expander
 
+            <Expander
+                    
                     HorizontalAlignment="Stretch"
                     Background="#262626"
                     ExpandDirection="Up"
                     DockPanel.Dock="Bottom"
-                   materialDesign:ButtonAssist.CornerRadius="3"
-                    Margin="0,-1,0,-1"
+                    Foreground="{DynamicResource PrimaryHueLightBrush}"
+                    Margin="0,-5,0,0"
+                    Padding="0,30,0,0"
+				
                     
                 >
+                <Expander.Header>
+                    <TextBlock HorizontalAlignment="Right" Margin="0,0,-15,0">Plus</TextBlock></Expander.Header>
                 
-               
-                <WrapPanel>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue" Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue" Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue" Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue" Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue" Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue" Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue" Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue" Margin="20"/>
-                    <Rectangle Height="200" Width="200" Fill="AliceBlue"  Margin="20"/>
-                </WrapPanel>
+                    <DockPanel >
+                        <Grid DockPanel.Dock="Top" >
+                            <Grid.ColumnDefinitions>
+                                 <ColumnDefinition Width="16*"/>
+                                 <ColumnDefinition Width="1*"/>
+                                 <ColumnDefinition Width="2*"/>
+                                 
+                            </Grid.ColumnDefinitions>
+
+                             <Button Grid.Column="1"
+                                    Style="{StaticResource MaterialDesignIconButton}"
+                                    ToolTip="MaterialDesignIconButton"
+                         
+                                     Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" >
+                                     <materialDesign:PackIcon Kind="Pencil" />
+                             </Button>
+                             <Button Grid.Column="2"
+                                    Style="{StaticResource MaterialDesignIconButton}"
+                                    ToolTip="MaterialDesignIconButton"
+                         
+                                     Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" >
+                                     <materialDesign:PackIcon Kind="Delete"/>
+                             </Button>
+                        </Grid>
+                        <DockPanel DockPanel.Dock="Bottom" >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="0"/>
+
+                            </Grid.ColumnDefinitions>
+                            <GroupBox MinHeight="9999" Grid.Column="2">
+                                
+                            </GroupBox>
+                            <GroupBox
+                                    Header="Lecteur"
+                                    Margin="16"
+                                    Grid.Column="0"
+                                    Style="{DynamicResource MaterialDesignCardGroupBox}"
+                                    VerticalAlignment="Stretch"
+                                >
+                                    <TextBlock Text="My Content" />
+                                </GroupBox>
+
+                                <GroupBox
+                                    Header="Sélection de titre"
+                                     Margin="16"
+                                     Grid.Column="1"
+                                    VerticalAlignment="Stretch"
+                                    Style="{DynamicResource MaterialDesignCardGroupBox}"
+                                 >
+                                     <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    
+                               
+                                          <ListBox>
+                                              <TextBlock Text="Musique 1"/>
+                                              <TextBlock Text="Musique 2"/>
+                                              <TextBlock Text="Musique 3"/>
+                                              <TextBlock Text="Musique 1"/>
+                                              <TextBlock Text="Musique 2"/>
+                                              <TextBlock Text="Musique 3"/>
+                                              <TextBlock Text="Musique 1"/>
+                                              <TextBlock Text="Musique 2"/>
+                                              <TextBlock Text="Musique 3"/>
+                                              <TextBlock Text="Musique 1"/>
+                                              <TextBlock Text="Musique 2"/>
+                                              <TextBlock Text="Musique 3"/>
+                                          </ListBox>
+                                     </ScrollViewer>
+                            </GroupBox>
+                            </Grid>
+                        </DockPanel>
+                    </DockPanel>
             </Expander>
             
             <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}"
