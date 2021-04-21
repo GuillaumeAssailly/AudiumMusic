@@ -138,6 +138,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Button Height="70" Width="70"
+                      Click="OpenFolderMusic"
                       Style="{StaticResource MaterialDesignIconButton}"
                       ToolTip="MaterialDesignIconButton" Cursor="Hand">
                     <materialDesign:PackIcon Height="50" Width="50"
@@ -145,6 +146,7 @@
                 </Button>
                 <Button Height="70" Width="70"
                       Grid.Column="1"
+                      Click="AddMusic"
                       Style="{StaticResource MaterialDesignIconButton}"
                       ToolTip="MaterialDesignIconButton" Cursor="Hand">
                     <materialDesign:PackIcon Height="50" Width="50"
@@ -153,6 +155,7 @@
 
                 <Button Height="70" Width="70"
                       Grid.Column="2"
+                      Click="OpenParameters"
                       Style="{StaticResource MaterialDesignIconButton}"
                       ToolTip="MaterialDesignIconButton" Cursor="Hand">
                     <materialDesign:PackIcon Height="50" Width="50"
@@ -160,6 +163,7 @@
                 </Button>
 
                 <Button Height="70" Width="70"
+                      Click="OpenProfile"
                       Grid.Column="4"
                       Style="{StaticResource MaterialDesignIconButton}"
                       ToolTip="MaterialDesignIconButton" Cursor="Hand">
@@ -244,7 +248,7 @@
            <DockPanel>
 
             <Expander
-                    
+                    x:Name="MainExp"
                     HorizontalAlignment="Stretch"
                     Background="#262626"
                     ExpandDirection="Up"
@@ -252,36 +256,14 @@
                     Foreground="{DynamicResource PrimaryHueLightBrush}"
                     Margin="0,-5,0,0"
                     Padding="0,30,0,0"
-				
+				    
                     
                 >
                 <Expander.Header>
                     <TextBlock HorizontalAlignment="Right" FontSize="15" Margin="0,0,-10,0">Détails</TextBlock></Expander.Header>
                 
                     <DockPanel >
-                        <Grid DockPanel.Dock="Top" >
-                            <Grid.ColumnDefinitions>
-                                 <ColumnDefinition Width="16*"/>
-                                 <ColumnDefinition Width="1*"/>
-                                 <ColumnDefinition Width="2*"/>
-                                 
-                            </Grid.ColumnDefinitions>
-
-                             <Button Grid.Column="1"
-                                    Style="{StaticResource MaterialDesignIconButton}"
-                                    ToolTip="MaterialDesignIconButton"
-                         
-                                     Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" >
-                                     <materialDesign:PackIcon Kind="Pencil" />
-                             </Button>
-                             <Button Grid.Column="2"
-                                    Style="{StaticResource MaterialDesignIconButton}"
-                                    ToolTip="MaterialDesignIconButton"
-                         
-                                     Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" >
-                                     <materialDesign:PackIcon Kind="Delete"/>
-                             </Button>
-                        </Grid>
+                        
                         <DockPanel DockPanel.Dock="Bottom" >
                         <Grid >
                             <Grid.ColumnDefinitions>
@@ -313,7 +295,7 @@
                                               IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}"   
                                               Margin="75,20,0,20"/>
                                         <TextBox
-                                                Margin="0,5"
+                                                Margin="4,5"
                                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                                 VerticalAlignment="Top"
                                                 BorderBrush="{DynamicResource  PrimaryHueLightBrush}"
@@ -326,7 +308,7 @@
                                                 materialDesign:HintAssist.Hint="Titre de l'album"/>
 
                                         <TextBox
-                                                Margin="0,5"
+                                                Margin="4,5"
                                                 Style="{StaticResource MaterialDesignFloatingHintTextBox    }"
                                                 VerticalAlignment="Top"
                                                 BorderBrush="{DynamicResource  PrimaryHueLightBrush}"
@@ -337,7 +319,15 @@
                                                 TextWrapping="Wrap"
                                                 VerticalScrollBarVisibility="Auto"
                                                 materialDesign:HintAssist.Hint="Artiste"/>
+                                        <DatePicker  
+                                            BorderBrush="{DynamicResource PrimaryHueLightBrush}"
+                                            IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}"
+                                            Margin="4,5"
+                                            materialDesign:HintAssist.Hint="Date de Sortie"
+                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                                         <ComboBox
+                                            Margin="4,5"
+                                             BorderBrush="{DynamicResource PrimaryHueLightBrush}"
                                             IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}"
                                             materialDesign:HintAssist.Hint="Genre"
                                             Style="{DynamicResource MaterialDesignFloatingHintComboBox}"
@@ -348,8 +338,8 @@
                                             <ComboBoxItem Content="Hip-Hop"/>
                                             <ComboBoxItem Content="Jazz"/>
                                         </ComboBox>
-
-                                    </StackPanel>
+                                        
+                                            </StackPanel>
 
                                     <StackPanel  DockPanel.Dock="Right">
                                         <StackPanel>
@@ -396,10 +386,12 @@
                                     VerticalAlignment="Stretch"
                                     Style="{DynamicResource MaterialDesignCardGroupBox}"
                                  >
-                                     <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <ScrollViewer VerticalScrollBarVisibility="Disabled">
                                     
-                               
-                                          <ListBox>
+
+
+                                   
+                                        <ListBox>
                                               <TextBlock Text="Musique 1"/>
                                               <TextBlock Text="Musique 2"/>
                                               <TextBlock Text="Musique 3"/>
@@ -413,7 +405,9 @@
                                               <TextBlock Text="Musique 2"/>
                                               <TextBlock Text="Musique 3"/>
                                           </ListBox>
-                                     </ScrollViewer>
+                                        
+                               
+                                </ScrollViewer>
                             </GroupBox>
                             </Grid>
                         </DockPanel>

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using MaterialDesignThemes.Wpf;
 
 namespace Audium
 {
@@ -23,6 +25,34 @@ namespace Audium
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void OpenFolderMusic(Object sender, RoutedEventArgs e)
+        {
+            Process.Start("explorer.exe", @"c:\Users");
+
+        }
+
+        private void OpenParameters(Object sender, RoutedEventArgs e)
+        {
+            Parametres par = new Parametres();
+            par.ShowDialog();
+        }
+
+
+        private void OpenProfile(Object sender, RoutedEventArgs e)
+        {
+            Profil pro = new Profil();
+            pro.ShowDialog();
+        }
+
+
+        private void AddMusic(Object sender, RoutedEventArgs e)
+        {
+
+
+
+            MainExp.IsExpanded = true;
         }
 
     }
