@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Palette de couleur.xaml.cs" />
+    <Compile Remove="Palette.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="img\allman.jpg" />
     <None Remove="img\beattles.jpg" />
     <None Remove="img\beethov.jpg" />
@@ -14,11 +19,26 @@
     <None Remove="img\iam.jpg" />
     <None Remove="img\opened-folder.png" />
     <None Remove="img\pink.jpg" />
+    <None Remove="img\pp.png" />
     <None Remove="img\proleter.jpg" />
     <None Remove="img\ram.jpg" />
     <None Remove="img\red.jpg" />
     <None Remove="img\shosta.jpg" />
     <None Remove="img\wagner.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Palette de couleur.xaml" />
+    <Page Remove="Palette.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="{215d64d2-031c-33c7-96e3-61794cd1ee61}">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>4</VersionMinor>
+      <VersionMajor>2</VersionMajor>
+      <Guid>215d64d2-031c-33c7-96e3-61794cd1ee61</Guid>
+    </COMReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +54,7 @@
     <Resource Include="img\opened-folder.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="img\pp.png" />
     <Resource Include="img\proleter.jpg" />
     <Resource Include="img\ram.jpg" />
     <Resource Include="img\red.jpg" />

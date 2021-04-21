@@ -1,0 +1,61 @@
+﻿<Window x:Class="Audium.Profil"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Audium"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+        BorderThickness="3"
+        AllowsTransparency="True"
+        
+      
+        Title="Parametres" Height="800" Width="800"
+        >
+    
+    
+    <StackPanel Background="#424242">
+        <TextBlock Text="Profil" Style="{DynamicResource MaterialDesignHeadline5TextBlock}" Foreground="White" Margin="30,10"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            
+            <Image Source="/img/pp.png" MaxHeight="350" MaxWidth="350" MinWidth="350" MinHeight="350" Margin="10,-30" Stretch="Fill" x:Name="theImage" >
+                <Image.OpacityMask>
+                    <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                        <GradientStop Color="#ffffffff" Offset="0.7" />
+                        <GradientStop Color="#00ffffff" Offset="0.8" />
+                    </RadialGradientBrush>
+                </Image.OpacityMask>
+            </Image>
+            <Button
+                Margin="-40,0"
+                Click="Open_Click"
+                Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                ToolTip="MaterialDesignFloatingActionMiniLightButton" Cursor="Hand">
+                <materialDesign:PackIcon Kind="Import" />
+            </Button>
+            
+        </StackPanel>
+        <TextBox
+            x:Name="NameTextBox"
+            materialDesign:HintAssist.Hint="Pseudo"
+            Margin="100,0"
+            FontSize="15"
+            Foreground="White"
+            BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+               >
+            <TextBox.Text>
+                <Binding
+                    Path="Name"
+                    UpdateSourceTrigger="PropertyChanged">
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Button HorizontalAlignment="Right" Margin="30,350" Click="Save">Sauvegarder</Button>
+        
+    </StackPanel>
+
+   
+</Window>
