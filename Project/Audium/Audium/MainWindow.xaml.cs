@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using MaterialDesignThemes.Wpf;
+using MaterialDesignColors;
+
+
 
 namespace Audium
 {
@@ -51,7 +54,7 @@ namespace Audium
         {
 
 
-
+         
             MainExp.IsExpanded = true;
         }
 
