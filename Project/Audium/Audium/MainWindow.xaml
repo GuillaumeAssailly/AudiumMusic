@@ -14,20 +14,17 @@
 
     <DockPanel>
         <Border  BorderBrush="Black" BorderThickness="0"  Margin="0" DockPanel.Dock="Left">
-
             <ScrollViewer VerticalScrollBarVisibility="Auto" Background="#171717">
-				<StackPanel Width="300">
-
-					<StackPanel.Resources>
-						<Style TargetType="TextBlock">
-							<Setter Property="TextAlignment" Value="Center"/>
-							<Setter Property="FontFamily" Value="{DynamicResource MaterialDesignFont}"/>
-							<Setter Property="FontSize" Value="20"/>
-							<Setter Property="Margin" Value="0,50,0,10"/>
-						</Style>
-					</StackPanel.Resources>
-
-					<materialDesign:ColorZone
+                <StackPanel Width="300">
+                    <StackPanel.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Center"/>
+                            <Setter Property="FontFamily" Value="{DynamicResource MaterialDesignFont}"/>
+                            <Setter Property="FontSize" Value="20"/>
+                            <Setter Property="Margin" Value="0,50,0,10"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <materialDesign:ColorZone
                         Mode="Dark"
                         Padding="0,0,10,10"
                         CornerRadius="2"
@@ -35,24 +32,22 @@
                         Margin="20"
                         Height="60"
                         BorderBrush="{DynamicResource PrimaryHueMidBrush}"
-                        BorderThickness="1"
-                       
+                        BorderThickness="1"                       
                         materialDesign:ShadowAssist.ShadowDepth="Depth1">
-						<Grid>
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="auto"/>
-								<ColumnDefinition Width="*"/>
-							</Grid.ColumnDefinitions>
-							<Button
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button
 								Style="{DynamicResource MaterialDesignToolButton}"
 								Margin="5,15,5,0"
 								Height="auto">
-
-								<materialDesign:PackIcon
+                                <materialDesign:PackIcon
 									Kind="Search"
 									Opacity=".56" />
-							</Button>
-							<TextBox
+                            </Button>
+                            <TextBox
 								Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
 								VerticalAlignment="Top"
 								AcceptsReturn="True"
@@ -63,32 +58,30 @@
                                 FontSize="15"
 								Grid.Column="1"
                             />
-
-						</Grid>
-					</materialDesign:ColorZone>
+                        </Grid>
+                    </materialDesign:ColorZone>
                     <GroupBox
                         Header="Tags"
                         Margin="16"
-                        
-                        FontSize="15"
-                        
+                        FontSize="15" 
                         Style="{DynamicResource MaterialDesignCardGroupBox}"
                         materialDesign:ColorZoneAssist.Mode="PrimaryMid">
-
+                        <GroupBox.Resources>
+                            <Style TargetType="CheckBox" BasedOn="{StaticResource MaterialDesignLightCheckBox}">
+                                <Setter Property="Foreground" Value="White"/>
+                            </Style>
+                        </GroupBox.Resources>
                         <StackPanel>
-                            <CheckBox Content="Ajoutés récemment (20)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
-                            <CheckBox Content="Favoris (0)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
-                            <CheckBox Content="Blues (18)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
-                            <CheckBox Content="Classique (43)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
-                            <CheckBox Content="Bande Originale (180)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
-                            <CheckBox Content="Hip-Hop (20)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
-                            <CheckBox Content="Jazz (34)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
-                            <CheckBox Content="Pop (3)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
-                            <CheckBox Content="Rock (45)" Foreground="White" Style="{StaticResource MaterialDesignLightCheckBox}" />
+                            <CheckBox Content="Ajoutés récemment (20)" />
+                            <CheckBox Content="Favoris (0)" />
+                            <CheckBox Content="Blues (18)" />
+                            <CheckBox Content="Classique (43)" />
+                            <CheckBox Content="Bande Originale (180)" />
+                            <CheckBox Content="Hip-Hop (20)" />
+                            <CheckBox Content="Jazz (34)" />
+                            <CheckBox Content="Pop (3)" />
+                            <CheckBox Content="Rock (45)" />
                         </StackPanel>
-
-
-
                     </GroupBox>
                     <GroupBox
                         FontSize="15"
@@ -97,35 +90,29 @@
                         BorderThickness="20"
                         Style="{DynamicResource MaterialDesignCardGroupBox}"
                         materialDesign:ColorZoneAssist.Mode="PrimaryMid">
-						<StackPanel>
-							<StackPanel Orientation="Horizontal">
-								<Button Height="auto" Width="auto" Margin="0,0,20,0" 
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Height="auto" Width="auto" Margin="0,0,20,0" 
                                     Style="{StaticResource MaterialDesignIconButton}"
                                     ToolTip="MaterialDesignIconButton">
-									<materialDesign:PackIcon
+                                    <materialDesign:PackIcon
                                     Kind="Play" />
-								</Button>
-								<TextBlock Foreground="White"  Style="{DynamicResource MaterialDesignCaptionTextBlock}">L'Hymne de l'URSS</TextBlock>
-							</StackPanel>
-
-
-						</StackPanel>
-					</GroupBox>
-				</StackPanel>
+                                </Button>
+                                <TextBlock Foreground="White"  Style="{DynamicResource MaterialDesignCaptionTextBlock}">L'Hymne de l'URSS</TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
             </ScrollViewer>
         </Border>
 
         <Border BorderBrush="Black" BorderThickness="0" DockPanel.Dock="Top" Margin="0">
-            <Grid  Background="#262626" Height="100"
-               >
+            <Grid  Background="#262626" Height="100">
                 <Grid.Resources>
-                    
-                    <Style TargetType="Button">
-                        <Setter Property="Height" Value="20"/>
-                        <Setter Property="Width" Value="20"/>
-                        <Setter Property="Margin" Value="5"/>
+                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignIconButton}">
+                        <Setter Property="Height" Value="70"/>
+                        <Setter Property="Width" Value="70"/>
                     </Style>
-
                 </Grid.Resources>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -137,55 +124,40 @@
                     <ColumnDefinition  Width="8*"/>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Button Height="70" Width="70"
+                <Button
                       Click="OpenFolderMusic"
-                      Style="{StaticResource MaterialDesignIconButton}"
-                      ToolTip="MaterialDesignIconButton" Cursor="Hand">
-                    <materialDesign:PackIcon Height="50" Width="50"
-                        Kind="FolderMusic" />
+                      ToolTip="Accéder à l'emplacement de sauvegarde" Cursor="Hand">
+                    <materialDesign:PackIcon Height="50" Width="50" Kind="FolderMusic" />
                 </Button>
-                <Button Height="70" Width="70"
+                <Button 
                       Grid.Column="1"
                       Click="AddMusic"
-                      Style="{StaticResource MaterialDesignIconButton}"
-                      ToolTip="MaterialDesignIconButton" Cursor="Hand">
-                    <materialDesign:PackIcon Height="50" Width="50"
-                        Kind="PlaylistAdd" />
+                      ToolTip="Ajouer un album" Cursor="Hand">
+                    <materialDesign:PackIcon Height="50" Width="50" Kind="PlaylistAdd" />
                 </Button>
-
-                <Button Height="70" Width="70"
+                <Button 
                       Grid.Column="2"
                       Click="OpenParameters"
-                      Style="{StaticResource MaterialDesignIconButton}"
-                      ToolTip="MaterialDesignIconButton" Cursor="Hand">
-                    <materialDesign:PackIcon Height="50" Width="50"
-                        Kind="Cog" />
+                      ToolTip="Paramètres" Cursor="Hand">
+                    <materialDesign:PackIcon Height="50" Width="50" Kind="Cog" />
                 </Button>
-
-                <Button Height="70" Width="70"
+                <Button 
                       Click="OpenProfile"
                       Grid.Column="4"
-                      Style="{StaticResource MaterialDesignIconButton}"
-                      ToolTip="MaterialDesignIconButton" Cursor="Hand">
-                    <materialDesign:PackIcon Height="50" Width="50"
-                        Kind="Person" />
+                      ToolTip="Profil" Cursor="Hand">
+                    <materialDesign:PackIcon Height="50" Width="50" Kind="Person" />
                 </Button>
-                
             </Grid>
         </Border>
-
-
-      
-            <Border BorderBrush="Black" BorderThickness="0"  DockPanel.Dock="Bottom" Margin="0"  >
+    
+        <Border BorderBrush="Black" BorderThickness="0"  DockPanel.Dock="Bottom" Margin="0"  >
             <Grid Background="#262626"  Height="100">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="5*"/>
-                    
                     <ColumnDefinition/>
                     <ColumnDefinition />
                     <ColumnDefinition/>
-                  
                     <ColumnDefinition  Width="5*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
@@ -218,103 +190,75 @@
                 
                 <Image Grid.Column="0" Height="50"  Width="50" Source="/img/ram.jpg"  Margin="0,-14,0,0"/>
                 <WrapPanel Grid.Column="1" Orientation="Horizontal">
-                    
+
                     <TextBlock TextWrapping="Wrap" FontSize="15" Foreground="White" Text="Daft-Punk-Give life back to Music Remastered" Margin="0,5,0,0" />
-                    
+
                 </WrapPanel>
-               
-                <!--
-                <ProgressBar Grid.Row="1" Grid.ColumnSpan="7" Height="6" Margin="40,10,40,34"
-                             Style="{DynamicResource MaterialDesignLinearProgressBar}"  
-                             Value="68"  Foreground="Black" Background="Gray" BorderBrush="#6FA8DC"></ProgressBar>
-                -->
                 <Slider
                     TickFrequency="50" Grid.Row="1" Grid.ColumnSpan="7" Margin="40,0" Height="40"
                     Orientation="Horizontal"
                     Minimum="1"
-                    Maximum="50"
-                    
+                    Maximum="50"                   
                     Value="25" />
-               
-                   
-               
-                </Grid>
-            </Border>
-
-
-
-
-
-           <DockPanel>
-
+            </Grid>
+        </Border>
+        <DockPanel>
             <Expander
-                    x:Name="MainExp"
-                    HorizontalAlignment="Stretch"
-                    Background="#262626"
-                    ExpandDirection="Up"
-                    DockPanel.Dock="Bottom"
-                    Foreground="{DynamicResource PrimaryHueLightBrush}"
-                    Margin="0,-5,0,0"
-                    Padding="0,30,0,0"
-				    
-                    
-                >
+                x:Name="MainExp"
+                HorizontalAlignment="Stretch"
+                Background="#262626"
+                ExpandDirection="Up"
+                DockPanel.Dock="Bottom"
+                Foreground="{DynamicResource PrimaryHueLightBrush}"
+                Margin="0,-5,0,0"
+                Padding="0,30,0,0">
                 <Expander.Header>
-                    <TextBlock HorizontalAlignment="Right" FontSize="15" Margin="0,0,-10,0">Détails</TextBlock></Expander.Header>
+                    <TextBlock HorizontalAlignment="Right" FontSize="15" Margin="0,0,-10,0">Détails</TextBlock>
+                </Expander.Header>
                 <local:MyUserControl1/>
-
             </Expander>
-            
-            <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}"
-                                 >
-                        <WrapPanel  HorizontalAlignment="Center">
-                            <WrapPanel.Resources>
-                                <Style TargetType="materialDesign:Card">
-                                    <Setter Property="Height" Value="220"/>
-                                    <Setter Property="Width" Value="220"/>
-                                    <Setter Property="Margin" Value="20,20"/>
-                                    <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth3"/>
 
-                                </Style>
-                            </WrapPanel.Resources>
-                            <materialDesign:Card>
-                                <Image Source="/img/hypnoflip.jpg"  />
-                            </materialDesign:Card>
-                            <materialDesign:Card>
-                                <Image Source="/img/ram.jpg"  />
-                            </materialDesign:Card>
-                            <materialDesign:Card>
-                                <Image Source="/img/beattles.jpg"  />
-                            </materialDesign:Card>
-                            <materialDesign:Card>
-                                <Image Source="/img/allman.jpg"  />
-                            </materialDesign:Card>
-                            <materialDesign:Card>
-                                <Image Source="/img/red.jpg"  />
-                            </materialDesign:Card>
-                            <materialDesign:Card>
-                                <Image Source="/img/proleter.jpg"  />
-                            </materialDesign:Card>
-                            <materialDesign:Card>
-                                <Image Source="/img/wagner.jpg"  />
-                            </materialDesign:Card>
-                            <materialDesign:Card>
-                                <Image Source="/img/shosta.jpg"  />
-                            </materialDesign:Card>
-                            <materialDesign:Card>
-                                <Image Source="/img/beethov.jpg"  />
-                            </materialDesign:Card>
-                            <materialDesign:Card>
-                                <Image Source="/img/iam.jpg"  />
-                            </materialDesign:Card>
-                            
-                        </WrapPanel>
-                    </ScrollViewer>
-            
+            <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}">
+                <WrapPanel  HorizontalAlignment="Center">
+                    <WrapPanel.Resources>
+                        <Style TargetType="materialDesign:Card">
+                            <Setter Property="Height" Value="220"/>
+                            <Setter Property="Width" Value="220"/>
+                            <Setter Property="Margin" Value="20,20"/>
+                            <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth3"/>
+                        </Style>
+                    </WrapPanel.Resources>
+                    <local:Pochette/>
 
+                    <materialDesign:Card>
+                        <Image Source="/img/ram.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/beattles.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/allman.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/red.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/proleter.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/wagner.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/shosta.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/beethov.jpg"  />
+                    </materialDesign:Card>
+                    <materialDesign:Card>
+                        <Image Source="/img/iam.jpg"  />
+                    </materialDesign:Card>
+                </WrapPanel>
+            </ScrollViewer>
         </DockPanel>
-
-
-
     </DockPanel>
 </Window>
