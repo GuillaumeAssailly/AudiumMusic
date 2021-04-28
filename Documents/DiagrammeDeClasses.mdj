@@ -934,8 +934,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -968,
-									"top": 56,
+									"left": -904,
+									"top": 48,
 									"width": 10,
 									"height": 10
 								},
@@ -950,8 +950,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -968,
-									"top": 56,
+									"left": -904,
+									"top": 48,
 									"width": 10,
 									"height": 10
 								}
@@ -2241,87 +2241,6 @@
 							},
 							"name": "Album",
 							"ownedElements": [
-								{
-									"_type": "UMLDependency",
-									"_id": "AAAAAAF5FzgwLxFtTwY=",
-									"_parent": {
-										"$ref": "AAAAAAF5Fx1bthAtce0="
-									},
-									"source": {
-										"$ref": "AAAAAAF5Fx1bthAtce0="
-									},
-									"target": {
-										"$ref": "AAAAAAF5Fym6FRDDT1s="
-									}
-								},
-								{
-									"_type": "UMLAssociation",
-									"_id": "AAAAAAF5Fzj0ihGNOLA=",
-									"_parent": {
-										"$ref": "AAAAAAF5Fx1bthAtce0="
-									},
-									"end1": {
-										"_type": "UMLAssociationEnd",
-										"_id": "AAAAAAF5Fzj0ixGO/rQ=",
-										"_parent": {
-											"$ref": "AAAAAAF5Fzj0ihGNOLA="
-										},
-										"reference": {
-											"$ref": "AAAAAAF5Fx1bthAtce0="
-										}
-									},
-									"end2": {
-										"_type": "UMLAssociationEnd",
-										"_id": "AAAAAAF5Fzj0ixGPBQo=",
-										"_parent": {
-											"$ref": "AAAAAAF5Fzj0ihGNOLA="
-										},
-										"reference": {
-											"$ref": "AAAAAAF5Fym6FRDDT1s="
-										},
-										"aggregation": "composite"
-									}
-								},
-								{
-									"_type": "UMLAssociation",
-									"_id": "AAAAAAF5F1a9LyCEHJg=",
-									"_parent": {
-										"$ref": "AAAAAAF5Fx1bthAtce0="
-									},
-									"end1": {
-										"_type": "UMLAssociationEnd",
-										"_id": "AAAAAAF5F1a9LyCFE5U=",
-										"_parent": {
-											"$ref": "AAAAAAF5F1a9LyCEHJg="
-										},
-										"reference": {
-											"$ref": "AAAAAAF5Fx1bthAtce0="
-										}
-									},
-									"end2": {
-										"_type": "UMLAssociationEnd",
-										"_id": "AAAAAAF5F1a9LyCGzh8=",
-										"_parent": {
-											"$ref": "AAAAAAF5F1a9LyCEHJg="
-										},
-										"reference": {
-											"$ref": "AAAAAAF5F0U2JxXWhrU="
-										},
-										"qualifiers": [
-											{
-												"_type": "UMLAttribute",
-												"_id": "AAAAAAF5F1fZsCFQXiY=",
-												"_parent": {
-													"$ref": "AAAAAAF5F1a9LyCGzh8="
-												},
-												"name": "Livre",
-												"type": {
-													"$ref": "AAAAAAF5Fx1bthAtce0="
-												}
-											}
-										]
-									}
-								},
 								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAF5F3DVjzL/Gb8=",
