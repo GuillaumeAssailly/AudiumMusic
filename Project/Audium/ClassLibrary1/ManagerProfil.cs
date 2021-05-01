@@ -38,5 +38,18 @@ namespace Donnees
             if(A.Favori==true)
             ListFavoris.Remove(A);
         }
+
+        public void ModifierProfil(string Nom, string CheminImage)
+        {
+            this.Nom = Nom;
+            this.CheminImage = CheminImage;
+           
+        }
+
+        public void ModifierParamètres(string CouleurTheme, string CheminBaseDonnees)
+        {
+            this.CouleurTheme = CouleurTheme;
+            this.CheminBaseDonnees = CheminBaseDonnees;
+        }
     }
 }
