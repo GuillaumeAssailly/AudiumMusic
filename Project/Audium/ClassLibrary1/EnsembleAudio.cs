@@ -24,5 +24,13 @@ namespace Donnees
         public bool Favori { get; set; }
         public EGenre Genre { get; private set; }
 
+        public void ModifierEnsemble(string Titre, int Note, string Description, string CheminImage, EGenre Genre)
+        {
+            this.Titre = Titre;
+            this.Note = Note;
+            this.Description = Description;
+            this.CheminImage = CheminImage;
+            this.Genre = Genre;
+        }
     }
 }
