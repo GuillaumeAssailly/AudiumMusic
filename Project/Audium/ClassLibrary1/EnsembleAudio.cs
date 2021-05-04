@@ -4,7 +4,7 @@ namespace Donnees
 {
     public class EnsembleAudio
     {
-        public EnsembleAudio(string titre, string description, string cheminImage, EGenre genre)
+        public EnsembleAudio(string titre, string description, string cheminImage, EGenre.GenreMusique genre)
         {
             Titre = titre;
             Description = description;
@@ -22,15 +22,21 @@ namespace Donnees
         public string CheminImage { get; private set; }
         public int CmptEcoute { get; private set; }
         public bool Favori { get; set; }
-        public EGenre Genre { get; private set; }
+        public EGenre.GenreMusique Genre { get; private set; }
 
-        public void ModifierEnsemble(string Titre, int Note, string Description, string CheminImage, EGenre Genre)
+        public void ModifierEnsemble(string Titre, int Note, string Description, string CheminImage, EGenre.GenreMusique Genre)
         {
             this.Titre = Titre;
             this.Note = Note;
             this.Description = Description;
             this.CheminImage = CheminImage;
             this.Genre = Genre;
+        }
+
+        override
+        public string ToString()
+        {
+            return $"Titre : {Titre}\n Note (sur 5) : {Note}\n Description : {Description} \n Image : {CheminImage} \n Genre : {Genre}";
         }
     }
 }
