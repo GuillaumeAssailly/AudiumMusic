@@ -18,7 +18,7 @@ namespace Gestionnaires
 
         public static int CompteurAlbum;
 
-        public Dictionary<EnsembleAudio, LinkedList<Piste>> Mediatheque;
+        public static Dictionary<EnsembleAudio, LinkedList<Piste>> Mediatheque;
 
         public void AjouterEnsemblePiste(EnsembleAudio E, LinkedList<Piste>LP)
         {
