@@ -22,7 +22,27 @@ namespace Gestionnaires
 
         public void AjouterEnsemblePiste(EnsembleAudio E, LinkedList<Piste>LP)
         {
+          
             Mediatheque.Add(E,LP);
+            
+        }
+
+        public EnsembleAudio CreerEnsembleAudio(string titre, string description, string cheminImage, EGenre.GenreMusique genre)
+        {
+
+
+
+            //Finir cette méthode avec un if( Key.Titre n'existe pas dans discothèque) sinon Titre = Titre + "(1);
+
+
+
+
+
+
+
+            // Finir
+            return new EnsembleAudio(titre, description, cheminImage, genre);
+
         }
 
         override

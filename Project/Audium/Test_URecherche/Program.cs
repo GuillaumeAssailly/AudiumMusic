@@ -13,17 +13,18 @@ namespace Test_URecherche
         {
             Console.WriteLine("Test de l'utilitaire de recherche");
             Manager master = new();
-            EnsembleAudio e1 = new EnsembleAudio("RAM", "Album de Daft Punk", "img.png", EGenre.GenreMusique.CLASSIQUE);
+            EnsembleAudio e1 = new EnsembleAudio("RAM", "Album de Doft Punk", "img.png", EGenre.GenreMusique.CLASSIQUE);
             LinkedList<Piste> le1 = new();
             for(int i = 0; i<10; i++)
             {
-                le1.AddLast(new Piste($"test {i}"));
+                le1.AddLast(new Morceau($"Titre {i}","Daft Punk","chemin",330,DateTime.Now));
             }
-            EnsembleAudio e2 = new EnsembleAudio("ROUM", "Album de Daft Punk", "img.png", EGenre.GenreMusique.JAZZ);
+            
+            EnsembleAudio e2 = new EnsembleAudio("ROUM", "Album de Doft Punk", "img.png", EGenre.GenreMusique.JAZZ);
             LinkedList<Piste> le2 = new();
             for (int i = 0; i < 10; i++)
             {
-                le1.AddLast(new Piste($"test {i}"));
+                le2.AddLast(new Piste($"test {i}"));
             }
             master.AjouterEnsemblePiste(e1, le1);
             master.AjouterEnsemblePiste(e2, le2);
@@ -45,7 +46,7 @@ namespace Test_URecherche
             }
 
             Console.WriteLine("\nRecherche par mot clé");
-            Dictionary<EnsembleAudio, LinkedList<Piste>> res2 = URecherche.RechercherParMotCle("rA");
+            Dictionary<EnsembleAudio, LinkedList<Piste>> res2 = URecherche.RechercherParMotCle("Daft Punk");
 
             foreach (KeyValuePair<EnsembleAudio, LinkedList<Piste>> cle in res2)
             {
