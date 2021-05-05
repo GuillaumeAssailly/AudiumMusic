@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary1\Donnees.csproj" />
+    <ProjectReference Include="..\Gestionnaires\Gestionnaires.csproj" />
   </ItemGroup>
 
 </Project>

@@ -26,6 +26,7 @@ namespace Gestionnaires
         public string CheminBaseDonnees { get; private set; }
         public List<EnsembleAudio> ListFavoris { get; private set; }
 
+
         public void ModifierListeFavoris(EnsembleAudio A)
         {
             if (A.Favori == false) 
@@ -36,12 +37,8 @@ namespace Gestionnaires
                 ListFavoris.Remove(A);
             A.Favori = !A.Favori;
         }
-        public void RetirerDesFavoris(EnsembleAudio A)
-        {
-            if(A.Favori==true)
-            ListFavoris.Remove(A);
-        }
-
+      
+        
         public void ModifierProfil(string Nom, string CheminImage)
         {
             this.Nom = Nom;
