@@ -16,9 +16,9 @@ namespace Gestionnaires
 
         }
 
-        public static Dictionary<EnsembleAudio, LinkedList<Piste>> RechercherParGenre(EGenre.GenreMusique E)
+        public static Dictionary<EnsembleAudio, LinkedList<Piste>> RechercherParGenre(EGenre.GenreMusique GenreRecherche)
         {
-            return Manager.Mediatheque.Where(ensemble => (ensemble.Key.Genre.Equals(E))).ToDictionary(x => x.Key, x => x.Value);
+            return Manager.Mediatheque.Where(ensemble => ensemble.Key.Genre.Equals(GenreRecherche)).ToDictionary(x => x.Key, x => x.Value);
         }
         /*
         public static Dictionary<EnsembleAudio, LinkedList<Piste>> RechercherParMotCle(string rech)
@@ -52,8 +52,33 @@ namespace Gestionnaires
 
         public static Dictionary<EnsembleAudio,LinkedList<Piste>> RechercherParMotCle(string rech)
         {
-            return Manager.Mediatheque.Where(ensemble => (ensemble.Key.Titre.ToLower().Contains(rech.ToLower()))).ToDictionary(x=> x.Key, x=> x.Value);
-            
+            Dictionary<EnsembleAudio, LinkedList<Piste>> Recherche = new();
+            Recherche = Manager.Mediatheque.Where(ensemble => (ensemble.Key.Titre.ToLower().Contains(rech.ToLower()))).ToDictionary(x=> x.Key, x=> x.Value);
+
+            foreach (LinkedList<Piste> liste in Manager.Mediatheque.Values)
+            {
+                foreach (Piste piste in liste)
+                {
+                    
+                    if(Recherche.ContainsKey(Manager.Mediatheque.FirstOrDefault(x => x.Value == liste).Key))
+                    {
+                        break;
+                    }
+                    if (piste.Titre.ToLower().Contains(rech.ToLower()))
+                    {
+                        Recherche.Add(Manager.Mediatheque.FirstOrDefault(x => x.Value == liste).Key, liste);
+                    }
+                    else if (piste is Morceau && ((Morceau)piste).Artiste.ToLower().Contains(rech.ToLower()))
+                    {
+                        Recherche.Add(Manager.Mediatheque.FirstOrDefault(x => x.Value == liste).Key, liste);
+                    }
+                    else if (piste is Podcast && ((Podcast)piste).Auteur.ToLower().Contains(rech.ToLower()))
+                    {
+                        Recherche.Add(Manager.Mediatheque.FirstOrDefault(x => x.Value == liste).Key, liste);
+                    }                
+                }
+            }
+            return Recherche;
         }
 
 
