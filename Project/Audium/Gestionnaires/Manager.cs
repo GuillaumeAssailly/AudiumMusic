@@ -20,14 +20,14 @@ namespace Gestionnaires
 
         public static Dictionary<EnsembleAudio, LinkedList<Piste>> Mediatheque;
 
-        public void AjouterEnsemblePiste(EnsembleAudio E, LinkedList<Piste>LP)
+        public static void AjouterEnsemblePiste(EnsembleAudio E, LinkedList<Piste>LP)
         {
           
             Mediatheque.Add(E,LP);
             
         }
 
-        public EnsembleAudio CreerEnsembleAudio(string titre, string description, string cheminImage, EGenre.GenreMusique genre)
+        public static EnsembleAudio CreerEnsembleAudio(string titre, string description, string cheminImage, EGenre.GenreMusique genre)
         {
             //Finir cette méthode avec un if( Key.Titre n'existe pas dans discothèque) sinon Titre = Titre + "(1);
             EnsembleAudio Nouveau = new(titre, description, cheminImage, genre);
