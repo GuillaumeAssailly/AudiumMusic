@@ -9,7 +9,7 @@ using Donnees;
 
 namespace Gestionnaires
 {
-    public abstract sclass URecherche 
+    public abstract class URecherche 
     {
 
         public static Dictionary<EnsembleAudio, LinkedList<Piste>> RechercherParGenre(EGenre.GenreMusique GenreRecherche)

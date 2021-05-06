@@ -37,7 +37,7 @@ namespace Donnees
 
         public bool Equals([AllowNull] EnsembleAudio other)
         {
-            return Titre.Equals(other.Titre);
+            return Titre.ToLower().Equals(other.Titre.ToLower());
         }
 
         public override bool Equals(object obj)
