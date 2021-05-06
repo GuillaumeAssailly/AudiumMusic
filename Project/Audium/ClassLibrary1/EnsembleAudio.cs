@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Donnees
 {
-    public class EnsembleAudio
+    public class EnsembleAudio : IEquatable<EnsembleAudio>
     {
         public EnsembleAudio(string titre, string description, string cheminImage, EGenre.GenreMusique genre)
         {
+           
             Titre = titre;
             Description = description;
             CheminImage = cheminImage;
@@ -15,7 +17,7 @@ namespace Donnees
             Favori = false;
         }
 
-        public string Titre { get; private set; }
+        public string Titre { get; set; }
         public DateTime DateAjout { get; private set; }
         public int Note { get; private set; }
         public string Description { get; private set; }
@@ -33,10 +35,30 @@ namespace Donnees
             this.Genre = Genre;
         }
 
-        override
-        public string ToString()
+        public bool Equals([AllowNull] EnsembleAudio other)
+        {
+            return Titre.Equals(other.Titre);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if  (ReferenceEquals(obj,  null))  return false;
+            if  (ReferenceEquals(obj,  this)) return true;
+
+            if  (GetType()  != obj.GetType()) return false;
+            return Equals(obj as EnsembleAudio);
+        }
+
+        public override int GetHashCode()
+        {
+            return Titre.GetHashCode();
+        }
+
+
+        public override string ToString()
         {
             return $"Titre : {Titre}\n Note (sur 5) : {Note}\n Description : {Description} \n Image : {CheminImage} \n Genre : {Genre} \n Date : {DateAjout}";
         }
+
     }
 }

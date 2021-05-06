@@ -9,12 +9,8 @@ using Donnees;
 
 namespace Gestionnaires
 {
-    public class URecherche 
+    public abstract sclass URecherche 
     {
-        public URecherche()
-        {
-
-        }
 
         public static Dictionary<EnsembleAudio, LinkedList<Piste>> RechercherParGenre(EGenre.GenreMusique GenreRecherche)
         {
@@ -72,7 +68,7 @@ namespace Gestionnaires
                     {
                         Recherche.Add(Manager.Mediatheque.FirstOrDefault(x => x.Value == liste).Key, liste);
                     }
-                    else if (piste is Podcast && ((Podcast)piste).Auteur.ToLower().Contains(rech.ToLower()))
+                    else if ((piste as Podcast).Auteur.ToLower().Contains(rech.ToLower()))
                     {
                         Recherche.Add(Manager.Mediatheque.FirstOrDefault(x => x.Value == liste).Key, liste);
                     }                
