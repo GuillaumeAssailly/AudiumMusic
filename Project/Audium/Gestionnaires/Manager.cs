@@ -29,25 +29,19 @@ namespace Gestionnaires
 
         public EnsembleAudio CreerEnsembleAudio(string titre, string description, string cheminImage, EGenre.GenreMusique genre)
         {
-
-
-
             //Finir cette méthode avec un if( Key.Titre n'existe pas dans discothèque) sinon Titre = Titre + "(1);
-
-
-
-
-
-
-
-            // Finir
-            return new EnsembleAudio(titre, description, cheminImage, genre);
-
+            EnsembleAudio Nouveau = new(titre, description, cheminImage, genre);
+            int i = 1;
+            while (Mediatheque.ContainsKey(Nouveau))
+            {
+                Nouveau.Titre = $"{titre} ({i})";
+                i++;
+            }
+            return Nouveau;
         }
 
-        override
-
-        public string ToString()
+      
+        public override string ToString()
         {
             return $"Compteur : {CompteurAlbum}\n Médiathèque : {Mediatheque}";
         }

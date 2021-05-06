@@ -7,7 +7,7 @@ using Donnees;
 
 namespace Gestionnaires
 {
-    public class UTri
+    public abstract class UTri
     {
         public static Dictionary<EnsembleAudio, LinkedList<Piste>> TrierParNbEcoute(Dictionary<EnsembleAudio, LinkedList<Piste>> Discotheque)
         {
