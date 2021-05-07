@@ -16,18 +16,24 @@ namespace Gestionnaires
             Mediatheque = new();
         }
 
+
+        EGenre.GenreMusique GenresDispo;
+
+
         public static int CompteurAlbum;
 
         public static Dictionary<EnsembleAudio, LinkedList<Piste>> Mediatheque;
 
-        public static void AjouterEnsemblePiste(EnsembleAudio E, LinkedList<Piste>LP)
+       
+
+        public void AjouterEnsemblePiste(EnsembleAudio E, LinkedList<Piste>LP)
         {
           
             Mediatheque.Add(E,LP);
             
         }
 
-        public static EnsembleAudio CreerEnsembleAudio(string titre, string description, string cheminImage, EGenre.GenreMusique genre)
+        public EnsembleAudio CreerEnsembleAudio(string titre, string description, string cheminImage, EGenre.GenreMusique genre)
         {
             //Finir cette méthode avec un if( Key.Titre n'existe pas dans discothèque) sinon Titre = Titre + "(1);
             EnsembleAudio Nouveau = new(titre, description, cheminImage, genre);
