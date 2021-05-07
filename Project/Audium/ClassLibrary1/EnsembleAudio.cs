@@ -5,7 +5,7 @@ namespace Donnees
 {
     public class EnsembleAudio : IEquatable<EnsembleAudio>
     {
-        public EnsembleAudio(string titre, string description, string cheminImage, EGenre.GenreMusique genre)
+        public EnsembleAudio(string titre, string description, string cheminImage, EGenre genre)
         {
            
             Titre = titre;
@@ -24,9 +24,9 @@ namespace Donnees
         public string CheminImage { get; private set; }
         public int CmptEcoute { get; private set; }
         public bool Favori { get; set; }
-        public EGenre.GenreMusique Genre { get; private set; }
+        public EGenre Genre { get; private set; }
 
-        public void ModifierEnsemble(string Titre, int Note, string Description, string CheminImage, EGenre.GenreMusique Genre)
+        public void ModifierEnsemble(string Titre, int Note, string Description, string CheminImage, EGenre Genre)
         {
             this.Titre = Titre;
             this.Note = Note;

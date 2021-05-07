@@ -13,14 +13,14 @@ namespace Test_URecherche
         {
             Console.WriteLine("Test de l'utilitaire de recherche");
             Manager master = new();
-            EnsembleAudio e1 = new EnsembleAudio("RAM", "Album de Doft Punk", "img.png", EGenre.GenreMusique.CLASSIQUE);
+            EnsembleAudio e1 = new EnsembleAudio("RAM", "Album de Doft Punk", "img.png", EGenre.CLASSIQUE);
             LinkedList<Piste> le1 = new();
             for(int i = 0; i<10; i++)
             {
                 le1.AddLast(new Morceau($"Titre {i}","Daft Punk","chemin",330,DateTime.Now));
             }
             
-            EnsembleAudio e2 = new EnsembleAudio("ROUM", "Album de Doft Punk", "img.png", EGenre.GenreMusique.JAZZ);
+            EnsembleAudio e2 = new EnsembleAudio("ROUM", "Album de Doft Punk", "img.png", EGenre.JAZZ);
             LinkedList<Piste> le2 = new();
             for (int i = 0; i < 10; i++)
             {
@@ -29,7 +29,7 @@ namespace Test_URecherche
             master.AjouterEnsemblePiste(e1, le1);
             master.AjouterEnsemblePiste(e2, le2);
             
-            Dictionary<EnsembleAudio,LinkedList<Piste>> res = URecherche.RechercherParGenre(EGenre.GenreMusique.JAZZ);
+            Dictionary<EnsembleAudio,LinkedList<Piste>> res = URecherche.RechercherParGenre(EGenre.JAZZ);
 
             Console.WriteLine("Médiathèque : ");
 

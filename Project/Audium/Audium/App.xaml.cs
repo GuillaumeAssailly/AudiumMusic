@@ -21,9 +21,9 @@ namespace Audium
     public partial class App : Application
     {
 
-        public Manager leManager { get; private set; } = new Manager();
+        public Manager LeManager { get; private set; } = new Manager();
 
-
+        public ManagerProfil LeManagerProfil { get; private set; } = new ManagerProfil();
 
 
 

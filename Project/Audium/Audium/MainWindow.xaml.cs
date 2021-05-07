@@ -17,7 +17,7 @@ using MaterialDesignThemes.Wpf;
 using MaterialDesignColors;
 using Donnees;
 using Gestionnaires;
-
+using System.Collections.ObjectModel;
 
 namespace Audium
 {
@@ -27,13 +27,19 @@ namespace Audium
     public partial class MainWindow : Window
     {
 
-        public Manager Mgr => (App.Current as App).leManager;
+        public Manager Mgr => (App.Current as App).LeManager;
+        public ManagerProfil MgrProfil => (App.Current as App).LeManagerProfil;
 
         
+
+        public EGenre GenreSelected;
+
+
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = Mgr;
+            DataContext = this;
+
         }
 
         private void OpenFolderMusic(Object sender, RoutedEventArgs e)
