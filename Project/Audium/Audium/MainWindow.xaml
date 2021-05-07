@@ -72,6 +72,16 @@
                             </Style>
                         </GroupBox.Resources>
                         <StackPanel>
+                            <ListBox ItemsSource="{Binding EnsembleAudio}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <WrapPanel>
+                                            <TextBlock Text="{Binding Genre}"/>
+                                        </WrapPanel>
+                                    </DataTemplate>
+                                    
+                                </ListBox.ItemTemplate>
+                            <!--
                             <CheckBox Content="Ajoutés récemment (20)" />
                             <CheckBox Content="Favoris (0)" />
                             <CheckBox Content="Blues (18)" />
@@ -80,7 +90,8 @@
                             <CheckBox Content="Hip-Hop (20)" />
                             <CheckBox Content="Jazz (34)" />
                             <CheckBox Content="Pop (3)" />
-                            <CheckBox Content="Rock (45)" />
+                            <CheckBox Content="Rock (45)" />-->
+                            </ListBox>
                         </StackPanel>
                     </GroupBox>
                     <GroupBox

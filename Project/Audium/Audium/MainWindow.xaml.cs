@@ -15,7 +15,8 @@ using System.Windows.Shapes;
 using System.Diagnostics;
 using MaterialDesignThemes.Wpf;
 using MaterialDesignColors;
-
+using Donnees;
+using Gestionnaires;
 
 
 namespace Audium
@@ -25,9 +26,14 @@ namespace Audium
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public Manager Mgr => (App.Current as App).leManager;
+
+        
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = Mgr;
         }
 
         private void OpenFolderMusic(Object sender, RoutedEventArgs e)

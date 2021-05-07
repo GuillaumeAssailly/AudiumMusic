@@ -8,15 +8,36 @@ using System.Windows;
 using MaterialDesignThemes.Wpf;
 using MaterialDesignColors;
 using System.Windows.Media;
+using Gestionnaires;
+using Donnees;
+
 
 namespace Audium
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    
+
     public partial class App : Application
     {
+
+        public Manager leManager { get; private set; } = new Manager();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public void Amber()
         {
             Color primaryColor = SwatchHelper.Lookup[MaterialDesignColor.Amber];
