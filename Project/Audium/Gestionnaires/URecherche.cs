@@ -12,7 +12,7 @@ namespace Gestionnaires
     public abstract class URecherche 
     {
 
-        public static Dictionary<EnsembleAudio, LinkedList<Piste>> RechercherParGenre(EGenre.GenreMusique GenreRecherche)
+        public static Dictionary<EnsembleAudio, LinkedList<Piste>> RechercherParGenre(EGenre GenreRecherche)
         {
             return Manager.Mediatheque.Where(ensemble => ensemble.Key.Genre.Equals(GenreRecherche)).ToDictionary(x => x.Key, x => x.Value);
         }

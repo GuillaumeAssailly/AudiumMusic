@@ -15,7 +15,7 @@ namespace Test_ManagerProfil
             profil.ModifierParamètres("Indigo", "SuperChemin");
             profil.ModifierProfil("Dudu", "/img.png");
             Console.WriteLine(profil);
-            EnsembleAudio RAM = new EnsembleAudio("RAM", "Daft Punk", "/img.png", EGenre.GenreMusique.JAZZ);
+            EnsembleAudio RAM = new EnsembleAudio("RAM", "Daft Punk", "/img.png", EGenre.JAZZ);
             profil.ModifierListeFavoris(RAM);
             Console.WriteLine(profil);
         }

@@ -72,15 +72,9 @@
                             </Style>
                         </GroupBox.Resources>
                         <StackPanel>
-                            <ListBox ItemsSource="{Binding EnsembleAudio}">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <WrapPanel>
-                                            <TextBlock Text="{Binding Genre}"/>
-                                        </WrapPanel>
-                                    </DataTemplate>
-                                    
-                                </ListBox.ItemTemplate>
+                            <ListBox ItemsSource="{Binding Mgr.ListeGenres}">
+                                
+                            </ListBox>
                             <!--
                             <CheckBox Content="Ajoutés récemment (20)" />
                             <CheckBox Content="Favoris (0)" />
@@ -91,7 +85,7 @@
                             <CheckBox Content="Jazz (34)" />
                             <CheckBox Content="Pop (3)" />
                             <CheckBox Content="Rock (45)" />-->
-                            </ListBox>
+                            
                         </StackPanel>
                     </GroupBox>
                     <GroupBox
@@ -103,13 +97,16 @@
                         materialDesign:ColorZoneAssist.Mode="PrimaryMid">
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <Button Height="auto" Width="auto" Margin="0,0,20,0" 
-                                    Style="{StaticResource MaterialDesignIconButton}"
-                                    ToolTip="MaterialDesignIconButton">
-                                    <materialDesign:PackIcon
-                                    Kind="Play" />
-                                </Button>
-                                <TextBlock Foreground="White"  Style="{DynamicResource MaterialDesignCaptionTextBlock}">L'Hymne de l'URSS</TextBlock>
+                                <ListBox ItemsSource="{Binding MgrProfil.ListeFavoris}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <WrapPanel>
+                                                <TextBlock Text="{Binding Titre}"/>
+                                            </WrapPanel>
+                                        </DataTemplate>
+
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
