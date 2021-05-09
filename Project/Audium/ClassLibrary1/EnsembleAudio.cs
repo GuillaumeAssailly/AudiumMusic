@@ -5,13 +5,14 @@ namespace Donnees
 {
     public class EnsembleAudio : IEquatable<EnsembleAudio>
     {
-        public EnsembleAudio(string titre, string description, string cheminImage, EGenre genre)
+        public EnsembleAudio(string titre, string description, string cheminImage, EGenre genre,int note)
         {
            
             Titre = titre;
             Description = description;
             CheminImage = cheminImage;
             Genre = genre;
+            Note = note;
             DateAjout=DateTime.Now;
             CmptEcoute = 0;
             Favori = false;

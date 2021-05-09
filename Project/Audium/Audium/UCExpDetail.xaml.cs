@@ -12,17 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Gestionnaires;
+using Donnees;
+
 
 namespace Audium
 {
     /// <summary>
-    /// Logique d'interaction pour MyUserControl1.xaml
+    /// Logique d'interaction pour UCExpDetail.xaml
     /// </summary>
-    public partial class MyUserControl1 : UserControl
+    public partial class UCExpDetail : UserControl
     {
-        public MyUserControl1()
+        public Manager Mgr => (App.Current as App).LeManager;
+        public ManagerProfil MgrProfil => (App.Current as App).LeManagerProfil;
+
+        public UCExpDetail()
         {
             InitializeComponent();
+            DataContext = this;
         }
     }
 }

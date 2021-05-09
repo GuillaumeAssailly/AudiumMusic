@@ -30,16 +30,24 @@ namespace Audium
         public Manager Mgr => (App.Current as App).LeManager;
         public ManagerProfil MgrProfil => (App.Current as App).LeManagerProfil;
 
-        
 
-        public EGenre GenreSelected;
+
+       
+       
+
+
+
+
+
+
+
 
 
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
-
+            
         }
 
         private void OpenFolderMusic(Object sender, RoutedEventArgs e)
@@ -65,8 +73,12 @@ namespace Audium
         private void AddMusic(Object sender, RoutedEventArgs e)
         {
 
+            //AJOUTER DES TRUCS
+            MainExp.IsExpanded = true;
+        }
 
-         
+        private void OpenExp(Object sender, RoutedEventArgs e)
+        {
             MainExp.IsExpanded = true;
         }
 

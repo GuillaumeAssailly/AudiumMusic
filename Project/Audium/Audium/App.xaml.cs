@@ -25,7 +25,11 @@ namespace Audium
 
         public ManagerProfil LeManagerProfil { get; private set; } = new ManagerProfil();
 
+        public App()
+        {
+            LeManager.ConfigTest();
 
+        }
 
 
 

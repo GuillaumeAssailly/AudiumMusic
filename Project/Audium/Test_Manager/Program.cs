@@ -12,7 +12,7 @@ namespace Test_Manager
         static void Main(string[] args)
         {
             Manager master = new();
-            EnsembleAudio RAM = new EnsembleAudio("RAM", "Daft Punk", "img/cool.png", EGenre.JAZZ);
+            EnsembleAudio RAM = new EnsembleAudio("RAM", "Daft Punk", "img/cool.png", EGenre.JAZZ,4);
             Piste p1 = new Piste("Piste 1");
             Piste p2 = new Piste("Piste 2");
             Piste p3 = new Piste("Piste 3");
@@ -31,15 +31,15 @@ namespace Test_Manager
 
 
 
-            EnsembleAudio test = master.CreerEnsembleAudio("HypnoFlip", "Album de Stupeflip", "/dev/null", EGenre.HIPHOP);
+            EnsembleAudio test = master.CreerEnsembleAudio("HypnoFlip", "Album de Stupeflip", "/dev/null", EGenre.HIPHOP,5);
             master.AjouterEnsemblePiste(test, LP);
-            EnsembleAudio test1 = master.CreerEnsembleAudio("HypnooFlip", "Album de Stapeflip", "/dev/null", EGenre.HIPHOP);
+            EnsembleAudio test1 = master.CreerEnsembleAudio("HypnooFlip", "Album de Stapeflip", "/dev/null", EGenre.HIPHOP,5);
             master.AjouterEnsemblePiste(test1, LP);
-            EnsembleAudio test2 = master.CreerEnsembleAudio("HypnoFlip", "Album de Stepeflip", "/dev/null", EGenre.HIPHOP);
+            EnsembleAudio test2 = master.CreerEnsembleAudio("HypnoFlip", "Album de Stepeflip", "/dev/null", EGenre.HIPHOP,5);
             master.AjouterEnsemblePiste(test2, LP);
-            EnsembleAudio test3 = master.CreerEnsembleAudio("HypnoFlip", "Album de Stipeflip", "/dev/null", EGenre.HIPHOP);
+            EnsembleAudio test3 = master.CreerEnsembleAudio("HypnoFlip", "Album de Stipeflip", "/dev/null", EGenre.HIPHOP,5);
             master.AjouterEnsemblePiste(test3, LP);
-            EnsembleAudio test4 = master.CreerEnsembleAudio("HypnoFlip", "Album de Stopeflip", "/dev/null", EGenre.HIPHOP);
+            EnsembleAudio test4 = master.CreerEnsembleAudio("HypnoFlip", "Album de Stopeflip", "/dev/null", EGenre.HIPHOP,5);
             master.AjouterEnsemblePiste(test4, LP);
 
             Console.WriteLine(test);
