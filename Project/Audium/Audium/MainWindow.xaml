@@ -72,9 +72,9 @@
                             </Style>
                         </GroupBox.Resources>
                         <StackPanel>
-                            <ListBox ItemsSource="{Binding Mgr.ListeGenres}">
-                                
-                            </ListBox>
+                            <ListBox ItemsSource="{Binding Mgr.ListeGenres}"/>
+
+
                             <!--
                             <CheckBox Content="Ajoutés récemment (20)" />
                             <CheckBox Content="Favoris (0)" />
@@ -97,11 +97,16 @@
                         materialDesign:ColorZoneAssist.Mode="PrimaryMid">
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <ListBox ItemsSource="{Binding MgrProfil.ListeFavoris}">
+                                <ListBox ItemsSource="{Binding Mgr.ListeFavoris}" Width="auto" SelectedItem="{Binding Mgr.EnsembleSelect}" >
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
-                                            <WrapPanel>
-                                                <TextBlock Text="{Binding Titre}"/>
+                                            <WrapPanel Orientation="Horizontal">
+                                                <Button
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    ToolTip="MaterialDesignIconButton">
+                                                    <materialDesign:PackIcon Kind="Play" />
+                                                </Button>
+                                                <TextBlock Text="{Binding Titre}"  MouseLeftButtonUp="OpenExp"  Margin="0,15,0,0"/>
                                             </WrapPanel>
                                         </DataTemplate>
 
@@ -223,9 +228,9 @@
                 <Expander.Header>
                     <TextBlock HorizontalAlignment="Right" FontSize="15" Margin="0,0,-10,0">Détails</TextBlock>
                 </Expander.Header>
-                <local:MyUserControl1/>
+                <local:UCExpDetail/>
             </Expander>
-
+            
             <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}">
                 <WrapPanel  HorizontalAlignment="Center">
                     <WrapPanel.Resources>
@@ -236,8 +241,25 @@
                             <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth3"/>
                         </Style>
                     </WrapPanel.Resources>
-                    <local:Pochette/>
+                    <ListBox Width="500" Height="500" ItemsSource="{Binding Mgr.ListeFavoris}" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Titre}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
 
+
+                    </ListBox>
+                    
+
+
+
+
+
+
+                    <!--
+                    <local:Pochette/>
+                    
                     <materialDesign:Card>
                         <Image Source="/img/ram.jpg"  />
                     </materialDesign:Card>
@@ -265,6 +287,7 @@
                     <materialDesign:Card>
                         <Image Source="/img/iam.jpg"  />
                     </materialDesign:Card>
+                    -->
                 </WrapPanel>
             </ScrollViewer>
         </DockPanel>

@@ -1,27 +1,27 @@
-﻿<UserControl x:Class="Audium.MyUserControl1"
+﻿<UserControl x:Class="Audium.UCExpDetail"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Audium" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Audium"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <DockPanel >
+    
+    <DockPanel >
 
-            <DockPanel DockPanel.Dock="Bottom" >
-                <Grid >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="0"/>
+        <DockPanel DockPanel.Dock="Bottom" >
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="0"/>
 
-                    </Grid.ColumnDefinitions>
-                    <GroupBox MinHeight="9999" Grid.Column="2">
+                </Grid.ColumnDefinitions>
+                <GroupBox MinHeight="9999" Grid.Column="2">
 
-                    </GroupBox>
-                    <GroupBox
+                </GroupBox>
+                <GroupBox
                                     FontSize="15"
                                     Header="A propos de l'Album"
                                     Margin="16"
@@ -29,31 +29,31 @@
                                     Style="{DynamicResource MaterialDesignCardGroupBox}"
                                     VerticalAlignment="Stretch"
                                 >
-                        <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <StackPanel>
-                                <DockPanel>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel>
+                            <DockPanel>
 
-                                    <StackPanel DockPanel.Dock="Left" >
-                                        <Image Height="250" Width="250" Source="/img/ram.jpg" Margin="10"/>
-                                        <materialDesign:RatingBar
+                                <StackPanel DockPanel.Dock="Left" >
+                                    <Image Height="250" Width="250" Source="{Binding Mgr.EnsembleSelect.CheminImage}" Margin="10"/>
+                                    <materialDesign:RatingBar
                                               x:Name="BasicRatingBar"
-                                              Value="3"
+                                              Value="{Binding Mgr.EnsembleSelect.Note}"
                                               IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}"   
                                               Margin="75,20,0,20"/>
-                                        <TextBox
+                                    <TextBox
                                                 Margin="4,5"
                                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                                 VerticalAlignment="Top"
                                                 BorderBrush="{DynamicResource  PrimaryHueLightBrush}"
                                                 Height="auto"
-                                                
+                                                Text="{Binding Mgr.EnsembleSelect.Titre}"
                                                 IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}" 
                                                 AcceptsReturn="True"
                                                 TextWrapping="Wrap"
                                                 VerticalScrollBarVisibility="Auto"
                                                 materialDesign:HintAssist.Hint="Titre de l'album"/>
 
-                                        <TextBox
+                                    <TextBox
                                                 Margin="4,5"
                                                 Style="{StaticResource MaterialDesignFloatingHintTextBox    }"
                                                 VerticalAlignment="Top"
@@ -65,39 +65,40 @@
                                                 TextWrapping="Wrap"
                                                 VerticalScrollBarVisibility="Auto"
                                                 materialDesign:HintAssist.Hint="Artiste"/>
-                                        <DatePicker  
+                                    <DatePicker  
                                             BorderBrush="{DynamicResource PrimaryHueLightBrush}"
                                             IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}"
                                             Margin="4,5"
                                             materialDesign:HintAssist.Hint="Date de Sortie"
                                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                                        <ComboBox
+                                    <ComboBox
                                             Margin="4,5"
                                              BorderBrush="{DynamicResource PrimaryHueLightBrush}"
                                             IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}"
                                             materialDesign:HintAssist.Hint="Genre"
                                             Style="{DynamicResource MaterialDesignFloatingHintComboBox}"
                                             materialDesign:HintAssist.IsFloating="True">
-                                            <ComboBoxItem Content="Blues"/>
-                                            <ComboBoxItem Content="Classique"/>
-                                            <ComboBoxItem Content="Bande Originale"/>
-                                            <ComboBoxItem Content="Hip-Hop"/>
-                                            <ComboBoxItem Content="Jazz"/>
-                                        </ComboBox>
+                                        <ComboBoxItem Content="Blues"/>
+                                        <ComboBoxItem Content="Classique"/>
+                                        <ComboBoxItem Content="Bande Originale"/>
+                                        <ComboBoxItem Content="Hip-Hop"/>
+                                        <ComboBoxItem Content="Jazz"/>
+                                    </ComboBox>
 
-                                    </StackPanel>
+                                </StackPanel>
 
-                                    <StackPanel  DockPanel.Dock="Right">
-                                        <StackPanel>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                                <TextBlock Text="Mode Edition" Margin="10,20"/>
-                                                <CheckBox
+                                <StackPanel  DockPanel.Dock="Right">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <TextBlock Text="Mode Edition" Margin="10,20"/>
+                                            <CheckBox
                                                 Margin="10"
                                                 Style="{DynamicResource MaterialDesignSwitchToggleButton}"
                                                 x:Name="EditMode"
                                                 />
-                                            </StackPanel>
-                                            <TextBox
+                                        </StackPanel>
+                                        <TextBox
+                                                Text="{Binding Mgr.EnsembleSelect.Description, Mode=OneWay}"
                                                 Margin="10"
                                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                                 VerticalAlignment="Top"
@@ -109,21 +110,21 @@
                                                 TextWrapping="Wrap"
                                                 VerticalScrollBarVisibility="Auto"
                                                 materialDesign:HintAssist.Hint="Description" Cursor="IBeam"/>
-                                        </StackPanel>
-
                                     </StackPanel>
-                                </DockPanel>
-                                <Button
+
+                                </StackPanel>
+                            </DockPanel>
+                            <Button
                                     IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}" 
                                     HorizontalAlignment="Right"
                                     Margin="0,50,10,0"
                                     ToolTip="Resource name: MaterialDesignRaisedButton"
                                     Content="SAUVEGARDER" Cursor="Hand" />
-                            </StackPanel>
-                        </ScrollViewer>
-                    </GroupBox>
+                        </StackPanel>
+                    </ScrollViewer>
+                </GroupBox>
 
-                    <GroupBox
+                <GroupBox
                                     FontSize="15"
                                     IsEnabled="{Binding IsChecked, ElementName=EnableListBox}"
                                     Header="Sélection de titre"
@@ -132,31 +133,31 @@
                                     VerticalAlignment="Stretch"
                                     Style="{DynamicResource MaterialDesignCardGroupBox}"
                                  >
-                        <ScrollViewer VerticalScrollBarVisibility="Disabled">
+                    <ScrollViewer VerticalScrollBarVisibility="Disabled">
 
 
 
 
-                            <ListBox>
-                                <TextBlock Text="Musique 1"/>
-                                <TextBlock Text="Musique 2"/>
-                                <TextBlock Text="Musique 3"/>
-                                <TextBlock Text="Musique 1"/>
-                                <TextBlock Text="Musique 2"/>
-                                <TextBlock Text="Musique 3"/>
-                                <TextBlock Text="Musique 1"/>
-                                <TextBlock Text="Musique 2"/>
-                                <TextBlock Text="Musique 3"/>
-                                <TextBlock Text="Musique 1"/>
-                                <TextBlock Text="Musique 2"/>
-                                <TextBlock Text="Musique 3"/>
-                            </ListBox>
+                        <ListBox>
+                            <TextBlock Text="Musique 1"/>
+                            <TextBlock Text="Musique 2"/>
+                            <TextBlock Text="Musique 3"/>
+                            <TextBlock Text="Musique 1"/>
+                            <TextBlock Text="Musique 2"/>
+                            <TextBlock Text="Musique 3"/>
+                            <TextBlock Text="Musique 1"/>
+                            <TextBlock Text="Musique 2"/>
+                            <TextBlock Text="Musique 3"/>
+                            <TextBlock Text="Musique 1"/>
+                            <TextBlock Text="Musique 2"/>
+                            <TextBlock Text="Musique 3"/>
+                        </ListBox>
 
 
-                        </ScrollViewer>
-                    </GroupBox>
-                </Grid>
-            </DockPanel>
+                    </ScrollViewer>
+                </GroupBox>
+            </Grid>
         </DockPanel>
-    </Grid>
+    </DockPanel>
+   
 </UserControl>

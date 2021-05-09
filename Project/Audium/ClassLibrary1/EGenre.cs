@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Donnees
 {
-    public enum EGenre : 
+    public enum EGenre  
     {
         JAZZ,
         ROCK,
