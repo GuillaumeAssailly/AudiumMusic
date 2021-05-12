@@ -42,14 +42,14 @@ namespace Gestionnaires
         public static int CompteurAlbum;
 
 
-        public static ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>> Mediatheque { get; }
+        public ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>> Mediatheque { get; }
         private Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque;
 
         public Manager()
         {
             CompteurAlbum = 0;
             mediatheque = new Dictionary<EnsembleAudio, LinkedList<Piste>>();
-
+            Mediatheque = new ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>>(mediatheque);
 
             listeGenres = new List<string>
             {
@@ -66,12 +66,15 @@ namespace Gestionnaires
 
             listeFavoris = new List<EnsembleAudio>
             {
-                new EnsembleAudio("The Hypnoflip Invasion","Fin 2010 le groupe propose via son site internet d'acquérir en pré-commande un pack incluant The Hypnoflip Invasion en version collector, le picture-disc Terror Maxi et divers goodies1. Un peu plus de 1000 fans répondent à l'appel2 et l'album peut être mixé aux Studios Ferber par René Ameline3.Une réédition limitée, incluant deux morceaux supplémentaires, est sortie le 19 octobre 2011. ", @"\img\hypnoflip.jpg", EGenre.HIPHOP,5),
-                new EnsembleAudio("Random Access Memories Rare Version","Random Access Memories est le quatrième et dernier album studio du groupe français Daft Punk, sorti officiellement le 17 mai 2013n 1. Il est publié par Daft Life Limited, une filiale de Columbia Records. L'album comprend des collaborations avec plusieurs artistes tels que Nile Rodgers, Paul Williams, Giorgio Moroder, Pharrell Williams, Todd Edwards, DJ Falcon, Chilly Gonzales, Panda Bear et Julian Casablancas et se caractérise, en tant qu'hommage au son des années 1970, par le parti pris d'utiliser des musiciens jouant sur des instruments acoustiques ou électro-acoustiques (guitare, basse, batterie, piano, etc.) en limitant l'usage des machines électroniques",@"\img\ram.jpg",EGenre.JAZZ,4)
+                new EnsembleAudio("The Hypnoflip Invasion","Fin 2010 le groupe propose via son site internet d'acquérir en pré-commande un pack incluant The Hypnoflip Invasion en version collector, le picture-disc Terror Maxi et divers goodies1. Un peu plus de 1000 fans répondent à l'appel2 et l'album peut être mixé aux Studios Ferber par René Ameline3.Une réédition limitée, incluant deux morceaux supplémentaires, est sortie le 19 octobre 2011. ", "hypnoflip.jpg", EGenre.HIPHOP,5),
+                new EnsembleAudio("Random Access Memories Rare Version","Random Access Memories est le quatrième et dernier album studio du groupe français Daft Punk, sorti officiellement le 17 mai 2013n 1. Il est publié par Daft Life Limited, une filiale de Columbia Records. L'album comprend des collaborations avec plusieurs artistes tels que Nile Rodgers, Paul Williams, Giorgio Moroder, Pharrell Williams, Todd Edwards, DJ Falcon, Chilly Gonzales, Panda Bear et Julian Casablancas et se caractérise, en tant qu'hommage au son des années 1970, par le parti pris d'utiliser des musiciens jouant sur des instruments acoustiques ou électro-acoustiques (guitare, basse, batterie, piano, etc.) en limitant l'usage des machines électroniques","ram.jpg",EGenre.JAZZ,4)
             };
 
             ListeFavoris = new ReadOnlyCollection<EnsembleAudio>(listeFavoris);
             EnsembleSelect = ListeFavoris[0];
+
+            
+
         }
 
      
@@ -116,7 +119,7 @@ namespace Gestionnaires
 
         public void ConfigTest()
         {
-            EnsembleAudio RAM = new EnsembleAudio("RAM", "Daft Punk", "img/cool.png", EGenre.JAZZ, 4);
+            EnsembleAudio RAM = new EnsembleAudio("RAM", "Daft Punk", "ram.jpg", EGenre.JAZZ, 4);
 
             LinkedList<Piste> LP = new();
             LP.AddLast(new Piste("Piste 1"));
@@ -125,6 +128,20 @@ namespace Gestionnaires
             LP.AddLast(new Piste("Piste 4"));
             LP.AddLast(new Piste("Piste 5"));
             this.AjouterEnsemblePiste(RAM, LP);
+
+            EnsembleAudio HYP = new EnsembleAudio("Hypnoflup", "Stipiflip", "hypnoflip.jpg", EGenre.JAZZ, 4);
+            this.AjouterEnsemblePiste(HYP, LP);
+
+            EnsembleAudio WAG = new EnsembleAudio("Wagner", "Stipiflip", "wagner.jpg", EGenre.JAZZ, 4);
+            this.AjouterEnsemblePiste(WAG, LP);
+
+            EnsembleAudio IAM = new EnsembleAudio("IAM", "Stipiflip", "iam.jpg", EGenre.JAZZ, 4);
+            this.AjouterEnsemblePiste(IAM, LP);
+
+
+
+
+
         }
 
 

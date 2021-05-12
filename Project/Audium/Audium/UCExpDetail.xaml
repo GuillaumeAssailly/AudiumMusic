@@ -6,8 +6,12 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:Audium"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    
+             d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:conv="clr-namespace:Audium.converters">
+            
+    <UserControl.Resources>
+        <conv:String2Image x:Key="String2Image"/>
+    </UserControl.Resources>
     <DockPanel >
 
         <DockPanel DockPanel.Dock="Bottom" >
@@ -34,7 +38,7 @@
                             <DockPanel>
 
                                 <StackPanel DockPanel.Dock="Left" >
-                                    <Image Height="250" Width="250" Source="{Binding Mgr.EnsembleSelect.CheminImage}" Margin="10"/>
+                                    <Image Height="250" Width="250" Source="{Binding Mgr.EnsembleSelect.CheminImage, Converter={StaticResource String2Image}}" Margin="10"/>
                                     <materialDesign:RatingBar
                                               x:Name="BasicRatingBar"
                                               Value="{Binding Mgr.EnsembleSelect.Note}"
