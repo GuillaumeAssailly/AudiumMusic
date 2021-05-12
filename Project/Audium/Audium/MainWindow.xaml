@@ -6,10 +6,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Audium"
         mc:Ignorable="d"
+        xmlns:conv="clr-namespace:Audium.converters"
         Title="Audium" Height="900" Width="1600" MinWidth="1220" MinHeight="550" WindowState="Maximized">
     <Window.Resources>
         <SolidColorBrush Color="Black" x:Key="DisqueBgColor"/>
         <Size Height="300" Width="300" x:Key="Taillepardefaut"/>
+        <conv:String2CompactString x:Key="String2CompactString"/>
+        <conv:String2Image x:Key="String2Image"/>
     </Window.Resources>
 
     <DockPanel>
@@ -106,7 +109,7 @@
                                                     ToolTip="MaterialDesignIconButton">
                                                     <materialDesign:PackIcon Kind="Play" />
                                                 </Button>
-                                                <TextBlock Text="{Binding Titre}"  MouseLeftButtonUp="OpenExp"  Margin="0,15,0,0"/>
+                                                <TextBlock Text="{Binding Titre, Converter={StaticResource String2CompactString}}"  MouseLeftButtonUp="OpenExp"  Margin="0,15,0,0"/>
                                             </WrapPanel>
                                         </DataTemplate>
 
@@ -232,24 +235,39 @@
             </Expander>
             
             <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}">
-                <WrapPanel  HorizontalAlignment="Center">
-                    <WrapPanel.Resources>
-                        <Style TargetType="materialDesign:Card">
-                            <Setter Property="Height" Value="220"/>
-                            <Setter Property="Width" Value="220"/>
-                            <Setter Property="Margin" Value="20,20"/>
-                            <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth3"/>
-                        </Style>
-                    </WrapPanel.Resources>
-                    <ListBox Width="500" Height="500" ItemsSource="{Binding Mgr.ListeFavoris}" >
-                        <ListBox.ItemTemplate>
+               
+                    <ItemsControl ItemsSource="{Binding Mgr.Mediatheque}" >
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                          
                             <DataTemplate>
-                                <TextBlock Text="{Binding Titre}"/>
+                                <StackPanel Orientation="Horizontal">
+                                <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2" Margin="20,20" Height="220" Width="220" >
+                                <Canvas  >
+                                    <Button Height="100" Width="100" Canvas.Top="60" Canvas.Left="60" Panel.ZIndex="1" Foreground="White" ToolTip="Lire" Cursor="Hand">
+                                        <Button.Style >
+                                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignToolForegroundButton}">
+                                                <Setter Property="Visibility" Value="Hidden" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Canvas}},Path=IsMouseOver}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                        <materialDesign:PackIcon Kind="Play" Height="100" Width="100"/>
+                                    </Button>
+                                    <Image Source="{Binding Key.CheminImage, Converter={StaticResource String2Image}}"  Height="220" />
+                                </Canvas>
+                                </materialDesign:Card>
+                                </StackPanel>
                             </DataTemplate>
-                        </ListBox.ItemTemplate>
-
-
-                    </ListBox>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                     
 
 
@@ -288,7 +306,7 @@
                         <Image Source="/img/iam.jpg"  />
                     </materialDesign:Card>
                     -->
-                </WrapPanel>
+               
             </ScrollViewer>
         </DockPanel>
     </DockPanel>

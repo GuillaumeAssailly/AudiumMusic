@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test_Manager", "Test_Manage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test_URecherche", "Test_URecherche\Test_URecherche.csproj", "{5A8191EE-72B5-4BA5-B745-E2CAB6BDE4C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_UTri", "Test_UTri\Test_UTri.csproj", "{2834A255-2E42-4DBB-A57D-C3654A5E6C5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test_UTri", "Test_UTri\Test_UTri.csproj", "{2834A255-2E42-4DBB-A57D-C3654A5E6C5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
