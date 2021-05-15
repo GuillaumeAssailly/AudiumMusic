@@ -23,6 +23,8 @@ namespace Audium
 
         public Manager LeManager { get; private set; } = new Manager();
 
+       
+
         public ManagerProfil LeManagerProfil { get; private set; } = new ManagerProfil();
 
         public App()
