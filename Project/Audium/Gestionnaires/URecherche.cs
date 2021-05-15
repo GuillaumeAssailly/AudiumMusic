@@ -16,6 +16,8 @@ namespace Gestionnaires
         {
             return Master.Mediatheque.Where(ensemble => ensemble.Key.Genre.Equals(GenreRecherche)).ToDictionary(x => x.Key, x => x.Value);
         }
+
+
         /*
         public static Dictionary<EnsembleAudio, LinkedList<Piste>> RechercherParMotCle(string rech)
         {

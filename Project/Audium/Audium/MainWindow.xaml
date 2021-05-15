@@ -6,13 +6,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Audium"
         mc:Ignorable="d"
-        xmlns:conv="clr-namespace:Audium.converters"
+        xmlns:conv="clr-namespace:Audium.converters" 
         Title="Audium" Height="900" Width="1600" MinWidth="1220" MinHeight="550" WindowState="Maximized">
     <Window.Resources>
         <SolidColorBrush Color="Black" x:Key="DisqueBgColor"/>
         <Size Height="300" Width="300" x:Key="Taillepardefaut"/>
         <conv:String2CompactString x:Key="String2CompactString"/>
         <conv:String2Image x:Key="String2Image"/>
+        
     </Window.Resources>
 
     <DockPanel>
@@ -75,9 +76,13 @@
                             </Style>
                         </GroupBox.Resources>
                         <StackPanel>
-                            <ListBox ItemsSource="{Binding Mgr.ListeGenres}"/>
-
-
+                            <ListBox ItemsSource="{Binding Mgr.ListeGenres}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}" MouseLeftButtonDown="TagButton"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                             <!--
                             <CheckBox Content="Ajoutés récemment (20)" />
                             <CheckBox Content="Favoris (0)" />
@@ -100,7 +105,7 @@
                         materialDesign:ColorZoneAssist.Mode="PrimaryMid">
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <ListBox ItemsSource="{Binding Mgr.ListeFavoris}" Width="auto" SelectedItem="{Binding Mgr.EnsembleSelect}" >
+                                <ListBox ItemsSource="{Binding Mgr.ListeFavoris}" Width="500" SelectedItem="{Binding Mgr.EnsembleSelect}" >
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <WrapPanel Orientation="Horizontal">
@@ -235,8 +240,8 @@
             </Expander>
             
             <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}">
-               
-                    <ItemsControl ItemsSource="{Binding Mgr.Mediatheque}" >
+
+                <ListView ItemsSource="{Binding Mgr.Mediatheque.Keys}" SelectedItem="{Binding Mgr.EnsembleSelect}" MouseLeftButtonUp="OpenExp" >
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
@@ -261,13 +266,13 @@
                                         </Button.Style>
                                         <materialDesign:PackIcon Kind="Play" Height="100" Width="100"/>
                                     </Button>
-                                    <Image Source="{Binding Key.CheminImage, Converter={StaticResource String2Image}}"  Height="220" />
+                                    <Image Source="{Binding CheminImage, Converter={StaticResource String2Image}}"  Height="220" />
                                 </Canvas>
                                 </materialDesign:Card>
                                 </StackPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                    </ListView>
                     
 
 

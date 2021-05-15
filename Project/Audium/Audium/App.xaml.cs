@@ -27,7 +27,7 @@ namespace Audium
 
         public App()
         {
-            LeManager.ConfigTest();
+          
 
         }
 

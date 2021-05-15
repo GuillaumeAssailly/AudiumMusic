@@ -142,19 +142,9 @@
 
 
 
-                        <ListBox>
-                            <TextBlock Text="Musique 1"/>
-                            <TextBlock Text="Musique 2"/>
-                            <TextBlock Text="Musique 3"/>
-                            <TextBlock Text="Musique 1"/>
-                            <TextBlock Text="Musique 2"/>
-                            <TextBlock Text="Musique 3"/>
-                            <TextBlock Text="Musique 1"/>
-                            <TextBlock Text="Musique 2"/>
-                            <TextBlock Text="Musique 3"/>
-                            <TextBlock Text="Musique 1"/>
-                            <TextBlock Text="Musique 2"/>
-                            <TextBlock Text="Musique 3"/>
+                        <ListBox ItemsSource="{Binding Mgr.ListeSelect}">
+                            
+                       
                         </ListBox>
 
 

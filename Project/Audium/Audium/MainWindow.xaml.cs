@@ -82,5 +82,12 @@ namespace Audium
             MainExp.IsExpanded = true;
         }
 
+        private void TagButton(object sender, MouseButtonEventArgs e)
+        {
+            MainExp.IsExpanded = false;
+            URecherche.RechercherParGenre(EGenre.JAZZ, Mgr);
+        }
+
+       
     }
 }
