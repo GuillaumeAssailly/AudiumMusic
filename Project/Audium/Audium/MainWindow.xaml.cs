@@ -18,6 +18,8 @@ using MaterialDesignColors;
 using Donnees;
 using Gestionnaires;
 using System.Collections.ObjectModel;
+using System.Windows.Threading;
+using System.ComponentModel;
 
 namespace Audium
 {
@@ -26,28 +28,40 @@ namespace Audium
     /// </summary>
     public partial class MainWindow : Window
     {
-
+       
         public Manager Mgr => (App.Current as App).LeManager;
         public ManagerProfil MgrProfil => (App.Current as App).LeManagerProfil;
 
+        
 
+        //public  MediaPlayer Lecteur;
+        bool isPlaying = false;
+        TimeSpan position;
+        DispatcherTimer timer = new DispatcherTimer();
 
        
-       
+        
+        
 
-
-
-
-
-
-
+     
 
 
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
-            
+            //Lecteur = new MediaPlayer();
+            timer.Interval = TimeSpan.FromMilliseconds(1000);
+            timer.Tick += new EventHandler(tick);
+            timer.Start();
+           
+        }
+
+
+        void tick(object sender, EventArgs e) 
+        {
+            ProgressBar.Value = Lecteur.Position.TotalSeconds;
+            TimerDisplay.Text = Lecteur.Position.ToString(@"mm\:ss");
         }
 
         private void OpenFolderMusic(Object sender, RoutedEventArgs e)
@@ -88,6 +102,94 @@ namespace Audium
             URecherche.RechercherParGenre(EGenre.JAZZ, Mgr);
         }
 
+
+        private void LireTout(object sender, RoutedEventArgs e)
+        {
+            Mgr.MediaIndex = 1;
+            Lecteur.MediaEnded += Media_Next;
+            Lecteur.MediaOpened += Media_Opened;
+            Mgr.EnsembleLu = ((Button)sender).Tag as EnsembleAudio;
+            
+           
+            Lecteur.Source = (new Uri($"C:\\Users\\guill\\Documents\\IUT\\IHM\\Audium\\Project\\Audium\\Audium\\music\\{Mgr.EnsembleLu.Titre}\\Track 1.mp3"));
+
+            TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex-1).Titre;
+
+            Lecteur.Play();
+            PlayPauseIcon.Kind = PackIconKind.Pause;
+            isPlaying = true;
+
+        }
+
+        private void Media_Opened(object sender, EventArgs e) 
+        {
+            position = Lecteur.NaturalDuration.TimeSpan;
+            ProgressBar.Minimum = 0;
+            ProgressBar.Maximum = position.TotalSeconds;
+        }
+
+        private void PlayPause(object sender, EventArgs e)
+        {
+            if (isPlaying) 
+            {
+                Lecteur.Pause();
+                isPlaying = false;
+                PlayPauseIcon.Kind = PackIconKind.Play;
+            }
+            else
+            {
+                Lecteur.Play();
+                isPlaying = true;
+                PlayPauseIcon.Kind = PackIconKind.Pause;
+            }
+        }
+
+        private void Media_Next(object sender, EventArgs e)
+        {
+            if(Mgr.MediaIndex < Mgr.Playlist.Count)
+            {
+                Mgr.MediaIndex++;
+            }
+
+            Lecteur.Source = (new Uri($"C:\\Users\\guill\\Documents\\IUT\\IHM\\Audium\\Project\\Audium\\Audium\\music\\{Mgr.EnsembleLu.Titre}\\Track {Mgr.MediaIndex}.mp3")); Lecteur.Play();
+            
+            isPlaying = true;
+            PlayPauseIcon.Kind = PackIconKind.Pause;
+            TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex - 1).Titre;
+
+        }
+      
+        private void Media_Previous(object sender, EventArgs e)
+        {
+            if (Mgr.MediaIndex > 1)
+            {
+                Mgr.MediaIndex--;
+            }
+            Lecteur.Source = (new Uri($"C:\\Users\\guill\\Documents\\IUT\\IHM\\Audium\\Project\\Audium\\Audium\\music\\{Mgr.EnsembleLu.Titre}\\Track {Mgr.MediaIndex}.mp3")); Lecteur.Play();
+            isPlaying = true;
+            PlayPauseIcon.Kind = PackIconKind.Pause;
+            TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex - 1).Titre;
+        }
        
+        private void ProgressBarChanged(object sender, MouseButtonEventArgs e)
+        {
+            
+            int pos = Convert.ToInt32(ProgressBar.Value);
+            Lecteur.Position = new TimeSpan(0, 0, 0, pos, 0);
+           
+        }
+
+        private void ProgressBarValueSlided(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (ProgressBar.IsMouseCaptureWithin)
+            {
+               
+                int pos = Convert.ToInt32(ProgressBar.Value);
+                Lecteur.Position = new TimeSpan(0, 0, 0, pos, 0);
+                
+            }
+        }
+
+        
     }
 }

@@ -111,7 +111,8 @@
                                             <WrapPanel Orientation="Horizontal">
                                                 <Button
                                                     Style="{StaticResource MaterialDesignIconButton}"
-                                                    ToolTip="MaterialDesignIconButton">
+                                                    Tag ="{Binding}" Click="LireTout"
+                                                    ToolTip="MaterialDesignIconButton"> 
                                                     <materialDesign:PackIcon Kind="Play" />
                                                 </Button>
                                                 <TextBlock Text="{Binding Titre, Converter={StaticResource String2CompactString}}"  MouseLeftButtonUp="OpenExp"  Margin="0,15,0,0"/>
@@ -187,40 +188,52 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Button
+                    ToolTip="Lire/Pause"
                     Style="{StaticResource MaterialDesignIconButton}"
-                    ToolTip="MaterialDesignIconButton"
+                   
                     Grid.Column="3"
-                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="0,2,0,17">
-                    <materialDesign:PackIcon Kind="Play" />
+                    Click="PlayPause"
+                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="0,2,0,17" Cursor="Hand">
+                    <materialDesign:PackIcon Kind="Play" Name="PlayPauseIcon"/>
                 </Button>
                 <Button
                     Style="{StaticResource MaterialDesignIconButton}"
-                    ToolTip="MaterialDesignIconButton"
+                    ToolTip="Précédent"
                     Grid.Column="2"
+                    Click="Media_Previous"
                      Margin="0,2,0,17"
-                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Cursor="Hand">
                     <materialDesign:PackIcon Kind="Rewind" />
                 </Button>
                 <Button
                     Style="{StaticResource MaterialDesignIconButton}"
-                    ToolTip="MaterialDesignIconButton"
+                    ToolTip="Suivant"
+                    Click="Media_Next"
                     Grid.Column="4"
-                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"  Margin="0,2,0,17">
+                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"  Margin="0,2,0,17" Cursor="Hand">
                     <materialDesign:PackIcon Kind="FastForward" />
                 </Button>
-                
-                <Image Grid.Column="0" Height="50"  Width="50" Source="/img/ram.jpg"  Margin="0,-14,0,0"/>
-                <WrapPanel Grid.Column="1" Orientation="Horizontal">
 
-                    <TextBlock TextWrapping="Wrap" FontSize="15" Foreground="White" Text="Daft-Punk-Give life back to Music Remastered" Margin="0,5,0,0" />
+                <Image Grid.Column="0" Height="50"  Width="50" Source="{Binding Mgr.EnsembleLu.CheminImage, Converter={StaticResource String2Image}}"  Margin="0,-14,0,0"/>
+                <WrapPanel Grid.Column="1" Orientation="Vertical">
 
+                    <TextBlock Name="TitleDisplay" TextWrapping="Wrap" FontSize="15" Foreground="White" Margin="0,5,0,0" />
+                    <TextBlock Name="TimerDisplay" Foreground="White"/>
                 </WrapPanel>
-                <Slider
-                    TickFrequency="50" Grid.Row="1" Grid.ColumnSpan="7" Margin="40,0" Height="40"
+                <Slider     
+                    IsMoveToPointEnabled="true"
+                    Name="ProgressBar"
+                    MouseLeftButtonUp="ProgressBarChanged"
+                    ValueChanged="ProgressBarValueSlided"
+                    Grid.Row="1" Grid.ColumnSpan="7" Margin="40,5" 
                     Orientation="Horizontal"
-                    Minimum="1"
-                    Maximum="50"                   
+                                      
                     Value="25" />
+                <StackPanel Grid.Column="7" Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="VolumeSource" Foreground="{DynamicResource PrimaryHueLightBrush}" VerticalAlignment="Center" Height="25" Width="25"/>
+                    <Slider VerticalAlignment="Center" Name="VolumeSlider" Width="50" Value="{Binding ElementName=Lecteur, Path=Volume,Mode=TwoWay}" Maximum="1" Minimum="0" IsMoveToPointEnabled="True"/>
+                </StackPanel>
+                <MediaElement Name="Lecteur" LoadedBehavior="Manual"/>
             </Grid>
         </Border>
         <DockPanel>
@@ -241,7 +254,7 @@
             
             <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}">
 
-                <ListView ItemsSource="{Binding Mgr.Mediatheque.Keys}" SelectedItem="{Binding Mgr.EnsembleSelect}" MouseLeftButtonUp="OpenExp" >
+                <ListView ItemsSource="{Binding Mgr.Mediatheque.Keys}" SelectedItem="{Binding Mgr.EnsembleSelect}" >
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
@@ -252,8 +265,8 @@
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                 <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2" Margin="20,20" Height="220" Width="220" >
-                                <Canvas  >
-                                    <Button Height="100" Width="100" Canvas.Top="60" Canvas.Left="60" Panel.ZIndex="1" Foreground="White" ToolTip="Lire" Cursor="Hand">
+                                <Canvas MouseLeftButtonDown="OpenExp">
+                                    <Button Height="100" Width="100" Canvas.Top="60" Canvas.Left="60" Panel.ZIndex="1" Foreground="White" ToolTip="Lire" Cursor="Hand" Tag="{Binding}" Click="LireTout">
                                         <Button.Style >
                                             <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignToolForegroundButton}">
                                                 <Setter Property="Visibility" Value="Hidden" />

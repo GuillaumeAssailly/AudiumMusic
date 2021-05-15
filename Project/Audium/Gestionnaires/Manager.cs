@@ -10,12 +10,12 @@ using Donnees;
 
 namespace Gestionnaires
 {
-    public class Manager : INotifyPropertyChanged
+    public partial class Manager : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        void OnPropertyChanged(string propertyName) =>PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        protected void OnPropertyChanged(string propertyName) =>PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
 
         public ReadOnlyCollection<EnsembleAudio> ListeFavoris { get; }
@@ -28,7 +28,7 @@ namespace Gestionnaires
                 if (ensembleSelect != value)
                 {
                     ensembleSelect = value;
-                    Mediatheque.TryGetValue(EnsembleSelect, out listeSelect);
+                    Mediatheque.TryGetValue(ensembleSelect, out listeSelect);
                     ListeSelect = new ReadOnlyCollection<Piste>(listeSelect.ToList());
                     OnPropertyChanged(nameof(EnsembleSelect));
                     OnPropertyChanged(nameof(ListeSelect));
@@ -36,6 +36,12 @@ namespace Gestionnaires
             }
         }
         private EnsembleAudio ensembleSelect;
+
+       
+
+        
+      
+
 
         public ReadOnlyCollection<Piste> ListeSelect { get; set; }
         private LinkedList<Piste> listeSelect;
@@ -121,22 +127,19 @@ namespace Gestionnaires
 
         public void ConfigTest()
         {
-            EnsembleAudio RAM = new EnsembleAudio("RAM", "Daft Punk", "ram.jpg", EGenre.BANDEORIGINALE, 4);
+            EnsembleAudio RAM = new EnsembleAudio("Random Access Memories", "Daft Punk", "ram.jpg", EGenre.BANDEORIGINALE, 4);
 
             LinkedList<Piste> LP1 = new();
-            LP1.AddLast(new Morceau("RAM 1","Daft Punk","iafaf",50,DateTime.Now));
-            LP1.AddLast(new Piste("RAM 2"));
-            LP1.AddLast(new Piste("RAM 3"));
-            LP1.AddLast(new Piste("RAM 4"));
-            LP1.AddLast(new Piste("RAM 5"));
+            LP1.AddLast(new Morceau("Give Life Back to Music","Daft Punk","iafaf",50,DateTime.Now));
+            
             this.AjouterEnsemblePiste(RAM, LP1);
 
-            EnsembleAudio HYP = new EnsembleAudio("Hypnoflup", "Stipiflip", "hypnoflip.jpg", EGenre.HIPHOP, 4);
+            EnsembleAudio HYP = new EnsembleAudio("The Hypnoflip Invasion", "Stipiflip", "hypnoflip.jpg", EGenre.HIPHOP, 4);
             LinkedList<Piste> LP2 = new();
-            LP2.AddLast(new Piste("HYP 1"));
-            LP2.AddLast(new Piste("HYP 2"));
-            LP2.AddLast(new Piste("HYP 3"));
-            LP2.AddLast(new Piste("HYP 4"));
+            LP2.AddLast(new Piste("Intro"));
+            LP2.AddLast(new Piste("Stupeflip Vite!"));
+            LP2.AddLast(new Piste("La Menuiserie"));
+            
             
             this.AjouterEnsemblePiste(HYP, LP2);
 
