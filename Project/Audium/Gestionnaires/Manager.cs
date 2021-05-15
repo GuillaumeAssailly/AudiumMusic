@@ -28,12 +28,17 @@ namespace Gestionnaires
                 if (ensembleSelect != value)
                 {
                     ensembleSelect = value;
+                    Mediatheque.TryGetValue(EnsembleSelect, out listeSelect);
+                    ListeSelect = new ReadOnlyCollection<Piste>(listeSelect.ToList());
                     OnPropertyChanged(nameof(EnsembleSelect));
+                    OnPropertyChanged(nameof(ListeSelect));
                 }           
             }
         }
         private EnsembleAudio ensembleSelect;
 
+        public ReadOnlyCollection<Piste> ListeSelect { get; set; }
+        private LinkedList<Piste> listeSelect;
         
         public ReadOnlyCollection<string> ListeGenres { get; }
         private List<string> listeGenres;
@@ -64,15 +69,12 @@ namespace Gestionnaires
             ListeGenres = new ReadOnlyCollection<string>(listeGenres);
 
 
-            listeFavoris = new List<EnsembleAudio>
-            {
-                new EnsembleAudio("The Hypnoflip Invasion","Fin 2010 le groupe propose via son site internet d'acquérir en pré-commande un pack incluant The Hypnoflip Invasion en version collector, le picture-disc Terror Maxi et divers goodies1. Un peu plus de 1000 fans répondent à l'appel2 et l'album peut être mixé aux Studios Ferber par René Ameline3.Une réédition limitée, incluant deux morceaux supplémentaires, est sortie le 19 octobre 2011. ", "hypnoflip.jpg", EGenre.HIPHOP,5),
-                new EnsembleAudio("Random Access Memories Rare Version","Random Access Memories est le quatrième et dernier album studio du groupe français Daft Punk, sorti officiellement le 17 mai 2013n 1. Il est publié par Daft Life Limited, une filiale de Columbia Records. L'album comprend des collaborations avec plusieurs artistes tels que Nile Rodgers, Paul Williams, Giorgio Moroder, Pharrell Williams, Todd Edwards, DJ Falcon, Chilly Gonzales, Panda Bear et Julian Casablancas et se caractérise, en tant qu'hommage au son des années 1970, par le parti pris d'utiliser des musiciens jouant sur des instruments acoustiques ou électro-acoustiques (guitare, basse, batterie, piano, etc.) en limitant l'usage des machines électroniques","ram.jpg",EGenre.JAZZ,4)
-            };
-
+            listeFavoris = new List<EnsembleAudio>();
             ListeFavoris = new ReadOnlyCollection<EnsembleAudio>(listeFavoris);
-            EnsembleSelect = ListeFavoris[0];
 
+            ConfigTest();
+            EnsembleSelect = Mediatheque.First().Key;
+            
             
 
         }
@@ -119,26 +121,33 @@ namespace Gestionnaires
 
         public void ConfigTest()
         {
-            EnsembleAudio RAM = new EnsembleAudio("RAM", "Daft Punk", "ram.jpg", EGenre.JAZZ, 4);
+            EnsembleAudio RAM = new EnsembleAudio("RAM", "Daft Punk", "ram.jpg", EGenre.BANDEORIGINALE, 4);
 
-            LinkedList<Piste> LP = new();
-            LP.AddLast(new Piste("Piste 1"));
-            LP.AddLast(new Piste("Piste 2"));
-            LP.AddLast(new Piste("Piste 3"));
-            LP.AddLast(new Piste("Piste 4"));
-            LP.AddLast(new Piste("Piste 5"));
-            this.AjouterEnsemblePiste(RAM, LP);
+            LinkedList<Piste> LP1 = new();
+            LP1.AddLast(new Morceau("RAM 1","Daft Punk","iafaf",50,DateTime.Now));
+            LP1.AddLast(new Piste("RAM 2"));
+            LP1.AddLast(new Piste("RAM 3"));
+            LP1.AddLast(new Piste("RAM 4"));
+            LP1.AddLast(new Piste("RAM 5"));
+            this.AjouterEnsemblePiste(RAM, LP1);
 
-            EnsembleAudio HYP = new EnsembleAudio("Hypnoflup", "Stipiflip", "hypnoflip.jpg", EGenre.JAZZ, 4);
-            this.AjouterEnsemblePiste(HYP, LP);
+            EnsembleAudio HYP = new EnsembleAudio("Hypnoflup", "Stipiflip", "hypnoflip.jpg", EGenre.HIPHOP, 4);
+            LinkedList<Piste> LP2 = new();
+            LP2.AddLast(new Piste("HYP 1"));
+            LP2.AddLast(new Piste("HYP 2"));
+            LP2.AddLast(new Piste("HYP 3"));
+            LP2.AddLast(new Piste("HYP 4"));
+            
+            this.AjouterEnsemblePiste(HYP, LP2);
 
-            EnsembleAudio WAG = new EnsembleAudio("Wagner", "Stipiflip", "wagner.jpg", EGenre.JAZZ, 4);
-            this.AjouterEnsemblePiste(WAG, LP);
+            EnsembleAudio WAG = new EnsembleAudio("Wagner", "Stipiflip", "wagner.jpg", EGenre.CLASSIQUE, 4);
+            this.AjouterEnsemblePiste(WAG, LP1);
 
-            EnsembleAudio IAM = new EnsembleAudio("IAM", "Stipiflip", "iam.jpg", EGenre.JAZZ, 4);
-            this.AjouterEnsemblePiste(IAM, LP);
+            EnsembleAudio IAM = new EnsembleAudio("IAM", "Stipiflip", "iam.jpg", EGenre.HIPHOP, 4);
+            this.AjouterEnsemblePiste(IAM, LP1);
 
-
+            ModifierListeFavoris(HYP);
+            ModifierListeFavoris(RAM);
 
 
 
