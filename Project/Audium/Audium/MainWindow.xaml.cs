@@ -54,7 +54,10 @@ namespace Audium
             timer.Interval = TimeSpan.FromMilliseconds(1000);
             timer.Tick += new EventHandler(tick);
             timer.Start();
-           
+            Lecteur.MediaEnded += Media_Next;
+            Lecteur.MediaOpened += Media_Opened;
+            Lecteur.MediaFailed += Media_Stopped;
+
         }
 
 
@@ -106,14 +109,31 @@ namespace Audium
         private void LireTout(object sender, RoutedEventArgs e)
         {
             Mgr.MediaIndex = 1;
-            Lecteur.MediaEnded += Media_Next;
-            Lecteur.MediaOpened += Media_Opened;
+            
+           
             Mgr.EnsembleLu = ((Button)sender).Tag as EnsembleAudio;
             
            
             Lecteur.Source = (new Uri($"C:\\Users\\guill\\Documents\\IUT\\IHM\\Audium\\Project\\Audium\\Audium\\music\\{Mgr.EnsembleLu.Titre}\\Track 1.mp3"));
 
             TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex-1).Titre;
+
+            Lecteur.Play();
+            PlayPauseIcon.Kind = PackIconKind.Pause;
+            isPlaying = true;
+           
+        }
+        public void LireDepuis(int index)
+        {
+            Mgr.MediaIndex = index;
+
+
+            Mgr.EnsembleLu = Mgr.EnsembleSelect;
+
+
+            Lecteur.Source = (new Uri($"C:\\Users\\guill\\Documents\\IUT\\IHM\\Audium\\Project\\Audium\\Audium\\music\\{Mgr.EnsembleLu.Titre}\\Track {Mgr.MediaIndex}.mp3"));
+
+            TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex - 1).Titre;
 
             Lecteur.Play();
             PlayPauseIcon.Kind = PackIconKind.Pause;
@@ -127,6 +147,12 @@ namespace Audium
             ProgressBar.Minimum = 0;
             ProgressBar.Maximum = position.TotalSeconds;
         }
+
+        private void Media_Stopped(object sender, EventArgs e)
+        {
+            Lecteur.Stop();
+        }
+
 
         private void PlayPause(object sender, EventArgs e)
         {
@@ -150,9 +176,18 @@ namespace Audium
             {
                 Mgr.MediaIndex++;
             }
-
-            Lecteur.Source = (new Uri($"C:\\Users\\guill\\Documents\\IUT\\IHM\\Audium\\Project\\Audium\\Audium\\music\\{Mgr.EnsembleLu.Titre}\\Track {Mgr.MediaIndex}.mp3")); Lecteur.Play();
+            else if(Mgr.MediaIndex==Mgr.Playlist.Count)
+            {
+                Lecteur.Stop();
+                isPlaying = false;
+                PlayPauseIcon.Kind = PackIconKind.Play;
+                return;
+            }
+            Lecteur.Stop();
+            Lecteur.Source = (new Uri($"C:\\Users\\guill\\Documents\\IUT\\IHM\\Audium\\Project\\Audium\\Audium\\music\\{Mgr.EnsembleLu.Titre}\\Track {Mgr.MediaIndex}.mp3"));
+            Lecteur.Play();
             
+           
             isPlaying = true;
             PlayPauseIcon.Kind = PackIconKind.Pause;
             TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex - 1).Titre;
@@ -165,6 +200,8 @@ namespace Audium
             {
                 Mgr.MediaIndex--;
             }
+            
+            Lecteur.Stop();
             Lecteur.Source = (new Uri($"C:\\Users\\guill\\Documents\\IUT\\IHM\\Audium\\Project\\Audium\\Audium\\music\\{Mgr.EnsembleLu.Titre}\\Track {Mgr.MediaIndex}.mp3")); Lecteur.Play();
             isPlaying = true;
             PlayPauseIcon.Kind = PackIconKind.Pause;

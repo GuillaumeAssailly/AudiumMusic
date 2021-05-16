@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Gestionnaires;
 using Donnees;
-
+using System.Diagnostics;
 
 namespace Audium
 {
@@ -26,10 +26,19 @@ namespace Audium
         public Manager Mgr => (App.Current as App).LeManager;
         public ManagerProfil MgrProfil => (App.Current as App).LeManagerProfil;
 
+      
+
         public UCExpDetail()
         {
             InitializeComponent();
             DataContext = this;
+        }
+
+        private void Lire_Exp(object sender, RoutedEventArgs e)
+        {
+            int index = Mgr.ListeSelect.IndexOf(((Button)sender).Tag as Piste);
+
+            ((MainWindow)Application.Current.MainWindow).LireDepuis(index + 1);
         }
     }
 }

@@ -143,8 +143,21 @@
 
 
                         <ListBox ItemsSource="{Binding Mgr.ListeSelect}">
-                            
-                       
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <WrapPanel Orientation="Horizontal">
+                                        <Button
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Tag ="{Binding}" Click="Lire_Exp"
+                                                    ToolTip="MaterialDesignIconButton">
+                                            <materialDesign:PackIcon Kind="Play" />
+                                        </Button>
+                                        <TextBlock Text="{Binding Titre}"  Margin="0,15,0,0"/>
+                                    </WrapPanel>
+                                </DataTemplate>
+
+                            </ListBox.ItemTemplate>
+
                         </ListBox>
 
 
