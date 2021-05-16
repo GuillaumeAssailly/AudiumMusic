@@ -131,7 +131,8 @@ namespace Gestionnaires
 
             LinkedList<Piste> LP1 = new();
             LP1.AddLast(new Morceau("Give Life Back to Music","Daft Punk","iafaf",50,DateTime.Now));
-            
+            LP1.AddLast(new Morceau("The Game of Love", "Daft Punk", "iafaf", 50, DateTime.Now));
+            LP1.AddLast(new Morceau("Giorgio by Moroder", "Daft Punk", "iafaf", 50, DateTime.Now));
             this.AjouterEnsemblePiste(RAM, LP1);
 
             EnsembleAudio HYP = new EnsembleAudio("The Hypnoflip Invasion", "Stipiflip", "hypnoflip.jpg", EGenre.HIPHOP, 4);

@@ -9,7 +9,7 @@ namespace Donnees
     public class Morceau : Piste
     {
         public Morceau(string titre, string artiste, string chemin, int duree, DateTime dateDeSortie)
-            :base($"Track : {titre}")
+            :base(titre)
         {
             DateDeSortie = dateDeSortie;
             Artiste = artiste;
@@ -24,7 +24,7 @@ namespace Donnees
 
         public void ModifierMorceau(string titre, string chemin, string artiste, DateTime dateDeSortie)
         {
-            base.Titre = $"Track : {titre}";
+            base.Titre = titre;
             DateDeSortie = dateDeSortie;
             Artiste = artiste;
             Chemin = chemin;
