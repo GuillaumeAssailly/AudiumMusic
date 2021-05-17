@@ -20,6 +20,7 @@ using Gestionnaires;
 using System.Collections.ObjectModel;
 using System.Windows.Threading;
 using System.ComponentModel;
+using System.IO;
 
 namespace Audium
 {
@@ -112,9 +113,9 @@ namespace Audium
             
            
             Mgr.EnsembleLu = ((Button)sender).Tag as EnsembleAudio;
-            
-           
-            Lecteur.Source = (new Uri($"C:\\Users\\guill\\Documents\\IUT\\IHM\\Audium\\Project\\Audium\\Audium\\music\\{Mgr.EnsembleLu.Titre}\\Track 1.mp3"));
+
+
+            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), $"..\\..\\..\\music\\{Mgr.EnsembleLu.Titre}\\Track 1.mp3"));
 
             TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex-1).Titre;
 
@@ -131,7 +132,7 @@ namespace Audium
             Mgr.EnsembleLu = Mgr.EnsembleSelect;
 
 
-            Lecteur.Source = (new Uri($"C:\\Users\\guill\\Documents\\IUT\\IHM\\Audium\\Project\\Audium\\Audium\\music\\{Mgr.EnsembleLu.Titre}\\Track {Mgr.MediaIndex}.mp3"));
+            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), $"..\\..\\..\\music\\{Mgr.EnsembleLu.Titre}\\Track {Mgr.MediaIndex}.mp3"));
 
             TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex - 1).Titre;
 
@@ -184,7 +185,7 @@ namespace Audium
                 return;
             }
             Lecteur.Stop();
-            Lecteur.Source = (new Uri($"C:\\Users\\guill\\Documents\\IUT\\IHM\\Audium\\Project\\Audium\\Audium\\music\\{Mgr.EnsembleLu.Titre}\\Track {Mgr.MediaIndex}.mp3"));
+            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), $"..\\..\\..\\music\\{Mgr.EnsembleLu.Titre}\\Track {Mgr.MediaIndex}.mp3"));
             Lecteur.Play();
             
            
@@ -202,7 +203,8 @@ namespace Audium
             }
             
             Lecteur.Stop();
-            Lecteur.Source = (new Uri($"C:\\Users\\guill\\Documents\\IUT\\IHM\\Audium\\Project\\Audium\\Audium\\music\\{Mgr.EnsembleLu.Titre}\\Track {Mgr.MediaIndex}.mp3")); Lecteur.Play();
+            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), $"..\\..\\..\\music\\{Mgr.EnsembleLu.Titre}\\Track {Mgr.MediaIndex}.mp3")); 
+            Lecteur.Play();
             isPlaying = true;
             PlayPauseIcon.Kind = PackIconKind.Pause;
             TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex - 1).Titre;

@@ -15,6 +15,7 @@ namespace Audium.converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             Dictionary<EnsembleAudio, LinkedList<Piste>> dico = value as Dictionary<EnsembleAudio, LinkedList<Piste>>;
+            // Récuperer GenreSelect, l'utiliser dans la recherche et ajouter le dico obtenu a un dico général, faire pareil avec les mots clés
             return dico;
         }
 

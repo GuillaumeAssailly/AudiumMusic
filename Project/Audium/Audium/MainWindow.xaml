@@ -7,7 +7,8 @@
         xmlns:local="clr-namespace:Audium"
         mc:Ignorable="d"
         xmlns:conv="clr-namespace:Audium.converters" 
-        Title="Audium" Height="900" Width="1600" MinWidth="1220" MinHeight="550" WindowState="Maximized">
+        Title="Audium" Height="900" Width="1600" MinWidth="1220" MinHeight="550" WindowState="Maximized"
+        Icon="logo.ico">
     <Window.Resources>
         <SolidColorBrush Color="Black" x:Key="DisqueBgColor"/>
         <Size Height="300" Width="300" x:Key="Taillepardefaut"/>

@@ -37,10 +37,28 @@ namespace Gestionnaires
         }
         private EnsembleAudio ensembleSelect;
 
-       
 
-        
-      
+        /*
+         * A FINIR
+         * 
+         * public EGenre GenreSelect
+        {
+            get => genreSelect;
+            set
+            {
+                if (genreSelect != value)
+                {
+                    genreSelect = value;
+                    Mediatheque.TryGetValue(ensembleSelect, out listeSelect);
+                    ListeSelect = new ReadOnlyCollection<Piste>(listeSelect.ToList());
+                    OnPropertyChanged(nameof(EnsembleSelect));
+                    OnPropertyChanged(nameof(ListeSelect));
+                }
+            }
+        }
+        private EGenre genreSelect;
+        */
+
 
 
         public ReadOnlyCollection<Piste> ListeSelect { get; set; }
@@ -64,6 +82,7 @@ namespace Gestionnaires
 
             listeGenres = new List<string>
             {
+                Genre.GetString(EGenre.AUCUN),
                 Genre.GetString(EGenre.BANDEORIGINALE),
                 Genre.GetString(EGenre.BLUES),
                 Genre.GetString(EGenre.CLASSIQUE),
