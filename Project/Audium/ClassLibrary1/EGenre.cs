@@ -8,6 +8,7 @@ namespace Donnees
 {
     public enum EGenre  
     {
+        AUCUN,
         JAZZ,
         ROCK,
         CLASSIQUE,
@@ -19,7 +20,7 @@ namespace Donnees
 
     public static class Genre
     {
-        public static String GetString(this EGenre genre)
+        public static string GetString(EGenre genre)
         {
             switch (genre)
             {
@@ -36,8 +37,19 @@ namespace Donnees
                 case EGenre.BANDEORIGINALE:
                     return "Bande Originale";
                 default:
-                    return "Ce genre n'existe pas";
+                    return "Aucun";
             }
+        }
+
+        public static EGenre GetGenre(string genre)
+        {
+            if (genre.Equals(GetString(EGenre.JAZZ))) return EGenre.JAZZ;
+            if (genre.Equals(GetString(EGenre.ROCK))) return EGenre.ROCK;
+            if (genre.Equals(GetString(EGenre.CLASSIQUE))) return EGenre.CLASSIQUE;
+            if (genre.Equals(GetString(EGenre.HIPHOP))) return EGenre.HIPHOP;
+            if (genre.Equals(GetString(EGenre.BLUES))) return EGenre.BLUES;
+            if (genre.Equals(GetString(EGenre.BANDEORIGINALE))) return EGenre.BANDEORIGINALE;
+            return EGenre.AUCUN;
         }
     }
 }
