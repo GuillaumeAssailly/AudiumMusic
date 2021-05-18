@@ -17,7 +17,7 @@ namespace Audium.converters
         public Manager Mgr => (App.Current as App).LeManager;
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string Motcle= ((MainWindow)System.Windows.Application.Current.MainWindow).Motcle;
+            string Motcle= ((MainWindow)Application.Current.MainWindow).Motcle;
             //ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>> discotheque = value as ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>>;
 
             Dictionary<EnsembleAudio, LinkedList<Piste>> discothequeResultat;
