@@ -37,13 +37,6 @@ namespace Audium
 
 
 
-
-
-
-
-
-
-
         public void Amber()
         {
             Color primaryColor = SwatchHelper.Lookup[MaterialDesignColor.Amber];

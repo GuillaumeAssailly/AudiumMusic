@@ -15,7 +15,7 @@ namespace Gestionnaires
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged(string propertyName) =>PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        public void OnPropertyChanged(string propertyName) =>PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
 
         public ReadOnlyCollection<EnsembleAudio> ListeFavoris { get; }
@@ -25,7 +25,7 @@ namespace Gestionnaires
             get=>ensembleSelect;
             set
             {
-                if (ensembleSelect != value)
+                if (ensembleSelect != value && value !=null)
                 {
                     ensembleSelect = value;
                     Mediatheque.TryGetValue(ensembleSelect, out listeSelect);
@@ -38,10 +38,8 @@ namespace Gestionnaires
         private EnsembleAudio ensembleSelect;
 
 
-        /*
-         * A FINIR
-         * 
-         * public EGenre GenreSelect
+
+        public string GenreSelect
         {
             get => genreSelect;
             set
@@ -49,15 +47,12 @@ namespace Gestionnaires
                 if (genreSelect != value)
                 {
                     genreSelect = value;
-                    Mediatheque.TryGetValue(ensembleSelect, out listeSelect);
-                    ListeSelect = new ReadOnlyCollection<Piste>(listeSelect.ToList());
-                    OnPropertyChanged(nameof(EnsembleSelect));
-                    OnPropertyChanged(nameof(ListeSelect));
+                    OnPropertyChanged(nameof(GenreSelect));
+                    OnPropertyChanged(nameof(Mediatheque));
                 }
             }
         }
-        private EGenre genreSelect;
-        */
+        private string genreSelect;
 
 
 
@@ -99,7 +94,7 @@ namespace Gestionnaires
 
             ConfigTest();
             EnsembleSelect = Mediatheque.First().Key;
-            
+            GenreSelect = "Aucun";
             
 
         }
@@ -164,7 +159,11 @@ namespace Gestionnaires
             this.AjouterEnsemblePiste(HYP, LP2);
 
             EnsembleAudio WAG = new EnsembleAudio("Wagner", "Stipiflip", "wagner.jpg", EGenre.CLASSIQUE, 4);
-            this.AjouterEnsemblePiste(WAG, LP1);
+            LinkedList<Piste> LP3 = new();
+            LP3.AddLast(new Morceau("Give Life Back to Music", "Daft Punk", "iafaf", 50, DateTime.Now));
+            LP3.AddLast(new Morceau("The Game of Love", "Daft Punk", "iafaf", 50, DateTime.Now));
+            LP3.AddLast(new Morceau("Giorgio by Moroder", "Daft Punk", "iafaf", 50, DateTime.Now));
+            this.AjouterEnsemblePiste(WAG, LP3);
 
             EnsembleAudio IAM = new EnsembleAudio("IAM", "Stipiflip", "iam.jpg", EGenre.HIPHOP, 4);
             this.AjouterEnsemblePiste(IAM, LP1);
