@@ -27,12 +27,18 @@ namespace Audium
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
-       
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+
         public Manager Mgr => (App.Current as App).LeManager;
         public ManagerProfil MgrProfil => (App.Current as App).LeManagerProfil;
 
+
+       
         
 
         //public  MediaPlayer Lecteur;
@@ -41,11 +47,19 @@ namespace Audium
         DispatcherTimer timer = new DispatcherTimer();
 
        
-        
-        
+        //public static string Motcle;
 
-     
-
+        public string Motcle
+        {
+            get => motcle;
+            set
+            {
+            motcle = value;
+                OnPropertyChanged(nameof(Motcle));
+                Mgr.OnPropertyChanged(nameof(Mgr.Mediatheque));
+            }
+        }
+        private string motcle;
 
         public MainWindow()
         {
@@ -58,9 +72,14 @@ namespace Audium
             Lecteur.MediaEnded += Media_Next;
             Lecteur.MediaOpened += Media_Opened;
             Lecteur.MediaFailed += Media_Stopped;
+            
+            Recherche.KeyUp += Recherche_KeyUp;
+    }
 
+        private void Recherche_KeyUp(object sender, KeyEventArgs e)
+        {
+            Motcle = Recherche.Text;
         }
-
 
         void tick(object sender, EventArgs e) 
         {
@@ -103,7 +122,7 @@ namespace Audium
         private void TagButton(object sender, MouseButtonEventArgs e)
         {
             MainExp.IsExpanded = false;
-            URecherche.RechercherParGenre(EGenre.JAZZ, Mgr);
+            //URecherche.RechercherParGenre(EGenre.JAZZ, Mgr.Mediatheque);
         }
 
 
@@ -212,20 +231,19 @@ namespace Audium
        
         private void ProgressBarChanged(object sender, MouseButtonEventArgs e)
         {
+            Lecteur.Pause();
             
             int pos = Convert.ToInt32(ProgressBar.Value);
             Lecteur.Position = new TimeSpan(0, 0, 0, pos, 0);
-           
+            Lecteur.Play();
         }
 
         private void ProgressBarValueSlided(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (ProgressBar.IsMouseCaptureWithin)
             {
-               
                 int pos = Convert.ToInt32(ProgressBar.Value);
                 Lecteur.Position = new TimeSpan(0, 0, 0, pos, 0);
-                
             }
         }
 
