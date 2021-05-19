@@ -16,7 +16,7 @@ namespace Donnees
         }
 
         public int CmptEcoute { get; protected set; }
-        public string Titre { get; protected set; }
+        public string Titre { get; set; }
 
         public override String ToString()
         {

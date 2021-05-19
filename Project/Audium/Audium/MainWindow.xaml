@@ -234,7 +234,7 @@
                     Value="25" />
                 <StackPanel Grid.Column="7" Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="VolumeSource" Foreground="{DynamicResource PrimaryHueLightBrush}" VerticalAlignment="Center" Height="25" Width="25"/>
-                    <Slider VerticalAlignment="Center" Name="VolumeSlider" Width="50" Value="{Binding ElementName=Lecteur, Path=Volume,Mode=TwoWay}" Maximum="1" Minimum="0" IsMoveToPointEnabled="True"/>
+                    <Slider VerticalAlignment="Center" Name="VolumeSlider" Width="50" Value="{Binding ElementName=Lecteur, Path=Volume,Mode=TwoWay}" Maximum="0.4" Minimum="0"  IsMoveToPointEnabled="True"/>
                 </StackPanel>
                 <MediaElement Name="Lecteur" LoadedBehavior="Manual"/>
             </Grid>
@@ -270,7 +270,8 @@
                                 <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2" Margin="20,20" Height="220" Width="220" >
                                 <Canvas MouseLeftButtonDown="OpenExp">
                                     <Button Height="100" Width="100" Canvas.Top="60" Canvas.Left="60" Panel.ZIndex="1" Foreground="White" ToolTip="Lire" Cursor="Hand" Tag="{Binding}" Click="LireTout">
-                                        <Button.Style >
+                                   
+                                                <Button.Style >
                                             <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignToolForegroundButton}">
                                                 <Setter Property="Visibility" Value="Hidden" />
                                                 <Style.Triggers>
@@ -280,9 +281,11 @@
                                                 </Style.Triggers>
                                             </Style>
                                         </Button.Style>
+                                        
                                         <materialDesign:PackIcon Kind="Play" Height="100" Width="100"/>
                                     </Button>
-                                    <Image Source="{Binding CheminImage, Converter={StaticResource String2Image}}"  Height="220" />
+                                        <ToggleButton Content="{materialDesign:PackIcon Kind=Heart}" Height="35" Width="35" Canvas.Top="10" Canvas.Left="165" Panel.ZIndex="2" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton }"  ToolTip="Ajouter au favoris" Cursor="Hand" Tag="{Binding}"  IsChecked="{Binding Favori, Mode=OneWay}" Click="Clique_Fav" Name="FavButton"/>
+                                        <Image Source="{Binding CheminImage, Converter={StaticResource String2Image}}"  Height="220" />
                                 </Canvas>
                                 </materialDesign:Card>
                                 </StackPanel>

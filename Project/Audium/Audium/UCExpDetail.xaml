@@ -131,18 +131,34 @@
                 <GroupBox
                                     FontSize="15"
                                     IsEnabled="{Binding IsChecked, ElementName=EnableListBox}"
-                                    Header="Sélection de titre"
+                                    
                                      Margin="16"
                                      Grid.Column="1"
                                     VerticalAlignment="Stretch"
                                     Style="{DynamicResource MaterialDesignCardGroupBox}"
                                  >
+                    <GroupBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Sélection des titres" Foreground="Black" />
+                            <Button
+                                Click="Supprimer_Piste"
+                                Margin="320,0,0,0"
+                                Width="25"
+                                Height="25"
+                                Foreground="Black"
+                                Style="{StaticResource MaterialDesignIconForegroundButton}"
+                                ToolTip="MaterialDesignIconButton"
+                                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                                    <materialDesign:PackIcon Kind="Bin" />      
+                            </Button>
+                        </StackPanel>
+                    </GroupBox.Header>
                     <ScrollViewer VerticalScrollBarVisibility="Disabled">
 
 
 
 
-                        <ListBox ItemsSource="{Binding ListeSelect}">
+                        <ListBox ItemsSource="{Binding ListeSelect}" Name="ListePiste">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <WrapPanel Orientation="Horizontal">

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,23 +9,49 @@ using Donnees;
 
 namespace Gestionnaires
 {
-    public class ManagerProfil
+    public class ManagerProfil : INotifyPropertyChanged
     {
-        
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+
         public ManagerProfil()
         {
             Nom = "Nom d'utilisateur";
-            CheminImage = null;
+            CheminImage = @"\img\pp.png\";
             CouleurTheme = "Blue";
             CheminBaseDonnees = null;
-           
-
         }
 
       
 
-        public string Nom { get; private set; }
-        public string CheminImage { get; private set; }
+        public string Nom
+        {
+            get => nom;
+            set
+            {
+                if (nom != value)
+                {
+                    nom = value;
+                    OnPropertyChanged(nameof(Nom)); 
+                }
+            }
+        }
+        private string nom;
+
+        public string CheminImage {
+            get => cheminImage;
+            set
+            {
+                if (cheminImage != value)
+                {
+                    cheminImage = value;
+                    OnPropertyChanged(nameof(CheminImage));
+                }
+            }
+        }
+        private string cheminImage;
+
         public string CouleurTheme { get; private set; }
         public string CheminBaseDonnees { get; private set; }
         

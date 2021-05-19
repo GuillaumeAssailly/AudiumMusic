@@ -20,7 +20,7 @@
         <TextBlock Text="Profil" Style="{DynamicResource MaterialDesignHeadline5TextBlock}" Foreground="White" Margin="30,10"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             
-            <Image Source="/img/pp.png" MaxHeight="350" MaxWidth="350" MinWidth="350" MinHeight="350" Margin="10,-30" Stretch="Fill" x:Name="theImage" >
+            <Image Source="{Binding CheminImage}" MaxHeight="350" MaxWidth="350" MinWidth="350" MinHeight="350" Margin="10,-30" Stretch="Fill" x:Name="theImage" >
                 <Image.OpacityMask>
                     <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
                         <GradientStop Color="#ffffffff" Offset="0.7" />
@@ -33,28 +33,27 @@
                 Click="Open_Click"
                 Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                 ToolTip="MaterialDesignFloatingActionMiniLightButton" Cursor="Hand">
-                <materialDesign:PackIcon Kind="Import" />
+                <materialDesign:PackIcon Kind="Import" Cursor="IBeam" />
             </Button>
             
         </StackPanel>
         <TextBox
-            x:Name="NameTextBox"
+            Text="{Binding Nom}"
+            Name="PseudoInput"
             materialDesign:HintAssist.Hint="Pseudo"
             Margin="100,0"
             FontSize="15"
             Foreground="White"
             BorderBrush="{DynamicResource PrimaryHueMidBrush}"
-            Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+            Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Cursor="IBeam"
                >
-            <TextBox.Text>
-                <Binding
-                    Path="Name"
-                    UpdateSourceTrigger="PropertyChanged">
-                </Binding>
-            </TextBox.Text>
+           
         </TextBox>
-        <Button HorizontalAlignment="Right" Margin="30,350" Click="Save">Sauvegarder</Button>
-        
+        <StackPanel Orientation="Horizontal" Margin="550,350,0,0">
+            <Button HorizontalAlignment="Right" Margin="10" Click="Save" Cursor="Hand">Sauvegarder</Button>
+            <Button HorizontalAlignment="Right"    Click="Cancel" Cursor="Hand">Annuler</Button>
+        </StackPanel>
+
     </StackPanel>
 
    

@@ -21,6 +21,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Threading;
 using System.ComponentModel;
 using System.IO;
+using System.Windows.Controls.Primitives;
 
 namespace Audium
 {
@@ -36,7 +37,7 @@ namespace Audium
 
         public Manager Mgr => (App.Current as App).LeManager;
         public ManagerEnsembleSelect MgrEnsemble => (App.Current as App).LeManager.ManagerEnsemble;
-        public ManagerProfil MgrProfil => (App.Current as App).LeManagerProfil;
+      
 
 
        
@@ -248,6 +249,9 @@ namespace Audium
             }
         }
 
-        
+        private void Clique_Fav(object sender, RoutedEventArgs e)
+        {
+            Mgr.ModifierListeFavoris(((ToggleButton)sender).Tag as EnsembleAudio);
+        }
     }
 }

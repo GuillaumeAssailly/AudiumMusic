@@ -24,9 +24,10 @@ namespace Audium
     public partial class UCExpDetail : UserControl
     {
         public Manager Mgr => (App.Current as App).LeManager;
-        public ManagerProfil MgrProfil => (App.Current as App).LeManagerProfil;
 
-      
+        public ManagerEnsembleSelect MgrEnsemble => (App.Current as App).LeManager.ManagerEnsemble;
+
+        
 
         public UCExpDetail()
         {
@@ -39,6 +40,19 @@ namespace Audium
             int index = Mgr.ManagerEnsemble.ListeSelect.IndexOf(((Button)sender).Tag as Piste);
 
             ((MainWindow)Application.Current.MainWindow).LireDepuis(index + 1);
+        }
+
+        private void Supprimer_Piste(object sender, RoutedEventArgs e)
+        {
+            
+            try
+            {
+                MgrEnsemble.SupprimerPiste((Piste)ListePiste.SelectedItem);
+            }
+            catch (ArgumentException erreur)
+            {
+                Debug.WriteLine(erreur.Message);
+            }
         }
     }
 }

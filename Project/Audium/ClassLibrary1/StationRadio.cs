@@ -8,22 +8,22 @@ namespace Donnees
 {
     public class StationRadio : Piste
     {
-        public StationRadio(string titre, string URL, bool emet)
-            :base($"Radio : {titre}")
+        public StationRadio(string titre, string URL)
+            :base(titre)
         {
             AdresseURL = URL;
-            Emet = emet;
+            
         }
 
         public string AdresseURL { get; private set;  }
 
         public bool Emet { get; private set; }
 
-        public void ModifierRadio(string titre, string URL, bool emet)
+        public void ModifierRadio(string titre, string URL)
         {
-            base.Titre = $"Radio: {titre}";
+            base.Titre = titre;
             AdresseURL = URL;
-            Emet = emet;
+           
         }
 
         public override String ToString()

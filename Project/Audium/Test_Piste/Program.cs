@@ -10,7 +10,7 @@ namespace Test_Piste
             Console.WriteLine("Test de la classe Piste !");
             Piste p1 = new Piste("PisteVide");
             Console.WriteLine(p1);
-            Piste NRJ = new StationRadio("NRJ12", "http://wtf", true);
+            Piste NRJ = new StationRadio("NRJ12", "http://wtf");
             Console.WriteLine(NRJ);
         }
     }
