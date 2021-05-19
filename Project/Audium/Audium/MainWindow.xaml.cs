@@ -35,6 +35,7 @@ namespace Audium
 
 
         public Manager Mgr => (App.Current as App).LeManager;
+        public ManagerEnsembleSelect MgrEnsemble => (App.Current as App).LeManager.ManagerEnsemble;
         public ManagerProfil MgrProfil => (App.Current as App).LeManagerProfil;
 
 
@@ -148,7 +149,7 @@ namespace Audium
             Mgr.MediaIndex = index;
 
 
-            Mgr.EnsembleLu = Mgr.EnsembleSelect;
+            Mgr.EnsembleLu = MgrEnsemble.EnsembleSelect;
 
 
             Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), $"..\\..\\..\\music\\{Mgr.EnsembleLu.Titre}\\Track {Mgr.MediaIndex}.mp3"));

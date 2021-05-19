@@ -21,7 +21,7 @@ namespace Audium
     public partial class App : Application
     {
 
-        public Manager LeManager { get; private set; } = new Manager();
+        public Manager LeManager { get; private set; }
 
        
 
@@ -29,7 +29,7 @@ namespace Audium
 
         public App()
         {
-          
+            LeManager = new();
 
         }
 

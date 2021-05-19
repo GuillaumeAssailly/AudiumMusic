@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,10 @@ namespace Gestionnaires
     public partial class Manager : INotifyPropertyChanged
     {
 
+        public ManagerEnsembleSelect ManagerEnsemble;
+
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged(string propertyName) =>PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -21,21 +26,7 @@ namespace Gestionnaires
         public ReadOnlyCollection<EnsembleAudio> ListeFavoris { get; }
         private List<EnsembleAudio> listeFavoris;
 
-        public EnsembleAudio EnsembleSelect { 
-            get=>ensembleSelect;
-            set
-            {
-                if (ensembleSelect != value && value !=null)
-                {
-                    ensembleSelect = value;
-                    Mediatheque.TryGetValue(ensembleSelect, out listeSelect);
-                    ListeSelect = new ReadOnlyCollection<Piste>(listeSelect.ToList());
-                    OnPropertyChanged(nameof(EnsembleSelect));
-                    OnPropertyChanged(nameof(ListeSelect));
-                }           
-            }
-        }
-        private EnsembleAudio ensembleSelect;
+        
 
 
 
@@ -56,8 +47,7 @@ namespace Gestionnaires
 
 
 
-        public ReadOnlyCollection<Piste> ListeSelect { get; set; }
-        private LinkedList<Piste> listeSelect;
+       
         
         public ReadOnlyCollection<string> ListeGenres { get; }
         private List<string> listeGenres;
@@ -71,10 +61,11 @@ namespace Gestionnaires
 
         public Manager()
         {
+           
             CompteurAlbum = 0;
             mediatheque = new Dictionary<EnsembleAudio, LinkedList<Piste>>();
             Mediatheque = new ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>>(mediatheque);
-
+            ManagerEnsemble = new(mediatheque);
             listeGenres = new List<string>
             {
                 Genre.GetString(EGenre.AUCUN),
@@ -93,9 +84,21 @@ namespace Gestionnaires
             ListeFavoris = new ReadOnlyCollection<EnsembleAudio>(listeFavoris);
 
             ConfigTest();
-            EnsembleSelect = Mediatheque.First().Key;
-            GenreSelect = "Aucun";
             
+
+            GenreSelect = "Aucun";
+            ManagerEnsemble.EnsembleSelect = mediatheque.FirstOrDefault().Key;
+            ManagerEnsemble.AjouterMorceau("Allo", "Olla", "/quelquepart/...", DateTime.Now);
+
+            Debug.Write(ManagerEnsemble.mediatheque.Keys.Count);
+
+            foreach (LinkedList<Piste> liste in mediatheque.Values)
+            {
+                foreach (Piste p in liste)
+                {
+                    Debug.WriteLine(p.Titre);
+                }
+            }
 
         }
 
@@ -144,9 +147,9 @@ namespace Gestionnaires
             EnsembleAudio RAM = new EnsembleAudio("Random Access Memories", "Daft Punk", "ram.jpg", EGenre.BANDEORIGINALE, 4);
 
             LinkedList<Piste> LP1 = new();
-            LP1.AddLast(new Morceau("Give Life Back to Music","Daft Punk","iafaf",50,DateTime.Now));
-            LP1.AddLast(new Morceau("The Game of Love", "Daft Punk", "iafaf", 50, DateTime.Now));
-            LP1.AddLast(new Morceau("Giorgio by Moroder", "Daft Punk", "iafaf", 50, DateTime.Now));
+            LP1.AddLast(new Morceau("Give Life Back to Music","Daft Punk","iafaf",DateTime.Now));
+            LP1.AddLast(new Morceau("The Game of Love", "Daft Punk", "iafaf", DateTime.Now));
+            LP1.AddLast(new Morceau("Giorgio by Moroder", "Daft Punk", "iafaf", DateTime.Now));
             this.AjouterEnsemblePiste(RAM, LP1);
 
             EnsembleAudio HYP = new EnsembleAudio("The Hypnoflip Invasion", "Stipiflip", "hypnoflip.jpg", EGenre.HIPHOP, 4);
@@ -160,9 +163,9 @@ namespace Gestionnaires
 
             EnsembleAudio WAG = new EnsembleAudio("Wagner", "Stipiflip", "wagner.jpg", EGenre.CLASSIQUE, 4);
             LinkedList<Piste> LP3 = new();
-            LP3.AddLast(new Morceau("Give Life Back to Music", "Daft Punk", "iafaf", 50, DateTime.Now));
-            LP3.AddLast(new Morceau("The Game of Love", "Daft Punk", "iafaf", 50, DateTime.Now));
-            LP3.AddLast(new Morceau("Giorgio by Moroder", "Daft Punk", "iafaf", 50, DateTime.Now));
+            LP3.AddLast(new Morceau("Give Life Back to Music", "Daft Punk", "iafaf", DateTime.Now));
+            LP3.AddLast(new Morceau("The Game of Love", "Daft Punk", "iafaf", DateTime.Now));
+            LP3.AddLast(new Morceau("Giorgio by Moroder", "Daft Punk", "iafaf", DateTime.Now));
             this.AjouterEnsemblePiste(WAG, LP3);
 
             EnsembleAudio IAM = new EnsembleAudio("IAM", "Stipiflip", "iam.jpg", EGenre.HIPHOP, 4);
