@@ -108,7 +108,7 @@
                         materialDesign:ColorZoneAssist.Mode="PrimaryMid">
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <ListBox ItemsSource="{Binding Mgr.ListeFavoris}" Width="500" SelectedItem="{Binding Mgr.EnsembleSelect}" >
+                                <ListBox ItemsSource="{Binding Mgr.ListeFavoris}" Width="500" SelectedItem="{Binding MgrEnsemble.EnsembleSelect}" >
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <WrapPanel Orientation="Horizontal">
@@ -257,7 +257,7 @@
             
             <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}">
 
-                <ListView ItemsSource="{Binding Mgr.Mediatheque.Keys,Converter={StaticResource DicoConverter}}" SelectedItem="{Binding Mgr.EnsembleSelect}" >
+                <ListView ItemsSource="{Binding Mgr.Mediatheque.Keys,Converter={StaticResource DicoConverter}}" SelectedItem="{Binding MgrEnsemble.EnsembleSelect}" >
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>

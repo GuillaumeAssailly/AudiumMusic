@@ -31,12 +31,12 @@ namespace Audium
         public UCExpDetail()
         {
             InitializeComponent();
-            DataContext = this;
+            DataContext = Mgr.ManagerEnsemble;
         }
 
         private void Lire_Exp(object sender, RoutedEventArgs e)
         {
-            int index = Mgr.ListeSelect.IndexOf(((Button)sender).Tag as Piste);
+            int index = Mgr.ManagerEnsemble.ListeSelect.IndexOf(((Button)sender).Tag as Piste);
 
             ((MainWindow)Application.Current.MainWindow).LireDepuis(index + 1);
         }

@@ -38,10 +38,10 @@
                             <DockPanel>
 
                                 <StackPanel DockPanel.Dock="Left" >
-                                    <Image Height="250" Width="250" Source="{Binding Mgr.EnsembleSelect.CheminImage, Converter={StaticResource String2Image}}" Margin="10"/>
+                                    <Image Height="250" Width="250" Source="{Binding EnsembleSelect.CheminImage, Converter={StaticResource String2Image}}" Margin="10"/>
                                     <materialDesign:RatingBar
                                               x:Name="BasicRatingBar"
-                                              Value="{Binding Mgr.EnsembleSelect.Note}"
+                                              Value="{Binding EnsembleSelect.Note}"
                                               IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}"   
                                               Margin="75,20,0,20"/>
                                     <TextBox
@@ -50,12 +50,12 @@
                                                 VerticalAlignment="Top"
                                                 BorderBrush="{DynamicResource  PrimaryHueLightBrush}"
                                                 Height="auto"
-                                                Text="{Binding Mgr.EnsembleSelect.Titre}"
+                                                Text="{Binding EnsembleSelect.Titre}"
                                                 IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}" 
                                                 AcceptsReturn="True"
                                                 TextWrapping="Wrap"
                                                 VerticalScrollBarVisibility="Auto"
-                                                materialDesign:HintAssist.Hint="Titre de l'album"/>
+                                                materialDesign:HintAssist.Hint="Titre de l'album" Cursor="IBeam"/>
 
                                     <TextBox
                                                 Margin="4,5"
@@ -102,7 +102,7 @@
                                                 />
                                         </StackPanel>
                                         <TextBox
-                                                Text="{Binding Mgr.EnsembleSelect.Description, Mode=OneWay}"
+                                                Text="{Binding EnsembleSelect.Description, Mode=OneWay}"
                                                 Margin="10"
                                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                                 VerticalAlignment="Top"
@@ -142,7 +142,7 @@
 
 
 
-                        <ListBox ItemsSource="{Binding Mgr.ListeSelect}">
+                        <ListBox ItemsSource="{Binding ListeSelect}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <WrapPanel Orientation="Horizontal">

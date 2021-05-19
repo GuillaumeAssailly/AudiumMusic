@@ -21,7 +21,6 @@ namespace Donnees
         public string Description { get; private set; }
         public string Auteur { get; private set; }
         public string Chemin { get; private set; }
-        public int Duree { get; private set; }
         public void ModifierPodcast(string titre, string description, string chemin, string auteur, DateTime dateDeSortie)
         {
             base.Titre = $"Podcast: {titre}";
