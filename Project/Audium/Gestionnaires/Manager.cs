@@ -15,18 +15,34 @@ namespace Gestionnaires
     {
 
         public ManagerEnsembleSelect ManagerEnsemble;
-
+        public ManagerProfil ManagerProfil;
 
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged(string propertyName) =>PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-
-        public ReadOnlyCollection<EnsembleAudio> ListeFavoris { get; }
+        public ReadOnlyCollection<EnsembleAudio> ListeFavoris { get; set; }
         private List<EnsembleAudio> listeFavoris;
 
-        
+        public void ModifierListeFavoris(EnsembleAudio A)
+        {
+            Debug.WriteLine(mediatheque.FirstOrDefault().Key.Favori);
+            if (A.Favori == false)
+            {
+                listeFavoris.Add(A);
+                ListeFavoris = new ReadOnlyCollection<EnsembleAudio>(listeFavoris);
+                OnPropertyChanged(nameof(ListeFavoris));
+            }
+            else
+            {
+                listeFavoris.Remove(A);
+                ListeFavoris = new ReadOnlyCollection<EnsembleAudio>(listeFavoris);
+                OnPropertyChanged(nameof(ListeFavoris));
+            }
+            A.Favori = !A.Favori;
+        }
+
 
 
 
@@ -66,6 +82,7 @@ namespace Gestionnaires
             mediatheque = new Dictionary<EnsembleAudio, LinkedList<Piste>>();
             Mediatheque = new ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>>(mediatheque);
             ManagerEnsemble = new(mediatheque);
+            ManagerProfil = new();
             listeGenres = new List<string>
             {
                 Genre.GetString(EGenre.AUCUN),
@@ -88,33 +105,18 @@ namespace Gestionnaires
 
             GenreSelect = "Aucun";
             ManagerEnsemble.EnsembleSelect = mediatheque.FirstOrDefault().Key;
-            ManagerEnsemble.AjouterMorceau("Allo", "Olla", "/quelquepart/...", DateTime.Now);
+      
 
             Debug.Write(ManagerEnsemble.mediatheque.Keys.Count);
 
-            foreach (LinkedList<Piste> liste in mediatheque.Values)
-            {
-                foreach (Piste p in liste)
-                {
-                    Debug.WriteLine(p.Titre);
-                }
-            }
+           
 
         }
 
      
 
 
-        public void ModifierListeFavoris(EnsembleAudio A)
-        {
-            if (A.Favori == false)
-            {
-                listeFavoris.Add(A);
-            }
-            else
-                listeFavoris.Remove(A);
-            A.Favori = !A.Favori;
-        }
+     
 
         public void AjouterEnsemblePiste(EnsembleAudio E, LinkedList<Piste>LP)
         {
@@ -174,7 +176,7 @@ namespace Gestionnaires
             ModifierListeFavoris(HYP);
             ModifierListeFavoris(RAM);
 
-
+            
 
         }
 

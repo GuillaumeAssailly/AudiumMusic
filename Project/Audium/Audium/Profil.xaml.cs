@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Gestionnaires;
+
 
 namespace Audium
 {
@@ -19,9 +21,20 @@ namespace Audium
     /// </summary>
     public partial class Profil : Window
     {
+        string nombak;
+
+        string cheminbak;
+
+        public Manager Mgr => (App.Current as App).LeManager;
+
+        public ManagerProfil MgrProfil => (App.Current as App).LeManager.ManagerProfil;
+
         public Profil()
         {
             InitializeComponent();
+            DataContext = MgrProfil;
+            nombak = MgrProfil.Nom;
+            cheminbak = MgrProfil.CheminImage;
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
@@ -40,14 +53,21 @@ namespace Audium
 
             if(result == true)
             {
-                string filename = dialog.FileName;
-                theImage.Source = new BitmapImage(new Uri(filename, UriKind.Absolute));
+                MgrProfil.CheminImage = dialog.FileName;
+                theImage.Source = new BitmapImage(new Uri(MgrProfil.CheminImage, UriKind.Absolute));
 
             }
         }
 
         private void Save(object sender, RoutedEventArgs e)
         {
+            MgrProfil.ModifierProfil(PseudoInput.Text, MgrProfil.CheminImage);
+            this.Close();
+        }
+
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+            MgrProfil.ModifierProfil(nombak, cheminbak);
             this.Close();
         }
     }

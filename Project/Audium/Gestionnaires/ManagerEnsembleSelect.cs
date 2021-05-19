@@ -14,8 +14,8 @@ namespace Gestionnaires
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-
        
+
         public Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque;
 
         public ReadOnlyCollection<Piste> ListeSelect { get; set; }
@@ -48,15 +48,98 @@ namespace Gestionnaires
 
         public void AjouterMorceau(string titre, string artiste, string chemin, DateTime date)
         {
+            int i = 1;
+            
             if (string.IsNullOrWhiteSpace(titre) || string.IsNullOrWhiteSpace(chemin))
             {
                 throw new ArgumentException("Le titre ou le chemin du morceau n'est pas valide");
             }
-                
+
+           
+
+
             Morceau morceau= new(titre,artiste,chemin,date);
 
+            while (listeSelect.Contains(morceau))
+            {
+                morceau.Titre = $"{titre} ({i})";
+                i++;
+            }
+
             listeSelect.AddLast(morceau);
-            
+            mediatheque.TryGetValue(ensembleSelect, out listeSelect);
+            ListeSelect = new ReadOnlyCollection<Piste>(listeSelect.ToList());
+            OnPropertyChanged(nameof(ListeSelect));
         }
+
+        public void AjouterStationRadio(string titre, string url)
+        {
+            int i = 1;
+
+            if (string.IsNullOrWhiteSpace(titre) || string.IsNullOrWhiteSpace(url))
+            {
+                throw new ArgumentException("Le titre ou l'url de la radio n'est pas valide");
+            }
+
+            StationRadio radio = new(titre,url);
+
+            while (listeSelect.Contains(radio))
+            {
+                radio.Titre = $"{titre} ({i})";
+                i++;
+            }
+
+            listeSelect.AddLast(radio);
+            mediatheque.TryGetValue(ensembleSelect, out listeSelect);
+            ListeSelect = new ReadOnlyCollection<Piste>(listeSelect.ToList());
+            OnPropertyChanged(nameof(ListeSelect));
+        }
+
+        public void AjouterPodcast(string titre, string description, string auteur, string chemin, DateTime date)
+        {
+            int i = 1;
+
+            if (string.IsNullOrWhiteSpace(titre) || string.IsNullOrWhiteSpace(chemin))
+            {
+                throw new ArgumentException("Le titre ou le chemin de la radio n'est pas valide");
+            }
+
+            Podcast podcast = new(titre, description, auteur, chemin,date);
+
+            while (listeSelect.Contains(podcast))
+            {
+                podcast.Titre = $"{titre} ({i})";
+                i++;
+            }
+
+            listeSelect.AddLast(podcast);
+            mediatheque.TryGetValue(ensembleSelect, out listeSelect);
+            ListeSelect = new ReadOnlyCollection<Piste>(listeSelect.ToList());
+            OnPropertyChanged(nameof(ListeSelect));
+        }
+
+        public bool SupprimerPiste(Piste pisteAsuppr)
+        {
+            if (pisteAsuppr == null)
+            {
+                throw new ArgumentException("La piste a supprimer est nulle");
+            }
+            if (!listeSelect.Contains(pisteAsuppr)) 
+            {
+                throw new ArgumentException("La piste en argument n'est pas contenue dans la liste");
+            }
+            if(!listeSelect.Remove(pisteAsuppr))
+            {
+                return false;
+            }
+            mediatheque.TryGetValue(ensembleSelect, out listeSelect);
+            ListeSelect = new ReadOnlyCollection<Piste>(listeSelect.ToList());
+            OnPropertyChanged(nameof(ListeSelect));
+            return true;
+        }
+
+
+
+      
     }
 }

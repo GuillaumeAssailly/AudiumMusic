@@ -9,7 +9,7 @@ namespace Donnees
     public class Podcast : Piste
     {
         public Podcast(string titre, string description, string auteur, string chemin, DateTime datedesortie)
-            :base($"Podcast: {titre}")
+            :base(titre)
         {
             DateDeSortie = datedesortie;
             Description = description;
@@ -23,7 +23,7 @@ namespace Donnees
         public string Chemin { get; private set; }
         public void ModifierPodcast(string titre, string description, string chemin, string auteur, DateTime dateDeSortie)
         {
-            base.Titre = $"Podcast: {titre}";
+            base.Titre = titre;
             DateDeSortie = dateDeSortie;
             Description = description;
             Auteur = auteur;
