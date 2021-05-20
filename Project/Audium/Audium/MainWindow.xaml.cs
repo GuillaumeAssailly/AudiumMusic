@@ -134,7 +134,13 @@ namespace Audium
             
            
             Mgr.EnsembleLu = ((Button)sender).Tag as EnsembleAudio;
-
+            if(Mgr.Playlist.Count==0)
+            {
+                Lecteur.Pause();
+                Lecteur.Position = new TimeSpan(0, 0, 0, 0, 0);
+                TitleDisplay.Text = Mgr.EnsembleLu.Titre;
+                return;
+            }
 
             Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), $"..\\..\\..\\music\\{Mgr.EnsembleLu.Titre}\\Track 1.mp3"));
 
