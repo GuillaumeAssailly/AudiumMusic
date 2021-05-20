@@ -122,7 +122,7 @@ namespace Gestionnaires
         {
             if (pisteAsuppr == null)
             {
-                throw new ArgumentException("La piste a supprimer est nulle");
+                throw new ArgumentException("La piste à supprimer est nulle");
             }
             if (!listeSelect.Contains(pisteAsuppr)) 
             {
