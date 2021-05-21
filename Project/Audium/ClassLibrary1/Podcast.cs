@@ -17,10 +17,10 @@ namespace Donnees
             Chemin = chemin;
         }
 
-        public DateTime DateDeSortie { get; private set; }
-        public string Description { get; private set; }
-        public string Auteur { get; private set; }
-        public string Chemin { get; private set; }
+        public DateTime DateDeSortie { get; set; }
+        public string Description { get;  set; }
+        public string Auteur { get;  set; }
+        public string Chemin { get;  set; }
         public void ModifierPodcast(string titre, string description, string chemin, string auteur, DateTime dateDeSortie)
         {
             base.Titre = titre;

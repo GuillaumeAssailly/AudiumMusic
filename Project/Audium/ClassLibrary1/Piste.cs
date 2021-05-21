@@ -13,8 +13,10 @@ namespace Donnees
         {
             Titre = titre;
             CmptEcoute = 0;
+           
         }
 
+      
         public int CmptEcoute { get; protected set; }
         public string Titre { get; set; }
 

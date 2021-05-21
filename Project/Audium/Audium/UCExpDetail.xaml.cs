@@ -54,5 +54,48 @@ namespace Audium
                 Debug.WriteLine(erreur.Message);
             }
         }
+
+       
+
+        private void PopupBox_ContextMenuClosing(object sender, ContextMenuEventArgs e)
+        {
+            Mgr.ManagerEnsemble.ActualiserListe();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.InitialDirectory = @"C:\Users\Public\Pictures";
+            
+            dialog.Filter = "Fichiers audio (*.mp3,*.wav)|*.mp3;*.wav";
+
+            bool? result = dialog.ShowDialog();
+
+            //A CHANGER
+
+            if (result == true)
+            {
+                ((Morceau)((Button)sender).Tag).Chemin = dialog.FileName;
+            }
+
+            Mgr.ManagerEnsemble.ActualiserListe();
+        }
+
+        private void PopupBox_Closed_1(object sender, RoutedEventArgs e)
+        {
+            Mgr.ManagerEnsemble.ActualiserListe();
+        }
+
+        private void AjouterMorceau(object sender, RoutedEventArgs e)
+        {
+            MgrEnsemble.AjouterMorceau("Nouveau Morceau", "", "");
+        }
+
+        private void AjouterPodcast(object sender, RoutedEventArgs e)
+        {
+            MgrEnsemble.AjouterPodcast("Nouveau Podcast", "", "", "", DateTime.Today);
+        }
+
+       
     }
 }
