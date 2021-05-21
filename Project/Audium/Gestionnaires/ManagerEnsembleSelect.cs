@@ -14,7 +14,18 @@ namespace Gestionnaires
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-       
+        public Piste PisteSelect
+        {
+            get => pisteSelect;
+            set
+            {
+                
+            pisteSelect = value;
+            OnPropertyChanged(nameof(PisteSelect));
+                
+            }
+        }
+        private Piste pisteSelect;
 
         public Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque;
 
@@ -46,19 +57,19 @@ namespace Gestionnaires
             
         }
 
-        public void AjouterMorceau(string titre, string artiste, string chemin, DateTime date)
+        public void AjouterMorceau(string titre, string artiste, string chemin)
         {
             int i = 1;
             
-            if (string.IsNullOrWhiteSpace(titre) || string.IsNullOrWhiteSpace(chemin))
+            if (string.IsNullOrWhiteSpace(titre))
             {
-                throw new ArgumentException("Le titre ou le chemin du morceau n'est pas valide");
+                throw new ArgumentException("Le titre du morceau n'est pas valide");
             }
 
            
 
 
-            Morceau morceau= new(titre,artiste,chemin,date);
+            Morceau morceau= new(titre,artiste,chemin);
 
             while (listeSelect.Contains(morceau))
             {
@@ -99,7 +110,7 @@ namespace Gestionnaires
         {
             int i = 1;
 
-            if (string.IsNullOrWhiteSpace(titre) || string.IsNullOrWhiteSpace(chemin))
+            if (string.IsNullOrWhiteSpace(titre))
             {
                 throw new ArgumentException("Le titre ou le chemin de la radio n'est pas valide");
             }
@@ -139,7 +150,17 @@ namespace Gestionnaires
         }
 
 
+        public void ActualiserListe()
+        {
+            mediatheque.TryGetValue(ensembleSelect, out listeSelect);
+            ListeSelect = new ReadOnlyCollection<Piste>(listeSelect.ToList());
+            OnPropertyChanged(nameof(ListeSelect));
+        }
 
-      
+
+
+
+
+
     }
 }
