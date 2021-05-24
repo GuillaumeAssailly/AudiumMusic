@@ -18,6 +18,7 @@
     <None Remove="img\allman.jpg" />
     <None Remove="img\beattles.jpg" />
     <None Remove="img\beethov.jpg" />
+    <None Remove="img\default.png" />
     <None Remove="img\hypnoflip.jpg" />
     <None Remove="img\iam.jpg" />
     <None Remove="img\opened-folder.png" />
@@ -59,6 +60,7 @@
     <Resource Include="img\allman.jpg" />
     <Resource Include="img\beattles.jpg" />
     <Resource Include="img\beethov.jpg" />
+    <Resource Include="img\default.png" />
     <Resource Include="img\hypnoflip.jpg" />
     <Resource Include="img\iam.jpg" />
     <Resource Include="img\opened-folder.png">

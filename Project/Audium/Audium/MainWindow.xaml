@@ -7,7 +7,8 @@
         xmlns:local="clr-namespace:Audium"
         mc:Ignorable="d"
         xmlns:conv="clr-namespace:Audium.converters" 
-        Title="Audium" Height="900" Width="1600" MinWidth="1220" MinHeight="550" WindowState="Maximized"
+        xmlns:uc="clr-namespace:Audium.userControls"
+        Title="Audium" Height="900" Width="1600" MinWidth="1220" MinHeight="900" WindowState="Maximized"
         Icon="logo.ico">
     <Window.Resources>
         <SolidColorBrush Color="Black" x:Key="DisqueBgColor"/>
@@ -15,9 +16,9 @@
         <conv:String2CompactString x:Key="String2CompactString"/>
         <conv:String2Image x:Key="String2Image"/>
         <conv:DicoConverter x:Key="DicoConverter"/>
-        
+       
     </Window.Resources>
-
+   
     <DockPanel>
         <Border  BorderBrush="Black" BorderThickness="0"  Margin="0" DockPanel.Dock="Left">
             <ScrollViewer VerticalScrollBarVisibility="Auto" Background="#171717">
@@ -151,6 +152,7 @@
                 </Grid.ColumnDefinitions>
                 <Button
                       Click="OpenFolderMusic"
+                    
                       ToolTip="Accéder à l'emplacement de sauvegarde" Cursor="Hand">
                     <materialDesign:PackIcon Height="50" Width="50" Kind="FolderMusic" />
                 </Button>
@@ -159,6 +161,7 @@
                       Click="AddMusic"
                       ToolTip="Ajouer un album" Cursor="Hand">
                     <materialDesign:PackIcon Height="50" Width="50" Kind="PlaylistAdd" />
+                    
                 </Button>
                 <Button 
                       Grid.Column="2"
@@ -252,86 +255,73 @@
                 <Expander.Header>
                     <TextBlock HorizontalAlignment="Right" FontSize="15" Margin="0,0,-10,0">Détails</TextBlock>
                 </Expander.Header>
-                <local:UCExpDetail/>
+                <uc:UCExpDetail/>
             </Expander>
-            
-            <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}">
+            <materialDesign:DialogHost Name="Dialog"
+                    IsOpen="False" CloseOnClickAway="True" 
+                    DialogTheme="Inherit">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel 
+                                Margin="16">
+                        <TextBlock Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                Text="Ajouter une Collection" />
+                        <TextBox
+                            x:Name="TitreBlock"
+                            materialDesign:HintAssist.Hint="Titre"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Margin="0 8 0 0"
+                            HorizontalAlignment="Stretch"/>
+                        <StackPanel
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+                            <Button
+                                  Style="{StaticResource MaterialDesignFlatButton}"
+                                  IsDefault="True"
+                                  Margin="10,20,10,0"
+                                  Click="ValiderAjout"
+                                  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                                  Content="Valider"/>
+                            <Button
+                                  Style="{StaticResource MaterialDesignFlatButton}"
+                                  IsCancel="True"
+                                  Margin="10,20,10,0"
+                                  Content="Annuler"
+                                  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
 
-                <ListView ItemsSource="{Binding Mgr.Mediatheque.Keys,Converter={StaticResource DicoConverter}}" SelectedItem="{Binding MgrEnsemble.EnsembleSelect}" >
+                <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}">
+
+
+                    <ListView ItemsSource="{Binding Mgr.ListeClé, Converter={StaticResource DicoConverter}}" SelectedItem="{Binding MgrEnsemble.EnsembleSelect}"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+
+                                <WrapPanel HorizontalAlignment="Center" />
+
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
-                          
+
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2" Margin="20,20" Height="220" Width="220" >
-                                <Canvas MouseLeftButtonDown="OpenExp">
-                                    <Button Height="100" Width="100" Canvas.Top="60" Canvas.Left="60" Panel.ZIndex="1" Foreground="White" ToolTip="Lire" Cursor="Hand" Tag="{Binding}" Click="LireTout">
-                                   
-                                                <Button.Style >
-                                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignToolForegroundButton}">
-                                                <Setter Property="Visibility" Value="Hidden" />
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Canvas}},Path=IsMouseOver}" Value="True">
-                                                        <Setter Property="Visibility" Value="Visible" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </Button.Style>
-                                        
-                                        <materialDesign:PackIcon Kind="Play" Height="100" Width="100"/>
-                                    </Button>
-                                        <ToggleButton Content="{materialDesign:PackIcon Kind=Heart}" Height="35" Width="35" Canvas.Top="10" Canvas.Left="165" Panel.ZIndex="2" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton }"  ToolTip="Ajouter au favoris" Cursor="Hand" Tag="{Binding}"  IsChecked="{Binding Favori, Mode=OneWay}" Click="Clique_Fav" Name="FavButton"/>
-                                        <Image Source="{Binding CheminImage, Converter={StaticResource String2Image}}"  Height="220" />
-                                </Canvas>
-                                </materialDesign:Card>
-                                </StackPanel>
+                                <uc:UCPochette x:Name="UCPochette" ImageName="{Binding CheminImage}" BoutonLire="LireTout" CliquePochette="OpenExp" CliqueFavori="Clique_Fav"/>
+
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ListView>
-                    
 
 
 
 
 
 
-                    <!--
-                    <local:Pochette/>
-                    
-                    <materialDesign:Card>
-                        <Image Source="/img/ram.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/beattles.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/allman.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/red.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/proleter.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/wagner.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/shosta.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/beethov.jpg"  />
-                    </materialDesign:Card>
-                    <materialDesign:Card>
-                        <Image Source="/img/iam.jpg"  />
-                    </materialDesign:Card>
-                    -->
-               
-            </ScrollViewer>
+
+
+                </ScrollViewer>
+
+
+            </materialDesign:DialogHost>
         </DockPanel>
     </DockPanel>
 </Window>

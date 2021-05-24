@@ -22,6 +22,7 @@ using System.Windows.Threading;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Controls.Primitives;
+using Audium.userControls;
 
 namespace Audium
 {
@@ -38,7 +39,7 @@ namespace Audium
         public Manager Mgr => (App.Current as App).LeManager;
         public ManagerEnsembleSelect MgrEnsemble => (App.Current as App).LeManager.ManagerEnsemble;
       
-
+    
 
        
         
@@ -74,8 +75,13 @@ namespace Audium
             Lecteur.MediaEnded += Media_Next;
             Lecteur.MediaOpened += Media_Opened;
             Lecteur.MediaFailed += Media_Stopped;
-            
             Recherche.KeyUp += Recherche_KeyUp;
+
+            
+
+
+
+
     }
 
         private void Recherche_KeyUp(object sender, KeyEventArgs e)
@@ -99,6 +105,7 @@ namespace Audium
         {
             Parametres par = new Parametres();
             par.ShowDialog();
+            
         }
 
 
@@ -111,15 +118,15 @@ namespace Audium
 
         private void AddMusic(Object sender, RoutedEventArgs e)
         {
-
-            //AJOUTER DES TRUCS
-            MainExp.IsExpanded = true;
+            Dialog.IsOpen = true;
         }
 
         private void OpenExp(Object sender, RoutedEventArgs e)
         {
             MainExp.IsExpanded = true;
         }
+
+    
 
         private void TagButton(object sender, MouseButtonEventArgs e)
         {
@@ -128,7 +135,7 @@ namespace Audium
         }
 
 
-        private void LireTout(object sender, RoutedEventArgs e)
+        protected void LireTout(object sender, RoutedEventArgs e)
         {
             Mgr.MediaIndex = 1;
             
@@ -258,6 +265,12 @@ namespace Audium
         private void Clique_Fav(object sender, RoutedEventArgs e)
         {
             Mgr.ModifierListeFavoris(((ToggleButton)sender).Tag as EnsembleAudio);
+        }
+
+        private void ValiderAjout(object sender, RoutedEventArgs e)
+        {
+           
+            Mgr.AjouterEnsemblePiste(Mgr.CreerEnsembleAudio(TitreBlock.Text), new LinkedList<Piste>());
         }
     }
 }
