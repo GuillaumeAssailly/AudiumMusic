@@ -10,13 +10,13 @@
     <Compile Update="Parametres.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pochette.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Profil.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UCExpDetail.xaml.cs">
+    <Compile Update="userControls\UCExpDetail.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="userControls\UCPochette.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -27,13 +27,13 @@
     <Page Update="Parametres.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Pochette.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Profil.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UCExpDetail.xaml">
+    <Page Update="userControls\UCExpDetail.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="userControls\UCPochette.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

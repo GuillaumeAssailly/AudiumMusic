@@ -24,10 +24,10 @@ namespace Test_ManagerEnsembleSelect
             {
                 master.ManagerEnsemble.AjouterStationRadio("radio", "urlderadio");
                 master.ManagerEnsemble.AjouterPodcast("podcastcool", "description chouette", "auteur bien", "chemin", DateTime.Now);
-                master.ManagerEnsemble.AjouterMorceau("morceau cool", "artiste cool", "chemin", DateTime.Now);
-                master.ManagerEnsemble.AjouterMorceau("morceau cool", "artiste cool", "chemin", DateTime.Now);
-                master.ManagerEnsemble.AjouterMorceau("morceau cool", "artiste cool", "chemin", DateTime.Now);
-                master.ManagerEnsemble.AjouterMorceau("    ", "artiste cool", "chemin", DateTime.Now); //Cause une erreur
+                master.ManagerEnsemble.AjouterMorceau("morceau cool", "artiste cool", "chemin");
+                master.ManagerEnsemble.AjouterMorceau("morceau cool", "artiste cool", "chemin");
+                master.ManagerEnsemble.AjouterMorceau("morceau cool", "artiste cool", "chemin");
+                master.ManagerEnsemble.AjouterMorceau("    ", "artiste cool", "chemin"); //Cause une erreur
                 
             }
             catch(ArgumentException e)

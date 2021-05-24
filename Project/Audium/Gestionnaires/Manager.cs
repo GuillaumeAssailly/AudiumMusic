@@ -73,7 +73,20 @@ namespace Gestionnaires
 
 
         public ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>> Mediatheque { get; }
-        private Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque;
+        private Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque; 
+       
+
+        public ObservableCollection<EnsembleAudio> ListeClé 
+        {
+            get => listeClé;
+            set
+            {
+                listeClé = value;
+                OnPropertyChanged(nameof(ListeClé));
+            }
+        }
+        private ObservableCollection<EnsembleAudio> listeClé;
+
 
         public Manager()
         {
@@ -81,6 +94,8 @@ namespace Gestionnaires
             CompteurAlbum = 0;
             mediatheque = new Dictionary<EnsembleAudio, LinkedList<Piste>>();
             Mediatheque = new ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>>(mediatheque);
+           
+          
             ManagerEnsemble = new(mediatheque);
             ManagerProfil = new();
             listeGenres = new List<string>
@@ -109,26 +124,28 @@ namespace Gestionnaires
 
             Debug.Write(ManagerEnsemble.mediatheque.Keys.Count);
 
-           
+            listeClé = new(Mediatheque.Keys);
+            ListeClé = new(listeClé);
+          
+            Debug.WriteLine(ListeClé.Count);
 
         }
 
      
 
-
+        
      
 
         public void AjouterEnsemblePiste(EnsembleAudio E, LinkedList<Piste>LP)
         {
-          
             mediatheque.Add(E,LP);
-            
+            listeClé?.Add(E);
         }
 
-        public EnsembleAudio CreerEnsembleAudio(string titre, string description, string cheminImage, EGenre genre, int note)
+        public EnsembleAudio CreerEnsembleAudio(string titre)
         {
             //Finir cette méthode avec un if( Key.Titre n'existe pas dans discothèque) sinon Titre = Titre + "(1);
-            EnsembleAudio Nouveau = new(titre, description, cheminImage, genre,note);
+            EnsembleAudio Nouveau = new(titre, null, "default.png", EGenre.AUCUN, 0);
             int i = 1;
             while (Mediatheque.ContainsKey(Nouveau))
             {
