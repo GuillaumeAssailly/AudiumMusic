@@ -31,15 +31,14 @@ namespace Gestionnaires
             if (A.Favori == false)
             {
                 listeFavoris.Add(A);
-                ListeFavoris = new ReadOnlyCollection<EnsembleAudio>(listeFavoris);
-                OnPropertyChanged(nameof(ListeFavoris));
+                
             }
             else
             {
                 listeFavoris.Remove(A);
-                ListeFavoris = new ReadOnlyCollection<EnsembleAudio>(listeFavoris);
-                OnPropertyChanged(nameof(ListeFavoris));
             }
+            ListeFavoris = new ReadOnlyCollection<EnsembleAudio>(listeFavoris);
+            OnPropertyChanged(nameof(ListeFavoris));
             A.Favori = !A.Favori;
         }
 
