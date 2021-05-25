@@ -55,6 +55,7 @@
 									Opacity=".56" />
                             </Button>
                             <TextBox
+                                 MaxLines="1"
                                 x:Name="Recherche"
 								Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
 								VerticalAlignment="Top"
@@ -101,15 +102,16 @@
                         </StackPanel>
                     </GroupBox>
                     <GroupBox
+                        MaxHeight="500"
                         FontSize="15"
                         Header="Favoris"
                         Margin="16"
                         BorderThickness="20"
                         Style="{DynamicResource MaterialDesignCardGroupBox}"
                         materialDesign:ColorZoneAssist.Mode="PrimaryMid">
-                        <StackPanel>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <StackPanel Orientation="Horizontal">
-                                <ListBox ItemsSource="{Binding Mgr.ListeFavoris}" Width="500" SelectedItem="{Binding MgrEnsemble.EnsembleSelect}" >
+                                <ListBox x:Name="ListeFav" ItemsSource="{Binding Mgr.ListeFavoris}" Width="500" SelectedItem="{Binding MgrEnsemble.EnsembleSelect}" MouseLeftButtonUp ="OpenExp">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <WrapPanel Orientation="Horizontal">
@@ -119,14 +121,14 @@
                                                     ToolTip="MaterialDesignIconButton"> 
                                                     <materialDesign:PackIcon Kind="Play" />
                                                 </Button>
-                                                <TextBlock Text="{Binding Titre, Converter={StaticResource String2CompactString}}" MouseLeftButtonUp="OpenExp"  Margin="0,15,0,0"/>
+                                                <TextBlock Text="{Binding Titre, Converter={StaticResource String2CompactString}}" Margin="0,15,0,0"/>
                                             </WrapPanel>
                                         </DataTemplate>
 
                                     </ListBox.ItemTemplate>
                                 </ListBox>
                             </StackPanel>
-                        </StackPanel>
+                        </ScrollViewer>
                     </GroupBox>
                 </StackPanel>
             </ScrollViewer>
