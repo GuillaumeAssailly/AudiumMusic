@@ -124,7 +124,9 @@ namespace Audium
 
         private void OpenExp(Object sender, RoutedEventArgs e)
         {
+            
             MainExp.IsExpanded = true;
+            ListeFav.UnselectAll();
         }
 
     
@@ -279,8 +281,8 @@ namespace Audium
             Mgr.ListeClé = URecherche.Recherche(Motcle, Genre.GetGenre(Mgr.GenreSelect), Mgr.Mediatheque);
         }
 
+    
 
-
-
+    
     }
 }

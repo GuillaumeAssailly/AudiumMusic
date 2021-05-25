@@ -39,9 +39,11 @@ namespace Gestionnaires
             {
                 listeFavoris.Remove(A);
             }
+            
             ListeFavoris = new ReadOnlyCollection<EnsembleAudio>(listeFavoris);
             OnPropertyChanged(nameof(ListeFavoris));
             A.Favori = !A.Favori;
+           
         }
 
 

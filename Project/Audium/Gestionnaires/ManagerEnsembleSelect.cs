@@ -38,7 +38,7 @@ namespace Gestionnaires
             get => ensembleSelect;
             set
             {
-                if (ensembleSelect != value && value != null)
+                if (value != null)
                 {
                     ensembleSelect = value;
                     mediatheque.TryGetValue(ensembleSelect, out listeSelect);

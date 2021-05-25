@@ -43,7 +43,15 @@ namespace Donnees
         }
         private string cheminImage;
         public int CmptEcoute { get; private set; }
-        public bool Favori { get; set; }
+        public bool Favori { 
+            get => favori; 
+            set 
+            { 
+                favori = value;
+                OnPropertyChanged(nameof(Favori));
+            } 
+        }
+        private bool favori;
         public EGenre Genre { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
