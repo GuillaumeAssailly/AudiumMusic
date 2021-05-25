@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -19,9 +20,10 @@ namespace Gestionnaires
 
 
         public event PropertyChangedEventHandler PropertyChanged;
-
+  
         public void OnPropertyChanged(string propertyName) =>PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
+     
         public ReadOnlyCollection<EnsembleAudio> ListeFavoris { get; set; }
         private List<EnsembleAudio> listeFavoris;
 
@@ -121,12 +123,11 @@ namespace Gestionnaires
             ManagerEnsemble.EnsembleSelect = mediatheque.FirstOrDefault().Key;
       
 
-            Debug.Write(ManagerEnsemble.mediatheque.Keys.Count);
 
             listeClé = new(Mediatheque.Keys);
             ListeClé = new(listeClé);
           
-            Debug.WriteLine(ListeClé.Count);
+         
 
         }
 
@@ -139,18 +140,15 @@ namespace Gestionnaires
         {
             mediatheque.Add(E,LP);
             listeClé?.Add(E);
+            //GenreSelect = Genre.GetString(EGenre.BANDEORIGINALE);
+            //GenreSelect = Genre.GetString(EGenre.AUCUN);
+            OnPropertyChanged(nameof(Mediatheque));
         }
 
         public EnsembleAudio CreerEnsembleAudio(string titre)
         {
             //Finir cette méthode avec un if( Key.Titre n'existe pas dans discothèque) sinon Titre = Titre + "(1);
             EnsembleAudio Nouveau = new(titre, null, "default.png", EGenre.AUCUN, 0);
-            int i = 1;
-            while (Mediatheque.ContainsKey(Nouveau))
-            {
-                Nouveau.Titre = $"{titre} ({i})";
-                i++;
-            }
             return Nouveau;
         }
 
@@ -162,7 +160,7 @@ namespace Gestionnaires
 
         public void ConfigTest()
         {
-            EnsembleAudio RAM = new EnsembleAudio("Random Access Memories", "Daft Punk", "ram.jpg", EGenre.BANDEORIGINALE, 4);
+            EnsembleAudio RAM = new EnsembleAudio("Random Access Memories", "Daft Punk", "ram.jpg", EGenre.BANDEORIGINALE, 3);
 
             LinkedList<Piste> LP1 = new();
             LP1.AddLast(new Morceau("Give Life Back to Music","Daft Punk","iafaf"));
@@ -175,7 +173,7 @@ namespace Gestionnaires
             LP1.AddLast(new Podcast("Interview exclusive de Guy-Man", "Interview données à France Inter le 14 juin 2012", "France Inter", "", DateTime.Now));
             this.AjouterEnsemblePiste(RAM, LP1);
 
-            EnsembleAudio HYP = new EnsembleAudio("The Hypnoflip Invasion", "Stipiflip", "hypnoflip.jpg", EGenre.HIPHOP, 4);
+            EnsembleAudio HYP = new EnsembleAudio("The Hypnoflip Invasion", "Stipiflip", "hypnoflip.jpg", EGenre.HIPHOP, 5);
             LinkedList<Piste> LP2 = new();
             LP2.AddLast(new Piste("Intro"));
             LP2.AddLast(new Piste("Stupeflip Vite!"));
@@ -184,15 +182,19 @@ namespace Gestionnaires
             
             this.AjouterEnsemblePiste(HYP, LP2);
 
-            EnsembleAudio WAG = new EnsembleAudio("Wagner", "Stipiflip", "wagner.jpg", EGenre.CLASSIQUE, 4);
+            EnsembleAudio WAG = new EnsembleAudio("Wagner", "Stipiflip", "wagner.jpg", EGenre.CLASSIQUE, 2);
             LinkedList<Piste> LP3 = new();
             LP3.AddLast(new Morceau("Give Life Back to Music", "Daft Punk", "iafaf"));
             LP3.AddLast(new Morceau("The Game of Love", "Daft Punk", "iafaf"));
             LP3.AddLast(new Morceau("Giorgio by Moroder", "Daft Punk", "iafaf"));
             this.AjouterEnsemblePiste(WAG, LP3);
 
-            EnsembleAudio IAM = new EnsembleAudio("IAM", "Stipiflip", "iam.jpg", EGenre.HIPHOP, 4);
-            this.AjouterEnsemblePiste(IAM, LP1);
+            EnsembleAudio IAM = new EnsembleAudio("IAM", "Stipiflip", "iam.jpg", EGenre.HIPHOP, 3);
+            LinkedList<Piste> LP4 = new();
+            LP4.AddLast(new Morceau("Give Life Back to Music", "Daft Punk", "iafaf"));
+            LP4.AddLast(new Morceau("The Game of Love", "Daft Punk", "iafaf"));
+            LP4.AddLast(new Morceau("Giorgio by Moroder", "Daft Punk", "iafaf"));
+            this.AjouterEnsemblePiste(IAM, LP4);
 
             ModifierListeFavoris(HYP);
             ModifierListeFavoris(RAM);
