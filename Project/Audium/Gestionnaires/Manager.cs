@@ -138,10 +138,10 @@ namespace Gestionnaires
         
      
 
-        public void AjouterEnsemblePiste(EnsembleAudio E, LinkedList<Piste>LP)
+        public void AjouterEnsemblePiste(EnsembleAudio NouvelEnsembleAudio, LinkedList<Piste>NouvelleListePiste)
         {
-            mediatheque.Add(E,LP);
-            listeClé?.Add(E);
+            mediatheque.Add(NouvelEnsembleAudio, NouvelleListePiste);
+            listeClé?.Add(NouvelEnsembleAudio);
             //GenreSelect = Genre.GetString(EGenre.BANDEORIGINALE);
             //GenreSelect = Genre.GetString(EGenre.AUCUN);
             OnPropertyChanged(nameof(Mediatheque));
@@ -150,8 +150,8 @@ namespace Gestionnaires
         public EnsembleAudio CreerEnsembleAudio(string titre)
         {
             //Finir cette méthode avec un if( Key.Titre n'existe pas dans discothèque) sinon Titre = Titre + "(1);
-            EnsembleAudio Nouveau = new(titre, null, "default.png", EGenre.AUCUN, 0);
-            return Nouveau;
+            EnsembleAudio NouvelEnsembleAudio = new(titre, null, "default.png", EGenre.AUCUN, 0);
+            return NouvelEnsembleAudio;
         }
 
       
