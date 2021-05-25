@@ -80,10 +80,10 @@
                             </Style>
                         </GroupBox.Resources>
                         <StackPanel>
-                            <ListBox ItemsSource="{Binding Mgr.ListeGenres}" SelectedItem="{Binding Mgr.GenreSelect}">
+                            <ListBox ItemsSource="{Binding Mgr.ListeGenres}" SelectedItem="{Binding Mgr.GenreSelect}" MouseLeftButtonUp="TagListClicked" >
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding}" MouseLeftButtonDown="TagButton"/>
+                                        <TextBlock Text="{Binding}" />
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
@@ -255,7 +255,7 @@
                 <Expander.Header>
                     <TextBlock HorizontalAlignment="Right" FontSize="15" Margin="0,0,-10,0">Détails</TextBlock>
                 </Expander.Header>
-                <uc:UCExpDetail/>
+                <uc:UCExpDetail CliqueFavori="Clique_Fav"/>
             </Expander>
             <materialDesign:DialogHost Name="Dialog"
                     IsOpen="False" CloseOnClickAway="True" 
@@ -294,7 +294,7 @@
                 <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}">
 
 
-                    <ListView ItemsSource="{Binding Mgr.ListeClé, Converter={StaticResource DicoConverter}}" SelectedItem="{Binding MgrEnsemble.EnsembleSelect}"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+                    <ListView Name="ListeKeys" ItemsSource="{Binding Mgr.ListeClé}" SelectedItem="{Binding MgrEnsemble.EnsembleSelect}"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
 

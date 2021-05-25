@@ -87,6 +87,7 @@ namespace Audium
         private void Recherche_KeyUp(object sender, KeyEventArgs e)
         {
             Motcle = Recherche.Text;
+            Mgr.ListeClé = URecherche.Recherche(Motcle, Genre.GetGenre(Mgr.GenreSelect), Mgr.Mediatheque);
         }
 
         void tick(object sender, EventArgs e) 
@@ -128,11 +129,7 @@ namespace Audium
 
     
 
-        private void TagButton(object sender, MouseButtonEventArgs e)
-        {
-            MainExp.IsExpanded = false;
-            //URecherche.RechercherParGenre(EGenre.JAZZ, Mgr.Mediatheque);
-        }
+      
 
 
         protected void LireTout(object sender, RoutedEventArgs e)
@@ -271,6 +268,19 @@ namespace Audium
         {
            
             Mgr.AjouterEnsemblePiste(Mgr.CreerEnsembleAudio(TitreBlock.Text), new LinkedList<Piste>());
+           
+            
         }
+
+
+        private void TagListClicked(object sender, MouseButtonEventArgs e)
+        {
+            MainExp.IsExpanded = false;
+            Mgr.ListeClé = URecherche.Recherche(Motcle, Genre.GetGenre(Mgr.GenreSelect), Mgr.Mediatheque);
+        }
+
+
+
+
     }
 }

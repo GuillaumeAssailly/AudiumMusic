@@ -22,12 +22,14 @@ namespace Audium.userControls
     /// Logique d'interaction pour UCExpDetail.xaml
     /// </summary>
     public partial class UCExpDetail : UserControl
+
+
     {
         public Manager Mgr => (App.Current as App).LeManager;
 
         public ManagerEnsembleSelect MgrEnsemble => (App.Current as App).LeManager.ManagerEnsemble;
 
-        
+        string imagesource;
 
         public UCExpDetail()
         {
@@ -96,6 +98,34 @@ namespace Audium.userControls
             MgrEnsemble.AjouterPodcast("Nouveau Podcast", "", "", "", DateTime.Today);
         }
 
-       
+        private void Sauvegarder(object sender, RoutedEventArgs e)
+        {
+           
+            MgrEnsemble.EnsembleSelect.ModifierEnsemble(Titre_box.Text, Etoiles.Value, Description_box.Text, MgrEnsemble.EnsembleSelect.CheminImage, EGenre.BANDEORIGINALE);
+            Debug.WriteLine(Etoiles.Value);
+        }
+
+        public event RoutedEventHandler CliqueFavori;
+        private void FavButton_Click(object sender, RoutedEventArgs e)
+        {
+            CliqueFavori?.Invoke(sender, e);
+        }
+
+        private void ImportButton_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.InitialDirectory = @"C:\Users\Public\Pictures";
+            dialog.FileName = "Images";
+            dialog.DefaultExt = ".jpg| .gif |.png";
+
+            bool? result = dialog.ShowDialog();
+
+            if (result == true)
+            {
+                imagesource = dialog.FileName;
+                //ImagePochette.Source = new BitmapImage(new Uri(dialog.FileName, UriKind.Absolute));
+                MgrEnsemble.EnsembleSelect.CheminImage = imagesource;
+            }
+        }
     }
 }

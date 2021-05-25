@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Donnees
 {
-    public class EnsembleAudio : IEquatable<EnsembleAudio>
+    public class EnsembleAudio : IEquatable<EnsembleAudio>, INotifyPropertyChanged
     {
         public EnsembleAudio(string titre, string description, string cheminImage, EGenre genre,int note)
         {
@@ -16,16 +18,36 @@ namespace Donnees
             DateAjout=DateTime.Now;
             CmptEcoute = 0;
             Favori = false;
+            ID = $"{titre.Substring(0,3)}{DateAjout.Millisecond}";
+            Debug.WriteLine(ID);
         }
 
-        public string Titre { get; set; }
+        public string ID { get; private set; }
+        public string Titre { 
+             get => titre;
+             set {
+                titre = value;
+                OnPropertyChanged(nameof(Titre));
+             }
+        }
+        private string titre;
         public DateTime DateAjout { get; private set; }
-        public int Note { get; private set; }
+        public int Note { get; set; }
         public string Description { get; private set; }
-        public string CheminImage { get; private set; }
+        public string CheminImage {
+            get => cheminImage;
+            set {
+                cheminImage = value;
+                OnPropertyChanged(nameof(CheminImage)); 
+            } 
+        }
+        private string cheminImage;
         public int CmptEcoute { get; private set; }
         public bool Favori { get; set; }
         public EGenre Genre { get; private set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         public void ModifierEnsemble(string Titre, int Note, string Description, string CheminImage, EGenre Genre)
         {
@@ -38,7 +60,7 @@ namespace Donnees
 
         public bool Equals([AllowNull] EnsembleAudio other)
         {
-            return Titre.ToLower().Equals(other.Titre.ToLower());
+            return ID.ToLower().Equals(other.ID.ToLower());
         }
 
         public override bool Equals(object obj)
@@ -52,7 +74,7 @@ namespace Donnees
 
         public override int GetHashCode()
         {
-            return Titre.GetHashCode();
+            return ID.GetHashCode();
         }
 
 

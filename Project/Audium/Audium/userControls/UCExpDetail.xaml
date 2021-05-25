@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:Audium"
              xmlns:donnees="clr-namespace:Donnees;assembly=Donnees"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="900" d:DesignWidth="1200"
              xmlns:conv="clr-namespace:Audium.converters">
             
     <UserControl.Resources>
@@ -51,45 +51,45 @@
                             <DockPanel>
 
                                 <StackPanel DockPanel.Dock="Left" >
-                                    <Image Height="250" Width="250" Source="{Binding EnsembleSelect.CheminImage, Converter={StaticResource String2Image}}" Margin="10"/>
+                                    <Canvas Height="220" Width="220" Margin="20">
+                                        <Button Height="100" Width="100" Canvas.Top="60" Canvas.Left="60" Panel.ZIndex="1" Foreground="White" ToolTip="Importer une pochette" Cursor="Hand" Name="ImportButton" Click="ImportButton_Click">
+                                            <Button.Style >
+                                                <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignToolForegroundButton}">
+                                                    <Setter Property="Visibility" Value="Hidden" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Canvas}},Path=IsMouseOver}" Value="True">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                            <materialDesign:PackIcon Kind="OpenInApp" Height="50" Width="50"/>
+                                        </Button>
+                                        <ToggleButton Content="{materialDesign:PackIcon Kind=Heart}" Height="35" Width="35" Canvas.Top="10" Canvas.Left="165" Panel.ZIndex="2" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton }"  ToolTip="Ajouter au favoris" Cursor="Hand" Tag="{Binding EnsembleSelect}"  IsChecked="{Binding EnsembleSelect.Favori, Mode=OneWay}" Name="FavButton" Click="FavButton_Click"/>
+                                        <Image Source="{Binding EnsembleSelect.CheminImage, Converter={StaticResource String2Image}, UpdateSourceTrigger=Explicit}"  Height="220" Width="220" Name="ImagePochette" />
+                                    </Canvas>
                                     <materialDesign:RatingBar
-                                              x:Name="BasicRatingBar"
-                                              Value="{Binding EnsembleSelect.Note}"
+
+                                              x:Name="Etoiles"
+                                              Value="{Binding EnsembleSelect.Note, Mode=TwoWay}"
                                               IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}"   
                                               Margin="75,20,0,20"/>
+                                    
                                     <TextBox
-                                                Margin="4,5"
+                                                Margin="4,10"
                                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                                 VerticalAlignment="Top"
                                                 BorderBrush="{DynamicResource  PrimaryHueLightBrush}"
                                                 Height="auto"
-                                                Text="{Binding EnsembleSelect.Titre}"
+                                                x:Name="Titre_box"
+                                                Text="{Binding EnsembleSelect.Titre, Mode=OneWay}"
                                                 IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}" 
                                                 AcceptsReturn="True"
                                                 TextWrapping="Wrap"
                                                 VerticalScrollBarVisibility="Auto"
                                                 materialDesign:HintAssist.Hint="Titre de l'album" Cursor="IBeam"/>
-
-                                    <TextBox
-                                                Margin="4,5"
-                                                Style="{StaticResource MaterialDesignFloatingHintTextBox    }"
-                                                VerticalAlignment="Top"
-                                                BorderBrush="{DynamicResource  PrimaryHueLightBrush}"
-                                                Height="auto"
-                                                
-                                                IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}" 
-                                                AcceptsReturn="True"
-                                                TextWrapping="Wrap"
-                                                VerticalScrollBarVisibility="Auto"
-                                                materialDesign:HintAssist.Hint="Artiste"/>
-                                    <DatePicker  
-                                            BorderBrush="{DynamicResource PrimaryHueLightBrush}"
-                                            IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}"
-                                            Margin="4,5"
-                                            materialDesign:HintAssist.Hint="Date de Sortie"
-                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                                     <ComboBox
-                                            Margin="4,5"
+                                            Margin="4,10"
                                              BorderBrush="{DynamicResource PrimaryHueLightBrush}"
                                             IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}"
                                             materialDesign:HintAssist.Hint="Genre"
@@ -115,12 +115,15 @@
                                                 />
                                         </StackPanel>
                                         <TextBox
+                                            Width="700"
+                                            
+                                                x:Name="Description_box"
                                                 Text="{Binding EnsembleSelect.Description, Mode=OneWay}"
-                                                Margin="10"
+                                                Margin="30"
                                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                                 VerticalAlignment="Top"
                                                 BorderBrush="{DynamicResource PrimaryHueLightBrush}"
-                                                MaxLines="18"
+                                                MaxLines="15"
                                                 MaxLength="1500"
                                                 IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}" 
                                                 AcceptsReturn="True"
@@ -134,8 +137,9 @@
                             <Button
                                     IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}" 
                                     HorizontalAlignment="Right"
-                                    Margin="0,50,10,0"
-                                    ToolTip="Resource name: MaterialDesignRaisedButton"
+                                    Margin="0,140,10,0"
+                                    ToolTip="Sauvegarder les modifications"
+                                    Click="Sauvegarder"
                                     Content="SAUVEGARDER" Cursor="Hand" />
                         </StackPanel>
                     </ScrollViewer>
@@ -143,7 +147,7 @@
 
                 <GroupBox
                                     FontSize="15"
-                                    IsEnabled="{Binding IsChecked, ElementName=EnableListBox}"
+                                   
                                     
                                      Margin="16"
                                      Grid.Column="1"
