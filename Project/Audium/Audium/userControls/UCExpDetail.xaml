@@ -229,7 +229,7 @@
                                                 <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Margin="8,8,8,16" Text="A propos du Morceau" />
                                                 <TextBox Grid.Column="0" Grid.Row="1" materialDesign:HintAssist.Hint="Titre" Text="{Binding Titre}"/>
                                                 <TextBox Grid.Column="0" Grid.Row="2" materialDesign:HintAssist.Hint="Artiste" Text="{Binding Artiste}" />
-                                                <TextBox Grid.Column="0" Grid.Row="3" materialDesign:HintAssist.Hint="Chemin"  Text="{Binding Chemin}" />
+                                                <TextBox Grid.Column="0" Grid.Row="3" materialDesign:HintAssist.Hint="Chemin"  Text="{Binding Source}" />
 
                                                 <Button Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom" Click="Button_Click" Tag="{Binding}" >
                                                     <materialDesign:PackIcon Kind="OpenInApp" />
@@ -293,7 +293,7 @@
                                                 <TextBox Grid.Column="0" Grid.Row="2" materialDesign:HintAssist.Hint="Description" Text="{Binding Description}" />
                                                 <TextBox Grid.Column="0" Grid.Row="3" materialDesign:HintAssist.Hint="Auteur" Text="{Binding Auteur}" />
                                                 <TextBox Grid.Column="0" Grid.Row="4" materialDesign:HintAssist.Hint="Date de Sortie" Text="{Binding DateDeSortie}" />
-                                                <TextBox Grid.Column="0" Grid.Row="5" materialDesign:HintAssist.Hint="Chemin" Text="{Binding Chemin}" />
+                                                <TextBox Grid.Column="0" Grid.Row="5" materialDesign:HintAssist.Hint="Chemin" Text="{Binding Source}" />
                                                 <Button Grid.Column="1" Grid.Row="5" VerticalAlignment="Bottom" Click="Button_Click" Tag="{Binding}" >
                                                     <materialDesign:PackIcon Kind="OpenInApp" />
                                                 </Button>

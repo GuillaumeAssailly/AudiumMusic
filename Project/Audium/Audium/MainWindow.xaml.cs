@@ -136,7 +136,7 @@ namespace Audium
 
         protected void LireTout(object sender, RoutedEventArgs e)
         {
-            Mgr.MediaIndex = 1;
+            Mgr.MediaIndex = 0;
             
            
             Mgr.EnsembleLu = ((Button)sender).Tag as EnsembleAudio;
@@ -147,10 +147,10 @@ namespace Audium
                 TitleDisplay.Text = Mgr.EnsembleLu.Titre;
                 return;
             }
+            
+            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), Mgr.Playlist.ElementAt(Mgr.MediaIndex).Source));
 
-            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), $"..\\..\\..\\music\\{Mgr.EnsembleLu.Titre}\\Track 1.mp3"));
-
-            TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex-1).Titre;
+            TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex).Titre;
 
             Lecteur.Play();
             PlayPauseIcon.Kind = PackIconKind.Pause;
@@ -165,9 +165,9 @@ namespace Audium
             Mgr.EnsembleLu = MgrEnsemble.EnsembleSelect;
 
 
-            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), $"..\\..\\..\\music\\{Mgr.EnsembleLu.Titre}\\Track {Mgr.MediaIndex}.mp3"));
+            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), Mgr.Playlist.ElementAt(Mgr.MediaIndex).Source));
 
-            TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex - 1).Titre;
+            TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex).Titre;
 
             Lecteur.Play();
             PlayPauseIcon.Kind = PackIconKind.Pause;
@@ -206,11 +206,17 @@ namespace Audium
 
         private void Media_Next(object sender, EventArgs e)
         {
-            if(Mgr.MediaIndex < Mgr.Playlist.Count)
+            if(Mgr.Playlist?.Count==0 || Mgr.Playlist==null)
+            {
+                return;
+            }
+
+
+            if(Mgr.MediaIndex < Mgr.Playlist.Count-1)
             {
                 Mgr.MediaIndex++;
             }
-            else if(Mgr.MediaIndex==Mgr.Playlist.Count)
+            else if(Mgr.MediaIndex==Mgr.Playlist.Count-1)
             {
                 Lecteur.Stop();
                 isPlaying = false;
@@ -218,29 +224,33 @@ namespace Audium
                 return;
             }
             Lecteur.Stop();
-            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), $"..\\..\\..\\music\\{Mgr.EnsembleLu.Titre}\\Track {Mgr.MediaIndex}.mp3"));
+            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), Mgr.Playlist.ElementAt(Mgr.MediaIndex).Source));
             Lecteur.Play();
             
            
             isPlaying = true;
             PlayPauseIcon.Kind = PackIconKind.Pause;
-            TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex - 1).Titre;
+            TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex).Titre;
 
         }
       
         private void Media_Previous(object sender, EventArgs e)
         {
-            if (Mgr.MediaIndex > 1)
+            if (Mgr.Playlist?.Count == 0 || Mgr.Playlist == null)
+            {
+                return;
+            }
+            if (Mgr.MediaIndex > 0)
             {
                 Mgr.MediaIndex--;
             }
             
             Lecteur.Stop();
-            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), $"..\\..\\..\\music\\{Mgr.EnsembleLu.Titre}\\Track {Mgr.MediaIndex}.mp3")); 
+            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), Mgr.Playlist.ElementAt(Mgr.MediaIndex).Source)); 
             Lecteur.Play();
             isPlaying = true;
             PlayPauseIcon.Kind = PackIconKind.Pause;
-            TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex - 1).Titre;
+            TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex).Titre;
         }
        
         private void ProgressBarChanged(object sender, MouseButtonEventArgs e)

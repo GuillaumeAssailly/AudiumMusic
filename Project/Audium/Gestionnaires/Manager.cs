@@ -177,9 +177,9 @@ namespace Gestionnaires
 
             EnsembleAudio HYP = new EnsembleAudio("The Hypnoflip Invasion", "Stipiflip", "hypnoflip.jpg", EGenre.HIPHOP, 5);
             LinkedList<Piste> LP2 = new();
-            LP2.AddLast(new Piste("Intro"));
-            LP2.AddLast(new Piste("Stupeflip Vite!"));
-            LP2.AddLast(new Piste("La Menuiserie"));
+            LP2.AddLast(new Morceau("Intro","Stupeflip",""));
+            LP2.AddLast(new Morceau("Stupeflip Vite!","Stupeflip",""));
+            LP2.AddLast(new Morceau("La Menuiserie", "Stupeflip", ""));
             
             
             this.AjouterEnsemblePiste(HYP, LP2);

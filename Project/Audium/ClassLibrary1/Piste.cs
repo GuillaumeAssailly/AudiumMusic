@@ -9,14 +9,16 @@ namespace Donnees
 {
     public class Piste : IEquatable<Piste>
     {
-        public Piste(string titre)
+        public Piste(string titre,string source)
         {
             Titre = titre;
             CmptEcoute = 0;
-           
+            Source = source;
         }
 
-      
+        
+        public string Source { get;  set; }
+
         public int CmptEcoute { get; protected set; }
         public string Titre { get; set; }
 

@@ -41,12 +41,16 @@ namespace Audium.userControls
         {
             int index = Mgr.ManagerEnsemble.ListeSelect.IndexOf(((Button)sender).Tag as Piste);
 
-            ((MainWindow)Application.Current.MainWindow).LireDepuis(index + 1);
+            ((MainWindow)Application.Current.MainWindow).LireDepuis(index);
         }
 
         private void Supprimer_Piste(object sender, RoutedEventArgs e)
         {
-            
+            if (MgrEnsemble.EnsembleSelect == Mgr.EnsembleLu)
+            {
+                Mgr.Playlist.Remove((Piste)ListePiste.SelectedItem);
+
+            }
             try
             {
                 MgrEnsemble.SupprimerPiste((Piste)ListePiste.SelectedItem);
@@ -55,6 +59,8 @@ namespace Audium.userControls
             {
                 Debug.WriteLine(erreur.Message);
             }
+           
+
         }
 
        
@@ -77,7 +83,7 @@ namespace Audium.userControls
 
             if (result == true)
             {
-                ((Morceau)((Button)sender).Tag).Chemin = dialog.FileName;
+                ((Piste)((Button)sender).Tag).Source = dialog.FileName;
             }
 
             Mgr.ManagerEnsemble.ActualiserListe();
@@ -90,12 +96,20 @@ namespace Audium.userControls
 
         private void AjouterMorceau(object sender, RoutedEventArgs e)
         {
-            MgrEnsemble.AjouterMorceau("Nouveau Morceau", "", "");
+            Morceau morceau = MgrEnsemble.AjouterMorceau("Nouveau Morceau", "", "");
+            if (MgrEnsemble.EnsembleSelect == Mgr.EnsembleLu)
+            {
+                Mgr.Playlist.AddLast(morceau);
+            }
         }
 
         private void AjouterPodcast(object sender, RoutedEventArgs e)
         {
-            MgrEnsemble.AjouterPodcast("Nouveau Podcast", "", "", "", DateTime.Today);
+            Podcast nouvPod = MgrEnsemble.AjouterPodcast("Nouveau Podcast", "", "", "", DateTime.Today);
+            if (MgrEnsemble.EnsembleSelect == Mgr.EnsembleLu)
+            {
+                Mgr.Playlist.AddLast(nouvPod);
+            }
         }
 
         private void Sauvegarder(object sender, RoutedEventArgs e)
