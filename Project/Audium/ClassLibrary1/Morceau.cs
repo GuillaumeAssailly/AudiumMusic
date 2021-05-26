@@ -9,28 +9,27 @@ namespace Donnees
     public class Morceau : Piste
     {
         public Morceau(string titre, string artiste, string chemin)
-            :base(titre)
+            :base(titre,chemin)
         {
            
             Artiste = artiste;
-            Chemin = chemin;
+           
         }
 
     
         public string Artiste { get; set; }
-        public string Chemin { get; set;  }
+       
 
         public void ModifierMorceau(string titre, string chemin, string artiste)
         {
             base.Titre = titre;
-          
+            base.Source = chemin;
             Artiste = artiste;
-            Chemin = chemin;
         }
 
         public override String ToString()
         {
-            return $"Morceau : \n Titre : {base.Titre}\nArtiste : {Artiste} \n Chemin : {Chemin}";
+            return $"Morceau : \n Titre : {base.Titre}\nArtiste : {Artiste} \n Chemin : {base.Source}";
         }
     }
 }

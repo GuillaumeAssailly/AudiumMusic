@@ -9,9 +9,9 @@ namespace Donnees
     public class StationRadio : Piste
     {
         public StationRadio(string titre, string URL)
-            :base(titre)
+            :base(titre,URL)
         {
-            AdresseURL = URL;
+            Emet = false;
             
         }
 
@@ -22,7 +22,7 @@ namespace Donnees
         public void ModifierRadio(string titre, string URL)
         {
             base.Titre = titre;
-            AdresseURL = URL;
+            base.Source = URL;
            
         }
 

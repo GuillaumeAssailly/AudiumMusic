@@ -57,7 +57,7 @@ namespace Gestionnaires
             
         }
 
-        public void AjouterMorceau(string titre, string artiste, string chemin)
+        public Morceau AjouterMorceau(string titre, string artiste, string chemin)
         {
             int i = 1;
             
@@ -81,6 +81,7 @@ namespace Gestionnaires
             mediatheque.TryGetValue(ensembleSelect, out listeSelect);
             ListeSelect = new ReadOnlyCollection<Piste>(listeSelect.ToList());
             OnPropertyChanged(nameof(ListeSelect));
+            return morceau;
         }
 
         public void AjouterStationRadio(string titre, string url)
@@ -106,7 +107,7 @@ namespace Gestionnaires
             OnPropertyChanged(nameof(ListeSelect));
         }
 
-        public void AjouterPodcast(string titre, string description, string auteur, string chemin, DateTime date)
+        public Podcast AjouterPodcast(string titre, string description, string auteur, string chemin, DateTime date)
         {
             int i = 1;
 
@@ -127,6 +128,7 @@ namespace Gestionnaires
             mediatheque.TryGetValue(ensembleSelect, out listeSelect);
             ListeSelect = new ReadOnlyCollection<Piste>(listeSelect.ToList());
             OnPropertyChanged(nameof(ListeSelect));
+            return podcast;
         }
 
         public bool SupprimerPiste(Piste pisteAsuppr)
