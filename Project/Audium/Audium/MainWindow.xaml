@@ -222,7 +222,11 @@
                     <materialDesign:PackIcon Kind="FastForward" />
                 </Button>
 
-                <Image Grid.Column="0" Height="50"  Width="50" Source="{Binding Mgr.EnsembleLu.CheminImage, Converter={StaticResource String2Image}}"  Margin="0,-14,0,0"/>
+                <StackPanel Grid.Column="0"  Grid.Row="0">
+                    <Grid  Height="50"  Width="50">
+                        <Image  Source="{Binding Mgr.EnsembleLu.CheminImage, Converter={StaticResource String2Image}}"  Stretch="UniformToFill" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                    </Grid>
+                </StackPanel>
                 <WrapPanel Grid.Column="1" Orientation="Vertical">
 
                     <TextBlock Name="TitleDisplay" TextWrapping="Wrap" FontSize="15" Foreground="White" Margin="0,5,0,0" />

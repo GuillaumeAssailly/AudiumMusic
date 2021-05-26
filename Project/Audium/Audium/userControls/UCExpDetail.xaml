@@ -66,7 +66,9 @@
                                             <materialDesign:PackIcon Kind="OpenInApp" Height="50" Width="50"/>
                                         </Button>
                                         <ToggleButton Content="{materialDesign:PackIcon Kind=Heart}" Height="35" Width="35" Canvas.Top="10" Canvas.Left="165" Panel.ZIndex="2" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton }"  ToolTip="Ajouter au favoris" Cursor="Hand" Tag="{Binding EnsembleSelect}"  IsChecked="{Binding EnsembleSelect.Favori, Mode=OneWay}" Name="FavButton" Click="FavButton_Click"/>
-                                        <Image Source="{Binding EnsembleSelect.CheminImage, Converter={StaticResource String2Image}, UpdateSourceTrigger=Explicit}"  Height="220" Width="220" Name="ImagePochette" />
+                                        <Grid Height="220" Width="220">
+                                        <Image Source="{Binding EnsembleSelect.CheminImage, Converter={StaticResource String2Image}, UpdateSourceTrigger=Explicit}"   Name="ImagePochette" Stretch="UniformToFill" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                                        </Grid>
                                     </Canvas>
                                     <materialDesign:RatingBar
 
@@ -146,14 +148,11 @@
                 </GroupBox>
 
                 <GroupBox
-                                    FontSize="15"
-                                   
-                                    
-                                     Margin="16"
-                                     Grid.Column="1"
-                                    VerticalAlignment="Stretch"
-                                    Style="{DynamicResource MaterialDesignCardGroupBox}"
-                                 >
+                    FontSize="15"
+                    Margin="16"
+                    Grid.Column="1"
+                    VerticalAlignment="Stretch"
+                    Style="{DynamicResource MaterialDesignCardGroupBox}">
                     <GroupBox.Header>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Sélection des titres" Foreground="Black" />

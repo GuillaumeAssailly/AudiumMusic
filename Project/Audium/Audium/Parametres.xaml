@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Audium"
+        xmlns:local="clr-namespace:Audium" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         WindowStyle="None"
         BorderBrush="{DynamicResource PrimaryHueMidBrush}"
@@ -17,7 +17,16 @@
     <StackPanel Background="#424242" >
         <TextBlock Text="Paramètres" Style="{DynamicResource MaterialDesignHeadline5TextBlock}" Foreground="White" Margin="30,10"/>
         <TextBlock FontSize="15" Foreground="White" Text="Chemin de la base de données :" Margin="100,20,0,0"/>
-        <TextBox Margin="100,0" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" FontSize="15" Foreground="White"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBox Margin="0,0,30,0" Text="{Binding MgrProfil.CheminBaseDonnees}"
+                     Style="{DynamicResource MaterialDesignFloatingHintTextBox}" 
+                     Width="600"
+                     
+                     FontSize="15" Foreground="White" Cursor="IBeam"/>
+            <Button Style="{StaticResource MaterialDesignIconButton}" Click="FolderSelect_Click" Cursor="Hand">
+                <materialDesign:PackIcon Height="30" Width="30" Kind="FolderMusic" />
+            </Button>
+        </StackPanel>
         <TextBlock Text="Thème d'accentuation" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" Foreground="White" Margin="30,30"/>
         <Grid Margin="50,0">
             <Grid.ColumnDefinitions>

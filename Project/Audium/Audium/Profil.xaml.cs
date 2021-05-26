@@ -48,6 +48,8 @@ namespace Audium
             dialog.InitialDirectory = @"C:\Users\Public\Pictures";
             dialog.FileName = "Images";
             dialog.DefaultExt = ".jpg| .gif |.png";
+            
+           
 
             bool? result = dialog.ShowDialog();
 

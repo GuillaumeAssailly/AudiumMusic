@@ -53,7 +53,17 @@ namespace Gestionnaires
         private string cheminImage;
 
         public string CouleurTheme { get; private set; }
-        public string CheminBaseDonnees { get; private set; }
+        public string CheminBaseDonnees { get => cheminBaseDonnees;
+            set 
+            {
+                if(value != null)
+                {
+                    cheminBaseDonnees = value;
+                    OnPropertyChanged(nameof(CheminBaseDonnees));
+                }
+            }
+        }
+        private string cheminBaseDonnees;
         
 
         
