@@ -73,7 +73,7 @@ namespace Audium.userControls
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
-            dialog.InitialDirectory = @"C:\Users\Public\Pictures";
+            dialog.InitialDirectory = $"{Mgr.ManagerProfil.CheminBaseDonnees}";
             
             dialog.Filter = "Fichiers audio (*.mp3,*.wav)|*.mp3;*.wav";
 

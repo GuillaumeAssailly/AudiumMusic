@@ -98,7 +98,7 @@ namespace Audium
 
         private void OpenFolderMusic(Object sender, RoutedEventArgs e)
         {
-            Process.Start("explorer.exe", @"c:\Users");
+            Process.Start("explorer.exe", $"{Mgr.ManagerProfil.CheminBaseDonnees}");
 
         }
 

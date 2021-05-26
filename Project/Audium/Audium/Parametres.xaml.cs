@@ -11,8 +11,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Gestionnaires;
 using MaterialDesignColors;
 using MaterialDesignThemes.Wpf;
+using System.Windows.Forms;
+
 namespace Audium
 {
     /// <summary>
@@ -20,9 +23,14 @@ namespace Audium
     /// </summary>
     public partial class Parametres : Window
     {
+        public Manager Mgr => (App.Current as App).LeManager;
+
+        public ManagerProfil MgrProfil => (App.Current as App).LeManager.ManagerProfil;
+
         public Parametres()
         {
             InitializeComponent();
+            DataContext = this;
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
@@ -37,80 +45,87 @@ namespace Audium
 
         private void AmberClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).Amber();
+            ((App)System.Windows.Application.Current).Amber();
         }
 
         private void BlueClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).Blue();
+            ((App)System.Windows.Application.Current).Blue();
         }
         private void BlueGreyClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).BlueGrey();
+            ((App)System.Windows.Application.Current).BlueGrey();
         }
 
         private void CyanClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).Cyan();
+            ((App)System.Windows.Application.Current).Cyan();
         }
 
         private void DeepOrangeClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).DeepOrange();
+            ((App)System.Windows.Application.Current).DeepOrange();
         }
         private void DeepPurpleClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).DeepPurple();
+            ((App)System.Windows.Application.Current).DeepPurple();
         }
         private void GreenClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).Green();
+            ((App)System.Windows.Application.Current).Green();
         }
         private void GreyClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).Grey();
+            ((App)System.Windows.Application.Current).Grey();
         }
         private void IndigoClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).Indigo();
+            ((App)System.Windows.Application.Current).Indigo();
         }
         private void LightBlueClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).LightBlue();
+            ((App)System.Windows.Application.Current).LightBlue();
         }
         private void LightGreenClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).LightGreen();
+            ((App)System.Windows.Application.Current).LightGreen();
         }
         private void LimeClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).Lime();
+            ((App)System.Windows.Application.Current).Lime();
         }
         private void OrangeClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).Orange();
+            ((App)System.Windows.Application.Current).Orange();
         }
         private void PinkClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).Pink();
+            ((App)System.Windows.Application.Current).Pink();
         }
         private void PurpleClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).Purple();
+            ((App)System.Windows.Application.Current).Purple();
         }
         private void RedClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).Red();
+            ((App)System.Windows.Application.Current).Red();
         }
         private void TealClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).Teal();
+            ((App)System.Windows.Application.Current).Teal();
         }
         private void YellowClick(Object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).Yellow();
+            ((App)System.Windows.Application.Current).Yellow();
         }
 
-
+        private void FolderSelect_Click(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog browser = new();
+            if (browser.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                MgrProfil.CheminBaseDonnees = browser.SelectedPath;
+            }
+        }
     }
 }
