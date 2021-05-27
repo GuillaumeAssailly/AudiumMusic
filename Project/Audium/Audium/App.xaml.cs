@@ -25,7 +25,7 @@ namespace Audium
 
         public App()
         {
-            LeManager = new();
+            LeManager = new(new Stub.Stub());
 
         }
 
