@@ -61,8 +61,8 @@
 														"$ref": "AAAAAAF5o0sokmAd4KQ="
 													},
 													"font": "Arial;13;0",
-													"left": 272.72998046875,
-													"top": 165,
+													"left": 48.72998046875,
+													"top": 13,
 													"width": 154.9306640625,
 													"height": 13,
 													"text": "Ajouter un EnsembleAudio"
@@ -74,18 +74,18 @@
 														"$ref": "AAAAAAF5o0sokmAd4KQ="
 													},
 													"font": "Arial;13;1",
-													"left": 253,
-													"top": 165,
+													"left": 29,
+													"top": 13,
 													"width": 14.72998046875,
 													"height": 13,
 													"text": "sd"
 												}
 											],
 											"font": "Arial;13;0",
-											"left": 248,
-											"top": 160,
-											"width": 1689,
-											"height": 592,
+											"left": 24,
+											"top": 8,
+											"width": 1889,
+											"height": 745,
 											"nameLabel": {
 												"$ref": "AAAAAAF5o0sokmAeqnA="
 											},
@@ -2023,7 +2023,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF5o0sokWAap7o="
 							},
-							"name": "Role1"
+							"name": "Role1",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2031,7 +2032,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF5o0sokWAap7o="
 							},
-							"name": "Role2"
+							"name": "Role2",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2039,7 +2041,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF5o0sokWAap7o="
 							},
-							"name": "Role3"
+							"name": "Role3",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",

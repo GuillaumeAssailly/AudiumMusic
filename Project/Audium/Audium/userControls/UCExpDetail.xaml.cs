@@ -34,7 +34,7 @@ namespace Audium.userControls
         public UCExpDetail()
         {
             InitializeComponent();
-            DataContext = Mgr.ManagerEnsemble;
+            DataContext = this;
         }
 
         private void Lire_Exp(object sender, RoutedEventArgs e)
@@ -115,7 +115,7 @@ namespace Audium.userControls
         private void Sauvegarder(object sender, RoutedEventArgs e)
         {
            
-            MgrEnsemble.EnsembleSelect.ModifierEnsemble(Titre_box.Text, Etoiles.Value, Description_box.Text, MgrEnsemble.EnsembleSelect.CheminImage, EGenre.BANDEORIGINALE);
+            MgrEnsemble.EnsembleSelect.ModifierEnsemble(Titre_box.Text, Etoiles.Value, Description_box.Text, MgrEnsemble.EnsembleSelect.CheminImage, (EGenre)Combo_Genre.SelectedItem);
             Debug.WriteLine(Etoiles.Value);
         }
 
@@ -138,7 +138,8 @@ namespace Audium.userControls
             {
                 imagesource = dialog.FileName;
                 //ImagePochette.Source = new BitmapImage(new Uri(dialog.FileName, UriKind.Absolute));
-                MgrEnsemble.EnsembleSelect.CheminImage = imagesource;
+                //MgrEnsemble.EnsembleSelect.CheminImage = imagesource;
+                MgrEnsemble.EnsembleSelect.ModifierImage(imagesource);
             }
         }
     }

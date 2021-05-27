@@ -17,7 +17,7 @@ namespace Donnees
         BANDEORIGINALE
 
     }
-
+    /*
     public static class Genre
     {
         public static string GetString(EGenre genre)
@@ -51,5 +51,7 @@ namespace Donnees
             if (genre.Equals(GetString(EGenre.BANDEORIGINALE))) return EGenre.BANDEORIGINALE;
             return EGenre.AUCUN;
         }
+    
     }
+    */
 }

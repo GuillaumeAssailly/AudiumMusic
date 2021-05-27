@@ -87,7 +87,7 @@ namespace Audium
         private void Recherche_KeyUp(object sender, KeyEventArgs e)
         {
             Motcle = Recherche.Text;
-            Mgr.ListeClé = URecherche.Recherche(Motcle, Genre.GetGenre(Mgr.GenreSelect), Mgr.Mediatheque);
+            Mgr.ListeClé = URecherche.Recherche(Motcle, Mgr.GenreSelect, Mgr.Mediatheque);
         }
 
         void tick(object sender, EventArgs e) 
@@ -288,7 +288,7 @@ namespace Audium
         private void TagListClicked(object sender, MouseButtonEventArgs e)
         {
             MainExp.IsExpanded = false;
-            Mgr.ListeClé = URecherche.Recherche(Motcle, Genre.GetGenre(Mgr.GenreSelect), Mgr.Mediatheque);
+            Mgr.ListeClé = URecherche.Recherche(Motcle, Mgr.GenreSelect, Mgr.Mediatheque);
         }
 
     

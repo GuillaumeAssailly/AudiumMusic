@@ -21,6 +21,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Green.Named.Primary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <conv:String2Image x:Key="String2Image"/>
+            <conv:EGenre2String x:Key="EGenre2String"/>
         </ResourceDictionary>
         
     </UserControl.Resources>
@@ -28,7 +29,7 @@
     <DockPanel >
 
         <DockPanel DockPanel.Dock="Bottom" >
-            <Grid >
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="1*"/>
@@ -39,117 +40,150 @@
 
                 </GroupBox>
                 <GroupBox
-                                    FontSize="15"
-                                    Header="A propos de l'Album"
-                                    Margin="16"
-                                    Grid.Column="0"
-                                    Style="{DynamicResource MaterialDesignCardGroupBox}"
-                                    VerticalAlignment="Stretch"
-                                >
-                    <ScrollViewer  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden">
-                        <StackPanel>
-                            <DockPanel>
+                    FontSize="15"
+                    Header="A propos de l'Album"
+                    Margin="8,0,0,0"
+                    Grid.Column="0"
+                    Style="{DynamicResource MaterialDesignCardGroupBox}"
+                    VerticalAlignment="Stretch"
+                >
 
-                                <StackPanel DockPanel.Dock="Left" >
-                                    <Canvas Height="220" Width="220" Margin="20">
-                                        <Button Height="100" Width="100" Canvas.Top="60" Canvas.Left="60" Panel.ZIndex="1" Foreground="White" ToolTip="Importer une pochette" Cursor="Hand" Name="ImportButton" Click="ImportButton_Click">
-                                            <Button.Style >
-                                                <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignToolForegroundButton}">
-                                                    <Setter Property="Visibility" Value="Hidden" />
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Canvas}},Path=IsMouseOver}" Value="True">
-                                                            <Setter Property="Visibility" Value="Visible" />
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Button.Style>
-                                            <materialDesign:PackIcon Kind="OpenInApp" Height="50" Width="50"/>
-                                        </Button>
-                                        <ToggleButton Content="{materialDesign:PackIcon Kind=Heart}" Height="35" Width="35" Canvas.Top="10" Canvas.Left="165" Panel.ZIndex="2" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton }"  ToolTip="Ajouter au favoris" Cursor="Hand" Tag="{Binding EnsembleSelect}"  IsChecked="{Binding EnsembleSelect.Favori, Mode=OneWay}" Name="FavButton" Click="FavButton_Click"/>
-                                        <Grid Height="220" Width="220">
-                                        <Image Source="{Binding EnsembleSelect.CheminImage, Converter={StaticResource String2Image}, UpdateSourceTrigger=Explicit}"   Name="ImagePochette" Stretch="UniformToFill" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
-                                        </Grid>
-                                    </Canvas>
-                                    <materialDesign:RatingBar
 
-                                              x:Name="Etoiles"
-                                              Value="{Binding EnsembleSelect.Note, Mode=TwoWay}"
-                                              IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}"   
-                                              Margin="75,20,0,20"/>
-                                    
-                                    <TextBox
-                                                Margin="4,10"
-                                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                                VerticalAlignment="Top"
-                                                BorderBrush="{DynamicResource  PrimaryHueLightBrush}"
-                                                Height="auto"
-                                                x:Name="Titre_box"
-                                                Text="{Binding EnsembleSelect.Titre, Mode=OneWay}"
-                                                IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}" 
-                                                AcceptsReturn="True"
-                                                TextWrapping="Wrap"
-                                                VerticalScrollBarVisibility="Auto"
-                                                materialDesign:HintAssist.Hint="Titre de l'album" Cursor="IBeam"/>
-                                    <ComboBox
-                                            Margin="4,10"
-                                             BorderBrush="{DynamicResource PrimaryHueLightBrush}"
-                                            IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}"
-                                            materialDesign:HintAssist.Hint="Genre"
-                                            Style="{DynamicResource MaterialDesignFloatingHintComboBox}"
-                                            materialDesign:HintAssist.IsFloating="True">
-                                        <ComboBoxItem Content="Blues"/>
-                                        <ComboBoxItem Content="Classique"/>
-                                        <ComboBoxItem Content="Bande Originale"/>
-                                        <ComboBoxItem Content="Hip-Hop"/>
-                                        <ComboBoxItem Content="Jazz"/>
-                                    </ComboBox>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="350"/>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
 
-                                </StackPanel>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0"/>
+                            <RowDefinition Height="220"/>
+                            <RowDefinition Height="110"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="80"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Canvas Grid.Column="0" Height="140" Width="260" Grid.Row="1" HorizontalAlignment="Center">
+                            <Button Height="140" Width="140" Canvas.Top="60" Canvas.Left="60" Panel.ZIndex="1" Foreground="White" ToolTip="Importer une pochette" Cursor="Hand" Name="ImportButton" Click="ImportButton_Click">
+                                <Button.Style >
+                                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignToolForegroundButton}">
+                                        <Setter Property="Visibility" Value="Hidden" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Canvas}},Path=IsMouseOver}" Value="True">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                                <materialDesign:PackIcon Kind="OpenInApp" Height="50" Width="50"/>
+                            </Button>
+                            <ToggleButton Content="{materialDesign:PackIcon Kind=Heart}" Height="35" Width="35" Canvas.Top="13" Canvas.Left="210" Panel.ZIndex="2" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton }"  ToolTip="Ajouter au favoris" Cursor="Hand" Tag="{Binding MgrEnsemble.EnsembleSelect}"  IsChecked="{Binding MgrEnsemble.EnsembleSelect.Favori, Mode=OneWay}" Name="FavButton" Click="FavButton_Click"/>
+                            <Grid Height="260" Width="260">
+                                <Image Source="{Binding MgrEnsemble.EnsembleSelect.CheminImage, Converter={StaticResource String2Image}, UpdateSourceTrigger=Explicit}" Name="ImagePochette" Stretch="UniformToFill" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                            </Grid>
+                        </Canvas>
+                        <materialDesign:RatingBar
+                            Grid.Column="0"
+                            Grid.Row="3"
+                            x:Name="Etoiles"
+                            Value="{Binding MgrEnsemble.EnsembleSelect.Note, Mode=TwoWay}"
+                            IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}"   
+                            HorizontalAlignment="Center"
+                        />
 
-                                <StackPanel  DockPanel.Dock="Right">
-                                    <StackPanel>
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                            <TextBlock Text="Mode Edition" Margin="10,20"/>
-                                            <CheckBox
-                                                Margin="10"
-                                                Style="{DynamicResource MaterialDesignSwitchToggleButton}"
-                                                x:Name="EditMode"
-                                                />
-                                        </StackPanel>
-                                        <TextBox
-                                            Width="700"
-                                            
-                                                x:Name="Description_box"
-                                                Text="{Binding EnsembleSelect.Description, Mode=OneWay}"
-                                                Margin="30"
-                                                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                                VerticalAlignment="Top"
-                                                BorderBrush="{DynamicResource PrimaryHueLightBrush}"
-                                                MaxLines="15"
-                                                MaxLength="1500"
-                                                IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}" 
-                                                AcceptsReturn="True"
-                                                TextWrapping="Wrap"
-                                                VerticalScrollBarVisibility="Auto"
-                                                materialDesign:HintAssist.Hint="Description" Cursor="IBeam"/>
-                                    </StackPanel>
+                        <TextBox
+                            Grid.Column="0"
+                            Grid.Row="5"
+                            Width="260"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Top"
+                            BorderBrush="{DynamicResource  PrimaryHueLightBrush}"
+                            Height="auto"
+                            x:Name="Titre_box"
+                            Text="{Binding MgrEnsemble.EnsembleSelect.Titre, Mode=OneWay}"
+                            IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}" 
+                            AcceptsReturn="False"
+                            TextWrapping="Wrap"
+                            VerticalScrollBarVisibility="Auto"
+                            materialDesign:HintAssist.Hint="Titre de l'album" Cursor="IBeam"
+                            TextAlignment="Left"
+                        />
 
-                                </StackPanel>
-                            </DockPanel>
-                            <Button
-                                    IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}" 
-                                    HorizontalAlignment="Right"
-                                    Margin="0,140,10,0"
-                                    ToolTip="Sauvegarder les modifications"
-                                    Click="Sauvegarder"
-                                    Content="SAUVEGARDER" Cursor="Hand" />
+                        <ComboBox
+                            Grid.Column="0"
+                            Grid.Row="7"
+                            Width="260"
+                            ItemsSource="{Binding Mgr.ListeGenres}"
+                            SelectedItem="{Binding MgrEnsemble.EnsembleSelect.Genre, Mode=OneWay}" 
+                            
+                            BorderBrush="{DynamicResource PrimaryHueLightBrush}"
+                            IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}"
+                            materialDesign:HintAssist.Hint="Genre"
+                            Style="{DynamicResource MaterialDesignFloatingHintComboBox}"
+                            materialDesign:HintAssist.IsFloating="True"
+                            x:Name="Combo_Genre">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Converter={StaticResource EGenre2String}}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+
+                        </ComboBox>
+
+
+
+                        <StackPanel Grid.Column="1" Grid.Row="0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock Text="Mode Edition" Margin="10,20"/>
+                                <CheckBox
+                                        Margin="10"
+                                        Style="{DynamicResource MaterialDesignSwitchToggleButton}"
+                                        x:Name="EditMode"
+                                        />
+                            </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                        <TextBox
+                                Margin="0,74,0,0"
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                Grid.RowSpan="6"
+                                x:Name="Description_box"
+                                Text="{Binding MgrEnsemble.EnsembleSelect.Description, Mode=OneWay}"
+ 
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                VerticalAlignment="Top"
+                                BorderBrush="{DynamicResource PrimaryHueLightBrush}"
+                                MaxLines="25"
+                                MaxLength="1500"
+                                IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}" 
+                                AcceptsReturn="True"
+                                TextWrapping="Wrap"
+                                VerticalScrollBarVisibility="Auto"
+                                materialDesign:HintAssist.Hint="Description" Cursor="IBeam"/>
+
+                        <Button
+                            Grid.Column="1"
+                            Grid.Row="9"
+                            IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}" 
+                            HorizontalAlignment="Right"
+                            ToolTip="Sauvegarder les modifications"
+                            Click="Sauvegarder"
+                            Content="SAUVEGARDER" Cursor="Hand"/>
+                    </Grid>
+
+
+
                 </GroupBox>
 
                 <GroupBox
                     FontSize="15"
-                    Margin="16"
+                    Margin="16,0,8,0"
                     Grid.Column="1"
                     VerticalAlignment="Stretch"
                     Style="{DynamicResource MaterialDesignCardGroupBox}">
@@ -177,15 +211,15 @@
                         </Grid.RowDefinitions>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="0">
                         <StackPanel>
-                      
 
 
 
 
 
 
-        
-                        <ListBox ItemsSource="{Binding ListeSelect}" Name="ListePiste" SelectedItem="{Binding PisteSelect}">
+
+
+                                <ListBox ItemsSource="{Binding MgrEnsemble.ListeSelect}" Name="ListePiste" SelectedItem="{Binding MgrEnsemble.PisteSelect}">
                             <ListBox.Resources >
                                 <DataTemplate DataType="{x:Type donnees:Morceau}">
                                     <WrapPanel Orientation="Horizontal">

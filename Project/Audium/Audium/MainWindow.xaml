@@ -15,7 +15,7 @@
         <Size Height="300" Width="300" x:Key="Taillepardefaut"/>
         <conv:String2CompactString x:Key="String2CompactString"/>
         <conv:String2Image x:Key="String2Image"/>
-        <conv:DicoConverter x:Key="DicoConverter"/>
+        <conv:EGenre2String x:Key="EGenre2String"/>
        
     </Window.Resources>
    
@@ -84,7 +84,7 @@
                             <ListBox ItemsSource="{Binding Mgr.ListeGenres}" SelectedItem="{Binding Mgr.GenreSelect}" MouseLeftButtonUp="TagListClicked" >
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding}" />
+                                        <TextBlock Text="{Binding Converter={StaticResource EGenre2String}}" />
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
@@ -183,13 +183,13 @@
         <Border BorderBrush="Black" BorderThickness="0"  DockPanel.Dock="Bottom" Margin="0"  >
             <Grid Background="#262626"  Height="100">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition />
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
                     <ColumnDefinition  Width="5*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
@@ -257,7 +257,7 @@
                 DockPanel.Dock="Bottom"
                 Foreground="{DynamicResource PrimaryHueLightBrush}"
                 Margin="0,-5,0,0"
-                Padding="0,30,0,0">
+                Padding="0,0,0,0">
                 <Expander.Header>
                     <TextBlock HorizontalAlignment="Right" FontSize="15" Margin="0,0,-10,0">Détails</TextBlock>
                 </Expander.Header>

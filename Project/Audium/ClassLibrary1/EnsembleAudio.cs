@@ -36,7 +36,7 @@ namespace Donnees
         public string Description { get; private set; }
         public string CheminImage {
             get => cheminImage;
-            set {
+            private set {
                 cheminImage = value;
                 OnPropertyChanged(nameof(CheminImage)); 
             } 
@@ -66,6 +66,11 @@ namespace Donnees
             this.Genre = Genre;
         }
 
+        public void ModifierImage(string imageSource)
+        {
+            CheminImage = imageSource;
+        }
+
         public bool Equals([AllowNull] EnsembleAudio other)
         {
             return ID.ToLower().Equals(other.ID.ToLower());
@@ -91,5 +96,6 @@ namespace Donnees
             return $"Titre : {Titre}\n Note (sur 5) : {Note}\n Description : {Description} \n Image : {CheminImage} \n Genre : {Genre} \n Date : {DateAjout}";
         }
 
+        
     }
 }
