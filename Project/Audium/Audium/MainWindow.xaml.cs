@@ -301,5 +301,10 @@ namespace Audium
             Lecteur.Stop();
             Lecteur.Source = null;
         }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            Mgr.SauvegardeDonnees();
+        }
     }
 }

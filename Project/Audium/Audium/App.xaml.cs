@@ -10,7 +10,7 @@ using MaterialDesignColors;
 using System.Windows.Media;
 using Gestionnaires;
 using Donnees;
-
+using DataContractPersistance;
 
 namespace Audium
 {
@@ -25,8 +25,7 @@ namespace Audium
 
         public App()
         {
-            LeManager = new(new Stub.Stub());
-
+            LeManager = new(new DataContractPers());
         }
 
 
