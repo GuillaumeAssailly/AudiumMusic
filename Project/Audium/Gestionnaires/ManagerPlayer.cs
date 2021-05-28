@@ -21,8 +21,8 @@ namespace Gestionnaires
                 if (ensembleLu != value)
                 {
                     ensembleLu = value;
-                    Mediatheque.TryGetValue(ensembleLu, out Playlist);
-                    Playlist = new LinkedList<Piste>(Playlist.ToList());
+                    if (ensembleLu != null) { Mediatheque.TryGetValue(ensembleLu, out Playlist); }
+                    if (Playlist != null) { Playlist = new LinkedList<Piste>(Playlist.ToList());  }
                     OnPropertyChanged(nameof(EnsembleLu));
                     OnPropertyChanged(nameof(Playlist));
 

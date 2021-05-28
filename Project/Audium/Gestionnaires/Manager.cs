@@ -49,7 +49,7 @@ namespace Gestionnaires
 
         public void ModifierListeFavoris(EnsembleAudio A)
         {
-            Debug.WriteLine(mediatheque.FirstOrDefault().Key.Favori);
+           
             if (A.Favori == false)
             {
                 listeFavoris.Add(A);
@@ -176,7 +176,31 @@ namespace Gestionnaires
             return NouvelEnsembleAudio;
         }
 
-      
+
+        public void SupprimerEnsembleAudio(EnsembleAudio EnsembleASuppr)
+        {
+            try
+            {
+                mediatheque.Remove(EnsembleASuppr);
+                ListeClé.Remove(EnsembleASuppr);
+                if (EnsembleASuppr.Favori == true)
+                {
+                    ModifierListeFavoris(EnsembleASuppr);
+                }
+                if (Mediatheque.Count == 0 && ListeFavoris.Count == 0)
+                {
+                   
+                  EnsembleLu = null;
+                  Playlist = null;
+
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
+        }
+
         public override string ToString()
         {
             return $"Compteur : {CompteurAlbum}\n Médiathèque : {Mediatheque}";

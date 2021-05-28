@@ -46,10 +46,11 @@ namespace Audium.userControls
 
         private void Supprimer_Piste(object sender, RoutedEventArgs e)
         {
+
             if (MgrEnsemble.EnsembleSelect == Mgr.EnsembleLu)
             {
                 Mgr.Playlist.Remove((Piste)ListePiste.SelectedItem);
-
+                StopLecteur?.Invoke(sender, new RoutedEventArgs());
             }
             try
             {
@@ -140,6 +141,33 @@ namespace Audium.userControls
                 //ImagePochette.Source = new BitmapImage(new Uri(dialog.FileName, UriKind.Absolute));
                 //MgrEnsemble.EnsembleSelect.CheminImage = imagesource;
                 MgrEnsemble.EnsembleSelect.ModifierImage(imagesource);
+            }
+        }
+
+        
+        private void SupprimerEns(object sender, RoutedEventArgs e)
+        {
+            Dialog.IsOpen = true;
+        }
+
+
+        public event RoutedEventHandler StopLecteur;
+        private void ValiderSuppr(object sender, RoutedEventArgs e)
+        {
+            
+            Mgr.SupprimerEnsembleAudio(Mgr.ManagerEnsemble.EnsembleSelect);
+            try { 
+
+                Mgr.ManagerEnsemble.EnsembleSelect = Mgr.Mediatheque.First().Key;
+
+            }
+            catch(Exception)
+            {
+                if (Mgr.Mediatheque.Count == 0 && Mgr.ListeFavoris.Count == 0)
+                {
+                    Visibility = Visibility.Collapsed;
+                    StopLecteur?.Invoke(sender, new RoutedEventArgs());
+                }
             }
         }
     }

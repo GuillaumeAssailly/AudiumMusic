@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:Audium"
              xmlns:donnees="clr-namespace:Donnees;assembly=Donnees"
              mc:Ignorable="d" 
+             
              d:DesignHeight="900" d:DesignWidth="1200"
              xmlns:conv="clr-namespace:Audium.converters">
             
@@ -25,21 +26,48 @@
         </ResourceDictionary>
         
     </UserControl.Resources>
-    
-    <DockPanel >
+    <materialDesign:DialogHost Name="Dialog"
+                    IsOpen="False" CloseOnClickAway="True" 
+                    DialogTheme="Inherit">
+        <materialDesign:DialogHost.DialogContent>
+            <StackPanel 
+                               >
+                <TextBlock Style="{StaticResource MaterialDesignHeadline6TextBlock}" HorizontalAlignment="Center"
+                        Margin="0,16,0,0"        Text="Etes vous sûr ?" />
 
-        <DockPanel DockPanel.Dock="Bottom" >
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="0"/>
+                <StackPanel   Margin="0,0,0,10"  
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+                    <Button
+                                  Style="{StaticResource MaterialDesignFlatButton}"
+                                  IsDefault="True"
+                                  Margin="10,20,10,0"
+                                    Click="ValiderSuppr"
+                                  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                                  Content="Oui"/>
+                    <Button
+                                  Style="{StaticResource MaterialDesignFlatButton}"
+                                  IsCancel="True"
+                                  Margin="10,20,10,0"
+                                  Content="Annuler"
+                                  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"/>
+                </StackPanel>
+            </StackPanel>
+        </materialDesign:DialogHost.DialogContent>
+        <DockPanel >
 
-                </Grid.ColumnDefinitions>
-                <GroupBox MinHeight="9999" Grid.Column="2">
+            <DockPanel DockPanel.Dock="Bottom" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="0"/>
 
-                </GroupBox>
-                <GroupBox
+                    </Grid.ColumnDefinitions>
+                    <GroupBox MinHeight="9999" Grid.Column="2">
+
+                    </GroupBox>
+                    <GroupBox
                     FontSize="15"
                     Header="A propos de l'Album"
                     Margin="8,0,0,0"
@@ -49,55 +77,55 @@
                 >
 
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="350"/>
-                            <ColumnDefinition Width="25*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="350"/>
+                                <ColumnDefinition Width="25*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0"/>
-                            <RowDefinition Height="220"/>
-                            <RowDefinition Height="110"/>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="70"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="80"/>
-                        </Grid.RowDefinitions>
-                        
-                        <Canvas Grid.Column="0" Height="140" Width="260" Grid.Row="1" HorizontalAlignment="Center">
-                            <Button Height="140" Width="140" Canvas.Top="60" Canvas.Left="60" Panel.ZIndex="1" Foreground="White" ToolTip="Importer une pochette" Cursor="Hand" Name="ImportButton" Click="ImportButton_Click">
-                                <Button.Style >
-                                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignToolForegroundButton}">
-                                        <Setter Property="Visibility" Value="Hidden" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Canvas}},Path=IsMouseOver}" Value="True">
-                                                <Setter Property="Visibility" Value="Visible" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-                                <materialDesign:PackIcon Kind="OpenInApp" Height="50" Width="50"/>
-                            </Button>
-                            <ToggleButton Content="{materialDesign:PackIcon Kind=Heart}" Height="35" Width="35" Canvas.Top="13" Canvas.Left="210" Panel.ZIndex="2" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton }"  ToolTip="Ajouter au favoris" Cursor="Hand" Tag="{Binding MgrEnsemble.EnsembleSelect}"  IsChecked="{Binding MgrEnsemble.EnsembleSelect.Favori, Mode=OneWay}" Name="FavButton" Click="FavButton_Click"/>
-                            <Grid Height="260" Width="260">
-                                <Image Source="{Binding MgrEnsemble.EnsembleSelect.CheminImage, Converter={StaticResource String2Image}, UpdateSourceTrigger=Explicit}" Name="ImagePochette" Stretch="UniformToFill" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
-                            </Grid>
-                        </Canvas>
-                        <materialDesign:RatingBar
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0"/>
+                                <RowDefinition Height="220"/>
+                                <RowDefinition Height="110"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="0.1*"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="80"/>
+                            </Grid.RowDefinitions>
+
+                            <Canvas Grid.Column="0" Height="140" Width="260" Grid.Row="1" HorizontalAlignment="Center">
+                                <Button Height="140" Width="140" Canvas.Top="60" Canvas.Left="60" Panel.ZIndex="1" Foreground="White" ToolTip="Importer une pochette" Cursor="Hand" Name="ImportButton" Click="ImportButton_Click">
+                                    <Button.Style >
+                                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignToolForegroundButton}">
+                                            <Setter Property="Visibility" Value="Hidden" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Canvas}},Path=IsMouseOver}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                    <materialDesign:PackIcon Kind="OpenInApp" Height="50" Width="50"/>
+                                </Button>
+                                <ToggleButton Content="{materialDesign:PackIcon Kind=Heart}" Height="35" Width="35" Canvas.Top="13" Canvas.Left="210" Panel.ZIndex="2" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton }"  ToolTip="Ajouter au favoris" Cursor="Hand" Tag="{Binding MgrEnsemble.EnsembleSelect}"  IsChecked="{Binding MgrEnsemble.EnsembleSelect.Favori, Mode=OneWay}" Name="FavButton" Click="FavButton_Click"/>
+                                <Grid Height="260" Width="260">
+                                    <Image Source="{Binding MgrEnsemble.EnsembleSelect.CheminImage, Converter={StaticResource String2Image}, UpdateSourceTrigger=Explicit}" Name="ImagePochette" Stretch="UniformToFill" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                                </Grid>
+                            </Canvas>
+                            <materialDesign:RatingBar
                             Grid.Column="0"
                             Grid.Row="3"
                             x:Name="Etoiles"
                             Value="{Binding MgrEnsemble.EnsembleSelect.Note, Mode=TwoWay}"
-                            IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}"   
+                            
                             HorizontalAlignment="Center"
                         />
 
-                        <TextBox
+                            <TextBox
                             Grid.Column="0"
                             Grid.Row="5"
                             Width="260"
@@ -107,7 +135,7 @@
                             Height="auto"
                             x:Name="Titre_box"
                             Text="{Binding MgrEnsemble.EnsembleSelect.Titre, Mode=OneWay}"
-                            IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}" 
+                           
                             AcceptsReturn="False"
                             TextWrapping="Wrap"
                             VerticalScrollBarVisibility="Auto"
@@ -115,7 +143,7 @@
                             TextAlignment="Left"
                         />
 
-                        <ComboBox
+                            <ComboBox
                             Grid.Column="0"
                             Grid.Row="7"
                             Width="260"
@@ -123,32 +151,23 @@
                             SelectedItem="{Binding MgrEnsemble.EnsembleSelect.Genre, Mode=OneWay}" 
                             
                             BorderBrush="{DynamicResource PrimaryHueLightBrush}"
-                            IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}"
+                    
                             materialDesign:HintAssist.Hint="Genre"
                             Style="{DynamicResource MaterialDesignFloatingHintComboBox}"
                             materialDesign:HintAssist.IsFloating="True"
                             x:Name="Combo_Genre">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Converter={StaticResource EGenre2String}}" />
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Converter={StaticResource EGenre2String}}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
 
-                        </ComboBox>
+                            </ComboBox>
 
 
 
-                        <StackPanel Grid.Column="1" Grid.Row="0">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <TextBlock Text="Mode Edition" Margin="10,20"/>
-                                <CheckBox
-                                        Margin="10"
-                                        Style="{DynamicResource MaterialDesignSwitchToggleButton}"
-                                        x:Name="EditMode"
-                                        />
-                            </StackPanel>
-                        </StackPanel>
-                        <TextBox
+
+                            <TextBox
                                 Margin="0,74,0,0"
                                 Grid.Column="1"
                                 Grid.Row="1"
@@ -161,36 +180,45 @@
                                 BorderBrush="{DynamicResource PrimaryHueLightBrush}"
                                 MaxLines="25"
                                 MaxLength="1500"
-                                IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}" 
+                         
                                 AcceptsReturn="True"
                                 TextWrapping="Wrap"
                                 VerticalScrollBarVisibility="Auto"
                                 materialDesign:HintAssist.Hint="Description" Cursor="IBeam"/>
 
-                        <Button
+                            <Button
                             Grid.Column="1"
                             Grid.Row="9"
-                            IsEnabled="{Binding Path=IsChecked, ElementName=EditMode}" 
+                     
                             HorizontalAlignment="Right"
                             ToolTip="Sauvegarder les modifications"
                             Click="Sauvegarder"
                             Content="SAUVEGARDER" Cursor="Hand"/>
-                    </Grid>
+
+                            <Button
+                            Grid.Column="0"
+                            Grid.Row="9"
+                            Margin="15"
+                            HorizontalAlignment="Left"
+                            ToolTip="Supprimer la collection et son contenu"
+                            Click="SupprimerEns"
+                            Content="SUPPRIMER LA COLLECTION" Cursor="Hand"/>
+                        </Grid>
 
 
 
-                </GroupBox>
+                    </GroupBox>
 
-                <GroupBox
+                    <GroupBox
                     FontSize="15"
                     Margin="16,0,8,0"
                     Grid.Column="1"
                     VerticalAlignment="Stretch"
                     Style="{DynamicResource MaterialDesignCardGroupBox}">
-                    <GroupBox.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Sélection des titres" Foreground="Black" />
-                            <Button
+                        <GroupBox.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Sélection des titres" Foreground="Black" />
+                                <Button
                                 Click="Supprimer_Piste"
                                 Margin="320,0,0,0"
                                 Width="25"
@@ -199,158 +227,159 @@
                                 Style="{StaticResource MaterialDesignIconForegroundButton}"
                                 ToolTip="MaterialDesignIconButton"
                                 Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
-                                <materialDesign:PackIcon Kind="Bin" />
-                            </Button>
-                        </StackPanel>
-                    </GroupBox.Header>
+                                    <materialDesign:PackIcon Kind="Bin" />
+                                </Button>
+                            </StackPanel>
+                        </GroupBox.Header>
 
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="0">
-                        <StackPanel>
-
-
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="0">
+                                <StackPanel>
 
 
 
 
 
 
-                                <ListBox ItemsSource="{Binding MgrEnsemble.ListeSelect}" Name="ListePiste" SelectedItem="{Binding MgrEnsemble.PisteSelect}">
-                            <ListBox.Resources >
-                                <DataTemplate DataType="{x:Type donnees:Morceau}">
-                                    <WrapPanel Orientation="Horizontal">
-                                        <Button
+
+
+                                    <ListBox ItemsSource="{Binding MgrEnsemble.ListeSelect}" Name="ListePiste" SelectedItem="{Binding MgrEnsemble.PisteSelect}">
+                                        <ListBox.Resources >
+                                            <DataTemplate DataType="{x:Type donnees:Morceau}">
+                                                <WrapPanel>
+
+                                                    <Button
                                                     Style="{StaticResource MaterialDesignIconButton}"
                                                     Tag ="{Binding}" Click="Lire_Exp"
                                                     ToolTip="MaterialDesignIconButton">
-                                            <materialDesign:PackIcon Kind="Play" />
-                                        </Button>
-                                        <TextBlock Text="{Binding Titre}"  Margin="0,15,0,0"/>
-                                        <materialDesign:PopupBox Closed="PopupBox_Closed_1"  ContextMenuClosing="PopupBox_ContextMenuClosing"
+                                                        <materialDesign:PackIcon Kind="Play" />
+                                                    </Button>
+                                                    <TextBlock Text="{Binding Titre}"  Margin="0,15,0,0" />
+                                                    <materialDesign:PopupBox Closed="PopupBox_Closed_1"  ContextMenuClosing="PopupBox_ContextMenuClosing" 
                                             StaysOpen="True" >
-                                            <Grid
+                                                        <Grid
                                                 Width="300"
                                                 Margin="8,8,8,8">
-                                                <Grid.Resources>
-                                                    <Style
+                                                            <Grid.Resources>
+                                                                <Style
                                                         TargetType="CheckBox"
                                                         BasedOn="{StaticResource MaterialDesignCheckBox}">
-                                                        <Setter
+                                                                    <Setter
                                                             Property="Margin" Value="8,8,10,8" />
-                                                    </Style>
-                                                    <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
-                                                        <Setter Property="materialDesign:HintAssist.IsFloating" Value="True" />
-                                                        <Setter Property="Margin" Value="8,8,8,8" />
-                                                    </Style>
-                                                </Grid.Resources>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="*" />
-                                                    <RowDefinition Height="*" />
-                                                    <RowDefinition Height="*" />
-                                                    <RowDefinition Height="*" />
-                                                    <RowDefinition Height="*" />
-                                                    <RowDefinition Height="*" />
-                                                </Grid.RowDefinitions>
-                                                <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Margin="8,8,8,16" Text="A propos du Morceau" />
-                                                <TextBox Grid.Column="0" Grid.Row="1" materialDesign:HintAssist.Hint="Titre" Text="{Binding Titre}"/>
-                                                <TextBox Grid.Column="0" Grid.Row="2" materialDesign:HintAssist.Hint="Artiste" Text="{Binding Artiste}" />
-                                                <TextBox Grid.Column="0" Grid.Row="3" materialDesign:HintAssist.Hint="Chemin"  Text="{Binding Source}" />
+                                                                </Style>
+                                                                <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
+                                                                    <Setter Property="materialDesign:HintAssist.IsFloating" Value="True" />
+                                                                    <Setter Property="Margin" Value="8,8,8,8" />
+                                                                </Style>
+                                                            </Grid.Resources>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="Auto" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="*" />
+                                                                <RowDefinition Height="*" />
+                                                                <RowDefinition Height="*" />
+                                                                <RowDefinition Height="*" />
+                                                                <RowDefinition Height="*" />
+                                                                <RowDefinition Height="*" />
+                                                            </Grid.RowDefinitions>
+                                                            <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Margin="8,8,8,16" Text="A propos du Morceau" />
+                                                            <TextBox Grid.Column="0" Grid.Row="1" materialDesign:HintAssist.Hint="Titre" Text="{Binding Titre}"/>
+                                                            <TextBox Grid.Column="0" Grid.Row="2" materialDesign:HintAssist.Hint="Artiste" Text="{Binding Artiste}" />
+                                                            <TextBox Grid.Column="0" Grid.Row="3" materialDesign:HintAssist.Hint="Chemin"  Text="{Binding Source}" />
 
-                                                <Button Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom" Click="Button_Click" Tag="{Binding}" >
-                                                    <materialDesign:PackIcon Kind="OpenInApp" />
-                                                </Button>
+                                                            <Button Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom" Click="Button_Click" Tag="{Binding}" >
+                                                                <materialDesign:PackIcon Kind="OpenInApp" />
+                                                            </Button>
 
-                                                <StackPanel
+                                                            <StackPanel
                                                     Grid.Row="5"
                                                     Grid.ColumnSpan="2"
                                                     Orientation="Horizontal"
                                                     HorizontalAlignment="Right">
-                                                    <Button
+                                                                <Button
                                                         Content="Sauvegarder" Command="{x:Static materialDesign:PopupBox.ClosePopupCommand}"
                                                       />
 
-                                                </StackPanel>
-                                            </Grid>
-                                        </materialDesign:PopupBox>
-                                    </WrapPanel>
-                                </DataTemplate>
-                                <DataTemplate DataType="{x:Type donnees:Podcast}">
-                                    <WrapPanel Orientation="Horizontal">
-                                        <Button
+                                                            </StackPanel>
+                                                        </Grid>
+                                                    </materialDesign:PopupBox>
+                                                </WrapPanel>
+                                            </DataTemplate>
+                                            <DataTemplate DataType="{x:Type donnees:Podcast}">
+                                                <WrapPanel Orientation="Horizontal">
+                                                    <Button
                                                     Style="{StaticResource MaterialDesignIconButton}"
                                                     Tag ="{Binding}" Click="Lire_Exp"
                                                     ToolTip="MaterialDesignIconButton">
-                                            <materialDesign:PackIcon Kind="Play" />
-                                        </Button>
-                                        <TextBlock Text="{Binding Titre}"  Margin="0,15,0,0"/>
-                                        <materialDesign:PopupBox Closed="PopupBox_Closed_1"  ContextMenuClosing="PopupBox_ContextMenuClosing"
+                                                        <materialDesign:PackIcon Kind="Play" />
+                                                    </Button>
+                                                    <TextBlock Text="{Binding Titre}"  Margin="0,15,0,0"/>
+                                                    <materialDesign:PopupBox Closed="PopupBox_Closed_1"  ContextMenuClosing="PopupBox_ContextMenuClosing"
                                             StaysOpen="True" >
-                                            <Grid
+                                                        <Grid
                                                 Width="300"
                                                 Margin="8,8,8,8">
-                                                <Grid.Resources>
-                                                    <Style
+                                                            <Grid.Resources>
+                                                                <Style
                                                         TargetType="CheckBox"
                                                         BasedOn="{StaticResource MaterialDesignCheckBox}">
-                                                        <Setter
+                                                                    <Setter
                                                             Property="Margin" Value="8,8,10,8" />
-                                                    </Style>
-                                                    <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
-                                                        <Setter Property="materialDesign:HintAssist.IsFloating" Value="True" />
-                                                        <Setter Property="Margin" Value="8,8,8,8" />
-                                                    </Style>
-                                                </Grid.Resources>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="*" />
-                                                    <RowDefinition Height="*" />
-                                                    <RowDefinition Height="*" />
-                                                    <RowDefinition Height="*" />
-                                                    <RowDefinition Height="*" />
-                                                    <RowDefinition Height="*" />
-                                                    <RowDefinition Height="*" />
-                                                </Grid.RowDefinitions>
-                                                <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Margin="8,8,8,16" Text="A propos du Podcast" />
-                                                <TextBox Grid.Column="0" Grid.Row="1" materialDesign:HintAssist.Hint="Titre" Text="{Binding Titre}"/>
-                                                <TextBox Grid.Column="0" Grid.Row="2" materialDesign:HintAssist.Hint="Description" Text="{Binding Description}" />
-                                                <TextBox Grid.Column="0" Grid.Row="3" materialDesign:HintAssist.Hint="Auteur" Text="{Binding Auteur}" />
-                                                <TextBox Grid.Column="0" Grid.Row="4" materialDesign:HintAssist.Hint="Date de Sortie" Text="{Binding DateDeSortie}" />
-                                                <TextBox Grid.Column="0" Grid.Row="5" materialDesign:HintAssist.Hint="Chemin" Text="{Binding Source}" />
-                                                <Button Grid.Column="1" Grid.Row="5" VerticalAlignment="Bottom" Click="Button_Click" Tag="{Binding}" >
-                                                    <materialDesign:PackIcon Kind="OpenInApp" />
-                                                </Button>
+                                                                </Style>
+                                                                <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
+                                                                    <Setter Property="materialDesign:HintAssist.IsFloating" Value="True" />
+                                                                    <Setter Property="Margin" Value="8,8,8,8" />
+                                                                </Style>
+                                                            </Grid.Resources>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="Auto" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="*" />
+                                                                <RowDefinition Height="*" />
+                                                                <RowDefinition Height="*" />
+                                                                <RowDefinition Height="*" />
+                                                                <RowDefinition Height="*" />
+                                                                <RowDefinition Height="*" />
+                                                                <RowDefinition Height="*" />
+                                                            </Grid.RowDefinitions>
+                                                            <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Margin="8,8,8,16" Text="A propos du Podcast" />
+                                                            <TextBox Grid.Column="0" Grid.Row="1" materialDesign:HintAssist.Hint="Titre" Text="{Binding Titre}"/>
+                                                            <TextBox Grid.Column="0" Grid.Row="2" materialDesign:HintAssist.Hint="Description" Text="{Binding Description}" />
+                                                            <TextBox Grid.Column="0" Grid.Row="3" materialDesign:HintAssist.Hint="Auteur" Text="{Binding Auteur}" />
+                                                            <TextBox Grid.Column="0" Grid.Row="4" materialDesign:HintAssist.Hint="Date de Sortie" Text="{Binding DateDeSortie}" />
+                                                            <TextBox Grid.Column="0" Grid.Row="5" materialDesign:HintAssist.Hint="Chemin" Text="{Binding Source}" />
+                                                            <Button Grid.Column="1" Grid.Row="5" VerticalAlignment="Bottom" Click="Button_Click" Tag="{Binding}" >
+                                                                <materialDesign:PackIcon Kind="OpenInApp" />
+                                                            </Button>
 
-                                                <StackPanel
+                                                            <StackPanel
                                                     Grid.Row="6"
                                                     Grid.ColumnSpan="2"
                                                     Orientation="Horizontal"
                                                     HorizontalAlignment="Right">
-                                                    <Button
+                                                                <Button
                                                         Content="Sauvegarder" Command="{x:Static materialDesign:PopupBox.ClosePopupCommand}"
                                                       />
 
-                                                </StackPanel>
-                                            </Grid>
-                                        </materialDesign:PopupBox>
-                                    </WrapPanel>
-                                </DataTemplate>
-                            </ListBox.Resources>
+                                                            </StackPanel>
+                                                        </Grid>
+                                                    </materialDesign:PopupBox>
+                                                </WrapPanel>
+                                            </DataTemplate>
+                                        </ListBox.Resources>
 
-                        </ListBox>
-                            </StackPanel>
-                        </ScrollViewer>
-                        <materialDesign:PopupBox Grid.Row="1"                 
+                                    </ListBox>
+                                </StackPanel>
+                            </ScrollViewer>
+                            <materialDesign:PopupBox Grid.Row="1"                 
                               Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
                               PlacementMode="TopAndAlignCentres"
                               ToolTipService.Placement="Right"
@@ -358,40 +387,41 @@
                               Margin="10,-10"
                              
                               ToolTip="PopupBox, Style MaterialDesignMultiFloatingActionPopupBox" Cursor="Hand">
-                              <StackPanel>
-                                <StackPanel.Resources>
-                                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFloatingActionLightButton}">
-                                        <Setter Property="Height" Value="50"/>
-                                        <Setter Property="Width" Value="50"/>
-                                        <Setter Property="Margin" Value="5"/>
-                                    </Style>
-                                </StackPanel.Resources>
-                                <Button
+                                <StackPanel>
+                                    <StackPanel.Resources>
+                                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFloatingActionLightButton}">
+                                            <Setter Property="Height" Value="50"/>
+                                            <Setter Property="Width" Value="50"/>
+                                            <Setter Property="Margin" Value="5"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Button
                                     Click="AjouterMorceau"
                                   ToolTip="Ajouter un Morceau">
-                                    <materialDesign:PackIcon Kind="MusicNote" />
-                                </Button>
-                                <Button
+                                        <materialDesign:PackIcon Kind="MusicNote" />
+                                    </Button>
+                                    <Button
                                     Click="AjouterPodcast"
                                   ToolTip="Ajouter un Podcast"
                                  >
-                                    <materialDesign:PackIcon Kind="Podcast" />
-                                </Button>
-                                <Button
+                                        <materialDesign:PackIcon Kind="Podcast" />
+                                    </Button>
+                                    <Button
                                   ToolTip="Ajouter une Radio"
                                     >
-                                    <materialDesign:PackIcon Kind="Radio" />
-                                </Button>
-                              </StackPanel>           
-                        </materialDesign:PopupBox>
-                        
-                   
-                    </Grid>
+                                        <materialDesign:PackIcon Kind="Radio" />
+                                    </Button>
+                                </StackPanel>
+                            </materialDesign:PopupBox>
 
 
-                </GroupBox>
-            </Grid>
+                        </Grid>
+
+
+                    </GroupBox>
+                </Grid>
+            </DockPanel>
         </DockPanel>
-    </DockPanel>
-   
+    </materialDesign:DialogHost>
+
 </UserControl>

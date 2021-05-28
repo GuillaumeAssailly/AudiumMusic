@@ -18,7 +18,7 @@ namespace Donnees
             DateAjout=DateTime.Now;
             CmptEcoute = 0;
             Favori = false;
-            ID = $"{titre.Substring(0,3)}{DateAjout.Millisecond}";
+         
             Debug.WriteLine(ID);
         }
 
@@ -73,7 +73,7 @@ namespace Donnees
 
         public bool Equals([AllowNull] EnsembleAudio other)
         {
-            return ID.ToLower().Equals(other.ID.ToLower());
+            return DateAjout.Equals(other.DateAjout);
         }
 
         public override bool Equals(object obj)
@@ -87,7 +87,7 @@ namespace Donnees
 
         public override int GetHashCode()
         {
-            return ID.GetHashCode();
+            return DateAjout.GetHashCode();
         }
 
 
