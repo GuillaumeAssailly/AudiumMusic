@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Donnees
 {
+    [DataContract]
     public class Podcast : Piste
     {
         public Podcast(string titre, string description, string auteur, string chemin, DateTime datedesortie)
@@ -17,8 +19,16 @@ namespace Donnees
            
         }
 
+
+        [DataMember(EmitDefaultValue = false)]
         public DateTime DateDeSortie { get; set; }
+
+
+        [DataMember(EmitDefaultValue = false)]
         public string Description { get;  set; }
+
+
+        [DataMember(EmitDefaultValue = false)]
         public string Auteur { get;  set; }
        
         public void ModifierPodcast(string titre, string description, string chemin, string auteur, DateTime dateDeSortie)

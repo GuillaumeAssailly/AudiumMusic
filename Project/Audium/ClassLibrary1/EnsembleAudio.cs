@@ -2,9 +2,11 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
 
 namespace Donnees
 {
+    [DataContract]
     public class EnsembleAudio : IEquatable<EnsembleAudio>, INotifyPropertyChanged
     {
         public EnsembleAudio(string titre, string description, string cheminImage, EGenre genre,int note)
@@ -19,10 +21,14 @@ namespace Donnees
             CmptEcoute = 0;
             Favori = false;
          
-            Debug.WriteLine(ID);
+            Debug.WriteLine(DateAjout);
         }
 
-        public string ID { get; private set; }
+
+        
+     
+
+        [DataMember (EmitDefaultValue = false)]
         public string Titre { 
              get => titre;
              set {
@@ -31,9 +37,20 @@ namespace Donnees
              }
         }
         private string titre;
+
+        [DataMember]
         public DateTime DateAjout { get; private set; }
+
+
+        [DataMember(EmitDefaultValue = false)]
         public int Note { get; set; }
+
+
+        [DataMember(EmitDefaultValue = false)]
         public string Description { get; private set; }
+
+
+        [DataMember(EmitDefaultValue = false)]
         public string CheminImage {
             get => cheminImage;
             private set {
@@ -42,7 +59,11 @@ namespace Donnees
             } 
         }
         private string cheminImage;
+
+        [DataMember]
         public int CmptEcoute { get; private set; }
+
+        [DataMember]
         public bool Favori { 
             get => favori; 
             set 
@@ -52,6 +73,9 @@ namespace Donnees
             } 
         }
         private bool favori;
+
+
+        [DataMember(EmitDefaultValue = false)]
         public EGenre Genre { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;

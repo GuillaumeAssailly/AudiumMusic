@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Donnees;
@@ -17,7 +18,7 @@ namespace Gestionnaires
         /// <summary>
         /// Dépendance vers le gestionnaire de persistance
         /// </summary>
-        public IPersistanceManager Persistance { get; private set; }
+        public IPersistanceManager Persistance { get; /*private*/ set; }
 
         public void ChargeDonnees()
         {
@@ -95,7 +96,7 @@ namespace Gestionnaires
         public static int CompteurAlbum;
 
 
-        public ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>> Mediatheque { get; }
+        public ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>> Mediatheque { get; private set; }
         private Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque; 
        
 
@@ -111,6 +112,21 @@ namespace Gestionnaires
         private ObservableCollection<EnsembleAudio> listeClé;
 
 
+        [OnDeserialized]
+        public void InitReadOnlyDictionary(StreamingContext sc = new StreamingContext())
+        {
+            Mediatheque = new ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>>(mediatheque);
+        }
+
+        [OnDeserialized]
+        public void InitReadOnlyList(StreamingContext sc = new StreamingContext())
+        {
+            ListeFavoris = new ReadOnlyCollection<EnsembleAudio>(listeFavoris);
+
+        }
+
+
+
         public Manager(IPersistanceManager persistance)
         {
             Persistance = persistance;
@@ -118,12 +134,16 @@ namespace Gestionnaires
             mediatheque = new Dictionary<EnsembleAudio, LinkedList<Piste>>();
             listeClé = new();
             listeFavoris = new List<EnsembleAudio>();
-            ChargeDonnees();
+
             ListeClé = new(listeClé);
-            ListeFavoris = new ReadOnlyCollection<EnsembleAudio>(listeFavoris);
-            Mediatheque = new ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>>(mediatheque);
-           
-          
+            //ListeFavoris = new ReadOnlyCollection<EnsembleAudio>(listeFavoris);
+
+
+            //Mediatheque = new ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>>(mediatheque);
+
+            ChargeDonnees();
+            InitReadOnlyDictionary();
+            InitReadOnlyList();
             ManagerEnsemble = new(mediatheque);
             ManagerProfil = new();
             listeGenres = new List<EGenre>

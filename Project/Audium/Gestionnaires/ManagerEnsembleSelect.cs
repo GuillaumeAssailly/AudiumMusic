@@ -53,7 +53,8 @@ namespace Gestionnaires
         public ManagerEnsembleSelect(Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque)
         {
             this.mediatheque = mediatheque;
-            
+           
+
             
         }
 

@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Donnees
 {
+    [DataContract]
+    [KnownType(typeof(Morceau))]
+    [KnownType(typeof(Podcast))]
+    [KnownType(typeof(StationRadio))]
     public class Piste : IEquatable<Piste>
     {
         public Piste(string titre,string source)
@@ -17,9 +22,14 @@ namespace Donnees
         }
 
         
+        [DataMember(EmitDefaultValue = false)]
         public string Source { get;  set; }
 
+
+        [DataMember]
         public int CmptEcoute { get; protected set; }
+
+        [DataMember(EmitDefaultValue = false)]
         public string Titre { get; set; }
 
         public override String ToString()

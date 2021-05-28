@@ -53,9 +53,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\Donnees.csproj" />
+    <ProjectReference Include="..\DataContractPersistance\DataContractPersistance.csproj" />
     <ProjectReference Include="..\Gestionnaires\Gestionnaires.csproj" />
-    <ProjectReference Include="..\Stub\Stub.csproj" />
   </ItemGroup>
 
   <ItemGroup>
