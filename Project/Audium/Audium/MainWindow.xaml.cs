@@ -280,8 +280,11 @@ namespace Audium
         {
            
             Mgr.AjouterEnsemblePiste(Mgr.CreerEnsembleAudio(TitreBlock.Text), new LinkedList<Piste>());
-           
-            
+            if (Mgr.Mediatheque.Count == 1)
+            {
+                ExpanderDetail.Visibility = Visibility.Visible;
+                Mgr.ManagerEnsemble.EnsembleSelect = Mgr.Mediatheque.First().Key;
+            }
         }
 
 
@@ -291,8 +294,12 @@ namespace Audium
             Mgr.ListeClé = URecherche.Recherche(Motcle, Mgr.GenreSelect, Mgr.Mediatheque);
         }
 
-    
-
-    
+        private void ExpanderDetail_StopLecteur(object sender, RoutedEventArgs e)
+        {
+            TitleDisplay.Text = null;
+            TimerDisplay.Text = null;
+            Lecteur.Stop();
+            Lecteur.Source = null;
+        }
     }
 }

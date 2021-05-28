@@ -261,7 +261,7 @@
                 <Expander.Header>
                     <TextBlock HorizontalAlignment="Right" FontSize="15" Margin="0,0,-10,0">Détails</TextBlock>
                 </Expander.Header>
-                <uc:UCExpDetail CliqueFavori="Clique_Fav"/>
+                <uc:UCExpDetail CliqueFavori="Clique_Fav" StopLecteur="ExpanderDetail_StopLecteur" x:Name="ExpanderDetail"/>
             </Expander>
             <materialDesign:DialogHost Name="Dialog"
                     IsOpen="False" CloseOnClickAway="True" 

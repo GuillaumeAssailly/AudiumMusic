@@ -42,9 +42,9 @@ namespace Gestionnaires
                 {
                     ensembleSelect = value;
                     mediatheque.TryGetValue(ensembleSelect, out listeSelect);
-                    ListeSelect = new ReadOnlyCollection<Piste>(listeSelect.ToList());
+                    if(listeSelect!=null) { ListeSelect = new ReadOnlyCollection<Piste>(listeSelect?.ToList()); OnPropertyChanged(nameof(ListeSelect)); }
                     OnPropertyChanged(nameof(EnsembleSelect));
-                    OnPropertyChanged(nameof(ListeSelect));
+                  
                 }
             }
         }
