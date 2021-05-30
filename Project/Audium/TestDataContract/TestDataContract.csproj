@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataContractPersistance\DataContractPersistance.csproj" />
-    <ProjectReference Include="..\Gestionnaires\Gestionnaires.csproj" />
     <ProjectReference Include="..\Stub\Stub.csproj" />
   </ItemGroup>
 

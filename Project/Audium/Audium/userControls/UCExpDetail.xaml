@@ -121,7 +121,7 @@
                             Grid.Row="3"
                             x:Name="Etoiles"
                             Value="{Binding MgrEnsemble.EnsembleSelect.Note, Mode=TwoWay}"
-                            
+
                             HorizontalAlignment="Center"
                         />
 
@@ -262,8 +262,8 @@
                                                     <materialDesign:PopupBox Closed="PopupBox_Closed_1"  ContextMenuClosing="PopupBox_ContextMenuClosing" 
                                             StaysOpen="True" >
                                                         <Grid
-                                                Width="300"
-                                                Margin="8,8,8,8">
+                                                            Width="300"
+                                                            Margin="8,8,8,8">   
                                                             <Grid.Resources>
                                                                 <Style
                                                         TargetType="CheckBox"
@@ -298,13 +298,13 @@
                                                             </Button>
 
                                                             <StackPanel
-                                                    Grid.Row="5"
-                                                    Grid.ColumnSpan="2"
-                                                    Orientation="Horizontal"
-                                                    HorizontalAlignment="Right">
+                                                                Grid.Row="5"
+                                                                Grid.ColumnSpan="2"
+                                                                Orientation="Horizontal"
+                                                                HorizontalAlignment="Right">
                                                                 <Button
-                                                        Content="Sauvegarder" Command="{x:Static materialDesign:PopupBox.ClosePopupCommand}"
-                                                      />
+                                                                    Content="Sauvegarder" Command="{x:Static materialDesign:PopupBox.ClosePopupCommand}"
+                                                                />
 
                                                             </StackPanel>
                                                         </Grid>

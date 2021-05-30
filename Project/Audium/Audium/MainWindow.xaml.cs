@@ -304,7 +304,7 @@ namespace Audium
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            Mgr.SauvegardeDonnees();
+            Mgr.Sauvegarder();
         }
     }
 }

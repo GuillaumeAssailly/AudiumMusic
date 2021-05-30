@@ -12,7 +12,7 @@ namespace Donnees
     [KnownType(typeof(Morceau))]
     [KnownType(typeof(Podcast))]
     [KnownType(typeof(StationRadio))]
-    public class Piste : IEquatable<Piste>
+    public abstract class Piste : IEquatable<Piste>
     {
         public Piste(string titre,string source)
         {

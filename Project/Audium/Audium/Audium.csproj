@@ -54,7 +54,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataContractPersistance\DataContractPersistance.csproj" />
-    <ProjectReference Include="..\Gestionnaires\Gestionnaires.csproj" />
   </ItemGroup>
 
   <ItemGroup>

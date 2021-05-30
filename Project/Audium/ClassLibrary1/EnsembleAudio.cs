@@ -31,7 +31,7 @@ namespace Donnees
         [DataMember (EmitDefaultValue = false)]
         public string Titre { 
              get => titre;
-             set {
+             private set {
                 titre = value;
                 OnPropertyChanged(nameof(Titre));
              }
@@ -66,7 +66,7 @@ namespace Donnees
         [DataMember]
         public bool Favori { 
             get => favori; 
-            set 
+            private set 
             { 
                 favori = value;
                 OnPropertyChanged(nameof(Favori));
@@ -93,6 +93,10 @@ namespace Donnees
         public void ModifierImage(string imageSource)
         {
             CheminImage = imageSource;
+        }
+        public void ModifierFavori()
+        {
+            Favori = !Favori;
         }
 
         public bool Equals([AllowNull] EnsembleAudio other)
