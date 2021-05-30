@@ -20,7 +20,7 @@ namespace Gestionnaires
         /// </summary>
         public IPersistanceManager Persistance { get; /*private*/ set; }
 
-        public void ChargeDonnees()
+        public void Charger()
         {
             var donnees = Persistance.ChargeDonnees();
             mediatheque = donnees.mediatheque;
@@ -31,7 +31,7 @@ namespace Gestionnaires
             }
         }
 
-        public void SauvegardeDonnees()
+        public void Sauvegarder()
         {
             Persistance.SauvegardeDonnees(mediatheque, listeFavoris);
         }
@@ -48,22 +48,22 @@ namespace Gestionnaires
         public ReadOnlyCollection<EnsembleAudio> ListeFavoris { get; set; }
         private List<EnsembleAudio> listeFavoris;
 
-        public void ModifierListeFavoris(EnsembleAudio A)
+        public void ModifierListeFavoris(EnsembleAudio ensembleAudio)
         {
            
-            if (A.Favori == false)
+            if (ensembleAudio.Favori == false)
             {
-                listeFavoris.Add(A);
+                listeFavoris.Add(ensembleAudio);
                 
             }
             else
             {
-                listeFavoris.Remove(A);
+                listeFavoris.Remove(ensembleAudio);
             }
             
             ListeFavoris = new ReadOnlyCollection<EnsembleAudio>(listeFavoris);
             OnPropertyChanged(nameof(ListeFavoris));
-            A.Favori = !A.Favori;
+            ensembleAudio.ModifierFavori();
            
         }
 
@@ -141,7 +141,7 @@ namespace Gestionnaires
 
             //Mediatheque = new ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>>(mediatheque);
 
-            ChargeDonnees();
+            Charger();
             InitReadOnlyDictionary();
             InitReadOnlyList();
             ManagerEnsemble = new(mediatheque);

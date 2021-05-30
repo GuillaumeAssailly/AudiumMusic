@@ -25,7 +25,7 @@ namespace Donnees
 
 
         [DataMember(EmitDefaultValue = false)]
-        public string Description { get;  set; }
+        public string Description { get; set; }
 
 
         [DataMember(EmitDefaultValue = false)]
