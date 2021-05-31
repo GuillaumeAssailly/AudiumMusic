@@ -131,7 +131,7 @@
                             Width="260"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             VerticalAlignment="Top"
-                            BorderBrush="{DynamicResource  PrimaryHueLightBrush}"
+                            BorderBrush="{DynamicResource PrimaryHueLightBrush}"
                             Height="auto"
                             x:Name="Titre_box"
                             Text="{Binding MgrEnsemble.EnsembleSelect.Titre, Mode=OneWay}"
