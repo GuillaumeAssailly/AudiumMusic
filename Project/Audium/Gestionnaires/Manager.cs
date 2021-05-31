@@ -45,27 +45,10 @@ namespace Gestionnaires
         public void OnPropertyChanged(string propertyName) =>PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
      
-        public ReadOnlyCollection<EnsembleAudio> ListeFavoris { get; set; }
+        public ReadOnlyCollection<EnsembleAudio> ListeFavoris { get; private set; }
         private List<EnsembleAudio> listeFavoris;
 
-        public void ModifierListeFavoris(EnsembleAudio ensembleAudio)
-        {
-           
-            if (ensembleAudio.Favori == false)
-            {
-                listeFavoris.Add(ensembleAudio);
-                
-            }
-            else
-            {
-                listeFavoris.Remove(ensembleAudio);
-            }
-            
-            ListeFavoris = new ReadOnlyCollection<EnsembleAudio>(listeFavoris);
-            OnPropertyChanged(nameof(ListeFavoris));
-            ensembleAudio.ModifierFavori();
-           
-        }
+       
 
 
 
@@ -89,11 +72,8 @@ namespace Gestionnaires
 
        
         
-        public ReadOnlyCollection<EGenre> ListeGenres { get; }
+        public ReadOnlyCollection<EGenre> ListeGenres { get; private set; }
         private List<EGenre> listeGenres;
-
-
-        public static int CompteurAlbum;
 
 
         public ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>> Mediatheque { get; private set; }
@@ -130,7 +110,6 @@ namespace Gestionnaires
         public Manager(IPersistanceManager persistance)
         {
             Persistance = persistance;
-            CompteurAlbum = 0;
             mediatheque = new Dictionary<EnsembleAudio, LinkedList<Piste>>();
             listeClé = new();
             listeFavoris = new List<EnsembleAudio>();
@@ -176,9 +155,26 @@ namespace Gestionnaires
             
         }
 
-     
 
-     
+        public void ModifierListeFavoris(EnsembleAudio ensembleAudio)
+        {
+
+            if (ensembleAudio.Favori == false)
+            {
+                listeFavoris.Add(ensembleAudio);
+
+            }
+            else
+            {
+                listeFavoris.Remove(ensembleAudio);
+            }
+
+            ListeFavoris = new ReadOnlyCollection<EnsembleAudio>(listeFavoris);
+            OnPropertyChanged(nameof(ListeFavoris));
+            ensembleAudio.ModifierFavori();
+             
+        }
+
 
         public void AjouterEnsemblePiste(EnsembleAudio NouvelEnsembleAudio, LinkedList<Piste>NouvelleListePiste)
         {
@@ -223,7 +219,7 @@ namespace Gestionnaires
 
         public override string ToString()
         {
-            return $"Compteur : {CompteurAlbum}\n Médiathèque : {Mediatheque}";
+            return $"Médiathèque : {Mediatheque}";
         }
 
  

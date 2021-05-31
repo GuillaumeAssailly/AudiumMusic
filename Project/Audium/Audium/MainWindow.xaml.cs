@@ -282,8 +282,9 @@ namespace Audium
             Mgr.AjouterEnsemblePiste(Mgr.CreerEnsembleAudio(TitreBlock.Text), new LinkedList<Piste>());
             if (Mgr.Mediatheque.Count == 1)
             {
-                ExpanderDetail.Visibility = Visibility.Visible;
+                
                 Mgr.ManagerEnsemble.EnsembleSelect = Mgr.Mediatheque.First().Key;
+                ExpanderDetail.Visibility = Visibility.Visible;
             }
         }
 
