@@ -26,9 +26,35 @@ namespace Audium
         public App()
         {
             LeManager = new(new DataContractPers());
+          
         }
 
+        public void InitTheme()
+        {
+            switch (LeManager.ManagerProfil.CouleurTheme)
+            {
+                case "Amber": Amber(); break;
+                case "Blue": Blue(); break;
+                case "BlueGrey": BlueGrey(); break;
+                case "Cyan": Cyan(); break;
+                case "DeepOrange": DeepOrange(); break;
+                case "DeepPurple": DeepPurple(); break;
+                case "Green": Green(); break;
+                case "Grey": Grey(); break;
+                case "Indigo": Indigo(); break;
+                case "LightBlue": LightBlue(); break;
+                case "LightGreen": LightGreen(); break;
+                case "Lime": Lime(); break;
+                case "Orange": Orange(); break;
+                case "Pink": Pink(); break;
+                case "Purple": Purple(); break;
+                case "Red": Red(); break;
+                case "Teal": Teal(); break;
+                case "Yellow": Yellow(); break;
+                default: DeepOrange(); break;
 
+            }
+        }
 
 
 
@@ -38,6 +64,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("Amber", LeManager.ManagerProfil.CheminBaseDonnees);
         }
 
         public void Blue()
@@ -46,6 +73,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("Blue", LeManager.ManagerProfil.CheminBaseDonnees);
         }
 
         public void BlueGrey()
@@ -54,6 +82,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("BlueGrey", LeManager.ManagerProfil.CheminBaseDonnees);
         }
 
         public void Cyan()
@@ -62,6 +91,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("Cyan", LeManager.ManagerProfil.CheminBaseDonnees);
         }
         public void DeepOrange()
         {
@@ -69,6 +99,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("DeepOrange", LeManager.ManagerProfil.CheminBaseDonnees);
         }
 
         public void DeepPurple()
@@ -77,6 +108,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("DeepPurple", LeManager.ManagerProfil.CheminBaseDonnees);
         }
 
         public void Green()
@@ -85,6 +117,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("Green", LeManager.ManagerProfil.CheminBaseDonnees);
         }
         public void Grey()
         {
@@ -92,6 +125,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("Grey", LeManager.ManagerProfil.CheminBaseDonnees);
         }
         public void Indigo()
         {
@@ -99,6 +133,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("Indigo", LeManager.ManagerProfil.CheminBaseDonnees);
         }
         public void LightBlue()
         {
@@ -106,6 +141,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("LightBlue", LeManager.ManagerProfil.CheminBaseDonnees);
         }
         public void LightGreen()
         {
@@ -113,6 +149,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("LightGreen", LeManager.ManagerProfil.CheminBaseDonnees);
         }
         public void Lime()
         {
@@ -120,6 +157,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("Lime", LeManager.ManagerProfil.CheminBaseDonnees);
         }
         public void Orange()
         {
@@ -127,6 +165,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("Orange", LeManager.ManagerProfil.CheminBaseDonnees);
         }
         public void Pink()
         {
@@ -134,6 +173,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("Pink", LeManager.ManagerProfil.CheminBaseDonnees);
         }
         public void Purple()
         {
@@ -141,6 +181,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("Purple", LeManager.ManagerProfil.CheminBaseDonnees);
         }
         public void Red()
         {
@@ -148,6 +189,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("Red", LeManager.ManagerProfil.CheminBaseDonnees);
         }
         public void Teal()
         {
@@ -155,6 +197,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("Teal", LeManager.ManagerProfil.CheminBaseDonnees);
         }
         public void Yellow()
         {
@@ -162,6 +205,7 @@ namespace Audium
             Color accentColor = SwatchHelper.Lookup[MaterialDesignColor.Lime];
             ITheme theme = Theme.Create(new MaterialDesignDarkTheme(), primaryColor, accentColor);
             Resources.SetTheme(theme);
+            LeManager.ManagerProfil.ModifierParamètres("Yellow", LeManager.ManagerProfil.CheminBaseDonnees);
         }
     }
 

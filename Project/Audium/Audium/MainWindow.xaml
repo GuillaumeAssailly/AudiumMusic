@@ -9,7 +9,7 @@
         xmlns:conv="clr-namespace:Audium.converters" 
         xmlns:uc="clr-namespace:Audium.userControls"
         Title="Audium" Height="900" Width="1600" MinWidth="1220" MinHeight="900" WindowState="Maximized"
-        Closing="Window_Closing"
+        Closing="Window_Closing" Loaded="Window_Loaded"
         Icon="logo.ico">
     <Window.Resources>
         <SolidColorBrush Color="Black" x:Key="DisqueBgColor"/>
@@ -262,7 +262,7 @@
                 <Expander.Header>
                     <TextBlock HorizontalAlignment="Right" FontSize="15" Margin="0,0,-10,0">Détails</TextBlock>
                 </Expander.Header>
-                <uc:UCExpDetail CliqueFavori="Clique_Fav" StopLecteur="ExpanderDetail_StopLecteur" x:Name="ExpanderDetail"/>
+                <uc:UCExpDetail CliqueFavori="Clique_Fav" StopLecteur="ExpanderDetail_StopLecteur" x:Name="ExpanderDetail" />
             </Expander>
             <materialDesign:DialogHost Name="Dialog"
                     IsOpen="False" CloseOnClickAway="True" 

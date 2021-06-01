@@ -11,8 +11,8 @@ namespace Test_ManagerEnsembleSelect
         static void Main(string[] args)
         {
            
-            Manager master = new();
-          
+            Manager master = new Manager(new Stub.Stub());
+
 
             Console.WriteLine("Avant ajout :");
             foreach(Piste p in master.ManagerEnsemble.ListeSelect)

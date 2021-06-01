@@ -8,22 +8,25 @@ namespace Stub
 {
     public class Stub : IPersistanceManager
     {
-        public (Dictionary<EnsembleAudio, LinkedList<Piste>>mediatheque, List<EnsembleAudio>listeFavoris) ChargeDonnees()
+        public (Dictionary<EnsembleAudio, LinkedList<Piste>>mediatheque, List<EnsembleAudio>listeFavoris, ManagerProfil MP) ChargeDonnees()
         {
             var donnees = ChargeDictionnaire();
             return donnees;
         }
 
-        public void SauvegardeDonnees(Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque, List<EnsembleAudio> listeFavoris)
+        public void SauvegardeDonnees(Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque, List<EnsembleAudio> listeFavoris, ManagerProfil MP)
         {
-            Debug.WriteLine("Sauvegarde en cours");
+            Debug.WriteLine("Sauvegarde demandée");
         }
 
-        private (Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque, List<EnsembleAudio> listeFavoris) ChargeDictionnaire()
+        private (Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque, List<EnsembleAudio> listeFavoris, ManagerProfil MP) ChargeDictionnaire()
         {
             Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque = new();
             List<EnsembleAudio> listeFavoris = new();
-
+            ManagerProfil MP = new ManagerProfil();
+            MP.ModifierProfil("Nom par Défaut", null);
+            MP.ModifierParamètres("Red", null);
+;
             EnsembleAudio RAM = new EnsembleAudio("Random Access Memories", "Daft Punk", "ram.jpg", EGenre.BANDEORIGINALE, 3);
             LinkedList<Piste> LP1 = new();
             LP1.AddLast(new Morceau("Give Life Back to Music", "Daft Punk", "iafaf"));
@@ -65,7 +68,7 @@ namespace Stub
             listeFavoris.Add(RAM);
             listeFavoris.Add(HYP);
 
-            return (mediatheque,listeFavoris);
+            return (mediatheque,listeFavoris,MP);
         }
     }
 }

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Gestionnaires;
 using Donnees;
 using System.Diagnostics;
+using System.IO;
 
 namespace Audium.userControls
 {
@@ -30,12 +31,17 @@ namespace Audium.userControls
         public ManagerEnsembleSelect MgrEnsemble => (App.Current as App).LeManager.ManagerEnsemble;
 
         string imagesource;
-
+        string imageName;
+        string oldimage;
         public UCExpDetail()
         {
             InitializeComponent();
             DataContext = this;
+         
+
         }
+
+        
 
         private void Lire_Exp(object sender, RoutedEventArgs e)
         {
@@ -117,7 +123,7 @@ namespace Audium.userControls
         {
            
             MgrEnsemble.EnsembleSelect.ModifierEnsemble(Titre_box.Text, Etoiles.Value, Description_box.Text, MgrEnsemble.EnsembleSelect.CheminImage, (EGenre)Combo_Genre.SelectedItem);
-            Debug.WriteLine(Etoiles.Value);
+           
         }
 
         public event RoutedEventHandler CliqueFavori;
@@ -137,10 +143,19 @@ namespace Audium.userControls
 
             if (result == true)
             {
+                oldimage = MgrEnsemble.EnsembleSelect.CheminImage;
                 imagesource = dialog.FileName;
-                //ImagePochette.Source = new BitmapImage(new Uri(dialog.FileName, UriKind.Absolute));
+                Uri uri = new Uri(imagesource);
+                //imageName = uri.Segments.Last().Split("\\")[0];
+                imageName = $"{ DateTime.Now.ToString().Replace("/", "").Replace(":","")}.{uri.Segments.Last().Split(".")[1]}";
+
+                       
                 //MgrEnsemble.EnsembleSelect.CheminImage = imagesource;
-                MgrEnsemble.EnsembleSelect.ModifierImage(imagesource);
+                File.Copy(imagesource, @$"..\img\{imageName}",true);
+               
+                MgrEnsemble.EnsembleSelect.ModifierImage(imageName);
+
+             
             }
         }
 

@@ -113,7 +113,7 @@
                                 </Button>
                                 <ToggleButton Content="{materialDesign:PackIcon Kind=Heart}" Height="35" Width="35" Canvas.Top="13" Canvas.Left="210" Panel.ZIndex="2" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton }"  ToolTip="Ajouter au favoris" Cursor="Hand" Tag="{Binding MgrEnsemble.EnsembleSelect}"  IsChecked="{Binding MgrEnsemble.EnsembleSelect.Favori, Mode=OneWay}" Name="FavButton" Click="FavButton_Click"/>
                                 <Grid Height="260" Width="260">
-                                    <Image Source="{Binding MgrEnsemble.EnsembleSelect.CheminImage, Converter={StaticResource String2Image}, UpdateSourceTrigger=Explicit}" Name="ImagePochette" Stretch="UniformToFill" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                                    <Image Source="{Binding MgrEnsemble.EnsembleSelect.CheminImage, Mode=OneWay, Converter={StaticResource String2Image}}" Name="ImagePochette" Stretch="UniformToFill" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
                                 </Grid>
                             </Canvas>
                             <materialDesign:RatingBar

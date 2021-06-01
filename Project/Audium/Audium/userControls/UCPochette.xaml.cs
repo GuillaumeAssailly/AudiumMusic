@@ -34,7 +34,7 @@ namespace Audium.userControls
 
         // Using a DependencyProperty as the backing store for ImageName.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ImageNameProperty =
-            DependencyProperty.Register("ImageName", typeof(string), typeof(UCPochette), new PropertyMetadata("default.png"));
+            DependencyProperty.Register("ImageName", typeof(string), typeof(UCPochette), new PropertyMetadata(@"icondefault\default.png"));
 
         public event RoutedEventHandler BoutonLire;
         public event RoutedEventHandler CliquePochette;

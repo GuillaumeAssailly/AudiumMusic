@@ -8,6 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary1\Donnees.csproj" />
     <ProjectReference Include="..\Gestionnaires\Gestionnaires.csproj" />
+    <ProjectReference Include="..\Stub\Stub.csproj" />
   </ItemGroup>
 
 </Project>

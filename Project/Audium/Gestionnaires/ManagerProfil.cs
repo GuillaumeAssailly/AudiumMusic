@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Donnees;
 
 namespace Gestionnaires
 {
+    [DataContract]
     public class ManagerProfil : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -18,13 +20,14 @@ namespace Gestionnaires
         public ManagerProfil()
         {
             Nom = "Nom d'utilisateur";
-            CheminImage = @"\img\pp.png\";
+            CheminImage = @"..\icondefault\pp.png";
             CouleurTheme = "Blue";
             CheminBaseDonnees = null;
         }
 
-      
 
+
+        [DataMember]
         public string Nom
         {
             get => nom;
@@ -39,6 +42,8 @@ namespace Gestionnaires
         }
         private string nom;
 
+
+        [DataMember]
         public string CheminImage {
             get => cheminImage;
             set
@@ -52,7 +57,11 @@ namespace Gestionnaires
         }
         private string cheminImage;
 
+
+        [DataMember]
         public string CouleurTheme { get; private set; }
+
+        [DataMember]
         public string CheminBaseDonnees { get => cheminBaseDonnees;
             set 
             {
