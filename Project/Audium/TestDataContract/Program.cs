@@ -13,7 +13,7 @@ namespace TestDataContract
          
     
             LeManager.Persistance = new DataContractPersistance.DataContractPersJSON();
-            LeManager.SauvegardeDonnees();
+            LeManager.Sauvegarder();
         
             Manager LeManager2 = new Manager(new DataContractPersistance.DataContractPersJSON());
            
