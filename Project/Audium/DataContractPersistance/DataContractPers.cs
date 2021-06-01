@@ -4,27 +4,32 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
+
 using System.Xml;
 
 namespace DataContractPersistance 
 {
     public class DataContractPers : IPersistanceManager
     {
-        public string FilePath { get; set; } = Path.Combine(Directory.GetCurrentDirectory(), "..\\XML");
+        public string FilePath  => Path.Combine(Directory.GetCurrentDirectory(), RelativePath);
 
          
         public string FileName { get; set; } = "audium.xml";
 
 
-        string PersFile => Path.Combine(FilePath, FileName);
+        public string RelativePath { get; set; } = "..\\XML";
 
-        private DataContractSerializer Serializer = new DataContractSerializer(typeof(DataToPersist),
+        protected string PersFile => Path.Combine(FilePath, FileName);
+
+        protected XmlObjectSerializer Serializer = new DataContractSerializer(typeof(DataToPersist),
                                                                            new DataContractSerializerSettings()
                                                                            {
                                                                                PreserveObjectReferences = true
                                                                            });
 
-        public (Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque, List<EnsembleAudio> listeFavoris) ChargeDonnees()
+       
+
+        public virtual (Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque, List<EnsembleAudio> listeFavoris, ManagerProfil MP) ChargeDonnees()
         {
             if(!File.Exists(PersFile))
             {
@@ -42,10 +47,10 @@ namespace DataContractPersistance
             }
 
 
-            return (data.Mediatheque, data.ListeFav);
+            return (data.Mediatheque, data.ListeFav, data.MP);
         }
 
-        public void SauvegardeDonnees(Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque, List<EnsembleAudio> listeFavoris)
+        public virtual void SauvegardeDonnees(Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque, List<EnsembleAudio> listeFavoris, ManagerProfil MP)
         {
           
 
@@ -58,7 +63,7 @@ namespace DataContractPersistance
             DataToPersist data = new DataToPersist();
             data.Mediatheque = mediatheque;
             data.ListeFav.AddRange(listeFavoris);
-
+            data.MP = MP;
 
             var settings = new XmlWriterSettings() { Indent = true };
             using (TextWriter tw = File.CreateText(PersFile))

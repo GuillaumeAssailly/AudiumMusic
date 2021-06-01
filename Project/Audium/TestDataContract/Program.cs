@@ -12,10 +12,10 @@ namespace TestDataContract
             Manager LeManager = new Manager(new Stub.Stub());
          
     
-            LeManager.Persistance = new DataContractPersistance.DataContractPers();
+            LeManager.Persistance = new DataContractPersistance.DataContractPersJSON();
             LeManager.SauvegardeDonnees();
         
-            Manager LeManager2 = new Manager(new DataContractPersistance.DataContractPers());
+            Manager LeManager2 = new Manager(new DataContractPersistance.DataContractPersJSON());
            
         
 

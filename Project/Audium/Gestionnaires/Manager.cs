@@ -29,11 +29,12 @@ namespace Gestionnaires
             {
                 listeClé.Add(ensAudio);
             }
+            ManagerProfil = donnees.MP;
         }
 
         public void Sauvegarder()
         {
-            Persistance.SauvegardeDonnees(mediatheque, listeFavoris);
+            Persistance.SauvegardeDonnees(mediatheque, listeFavoris, ManagerProfil);
         }
 
         public ManagerEnsembleSelect ManagerEnsemble;
@@ -124,7 +125,10 @@ namespace Gestionnaires
             InitReadOnlyDictionary();
             InitReadOnlyList();
             ManagerEnsemble = new(mediatheque);
-            ManagerProfil = new();
+            if(ManagerProfil==null)
+            {
+                ManagerProfil = new();
+            }
             listeGenres = new List<EGenre>
             {
                 EGenre.AUCUN,
@@ -188,7 +192,7 @@ namespace Gestionnaires
         public EnsembleAudio CreerEnsembleAudio(string titre)
         {
             //Finir cette méthode avec un if( Key.Titre n'existe pas dans discothèque) sinon Titre = Titre + "(1);
-            EnsembleAudio NouvelEnsembleAudio = new(titre, null, "default.png", EGenre.AUCUN, 0);
+            EnsembleAudio NouvelEnsembleAudio = new(titre, null, @"icondefault\default.png", EGenre.AUCUN, 0);
             return NouvelEnsembleAudio;
         }
 

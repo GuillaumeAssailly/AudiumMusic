@@ -32,7 +32,9 @@
             
             <ToggleButton Content="{materialDesign:PackIcon Kind=Heart}" Height="35" Width="35" Canvas.Top="10" Canvas.Left="165" Panel.ZIndex="2" Style="{StaticResource MaterialDesignFlatPrimaryToggleButton }"  ToolTip="Ajouter au favoris" Cursor="Hand" Tag="{Binding}"  IsChecked="{Binding Favori, Mode=OneWay}" Name="FavButton" Click="FavButton_Click"/>
             <Grid Height="220" Width="220">
-                <Image Source="{Binding ImageName, ElementName=root, Converter={StaticResource String2Image}}"  Stretch="UniformToFill" HorizontalAlignment="Center"  VerticalAlignment="Center" />
+                <Image  Source="{Binding ImageName, ElementName=root, Converter={StaticResource String2Image}}" Stretch="UniformToFill" HorizontalAlignment="Center"  VerticalAlignment="Center" />
+
+
             </Grid>
         </Canvas>
        

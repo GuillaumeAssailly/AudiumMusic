@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,9 @@ namespace Audium
 
         string cheminbak;
 
+
+        string imageName;
+        string imagesource;
         public Manager Mgr => (App.Current as App).LeManager;
 
         public ManagerProfil MgrProfil => (App.Current as App).LeManager.ManagerProfil;
@@ -55,8 +59,17 @@ namespace Audium
 
             if(result == true)
             {
-                MgrProfil.CheminImage = dialog.FileName;
-                theImage.Source = new BitmapImage(new Uri(MgrProfil.CheminImage, UriKind.Absolute));
+                //MgrProfil.CheminImage = dialog.FileName;
+                theImage.ImageSource = new BitmapImage(new Uri(dialog.FileName, UriKind.Absolute));
+                
+                imagesource = dialog.FileName;
+                Uri uri = new Uri(imagesource);
+
+
+                imageName = $"{ DateTime.Now.ToString().Replace("/", "").Replace(":", "")}.{uri.Segments.Last().Split(".")[1]}";
+                File.Copy(imagesource, @$"..\img\PP\{imageName}", true);
+                MgrProfil.CheminImage = imageName;
+
 
             }
         }

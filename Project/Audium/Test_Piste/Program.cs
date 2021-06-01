@@ -7,11 +7,16 @@ namespace Test_Piste
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Test de la classe Piste !");
-            Piste p1 = new Piste("PisteVide");
-            Console.WriteLine(p1);
-            Piste NRJ = new StationRadio("NRJ12", "http://wtf");
+         
+            
+            Piste NRJ = new StationRadio("NRJ12", "http://source");
             Console.WriteLine(NRJ);
+
+            Morceau Musique = new Morceau("SUPER MUSIQUE","artiste génial","chemin");
+            Console.WriteLine(Musique);
+
+            Musique.ModifierMorceau("Nouveau titre", "nouveau chemin", "nouvel artiste");
+            Console.WriteLine(Musique);
         }
     }
 }

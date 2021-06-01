@@ -67,6 +67,7 @@ namespace Audium
         public MainWindow()
         {
             InitializeComponent();
+            (App.Current as App).InitTheme();
             DataContext = this;
             //Lecteur = new MediaPlayer();
             timer.Interval = TimeSpan.FromMilliseconds(1000);
@@ -306,6 +307,30 @@ namespace Audium
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             Mgr.Sauvegarder();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DirectoryInfo directoryInfo = new(@"..\img\");
+            foreach(FileInfo file in directoryInfo.GetFiles()) 
+            {
+                if(!Mgr.Mediatheque.Keys.Any(x=>x.CheminImage == file.Name)) {
+                    try { file.Delete(); }
+                    catch(IOException exception) { Debug.WriteLine(exception.Message); }
+                }
+            }
+            DirectoryInfo directoryInfoPP = new(@"..\img\PP\");
+            foreach (FileInfo file in directoryInfoPP.GetFiles())
+            {
+                if (Mgr.ManagerProfil.CheminImage != file.Name)
+                {
+                    try { file.Delete(); }
+                    catch (IOException exception) { Debug.WriteLine(exception.Message); }
+                }
+            }
+
+
+
         }
     }
 }

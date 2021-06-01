@@ -1,4 +1,5 @@
 ﻿using Donnees;
+using Gestionnaires;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,10 @@ namespace DataContractPersistance
 
         [DataMember(Order = 1)]
         public List<EnsembleAudio> ListeFav { get; set; } = new();
+
+
+        [DataMember(Order = 2)]
+        public ManagerProfil MP { get; set; } = new();
 
       
     }
