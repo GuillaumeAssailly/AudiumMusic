@@ -63,8 +63,8 @@ namespace Stub
             LP4.AddLast(new Morceau("Giorgio by Moroder", "Daft Punk", "iafaf"));
             mediatheque.Add(IAM, LP4);
 
-            RAM.Favori=true;
-            HYP.Favori = true;
+            RAM.ModifierFavori();
+            HYP.ModifierFavori();
             listeFavoris.Add(RAM);
             listeFavoris.Add(HYP);
 
