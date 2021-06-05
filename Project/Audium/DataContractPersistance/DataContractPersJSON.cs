@@ -1,5 +1,6 @@
 ﻿using Donnees;
 using Gestionnaires;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,15 +34,24 @@ namespace DataContractPersistance
                 Directory.CreateDirectory(FilePath);
             }
 
-            DataToPersist data = new DataToPersist();
+            DataToPersist data = new();
             data.Mediatheque = mediatheque;
-            data.ListeFav.AddRange(listeFavoris);
+            data.ListeFav=listeFavoris;
             data.MP = MP;
 
-            using(Stream writer = File.Create(PersFile))
+            JsonSerializer serializer = new();
+            serializer.PreserveReferencesHandling = PreserveReferencesHandling.All;
+            serializer.Formatting = Formatting.Indented;
+
+            using (StreamWriter stream = new(PersFile))
             {
-                Serializer.WriteObject(writer, data);
+                using (JsonWriter writer = new JsonTextWriter(stream))
+                {
+                    serializer.Serialize(writer, data);
+                }
             }
+
+
         }
     }
 }

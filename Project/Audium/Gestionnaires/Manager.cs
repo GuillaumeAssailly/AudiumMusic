@@ -9,7 +9,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Donnees;
-
+using Newtonsoft.Json;
 
 namespace Gestionnaires
 {
@@ -47,6 +47,7 @@ namespace Gestionnaires
 
      
         public ReadOnlyCollection<EnsembleAudio> ListeFavoris { get; private set; }
+        [JsonProperty (IsReference = true)]
         private List<EnsembleAudio> listeFavoris;
 
        

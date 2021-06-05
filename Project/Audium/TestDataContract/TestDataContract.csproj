@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataContractPersistance\DataContractPersistance.csproj" />
+    <ProjectReference Include="..\JsonPersistance\JsonPersistance.csproj" />
     <ProjectReference Include="..\Stub\Stub.csproj" />
   </ItemGroup>
 

@@ -301,7 +301,7 @@
                 <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}">
 
 
-                    <ListView Name="ListeKeys" ItemsSource="{Binding Mgr.ListeClé}" SelectedItem="{Binding MgrEnsemble.EnsembleSelect}"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+                    <ListBox Name="ListeKeys" ItemsSource="{Binding Mgr.ListeClé}" SelectedItem="{Binding MgrEnsemble.EnsembleSelect}"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
 
@@ -309,14 +309,14 @@
 
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
+                        <ListBox.ItemTemplate>
 
                             <DataTemplate>
                                 <uc:UCPochette x:Name="UCPochette" ImageName="{Binding CheminImage}" BoutonLire="LireTout" CliquePochette="OpenExp" CliqueFavori="Clique_Fav"/>
 
                             </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ListView>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
 
 
 

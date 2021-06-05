@@ -216,20 +216,26 @@
                     VerticalAlignment="Stretch"
                     Style="{DynamicResource MaterialDesignCardGroupBox}">
                         <GroupBox.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Sélection des titres" Foreground="Black" />
-                                <Button
-                                Click="Supprimer_Piste"
-                                Margin="320,0,0,0"
-                                Width="25"
-                                Height="25"
-                                Foreground="Black"
-                                Style="{StaticResource MaterialDesignIconForegroundButton}"
-                                ToolTip="MaterialDesignIconButton"
-                                Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
-                                    <materialDesign:PackIcon Kind="Bin" />
-                                </Button>
-                            </StackPanel>
+                            <Grid MaxWidth="500">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Sélection des titres" Foreground="Black" Grid.Column="0"/>
+                                    <Button
+                                            Grid.Column="2"
+                                            Click="Supprimer_Piste"
+                                            
+                                            Width="25"
+                                            Height="25"
+                                            Foreground="Black"
+                                            Style="{StaticResource MaterialDesignIconForegroundButton}"
+                                            ToolTip="MaterialDesignIconButton"
+                                            Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+                                        <materialDesign:PackIcon Kind="Bin" />
+                                    </Button>
+                            </Grid>
                         </GroupBox.Header>
 
                         <Grid>
@@ -237,6 +243,7 @@
                                 <RowDefinition Height="10*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions/>
                             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="0">
                                 <StackPanel>
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -6,7 +7,9 @@ using System.Runtime.Serialization;
 
 namespace Donnees
 {
+    
     [DataContract]
+    
     public class EnsembleAudio : IEquatable<EnsembleAudio>, INotifyPropertyChanged
     {
         public EnsembleAudio(string titre, string description, string cheminImage, EGenre genre,int note)
@@ -26,7 +29,7 @@ namespace Donnees
 
 
         
-     
+   
 
         [DataMember (EmitDefaultValue = false)]
         public string Titre { 
