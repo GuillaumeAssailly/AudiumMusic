@@ -173,7 +173,7 @@ namespace Audium.userControls
             Mgr.SupprimerEnsembleAudio(Mgr.ManagerEnsemble.EnsembleSelect);
             try { 
 
-                Mgr.ManagerEnsemble.EnsembleSelect = Mgr.Mediatheque.First().Key;
+                Mgr.ManagerEnsemble.EnsembleSelect = Mgr.Mediatheque.Last().Key;
 
             }
             catch(Exception)

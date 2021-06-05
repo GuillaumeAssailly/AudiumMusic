@@ -11,6 +11,7 @@ using System.Windows.Media;
 using Gestionnaires;
 using Donnees;
 using DataContractPersistance;
+using JsonPersistance;
 
 namespace Audium
 {
@@ -25,7 +26,7 @@ namespace Audium
 
         public App()
         {
-            LeManager = new(new DataContractPers());
+            LeManager = new(new JsonPers());
           
         }
 

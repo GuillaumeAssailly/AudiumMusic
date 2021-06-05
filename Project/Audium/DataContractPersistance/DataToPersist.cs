@@ -11,7 +11,7 @@ namespace DataContractPersistance
 {
 
     [DataContract]
-    class DataToPersist
+    public class DataToPersist
     {
 
         [DataMember (Order=0)]
