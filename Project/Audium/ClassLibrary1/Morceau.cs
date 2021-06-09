@@ -34,6 +34,12 @@ namespace Donnees
         public string Artiste { get; set; }
        
          
+        /// <summary>
+        /// Méthode de modification d'un morceau
+        /// </summary>
+        /// <param name="titre"></param>
+        /// <param name="chemin"></param>
+        /// <param name="artiste"></param>
         public void ModifierMorceau(string titre, string chemin, string artiste)
         {
             base.Titre = titre;
@@ -41,6 +47,11 @@ namespace Donnees
             Artiste = artiste;
         }
 
+
+        /// <summary>
+        /// To String utilisé dans le debug et les tests
+        /// </summary>
+        /// <returns></returns>
         public override String ToString()
         {
             return $"Morceau : \n Titre : {base.Titre}\nArtiste : {Artiste} \n Chemin : {base.Source}";

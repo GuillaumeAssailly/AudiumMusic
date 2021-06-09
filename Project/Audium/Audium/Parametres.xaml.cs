@@ -32,16 +32,28 @@ namespace Audium
             InitializeComponent();
             DataContext = this;
         }
+
+        /// <summary>
+        /// Petite méthode permettant de déplacer la fenêtre en glissant en maintenant appuyé le clique gauche
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
             this.DragMove();
         }
 
+        /// <summary>
+        /// Fonction fermant la fenêtre
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Save(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+
+        //Liste des fonctions appelant dans App.xaml les fonctions de changement de thème en runtime, pourrait être revu avec un système d'événements
 
         private void AmberClick(Object sender, RoutedEventArgs e)
         {
@@ -119,6 +131,12 @@ namespace Audium
             ((App)System.Windows.Application.Current).Yellow();
         }
 
+        /// <summary>
+        /// Méthode permettant de sélectionner un dossier (et non un fichier) et de récupérer son chemin 
+        /// On utilise pour cela un FolderBrowserDialog
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FolderSelect_Click(object sender, RoutedEventArgs e)
         {
             FolderBrowserDialog browser = new();

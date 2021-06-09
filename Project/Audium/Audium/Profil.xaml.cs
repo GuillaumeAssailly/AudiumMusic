@@ -33,6 +33,9 @@ namespace Audium
 
         public ManagerProfil MgrProfil => (App.Current as App).LeManager.ManagerProfil;
 
+        /// <summary>
+        /// Constructeur de la fenêtre qui prépare un back up de toutes les propriétés susceptibles d'être changée si l'utilisateur annule ses choix
+        /// </summary>
         public Profil()
         {
             InitializeComponent();
@@ -40,12 +43,23 @@ namespace Audium
             nombak = MgrProfil.Nom;
             cheminbak = MgrProfil.CheminImage;
         }
+
+        /// <summary>
+        /// Petite méthode permettant de déplacer la fenêtre en glissant en maintenant appuyé le clique gauche
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
             this.DragMove();
         }
 
+
+        /// <summary>
+        /// Fonction permettant de charger une image de profil depuis l'explorateur windows
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Open_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
@@ -57,29 +71,41 @@ namespace Audium
 
             bool? result = dialog.ShowDialog();
 
-            if(result == true)
+            if(result == true) 
             {
-                //MgrProfil.CheminImage = dialog.FileName;
+                
                 theImage.ImageSource = new BitmapImage(new Uri(dialog.FileName, UriKind.Absolute));
                 
                 imagesource = dialog.FileName;
                 Uri uri = new Uri(imagesource);
 
-
+                //On importe l'image dans le dossier img, et on change son nom pour être sûr qu'elle soit unique en utilisant la date actuelle
                 imageName = $"{ DateTime.Now.ToString().Replace("/", "").Replace(":", "")}.{uri.Segments.Last().Split(".")[1]}";
                 File.Copy(imagesource, @$"..\img\PP\{imageName}", true);
-                MgrProfil.CheminImage = imageName;
+                MgrProfil.CheminImage = imageName;//On attribue temporairement à chemin image la nouvelle image ajoutée, pour pouvoir la voir en apperçue
 
 
             }
         }
 
+
+        /// <summary>
+        /// Sauvegarde de tout les éléments modifiés 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Save(object sender, RoutedEventArgs e)
         {
             MgrProfil.ModifierProfil(PseudoInput.Text, MgrProfil.CheminImage);
             this.Close();
         }
 
+
+        /// <summary>
+        /// Annulation des changements, et remet les valeurs de back up en place
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Cancel(object sender, RoutedEventArgs e)
         {
             MgrProfil.ModifierProfil(nombak, cheminbak);
