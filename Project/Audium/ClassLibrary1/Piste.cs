@@ -8,40 +8,72 @@ using System.Threading.Tasks;
 
 namespace Donnees
 {
+
+    /// <summary>
+    /// Classe abstraite Piste qui sera implémentée par les objets Morceau, StationRadio et Podcast. Cet objet contient toutes les informations relatives aux pistes de lecture, dont les spécificités seront redéfinies plus loin.
+    /// Cette classe implémente par ailleurs IEquatable<Piste> pour redéfinir son Equals, et son HashCode, à partir de sa propriété DateAjotu. 
+    /// </summary>
     [DataContract]
     [KnownType(typeof(Morceau))]
     [KnownType(typeof(Podcast))]
     [KnownType(typeof(StationRadio))]
     public abstract class Piste : IEquatable<Piste>
     {
-        public Piste(string titre,string source)
+
+        /// <summary>
+        /// Constructeur de Piste, appelé notamment pendant la construction de ses héritiers. La Propriété DateAjout est calculée au moment 
+        /// </summary>
+        /// <param name="titre"></param>
+        /// <param name="source"></param>
+        public Piste(string titre, string source)
         {
             Titre = titre;
-            CmptEcoute = 0;
+            DateAjout = DateTime.Now;
             Source = source;
+
         }
 
-        
+        /// <summary>
+        /// Source multimédia de la piste
+        /// </summary>
         [DataMember(EmitDefaultValue = false)]
-        public string Source { get;  set; }
+        public string Source { get; set; }
 
-
+        /// <summary>
+        /// Date d'ajout de la Piste
+        /// </summary>
         [DataMember]
-        public int CmptEcoute { get; protected set; }
+        private DateTime DateAjout { get; set; }
 
+
+        /// <summary>
+        /// Titre de la piste
+        /// </summary>
         [DataMember(EmitDefaultValue = false)]
         public string Titre { get; set; }
 
+
+        /// <summary>
+        /// To String d'une Piste utilisé uniquement dans certains tests
+        /// </summary>
+        /// <returns></returns>
         public override String ToString()
         {
             return $"Piste : \n Titre : {Titre}\n ";
         }
 
 
+        /// <summary>
+        /// Rédéfinition du Equals, en utilisant la propriété DateAjout
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Equals([AllowNull] Piste other)
         {
-            return Titre.ToLower().Equals(other.Titre.ToLower());
+            return DateAjout.Equals(other.DateAjout);
         }
+
+
 
         public override bool Equals(object obj)
         {
@@ -52,9 +84,14 @@ namespace Donnees
             return Equals(obj as Piste);
         }
 
+
+        /// <summary>
+        /// Redéfinition du HashCode en utilisant la propriété DateAjout
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
-            return Titre.GetHashCode();
+            return DateAjout.GetHashCode();
         }
 
 

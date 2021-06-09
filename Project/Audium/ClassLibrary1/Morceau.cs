@@ -7,9 +7,18 @@ using System.Threading.Tasks;
 
 namespace Donnees
 {
+    /// <summary>
+    /// Classe Morceau, hérite de la Classe Piste
+    /// </summary>
     [DataContract]
     public class Morceau : Piste
     {
+        /// <summary>
+        /// Constructeur de Morceau. Fait remonter le titre et le chemin à l'objet Piste parent.
+        /// </summary>
+        /// <param name="titre">Titre du morceau de type string</param>
+        /// <param name="artiste">Titre de l'artiste de type string</param>
+        /// <param name="chemin">Chemin du fichier multimédia du morceau de type string </param>
         public Morceau(string titre, string artiste, string chemin)
             :base(titre,chemin)
         {
@@ -18,7 +27,9 @@ namespace Donnees
            
         }
 
-
+        /// <summary>
+        /// Artiste du Morceau
+        /// </summary>
         [DataMember(EmitDefaultValue = false)]
         public string Artiste { get; set; }
        

@@ -6,27 +6,24 @@ using System.Diagnostics;
 
 namespace Stub
 {
+    /// <summary>
+    /// La classe Stub implémente IPersistanceManager, qui permet d'avoir des méthodes de sauvegarde et de chargement de données.
+    /// Le Stub permet de faire comme si l'on avait enregistré des éléments depuis l'application et de les charger. 
+    /// On ne l'utilise plus dans le projet final.
+    /// </summary>
     public class Stub : IPersistanceManager
     {
+        /// <summary>
+        /// Méthode permettant de simuler un chargement de données
+        /// </summary>
+        /// <returns> Retourne le 3-uplet contenant le dictionnaire d'ensembles audio, la liste des favoris et le manager profil</returns>
         public (Dictionary<EnsembleAudio, LinkedList<Piste>>mediatheque, List<EnsembleAudio>listeFavoris, ManagerProfil MP) ChargeDonnees()
-        {
-            var donnees = ChargeDictionnaire();
-            return donnees;
-        }
-
-        public void SauvegardeDonnees(Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque, List<EnsembleAudio> listeFavoris, ManagerProfil MP)
-        {
-            Debug.WriteLine("Sauvegarde demandée");
-        }
-
-        private (Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque, List<EnsembleAudio> listeFavoris, ManagerProfil MP) ChargeDictionnaire()
         {
             Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque = new();
             List<EnsembleAudio> listeFavoris = new();
             ManagerProfil MP = new ManagerProfil();
             MP.ModifierProfil("Nom par Défaut", null);
             MP.ModifierParamètres("Red", null);
-;
             EnsembleAudio RAM = new EnsembleAudio("Random Access Memories", "Daft Punk", "ram.jpg", EGenre.BANDEORIGINALE, 3);
             LinkedList<Piste> LP1 = new();
             LP1.AddLast(new Morceau("Give Life Back to Music", "Daft Punk", "iafaf"));
@@ -68,7 +65,20 @@ namespace Stub
             listeFavoris.Add(RAM);
             listeFavoris.Add(HYP);
 
-            return (mediatheque,listeFavoris,MP);
+            return (mediatheque, listeFavoris, MP);
+
         }
+
+        /// <summary>
+        /// Simule une sauvegarde de données en affichant dans le Debug que la sauvegarde a été demandée
+        /// </summary>
+        /// <param name="mediatheque"> Dictionnaire d'ensembles audio </param>
+        /// <param name="listeFavoris"> Liste des favoris </param>
+        /// <param name="MP"> Le manager profil </param>
+        public void SauvegardeDonnees(Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque, List<EnsembleAudio> listeFavoris, ManagerProfil MP)
+        {
+            Debug.WriteLine("Sauvegarde demandée");
+        }
+
     }
 }
