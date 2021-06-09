@@ -9,6 +9,9 @@ using System.Xml;
 
 namespace DataContractPersistance 
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DataContractPers : IPersistanceManager
     {
         public string FilePath  => Path.Combine(Directory.GetCurrentDirectory(), RelativePath);
@@ -28,7 +31,7 @@ namespace DataContractPersistance
                                                                            });
 
        
-
+        
         public virtual (Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque, List<EnsembleAudio> listeFavoris, ManagerProfil MP) ChargeDonnees()
         {
 
