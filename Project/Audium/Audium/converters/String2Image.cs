@@ -24,7 +24,8 @@ namespace Audium.converters
             string imagePath = Path.Combine(imagesPath, imageName);
             if (!File.Exists(imagePath))
             {
-                return new Uri(Path.Combine(imagesPath,@"icondefault\default.png"), UriKind.RelativeOrAbsolute);
+                //return new Uri(Path.Combine(imagesPath,@"icondefault\default.png"), UriKind.RelativeOrAbsolute);
+                return new Uri("pack://application:,,,/img/default.png");
             }
             return new Uri(imagePath, UriKind.RelativeOrAbsolute);
         }

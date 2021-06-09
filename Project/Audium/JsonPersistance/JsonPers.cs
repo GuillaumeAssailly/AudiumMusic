@@ -23,6 +23,26 @@ namespace JsonPersistance
 
         public (Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque, List<EnsembleAudio> listeFavoris, ManagerProfil MP) ChargeDonnees()
         {
+            if (!File.Exists(PersFile))
+            {
+                //throw new FileNotFoundException("the persistance file is missing");
+                Directory.CreateDirectory(FilePath);
+               
+                    DataToPersist Vide = new();
+                    var defaut = JsonConvert.SerializeObject(Vide, new JsonSerializerSettings()
+                    {
+                        PreserveReferencesHandling = PreserveReferencesHandling.All,
+                        TypeNameHandling = TypeNameHandling.All,
+                        Formatting = Formatting.Indented,
+                        ContractResolver = new DictionaryAsArrayResolver()
+                    });
+                    File.WriteAllText(PersFile, defaut);
+
+
+                    return (Vide.Mediatheque, Vide.ListeFav, Vide.MP);
+                
+
+            }
             var json = File.ReadAllText(PersFile);
             var data = JsonConvert.DeserializeObject<DataToPersist>(json, new JsonSerializerSettings()
             {

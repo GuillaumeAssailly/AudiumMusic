@@ -29,7 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataContractPersistance", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDataContract", "TestDataContract\TestDataContract.csproj", "{EF1F5042-73F4-4706-927E-C382B28E2056}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonPersistance", "JsonPersistance\JsonPersistance.csproj", "{2B774475-CB5F-4AC7-BF64-0FA72492DAE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonPersistance", "JsonPersistance\JsonPersistance.csproj", "{2B774475-CB5F-4AC7-BF64-0FA72492DAE2}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Audium_SetUp", "Audium_SetUp\Audium_SetUp.vdproj", "{AC4DD395-851A-4FAD-B48B-C07889C056E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +91,8 @@ Global
 		{2B774475-CB5F-4AC7-BF64-0FA72492DAE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B774475-CB5F-4AC7-BF64-0FA72492DAE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B774475-CB5F-4AC7-BF64-0FA72492DAE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC4DD395-851A-4FAD-B48B-C07889C056E7}.Debug|Any CPU.ActiveCfg = Debug
+		{AC4DD395-851A-4FAD-B48B-C07889C056E7}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

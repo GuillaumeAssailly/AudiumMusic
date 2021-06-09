@@ -20,14 +20,21 @@ namespace Audium.converters
         }
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+           
             string imageName = value as string;
-            
-            string imagePath = Path.Combine(imagesPath, imageName);
-            if (!File.Exists(imagePath))
+            if (imageName != null)
             {
-                return new Uri(Path.Combine(imagesPath, @"..\icondefault\pp.png"), UriKind.RelativeOrAbsolute);
+                string imagePath = Path.Combine(imagesPath, imageName);
+
+                if (!File.Exists(imagePath))
+                {
+                    //return new Uri(Path.Combine(imagesPath, @"..\icondefault\pp.png"), UriKind.RelativeOrAbsolute);
+                    return new Uri("pack://application:,,,/img/pp.png");
+                }
+                return new Uri(imagePath, UriKind.RelativeOrAbsolute);
             }
-            return new Uri(imagePath, UriKind.RelativeOrAbsolute);
+            //return new Uri(Path.Combine(imagesPath, @"..\icondefault\pp.png"), UriKind.RelativeOrAbsolute);
+            return new Uri("pack://application:,,,/img/pp.png");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

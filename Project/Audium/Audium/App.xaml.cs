@@ -27,7 +27,7 @@ namespace Audium
         public App()
         {
             LeManager = new(new JsonPers());
-          
+            //LeManager = new(new DataContractPers());
         }
 
         public void InitTheme()
