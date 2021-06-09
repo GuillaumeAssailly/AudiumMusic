@@ -31,15 +31,31 @@ namespace DataContractPersistance
 
         public virtual (Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque, List<EnsembleAudio> listeFavoris, ManagerProfil MP) ChargeDonnees()
         {
-            if(!File.Exists(PersFile))
+
+            DataToPersist data = new DataToPersist();
+
+
+            if (!File.Exists(PersFile))
             {
-                throw new FileNotFoundException("the persistance file is missing");
+                //throw new FileNotFoundException("the persistance file is missing");
+                Directory.CreateDirectory(FilePath);
+
+               
+                    var settings = new XmlWriterSettings() { Indent = true };
+                    using (TextWriter tw = File.CreateText(PersFile))
+                    {
+                        using (XmlWriter writer = XmlWriter.Create(tw, settings))
+                        {
+                            Serializer.WriteObject(writer, data);
+                        }
+                    }
+                
             }
 
          
 
 
-            DataToPersist data = new DataToPersist();
+          
 
             using (Stream s = File.OpenRead(PersFile))
             {
