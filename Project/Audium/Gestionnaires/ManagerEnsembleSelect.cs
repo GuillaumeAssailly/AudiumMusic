@@ -9,11 +9,39 @@ using Donnees;
 
 namespace Gestionnaires
 {
+    /// <summary>
+    /// Classe qui gère toutes les opérations sur un Ensemble Audio sélectionné, implémente également INotifyPropertyChanged
+    /// </summary>
     public class ManagerEnsembleSelect : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
+
+        /// <summary>
+        /// Ensemble Audio sélectionné, lorsque sa valeur change, on essaye automatiquement de récupérer ses clés associées dans la médiathèque pour les stocker
+        /// dans listeSelect
+        /// </summary>
+        public EnsembleAudio EnsembleSelect
+        {
+            get => ensembleSelect;
+            set
+            {
+                if (value != null)
+                {
+                    ensembleSelect = value;
+                    mediatheque.TryGetValue(ensembleSelect, out listeSelect);
+                    if (listeSelect != null) { ListeSelect = new ReadOnlyCollection<Piste>(listeSelect?.ToList()); OnPropertyChanged(nameof(ListeSelect)); }
+                    OnPropertyChanged(nameof(EnsembleSelect));
+
+                }
+            }
+        }
+        private EnsembleAudio ensembleSelect;
+
+        /// <summary>
+        /// Piste sélectionnée dans la liste associé à l'Ensemble Select
+        /// </summary>
         public Piste PisteSelect
         {
             get => pisteSelect;
@@ -32,24 +60,10 @@ namespace Gestionnaires
         public ReadOnlyCollection<Piste> ListeSelect { get; set; }
         private LinkedList<Piste> listeSelect;
 
-
-        public EnsembleAudio EnsembleSelect
-        {
-            get => ensembleSelect;
-            set
-            {
-                if (value != null)
-                {
-                    ensembleSelect = value;
-                    mediatheque.TryGetValue(ensembleSelect, out listeSelect);
-                    if(listeSelect!=null) { ListeSelect = new ReadOnlyCollection<Piste>(listeSelect?.ToList()); OnPropertyChanged(nameof(ListeSelect)); }
-                    OnPropertyChanged(nameof(EnsembleSelect));
-                  
-                }
-            }
-        }
-        private EnsembleAudio ensembleSelect;
-
+        /// <summary>
+        /// Constructeur de Manager Ensemble Select, qui récupère la référence de la médiathèque de la part du Manager
+        /// </summary>
+        /// <param name="mediatheque"></param>
         public ManagerEnsembleSelect(Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque)
         {
             this.mediatheque = mediatheque;
@@ -58,20 +72,24 @@ namespace Gestionnaires
             
         }
 
+
+        /// <summary>
+        /// Ajout d'un morceau à la liste sélectionnée (et donc à la mediatheque)
+        /// </summary>
+        /// <param name="titre"></param>
+        /// <param name="artiste"></param>
+        /// <param name="chemin"></param>
+        /// <returns></returns>
         public Morceau AjouterMorceau(string titre, string artiste, string chemin)
         {
             int i = 1;
-            
-            if (string.IsNullOrWhiteSpace(titre))
-            {
-                throw new ArgumentException("Le titre du morceau n'est pas valide");
-            }
+          
 
            
 
 
             Morceau morceau= new(titre,artiste,chemin);
-
+            //Si le titre existe déjà; on ajoute entre paranthèses le nombre de fois où il apparaît
             while (listeSelect.Contains(morceau))
             {
                 morceau.Titre = $"{titre} ({i})";
@@ -85,14 +103,16 @@ namespace Gestionnaires
             return morceau;
         }
 
+        /// <summary>
+        /// Même méthode pour ajouter station de radio
+        /// </summary>
+        /// <param name="titre"></param>
+        /// <param name="url"></param>
         public void AjouterStationRadio(string titre, string url)
         {
             int i = 1;
 
-            if (string.IsNullOrWhiteSpace(titre) || string.IsNullOrWhiteSpace(url))
-            {
-                throw new ArgumentException("Le titre ou l'url de la radio n'est pas valide");
-            }
+            
 
             StationRadio radio = new(titre,url);
 
@@ -108,14 +128,21 @@ namespace Gestionnaires
             OnPropertyChanged(nameof(ListeSelect));
         }
 
+
+        /// <summary>
+        /// Même méthode pour ajouter podcast
+        /// </summary>
+        /// <param name="titre"></param>
+        /// <param name="description"></param>
+        /// <param name="auteur"></param>
+        /// <param name="chemin"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public Podcast AjouterPodcast(string titre, string description, string auteur, string chemin, DateTime date)
         {
             int i = 1;
 
-            if (string.IsNullOrWhiteSpace(titre))
-            {
-                throw new ArgumentException("Le titre ou le chemin de la radio n'est pas valide");
-            }
+         
 
             Podcast podcast = new(titre, description, auteur, chemin,date);
 
@@ -132,6 +159,12 @@ namespace Gestionnaires
             return podcast;
         }
 
+
+        /// <summary>
+        /// Suppression d'une piste de la liste Select (et donc de la mediatheque) avec gestion des exceptions
+        /// </summary>
+        /// <param name="pisteAsuppr"></param>
+        /// <returns></returns>
         public bool SupprimerPiste(Piste pisteAsuppr)
         {
             if (pisteAsuppr == null)
@@ -152,7 +185,9 @@ namespace Gestionnaires
             return true;
         }
 
-
+        /// <summary>
+        /// Actualisation de la liste Select, après chaque modification. Pourrait être évité en remplacant liste select par une observable collection
+        /// </summary>
         public void ActualiserListe()
         {
             mediatheque.TryGetValue(ensembleSelect, out listeSelect);

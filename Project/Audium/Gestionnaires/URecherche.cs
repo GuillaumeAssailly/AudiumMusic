@@ -10,6 +10,9 @@ using Donnees;
 
 namespace Gestionnaires
 {
+    /// <summary>
+    /// Utilitaire statique de méthodes de recherche. Généralement, c'est la recherche principale qui est appellée, mais il existe aussi deux plus petites recherches avec des critères différents 
+    /// </summary>
     public abstract class URecherche 
     {
      
@@ -17,78 +20,7 @@ namespace Gestionnaires
        {
             return discotheque.Where(ensemble => ensemble.Key.Genre.Equals(GenreRecherche)).ToDictionary(x => x.Key, x=> x.Value) ;
        }
-        /*
-
-
-
-    public static Dictionary<EnsembleAudio, LinkedList<Piste>> RechercherParMotCle(string rech)
-    {
-        Dictionary<EnsembleAudio, LinkedList<Piste>> Recherche = new();
-
-        foreach (EnsembleAudio e in Manager.Mediatheque.Keys.Where(ensemble => ensemble.Titre.ToLower().Contains(rech.ToLower())))
-        {
-
-            Recherche.Add(e, Manager.Mediatheque[e]);
-        }
-        foreach(LinkedList<Piste> le in Manager.Mediatheque.Values)
-        {
-            foreach(Piste p in le)
-            {
-                if (p.Titre.ToLower().Contains(rech.ToLower()))
-                {
-                    Recherche.Add(Manager.Mediatheque.FirstOrDefault(x => x.Value==le).Key, le);              
-                }
-                else if(p is Morceau && ((Morceau)p).Artiste.ToLower().Contains(rech.ToLower()))
-                {
-                        Recherche.Add(Manager.Mediatheque.FirstOrDefault(x => x.Value == le).Key, le);
-                }
-            }
-        }
-
-        return Recherche;
-
-    }
-    */
-        /*
-        public static ObservableCollection<EnsembleAudio> RechercherParMotCle(string rech, ObservableCollection<EnsembleAudio> ListeClé, ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>> Discotheque, string GenreRecherche)
-        {
-            
-            if (string.IsNullOrWhiteSpace(rech))
-            {
-                ListeClé = new ObservableCollection<EnsembleAudio>(URecherche.RechercherParGenre(Genre.GetGenre(GenreRecherche), ListeClé));
-            }
-            ObservableCollection<EnsembleAudio> result = new ObservableCollection < EnsembleAudio > (ListeClé.Where(ensemble => (ensemble.Titre.ToLower().Contains(rech.ToLower()))).ToList());
-            LinkedList<Piste> ListePiste = new();
-            foreach (EnsembleAudio e in ListeClé)
-            {
-
-                Discotheque.TryGetValue(e, out ListePiste);
-                foreach (Piste piste in ListePiste)
-                {
-                    if (result.Contains(Discotheque.FirstOrDefault(x => x.Value == ListePiste).Key))
-                    {
-                        break;
-                    }
-                    if (piste.Titre.ToLower().Contains(rech.ToLower()))
-                    {
-                        result.Add(Discotheque.FirstOrDefault(x => x.Value == ListePiste).Key);
-                    }
-                    else if (piste is Morceau && ((Morceau)piste).Artiste.ToLower().Contains(rech.ToLower()))
-                    {
-                        result.Add(Discotheque.FirstOrDefault(x => x.Value == ListePiste).Key);
-                    }
-                    else if (piste is Podcast && ((Podcast)piste).Auteur.ToLower().Contains(rech.ToLower()))
-                    {
-                        result.Add(Discotheque.FirstOrDefault(x => x.Value == ListePiste).Key);
-                    }
-                }
-            }
-            return result;
-
-        }
       
-                
-          */
         public static Dictionary<EnsembleAudio,LinkedList<Piste>> RechercherParMotCle(string rech, ReadOnlyDictionary<EnsembleAudio, LinkedList<Piste>> Discotheque)
         {
             Dictionary<EnsembleAudio, LinkedList<Piste>> Recherche = new();

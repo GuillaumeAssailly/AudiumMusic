@@ -21,15 +21,25 @@ namespace Audium
 
     public partial class App : Application
     {
-
+        /// <summary>
+        /// Manager de notre application
+        /// </summary>
         public Manager LeManager { get; private set; }
 
+        /// <summary>
+        /// Constructeur de l'application
+        /// </summary>
         public App()
         {
             LeManager = new(new JsonPers());
             //LeManager = new(new DataContractPers());
         }
 
+
+        /// <summary>
+        /// Méthode qui permet d'initialiser les thèmes de l'interface MD en fonction de la valeur sauvegardée dans le profil
+        /// Puisque toutes les fonctions appelées pour changer la couleur ne fonctionnent que pendant le runtime, InitTheme est appelée juste après la construction de Main Window
+        /// </summary>
         public void InitTheme()
         {
             switch (LeManager.ManagerProfil.CouleurTheme)
@@ -58,6 +68,7 @@ namespace Audium
         }
 
 
+        //Liste des fonctions qui permettent de changer  le thème de l'interface Material Design, en changeant également la valeur dans le Manager Profil
 
         public void Amber()
         {
