@@ -9,6 +9,9 @@ using System.Windows.Data;
 
 namespace Audium.converters
 {
+    /// <summary>
+    /// Permet d convertir le nom d'une image en chemin pour accéder à cette image
+    /// </summary>
     class String2Image : IValueConverter
     {
         private static string imagesPath;

@@ -17,11 +17,10 @@
         <conv:String2CompactString x:Key="String2CompactString"/>
         <conv:String2Image x:Key="String2Image"/>
         <conv:EGenre2String x:Key="EGenre2String"/>
-       
     </Window.Resources>
    
     <DockPanel>
-        <Border  BorderBrush="Black" BorderThickness="0"  Margin="0" DockPanel.Dock="Left">
+        <Border BorderBrush="Black" BorderThickness="0"  Margin="0" DockPanel.Dock="Left">
             <ScrollViewer VerticalScrollBarVisibility="Auto" Background="#171717">
                 <StackPanel Width="300">
                     <StackPanel.Resources>
@@ -117,9 +116,9 @@
                                         <DataTemplate>
                                             <WrapPanel Orientation="Horizontal">
                                                 <Button
-                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Style="{StaticResource PlayButton_MD}"
                                                     Tag ="{Binding}" Click="LireTout"
-                                                    ToolTip="MaterialDesignIconButton"> 
+                                                    > 
                                                     <materialDesign:PackIcon Kind="Play" />
                                                 </Button>
                                                 <TextBlock Text="{Binding Titre, Converter={StaticResource String2CompactString}}" Margin="0,15,0,0"/>
@@ -137,12 +136,6 @@
 
         <Border BorderBrush="Black" BorderThickness="0" DockPanel.Dock="Top" Margin="0">
             <Grid  Background="#262626" Height="100">
-                <Grid.Resources>
-                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignIconButton}">
-                        <Setter Property="Height" Value="70"/>
-                        <Setter Property="Width" Value="70"/>
-                    </Style>
-                </Grid.Resources>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
@@ -155,11 +148,12 @@
                 </Grid.ColumnDefinitions>
                 <Button
                       Click="OpenFolderMusic"
-                    
+                      Style="{StaticResource TopButton_MD}"
                       ToolTip="Accéder à l'emplacement de sauvegarde" Cursor="Hand">
                     <materialDesign:PackIcon Height="50" Width="50" Kind="FolderMusic" />
                 </Button>
                 <Button 
+                      Style="{StaticResource TopButton_MD}"
                       Grid.Column="1"
                       Click="AddMusic"
                       ToolTip="Ajouer un album" Cursor="Hand">
@@ -167,12 +161,14 @@
                     
                 </Button>
                 <Button 
+                    Style="{StaticResource TopButton_MD}"
                       Grid.Column="2"
                       Click="OpenParameters"
                       ToolTip="Paramètres" Cursor="Hand">
                     <materialDesign:PackIcon Height="50" Width="50" Kind="Cog" />
                 </Button>
                 <Button 
+                    Style="{StaticResource TopButton_MD}"
                       Click="OpenProfile"
                       Grid.Column="4"
                       ToolTip="Profil" Cursor="Hand">
@@ -198,28 +194,27 @@
                 </Grid.RowDefinitions>
                 <Button
                     ToolTip="Lire/Pause"
-                    Style="{StaticResource MaterialDesignIconButton}"
+                    Style="{StaticResource BottomButton_MD}"
                    
                     Grid.Column="3"
                     Click="PlayPause"
-                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Margin="0,2,0,17" Cursor="Hand">
+                    >
                     <materialDesign:PackIcon Kind="Play" Name="PlayPauseIcon"/>
                 </Button>
                 <Button
-                    Style="{StaticResource MaterialDesignIconButton}"
+                    Style="{StaticResource BottomButton_MD}"
                     ToolTip="Précédent"
                     Grid.Column="2"
-                    Click="Media_Previous"
-                     Margin="0,2,0,17"
-                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}" Cursor="Hand">
+                    Click="Media_Previous">
+
                     <materialDesign:PackIcon Kind="Rewind" />
                 </Button>
                 <Button
-                    Style="{StaticResource MaterialDesignIconButton}"
+                     Style="{StaticResource BottomButton_MD}"
                     ToolTip="Suivant"
                     Click="Media_Next"
                     Grid.Column="4"
-                    Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"  Margin="0,2,0,17" Cursor="Hand">
+                    >
                     <materialDesign:PackIcon Kind="FastForward" />
                 </Button>
 

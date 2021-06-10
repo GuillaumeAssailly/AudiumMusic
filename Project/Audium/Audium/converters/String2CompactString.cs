@@ -9,6 +9,9 @@ using System.Windows.Data;
 
 namespace Audium.converters
 {
+    /// <summary>
+    /// Permet de compacter un String s'il est trop long en mettant des points de suspension
+    /// </summary>
     class String2CompactString : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

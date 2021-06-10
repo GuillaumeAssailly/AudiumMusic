@@ -9,7 +9,10 @@ using System.Threading.Tasks;
 
 namespace DataContractPersistance
 {
-
+    /// <summary>
+    /// Classe contenant les différents éléments à persister (sauvegarder/charger), un dictionnaire avec en clé des ensembles audio et en valeurs des linkedlist de Piste,
+    /// Une liste d'ensembles audio favoris et un manager profil
+    /// </summary>
     [DataContract]
     public class DataToPersist
     {

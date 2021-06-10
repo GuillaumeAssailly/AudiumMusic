@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Gestionnaires
 {
+    /// <summary>
+    /// Interface permettant d'accéder aux méthodes de chargement et sauvegarde de données
+    /// </summary>
     public interface IPersistanceManager
     {
         (Dictionary<EnsembleAudio, LinkedList<Piste>> mediatheque, List<EnsembleAudio> listeFavoris, ManagerProfil MP)ChargeDonnees();

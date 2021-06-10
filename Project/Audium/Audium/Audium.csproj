@@ -45,6 +45,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataContractPersistance\DataContractPersistance.csproj" />
+    <ProjectReference Include="..\ExternalResources\ExternalResources.csproj" />
     <ProjectReference Include="..\JsonPersistance\JsonPersistance.csproj" />
   </ItemGroup>
 

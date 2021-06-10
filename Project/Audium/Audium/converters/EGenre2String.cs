@@ -9,6 +9,9 @@ using System.Windows.Data;
 
 namespace Audium.converters
 {
+    /// <summary>
+    /// Permet de convertir un EGenre en String afin de pouvoir afficher le genre avec des espaces, des tirets, ...
+    /// </summary>
     class EGenre2String : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

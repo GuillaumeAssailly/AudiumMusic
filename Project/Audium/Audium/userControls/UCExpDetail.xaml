@@ -260,9 +260,9 @@
                                                 <WrapPanel>
 
                                                     <Button
-                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Style="{StaticResource PlayButton_MD}"
                                                     Tag ="{Binding}" Click="Lire_Exp"
-                                                    ToolTip="MaterialDesignIconButton">
+                                                    >
                                                         <materialDesign:PackIcon Kind="Play" />
                                                     </Button>
                                                     <TextBlock Text="{Binding Titre}"  Margin="0,15,0,0" />
@@ -321,9 +321,9 @@
                                             <DataTemplate DataType="{x:Type donnees:Podcast}">
                                                 <WrapPanel Orientation="Horizontal">
                                                     <Button
-                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Style="{StaticResource PlayButton_MD}"
                                                     Tag ="{Binding}" Click="Lire_Exp"
-                                                    ToolTip="MaterialDesignIconButton">
+                                                    >
                                                         <materialDesign:PackIcon Kind="Play" />
                                                     </Button>
                                                     <TextBlock Text="{Binding Titre}"  Margin="0,15,0,0"/>

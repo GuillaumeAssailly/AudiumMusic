@@ -12,6 +12,9 @@ using Gestionnaires;
 
 namespace Audium.converters
 {
+    /// <summary>
+    /// N'existe plus
+    /// </summary>
     class DicoConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
