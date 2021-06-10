@@ -33,6 +33,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonPersistance", "JsonPers
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Audium_SetUp", "Audium_SetUp\Audium_SetUp.vdproj", "{AC4DD395-851A-4FAD-B48B-C07889C056E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Resources.csproj", "{7E630C4E-DE93-4CC7-B915-2969B12D3C41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalResources", "ExternalResources\ExternalResources.csproj", "{1E8C6E82-9728-49C6-A27A-C4C9BED2588C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,14 @@ Global
 		{2B774475-CB5F-4AC7-BF64-0FA72492DAE2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AC4DD395-851A-4FAD-B48B-C07889C056E7}.Debug|Any CPU.ActiveCfg = Debug
 		{AC4DD395-851A-4FAD-B48B-C07889C056E7}.Release|Any CPU.ActiveCfg = Release
+		{7E630C4E-DE93-4CC7-B915-2969B12D3C41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E630C4E-DE93-4CC7-B915-2969B12D3C41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E630C4E-DE93-4CC7-B915-2969B12D3C41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E630C4E-DE93-4CC7-B915-2969B12D3C41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E8C6E82-9728-49C6-A27A-C4C9BED2588C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E8C6E82-9728-49C6-A27A-C4C9BED2588C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E8C6E82-9728-49C6-A27A-C4C9BED2588C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E8C6E82-9728-49C6-A27A-C4C9BED2588C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

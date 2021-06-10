@@ -9,6 +9,9 @@ using System.Windows.Data;
 
 namespace Audium.converters
 {
+    /// <summary>
+    /// Permet de convertir une image en chemin pour accéder à cette image, pour la photo de profil (PP)
+    /// </summary>
     class String2PP : IValueConverter
     {
 
