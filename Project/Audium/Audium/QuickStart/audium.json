@@ -1,0 +1,56 @@
+{
+  "$id": "1",
+  "$type": "DataContractPersistance.DataToPersist, DataContractPersistance",
+  "Mediatheque": {
+    "$id": "2",
+    "$type": "System.Collections.Generic.Dictionary`2[[Donnees.EnsembleAudio, Donnees],[System.Collections.Generic.LinkedList`1[[Donnees.Piste, Donnees]], System.Collections]], System.Private.CoreLib",
+    "$values": [
+      {
+        "Key": {
+          "$id": "3",
+          "$type": "Donnees.EnsembleAudio, Donnees",
+          "Titre": "HypnoTest",
+          "DateAjout": "2021-06-07T12:16:41.4673175+02:00",
+          "CheminImage": "pack://application:,,,/img/hypnoflip.jpg",
+          "CmptEcoute": 0,
+          "Favori": false
+        },
+        "Value": {
+          "$id": "4",
+          "$type": "System.Collections.Generic.LinkedList`1[[Donnees.Piste, Donnees]], System.Collections",
+          "$values": [
+            {
+              "$id": "5",
+              "$type": "Donnees.Morceau, Donnees",
+              "Artiste": "",
+              "Source": ".\\music\\Track 1.mp3",
+              "Titre": "Intro",
+              "DateAjout": "2021-06-12T12:54:09.9463419+02:00"
+            },
+            {
+              "$id": "6",
+              "$type": "Donnees.Morceau, Donnees",
+              "Artiste": "",
+              "Source": ".\\music\\Track 2.mp3",
+              "Titre": "Stupeflip Vite !!!",
+              "DateAjout": "2021-06-12T14:26:58.0743612+02:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "ListeFav": {
+    "$id": "7",
+    "$type": "System.Collections.Generic.List`1[[Donnees.EnsembleAudio, Donnees]], System.Private.CoreLib",
+    "$values": []
+  },
+  "MP": {
+    "$id": "8",
+    "$type": "Gestionnaires.ManagerProfil, Gestionnaires",
+    "Nom": "Nom d'utilisateur",
+    "CheminImage": "..\\icondefault\\pp.png",
+    "CouleurTheme": "Blue",
+    "CheminBaseDonnees": null
+  }
+}

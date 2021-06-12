@@ -65,9 +65,9 @@ namespace Audium.userControls
         private void Supprimer_Piste(object sender, RoutedEventArgs e)
         {
 
-            if (MgrEnsemble.EnsembleSelect == Mgr.EnsembleLu) //On vérifie si on supprime une des pistes se trouvant dans la collection qui est en train d'être lue
+            if (MgrEnsemble.EnsembleSelect == Mgr.ManagerPlayer.EnsembleLu) //On vérifie si on supprime une des pistes se trouvant dans la collection qui est en train d'être lue
             {
-                Mgr.Playlist.Remove((Piste)ListePiste.SelectedItem); //Si c'est le cas, on la supprime de la playlist
+                Mgr.ManagerPlayer.Playlist.Remove((Piste)ListePiste.SelectedItem); //Si c'est le cas, on la supprime de la playlist
                 StopLecteur?.Invoke(sender, new RoutedEventArgs()); //Et on stoppe le lecteur, avec un système d'événement qui va appeler la méthode correspondante dans Main Window
             }
             try
@@ -137,9 +137,9 @@ namespace Audium.userControls
         {
             Morceau morceau = MgrEnsemble.AjouterMorceau("Nouveau Morceau", "", ""); //On ajoute un morceau par défaut
            
-            if (MgrEnsemble.EnsembleSelect == Mgr.EnsembleLu) //On vérifie si l'ensemble audio que l'on est en train de modifier est aussi celui qui est en train d'être lu
+            if (MgrEnsemble.EnsembleSelect == Mgr.ManagerPlayer.EnsembleLu) //On vérifie si l'ensemble audio que l'on est en train de modifier est aussi celui qui est en train d'être lu
             {
-                Mgr.Playlist.AddLast(morceau); //Dans ce cas là on l'ajoute également à la playlist
+                Mgr.ManagerPlayer.Playlist.AddLast(morceau); //Dans ce cas là on l'ajoute également à la playlist
             }
         }
 
@@ -151,9 +151,9 @@ namespace Audium.userControls
         private void AjouterPodcast(object sender, RoutedEventArgs e)
         {
             Podcast nouvPod = MgrEnsemble.AjouterPodcast("Nouveau Podcast", "", "", "", DateTime.Today);
-            if (MgrEnsemble.EnsembleSelect == Mgr.EnsembleLu) //On vérifie si l'ensemble audio que l'on est en train de modifier est aussi celui qui est en train d'être lu
+            if (MgrEnsemble.EnsembleSelect == Mgr.ManagerPlayer.EnsembleLu) //On vérifie si l'ensemble audio que l'on est en train de modifier est aussi celui qui est en train d'être lu
             {
-                Mgr.Playlist.AddLast(nouvPod); //Dans ce cas là on l'ajoute également à la playlist
+                Mgr.ManagerPlayer.Playlist.AddLast(nouvPod); //Dans ce cas là on l'ajoute également à la playlist
             }
         }
 

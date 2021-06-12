@@ -220,7 +220,7 @@
 
                 <StackPanel Grid.Column="0"  Grid.Row="0">
                     <Grid  Height="50"  Width="50">
-                        <Image  Source="{Binding Mgr.EnsembleLu.CheminImage, Converter={StaticResource String2Image}}"  Stretch="UniformToFill" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                        <Image  Source="{Binding MgrPlayer.EnsembleLu.CheminImage, Converter={StaticResource String2Image}}"  Stretch="UniformToFill" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
                     </Grid>
                 </StackPanel>
                 <WrapPanel Grid.Column="1" Orientation="Vertical">

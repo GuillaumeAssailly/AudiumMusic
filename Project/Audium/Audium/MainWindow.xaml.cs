@@ -41,7 +41,8 @@ namespace Audium
         // On récupère les managers depuis App.xaml
         public Manager Mgr => (App.Current as App).LeManager;
         public ManagerEnsembleSelect MgrEnsemble => (App.Current as App).LeManager.ManagerEnsemble;
-      
+        public ManagerPlayer MgrPlayer => (App.Current as App).LeManager.ManagerPlayer;
+
         /// <summary>
         /// Vérifie si le lecteur lit un fichier média
         /// </summary>
@@ -195,25 +196,31 @@ namespace Audium
         protected void LireTout(object sender, RoutedEventArgs e)
         {
             //On met l'index de la lecture à zéro puisqu'on lit la première piste
-            Mgr.MediaIndex = 0;
+            Mgr.ManagerPlayer.MediaIndex = 0;
             
             //On récupère l'ensembleAudio depuis le tag du bouton de lecture sur lequel on a cliqué, et cela change également le contenu de Mgr.Playlist avec les valeurs de l'ensemble audio
-            Mgr.EnsembleLu = ((Button)sender).Tag as EnsembleAudio;
+            Mgr.ManagerPlayer.EnsembleLu = ((Button)sender).Tag as EnsembleAudio;
 
             //Si la playlist est vide (c'est à dire que la clé ensemble audio n'a aucune piste en valeur)
-            if(Mgr.Playlist.Count==0)
+            if(Mgr.ManagerPlayer.Playlist.Count==0)
             {
                 Lecteur.Pause();
                 Lecteur.Position = new TimeSpan(0, 0, 0, 0, 0);
-                TitleDisplay.Text = Mgr.EnsembleLu.Titre;
+                TitleDisplay.Text = Mgr.ManagerPlayer.EnsembleLu.Titre;
                 return; 
             }
-            
-            //On récupère l'attribut source qui est un string du chemin d'un fichier multimédia, que l'on converti en Uri, pour pouvoir l'affecter au lecteur
-            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), Mgr.Playlist.ElementAt(Mgr.MediaIndex).Source));
 
+            //On récupère l'attribut source qui est un string du chemin d'un fichier multimédia, que l'on converti en Uri, pour pouvoir l'affecter au lecteur
+            try
+            {
+                Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), Mgr.ManagerPlayer.Playlist.ElementAt(Mgr.ManagerPlayer.MediaIndex).Source));
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+            }
             //On affiche dans le lecteur le titre de la piste lue
-            TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex).Titre;
+            TitleDisplay.Text = Mgr.ManagerPlayer.Playlist.ElementAtOrDefault(Mgr.ManagerPlayer.MediaIndex).Titre;
 
             //On lance la lecture 
             Lecteur.Play();
@@ -229,15 +236,22 @@ namespace Audium
         /// <param name="index"></param>
         public void LireDepuis(int index)
         {
-            Mgr.MediaIndex = index;
+            Mgr.ManagerPlayer.MediaIndex = index;
 
 
-            Mgr.EnsembleLu = MgrEnsemble.EnsembleSelect;
+            Mgr.ManagerPlayer.EnsembleLu = MgrEnsemble.EnsembleSelect;
 
             //On récupère l'attribut source qui est un string du chemin d'un fichier multimédia, que l'on converti en Uri, pour pouvoir l'affecter au lecteur
-            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), Mgr.Playlist.ElementAt(Mgr.MediaIndex).Source));
+            try
+            {
+                Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), Mgr.ManagerPlayer.Playlist.ElementAt(Mgr.ManagerPlayer.MediaIndex).Source));
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
             //On affiche dans le lecteur le titre de la piste lue
-            TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex).Titre;
+            TitleDisplay.Text = Mgr.ManagerPlayer.Playlist.ElementAtOrDefault(Mgr.ManagerPlayer.MediaIndex).Titre;
 
             //On lance la lecture 
             Lecteur.Play();
@@ -300,17 +314,17 @@ namespace Audium
         private void Media_Next(object sender, EventArgs e)
         {
             //On teste que la playlist ne se soit pas vidée
-            if(Mgr.Playlist?.Count==0 || Mgr.Playlist==null)
+            if(Mgr.ManagerPlayer.Playlist?.Count==0 || Mgr.ManagerPlayer.Playlist ==null)
             {
                 return;
             }
 
             //Si possible, on incrémente la valeur de MediaIdex, sinon on stoppe la lecture, généralement parce qu'on est arrivé en fin de playlist
-            if(Mgr.MediaIndex < Mgr.Playlist.Count-1)
+            if(Mgr.ManagerPlayer.MediaIndex < Mgr.ManagerPlayer.Playlist.Count-1)
             {
-                Mgr.MediaIndex++;
+                Mgr.ManagerPlayer.MediaIndex++;
             }
-            else if(Mgr.MediaIndex==Mgr.Playlist.Count-1)
+            else if(Mgr.ManagerPlayer.MediaIndex ==Mgr.ManagerPlayer.Playlist.Count-1)
             {
                 Lecteur.Stop();
                 isPlaying = false;
@@ -319,14 +333,14 @@ namespace Audium
             }
             Lecteur.Stop();
             //On change la source du lecteur avec la piste suivante récupérée dans la playlist avec l'incrémentation de MediaIndex
-            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), Mgr.Playlist.ElementAt(Mgr.MediaIndex).Source));
+            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), Mgr.ManagerPlayer.Playlist.ElementAt(Mgr.ManagerPlayer.MediaIndex).Source));
             //On reprend la lecture
             Lecteur.Play();
             
            
             isPlaying = true;
             PlayPauseIcon.Kind = PackIconKind.Pause;
-            TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex).Titre;
+            TitleDisplay.Text = Mgr.ManagerPlayer.Playlist.ElementAtOrDefault(Mgr.ManagerPlayer.MediaIndex).Titre;
 
         }
       
@@ -338,23 +352,23 @@ namespace Audium
         private void Media_Previous(object sender, EventArgs e)
         {
             //Teste si la playlist n'est pas null
-            if (Mgr.Playlist?.Count == 0 || Mgr.Playlist == null)
+            if (Mgr.ManagerPlayer.Playlist?.Count == 0 || Mgr.ManagerPlayer.Playlist == null)
             {
                 return;
             }
             //Vérifie si on en est pas déjà au premier morceau
-            if (Mgr.MediaIndex > 0)
+            if (Mgr.ManagerPlayer.MediaIndex > 0)
             {
-                Mgr.MediaIndex--;
+                Mgr.ManagerPlayer.MediaIndex--;
             }
             
             Lecteur.Stop();
             //Changement de la source pour le morceau précédent
-            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), Mgr.Playlist.ElementAt(Mgr.MediaIndex).Source)); 
+            Lecteur.Source = new Uri(System.IO.Path.Combine(Directory.GetCurrentDirectory(), Mgr.ManagerPlayer.Playlist.ElementAt(Mgr.ManagerPlayer.MediaIndex).Source)); 
             Lecteur.Play();
             isPlaying = true;
             PlayPauseIcon.Kind = PackIconKind.Pause;
-            TitleDisplay.Text = Mgr.Playlist.ElementAtOrDefault(Mgr.MediaIndex).Titre;
+            TitleDisplay.Text = Mgr.ManagerPlayer.Playlist.ElementAtOrDefault(Mgr.ManagerPlayer.MediaIndex).Titre;
         }
        
         /// <summary>
@@ -364,11 +378,11 @@ namespace Audium
         /// <param name="e"></param>
         private void ProgressBarChanged(object sender, MouseButtonEventArgs e)
         {
-            Lecteur.Pause();
+           
             
             int pos = Convert.ToInt32(ProgressBar.Value);
             Lecteur.Position = new TimeSpan(0, 0, 0, pos, 0);
-            Lecteur.Play();
+    
         }
 
 

@@ -68,4 +68,8 @@
     <Resource Include="logo.ico" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="QuickStart\" />
+  </ItemGroup>
+
 </Project>
