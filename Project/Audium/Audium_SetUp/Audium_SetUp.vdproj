@@ -15,13 +15,31 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_00E92085C89E425DA809E1313ABB4589"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8FA4B2D3247647D5A1099085BB0A1832"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
+        "MsmKey" = "8:_968883C30D3A49BC9B2402E344868973"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C9187934837E4F58B9D58C650FC8F2DF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D79C2BCFA5014912A438604B709F93C9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -43,6 +61,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -59,6 +93,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -90,12 +132,72 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_00E92085C89E425DA809E1313ABB4589"
+            {
+            "SourcePath" = "8:..\\Audium\\QuickStart\\audium.json"
+            "TargetName" = "8:audium.json"
+            "Tag" = "8:"
+            "Folder" = "8:_D7E35DD9BB1E41C39D137FE1D0889808"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_968883C30D3A49BC9B2402E344868973"
+            {
+            "SourcePath" = "8:..\\Audium\\QuickStart\\Track 1.mp3"
+            "TargetName" = "8:Track 1.mp3"
+            "Tag" = "8:"
+            "Folder" = "8:_7E0142F1CE8F4F3198D0BC5F05534E24"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C9187934837E4F58B9D58C650FC8F2DF"
             {
             "SourcePath" = "8:..\\Audium\\logo.ico"
             "TargetName" = "8:logo.ico"
             "Tag" = "8:"
             "Folder" = "8:_881A64B61D7142AA975BE18197762096"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D79C2BCFA5014912A438604B709F93C9"
+            {
+            "SourcePath" = "8:..\\Audium\\QuickStart\\Track 2.mp3"
+            "TargetName" = "8:Track 2.mp3"
+            "Tag" = "8:"
+            "Folder" = "8:_7E0142F1CE8F4F3198D0BC5F05534E24"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -157,6 +259,28 @@
                     "Property" = "8:_9F8CAD60FD954EE9805CCFF41772E3C9"
                         "Folders"
                         {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_7E0142F1CE8F4F3198D0BC5F05534E24"
+                            {
+                            "Name" = "8:music"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_B32AE420ECB2475984871A40774B5B39"
+                                "Folders"
+                                {
+                                }
+                            }
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_D7E35DD9BB1E41C39D137FE1D0889808"
+                    {
+                    "Name" = "8:JSON"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_0591CF5B708E42EFB5C65908C4C6B10E"
+                        "Folders"
+                        {
                         }
                     }
                 }
@@ -178,7 +302,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Audium_SetUp"
         "ProductCode" = "8:{45491FEB-CEAD-451D-8697-26CB9471B98E}"
-        "PackageCode" = "8:{B06566A0-C3B3-4639-983A-E639B7735DDC}"
+        "PackageCode" = "8:{F3560B99-86FD-4B71-ACFA-ADF86F97E5D0}"
         "UpgradeCode" = "8:{30F0E934-89A4-451F-88EE-68E25DD0AE97}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"

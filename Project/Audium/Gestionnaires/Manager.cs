@@ -59,7 +59,7 @@ namespace Gestionnaires
         /// </summary>
         public ManagerEnsembleSelect ManagerEnsemble;
         public ManagerProfil ManagerProfil;
-
+        public ManagerPlayer ManagerPlayer;
 
         /// <summary>
         /// Implémentation de INotifyPropertyChanged
@@ -175,6 +175,9 @@ namespace Gestionnaires
             //Construction du ManagerEnsemble
             ManagerEnsemble = new(mediatheque);
 
+            //Construction du ManagerPlayer
+            ManagerPlayer = new(mediatheque);
+
             //Teste pour vérifier si le ManagerProfil a bien été chargé, puisqu'il fait parti de la persistance, sinon on le crée maintenant.
             if(ManagerProfil==null)
             {
@@ -281,8 +284,8 @@ namespace Gestionnaires
                 if (Mediatheque.Count == 0 && ListeFavoris.Count == 0)
                 {
                    
-                  EnsembleLu = null; //Mise à null des propriétés du lecteur, quand la médiathèque et la liste des fav est vide, pour qu'il ne s'affiche plus rien sur le lecteur
-                  Playlist = null;
+                  ManagerPlayer.EnsembleLu = null; //Mise à null des propriétés du lecteur, quand la médiathèque et la liste des fav est vide, pour qu'il ne s'affiche plus rien sur le lecteur
+                    ManagerPlayer.Playlist = null;
 
                 }
             }
@@ -292,37 +295,7 @@ namespace Gestionnaires
             }
         }
 
-        /// <summary>
-        /// EnsembleAudio actuellement lu par le lecteur
-        /// </summary>
-        public EnsembleAudio EnsembleLu
-        {
-            get => ensembleLu;
-            set
-            {
-                if (ensembleLu != value)
-                {
-                    ensembleLu = value;
-                    if (ensembleLu != null) { Mediatheque.TryGetValue(ensembleLu, out Playlist); }
-                    if (Playlist != null) { Playlist = new LinkedList<Piste>(Playlist.ToList()); }
-                    OnPropertyChanged(nameof(EnsembleLu));
-                    OnPropertyChanged(nameof(Playlist));
-
-
-                }
-            }
-        }
-        private EnsembleAudio ensembleLu;
-
-        /// <summary>
-        /// Liste correspondant aux pistes restant à lire, et qui seront enchainées par le lecteur, à la fin de la lecture d'une piste.
-        /// </summary>
-        public LinkedList<Piste> Playlist;
-
-        /// <summary>
-        /// Index de la piste dans Playlist.
-        /// </summary>
-        public int MediaIndex;
+     
 
 
 
