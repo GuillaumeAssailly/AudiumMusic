@@ -293,7 +293,7 @@
                     </StackPanel>
                 </materialDesign:DialogHost.DialogContent>
 
-                <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}">
+                <ScrollViewer Background="#424242"  Style="{DynamicResource MaterialDesignScrollViewer}" ScrollViewer.VerticalScrollBarVisibility="Auto">
 
 
                     <ListBox Name="ListeKeys" ItemsSource="{Binding Mgr.ListeClé}" SelectedItem="{Binding MgrEnsemble.EnsembleSelect}"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
