@@ -1,37 +1,30 @@
-﻿using System;
+﻿using Donnees;
+using Gestionnaires;
+using Stub;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Donnees;
-using Gestionnaires;
+using System.Text;
+using System.Threading.Tasks;
+using Xunit;
 
-
-
-namespace Test_URecherche
+namespace TestUnitaires
 {
-    class Program
+    public class UnitTest_URecherche
     {
-        static void Main(string[] args)
-        {
+        [Fact]
+        public void TestRecherche()
+        { 
             Manager LeManager = new Manager(new Stub.Stub());
             LeManager.Charger();
             ObservableCollection<EnsembleAudio> res = new ObservableCollection<EnsembleAudio>(LeManager.Mediatheque.Keys.ToList());
-            Console.WriteLine("Liste des albums : ");
-            foreach(EnsembleAudio e in res)
-            {
-                Console.WriteLine(e);
-            }
-            
             res = URecherche.Recherche("Random", EGenre.BANDEORIGINALE, LeManager.Mediatheque);
-            Console.WriteLine("Résultat de la recherche : ");
             foreach(EnsembleAudio e in res)
             {
-                Console.WriteLine(e);
+                
+                Assert.Equal(EGenre.BANDEORIGINALE.ToString(),e.Genre.ToString());
             }
-
-
-
         }
     }
-
 }

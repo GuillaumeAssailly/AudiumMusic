@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Donnees;
 using Gestionnaires;
+using JsonPersistance;
 using Xunit;
 
 namespace TestUnitaires
@@ -37,32 +38,7 @@ namespace TestUnitaires
             Assert.Equal("Charles", profil.Nom);
         }
 
-        [Fact]
-        public void TestAjouterFavoris()
-        {
-            ManagerProfil profil = new();
-            EnsembleAudio e = new EnsembleAudio("test", "un album test", "img.png", EGenre.JAZZ,3);
-            //profil.ModifierListeFavoris(e);
-            //Assert.Single(profil.ListeFavoris);
-            Assert.True(e.Favori);
-
-        }
-
-        [Fact]
-        public void TestRetirerFavoris()
-        {
-            ManagerProfil profil = new();
-            EnsembleAudio e = new EnsembleAudio("test", "un album test", "img.png", EGenre.JAZZ,3);
-            //profil.ModifierListeFavoris(e);
-            //profil.ModifierListeFavoris(e);
-            //Assert.Empty(profil.ListeFavoris);
-            Assert.False(e.Favori);
-        }
-
-        
-
-
-
+ 
 
     }
 }

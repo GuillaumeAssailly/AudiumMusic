@@ -122,7 +122,7 @@ namespace Audium
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void tick(object sender, EventArgs e) 
+        private void tick(object sender, EventArgs e) 
         {
             ProgressBar.Value = Lecteur.Position.TotalSeconds;
             TimerDisplay.Text = Lecteur.Position.ToString(@"mm\:ss");
@@ -193,7 +193,7 @@ namespace Audium
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void LireTout(object sender, RoutedEventArgs e)
+        private void LireTout(object sender, RoutedEventArgs e)
         {
             //On met l'index de la lecture à zéro puisqu'on lit la première piste
             Mgr.ManagerPlayer.MediaIndex = 0;
