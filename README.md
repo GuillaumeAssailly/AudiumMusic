@@ -78,7 +78,14 @@ Il peut être installé [ici](https://dotnet.microsoft.com/download/dotnet/5.0).
 
 1. Le set up se trouve [ici](https://github.com/GuillaumeAssailly/AudiumMusic/releases/tag/1.0).
 2. Exécuter l'appli en mode Administrateur.
-3. QuickStart : Deux pistes mp3 dans un album sont préchargées dans l'appli, mais bien sûr, libre à vous d'importer vos propres morceaux/pochettes et commencer à remplir votre collection personnelle !
+
+### QuickStart
+
+Deux albums sont préchargés dans l'applications : 
+* The Hypnoflip Invasion (2 pistes)
+* 2001 : A Space Odyssey (1 pistes)
+
+D'autres fichiers mp3 sont disponibles pour tester l'ajout de pistes et d'albums, elles se trouvent dans le dossier music, contenu dans le répertoire d'installation de l'application.
 
 
 
