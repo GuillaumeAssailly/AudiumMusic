@@ -76,7 +76,7 @@ Il peut être installé [ici](https://dotnet.microsoft.com/download/dotnet/5.0).
 
 ### Installation
 
-1. Le set up se trouve [ici](https://github.com/GuillaumeAssailly/Audium/releases).
+1. Le set up se trouve [ici](https://github.com/GuillaumeAssailly/AudiumMusic/releases/tag/1.0).
 2. Exécuter l'appli en mode Administrateur.
 3. QuickStart : Deux pistes mp3 dans un album sont préchargées dans l'appli, mais bien sûr, libre à vous d'importer vos propres morceaux/pochettes et commencer à remplir votre collection personnelle !
 
