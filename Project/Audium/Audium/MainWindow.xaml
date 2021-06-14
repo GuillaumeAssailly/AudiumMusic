@@ -156,7 +156,7 @@
                       Style="{StaticResource TopButton_MD}"
                       Grid.Column="1"
                       Click="AddMusic"
-                      ToolTip="Ajouer un album" Cursor="Hand">
+                      ToolTip="Ajouter un album" Cursor="Hand">
                     <materialDesign:PackIcon Height="50" Width="50" Kind="PlaylistAdd" />
                     
                 </Button>

@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Gestionnaires
 {
+    /// <summary>
+    /// Classe permettant de gérer les pistes et ensembles lus par le lecteur audio
+    /// </summary>
     public class ManagerPlayer : INotifyPropertyChanged
     {
 

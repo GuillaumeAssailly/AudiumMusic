@@ -92,7 +92,7 @@ namespace Audium
             Lecteur.MediaEnded += Media_Next; //Abonnement du lecteur à l'évenmement Media Next, qui sera appelé à chaque fin de lecture
             Lecteur.MediaOpened += Media_Opened; //Abonnement du lecteur à l'événement media opened
             Lecteur.MediaFailed += Media_Stopped; //Abonnement du lecteur à l'évenement media stopped
-
+            Lecteur.Volume = 0.2;
             Recherche.KeyUp += Recherche_KeyUp; //Abonnement qui permet de lancer la recherche à chaque lettre tapée, pour fournir un résultat au fur et à mesure que l'utilisateur tape sa recherche
 
             

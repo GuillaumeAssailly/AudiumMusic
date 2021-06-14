@@ -15,19 +15,55 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_00E92085C89E425DA809E1313ABB4589"
+        "MsmKey" = "8:_1325C76BF0A243CEBB5F3EEFDCE64C0C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_8FA4B2D3247647D5A1099085BB0A1832"
+        "MsmKey" = "8:_29539E71F0C249CE84CA143561F2F03B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_968883C30D3A49BC9B2402E344868973"
+        "MsmKey" = "8:_6636ACD6E40446BF9C85A73BBD4A20A4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_681605A5E952421B987282490B30C3A0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_77DD3423031C46DC84F413E3ADC05B43"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7C678A09A34D4AC7850E7CB7DFB9EB18"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9C8C6E29F9164346B6C3DDAAEE8C68D0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9CA1AEE93E0B4F29AF512D6F3EBEA6F7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C3703002B57548489D4F87F16A4024DE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -39,7 +75,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D79C2BCFA5014912A438604B709F93C9"
+        "MsmKey" = "8:_E6379AA6690B402BA2B48DD5DD07456E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -100,6 +136,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -132,7 +176,127 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_00E92085C89E425DA809E1313ABB4589"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1325C76BF0A243CEBB5F3EEFDCE64C0C"
+            {
+            "SourcePath" = "8:..\\Audium\\QuickStart\\Daft_Punk_-_Da_Funk_Official_audio.mp3"
+            "TargetName" = "8:Daft_Punk_-_Da_Funk_Official_audio.mp3"
+            "Tag" = "8:"
+            "Folder" = "8:_7E0142F1CE8F4F3198D0BC5F05534E24"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_29539E71F0C249CE84CA143561F2F03B"
+            {
+            "SourcePath" = "8:..\\Audium\\QuickStart\\hypnoflip.jpg"
+            "TargetName" = "8:hypnoflip.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_A6C2857469FF429C8AA54ED6A5B64170"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6636ACD6E40446BF9C85A73BBD4A20A4"
+            {
+            "SourcePath" = "8:..\\Audium\\QuickStart\\Daft_Punk_-_Around_the_world_Official_Audio.mp3"
+            "TargetName" = "8:Daft_Punk_-_Around_the_world_Official_Audio.mp3"
+            "Tag" = "8:"
+            "Folder" = "8:_7E0142F1CE8F4F3198D0BC5F05534E24"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_681605A5E952421B987282490B30C3A0"
+            {
+            "SourcePath" = "8:..\\Audium\\QuickStart\\Track 2.mp3"
+            "TargetName" = "8:Track 2.mp3"
+            "Tag" = "8:"
+            "Folder" = "8:_7E0142F1CE8F4F3198D0BC5F05534E24"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_77DD3423031C46DC84F413E3ADC05B43"
+            {
+            "SourcePath" = "8:..\\Audium\\QuickStart\\Track 1.mp3"
+            "TargetName" = "8:Track 1.mp3"
+            "Tag" = "8:"
+            "Folder" = "8:_7E0142F1CE8F4F3198D0BC5F05534E24"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7C678A09A34D4AC7850E7CB7DFB9EB18"
+            {
+            "SourcePath" = "8:..\\Audium\\QuickStart\\Track 3.mp3"
+            "TargetName" = "8:Track 3.mp3"
+            "Tag" = "8:"
+            "Folder" = "8:_7E0142F1CE8F4F3198D0BC5F05534E24"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9C8C6E29F9164346B6C3DDAAEE8C68D0"
             {
             "SourcePath" = "8:..\\Audium\\QuickStart\\audium.json"
             "TargetName" = "8:audium.json"
@@ -152,10 +316,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_968883C30D3A49BC9B2402E344868973"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9CA1AEE93E0B4F29AF512D6F3EBEA6F7"
             {
-            "SourcePath" = "8:..\\Audium\\QuickStart\\Track 1.mp3"
-            "TargetName" = "8:Track 1.mp3"
+            "SourcePath" = "8:..\\Audium\\QuickStart\\2001.jpg"
+            "TargetName" = "8:2001.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_A6C2857469FF429C8AA54ED6A5B64170"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C3703002B57548489D4F87F16A4024DE"
+            {
+            "SourcePath" = "8:..\\Audium\\QuickStart\\Daft_Punk_-_Revolution_909_Official_audio.mp3"
+            "TargetName" = "8:Daft_Punk_-_Revolution_909_Official_audio.mp3"
             "Tag" = "8:"
             "Folder" = "8:_7E0142F1CE8F4F3198D0BC5F05534E24"
             "Condition" = "8:"
@@ -178,26 +362,6 @@
             "TargetName" = "8:logo.ico"
             "Tag" = "8:"
             "Folder" = "8:_881A64B61D7142AA975BE18197762096"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D79C2BCFA5014912A438604B709F93C9"
-            {
-            "SourcePath" = "8:..\\Audium\\QuickStart\\Track 2.mp3"
-            "TargetName" = "8:Track 2.mp3"
-            "Tag" = "8:"
-            "Folder" = "8:_7E0142F1CE8F4F3198D0BC5F05534E24"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -272,6 +436,17 @@
                             }
                         }
                     }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_A6C2857469FF429C8AA54ED6A5B64170"
+                    {
+                    "Name" = "8:img"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_DCBB0528409044E48534044A334EC6E5"
+                        "Folders"
+                        {
+                        }
+                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_D7E35DD9BB1E41C39D137FE1D0889808"
                     {
                     "Name" = "8:JSON"
@@ -300,9 +475,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Audium_SetUp"
+        "ProductName" = "8:Audium"
         "ProductCode" = "8:{45491FEB-CEAD-451D-8697-26CB9471B98E}"
-        "PackageCode" = "8:{F3560B99-86FD-4B71-ACFA-ADF86F97E5D0}"
+        "PackageCode" = "8:{038305E4-8EBE-4112-92BD-88C46FEE72AB}"
         "UpgradeCode" = "8:{30F0E934-89A4-451F-88EE-68E25DD0AE97}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -422,7 +597,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9DAC682A96094AF4B8F8CDA0C28B6FA9"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A7468BBBDBAF4560AA62F94BF4E5A143"
             {
             "Name" = "8:Audium 1.0"
             "Arguments" = "8:"
@@ -430,13 +605,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_8FA4B2D3247647D5A1099085BB0A1832"
+            "Target" = "8:_E6379AA6690B402BA2B48DD5DD07456E"
             "Folder" = "8:_A61FA06B31F74DCA8E82AD512B002069"
             "WorkingFolder" = "8:_881A64B61D7142AA975BE18197762096"
             "Icon" = "8:_C9187934837E4F58B9D58C650FC8F2DF"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FCF2742CAF6F4A0094B2FC4EA2D266DA"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_DEDA05565B974310A06EA62A10626A80"
             {
             "Name" = "8:Audium 1.0"
             "Arguments" = "8:"
@@ -444,7 +619,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_8FA4B2D3247647D5A1099085BB0A1832"
+            "Target" = "8:_E6379AA6690B402BA2B48DD5DD07456E"
             "Folder" = "8:_0DB6006D8E38420D80A43D3C23304FD6"
             "WorkingFolder" = "8:_881A64B61D7142AA975BE18197762096"
             "Icon" = "8:_C9187934837E4F58B9D58C650FC8F2DF"
@@ -849,9 +1024,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_8FA4B2D3247647D5A1099085BB0A1832"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E6379AA6690B402BA2B48DD5DD07456E"
             {
-            "SourcePath" = "8:..\\Audium\\obj\\Debug\\net5.0-windows\\win-x64\\apphost.exe"
+            "SourcePath" = "8:..\\Audium\\obj\\Release\\net5.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_881A64B61D7142AA975BE18197762096"
@@ -873,7 +1048,6 @@
             "OutputGroupCanonicalName" = "8:PublishItems"
             "OutputProjectGuid" = "8:{9183709E-1064-4579-BCD8-425CC3C5D2FA}"
             "ShowKeyOutput" = "11:TRUE"
-            "PublishProfilePath" = "8:Properties\\PublishProfiles\\FolderProfile.pubxml"
                 "ExcludeFilters"
                 {
                 }
