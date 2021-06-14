@@ -231,7 +231,7 @@
                                             Height="25"
                                             Foreground="Black"
                                             Style="{StaticResource MaterialDesignIconForegroundButton}"
-                                            ToolTip="MaterialDesignIconButton"
+                                            ToolTip="Supprimer la piste selectionnée"
                                             Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
                                         <materialDesign:PackIcon Kind="Bin" />
                                     </Button>
@@ -393,7 +393,7 @@
                               HorizontalAlignment="Right"
                               Margin="10,-10"
                              
-                              ToolTip="PopupBox, Style MaterialDesignMultiFloatingActionPopupBox" Cursor="Hand">
+                              ToolTip="Ajouter une piste" Cursor="Hand">
                                 <StackPanel>
                                     <StackPanel.Resources>
                                         <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFloatingActionLightButton}">
